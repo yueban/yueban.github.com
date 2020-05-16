@@ -193,6 +193,105 @@
             
 
   
+    <article id="post-Android经验积累" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2020/05/10/Android%E7%BB%8F%E9%AA%8C%E7%A7%AF%E7%B4%AF/" target="_blank">Android 经验积累</a>
+  
+    </h1>
+  
+
+
+  
+  
+<a href="/2020/05/10/Android%E7%BB%8F%E9%AA%8C%E7%A7%AF%E7%B4%AF/" class="archive-article-date">
+        <time datetime="2020-05-10T06:25:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-10</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <h2 id="Build-amp-Compile"><a href="#Build-amp-Compile" class="headerlink" title="Build &amp; Compile"></a>Build &amp; Compile</h2><h4 id="gradle"><a href="#gradle" class="headerlink" title="gradle"></a>gradle</h4><h5 id="指定某个-dependency-library-在项目中依赖的唯一版本"><a href="#指定某个-dependency-library-在项目中依赖的唯一版本" class="headerlink" title="指定某个 dependency library 在项目中依赖的唯一版本"></a>指定某个 <code>dependency library</code> 在项目中依赖的唯一版本</h5><ul>
+<li>通过配置 gradle 任务，指定唯一版本  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">subprojects &#123;</span><br><span class="line">    project.configurations.all &#123;</span><br><span class="line">        resolutionStrategy.eachDependency &#123; details -&gt;</span><br><span class="line">            if (details.requested.group &#x3D;&#x3D; &#39;com.android.support&#39;</span><br><span class="line">                    &amp;&amp; !details.requested.name.contains(&#39;multidex&#39;)) &#123;</span><br><span class="line">                details.useVersion &quot;28.0.0&quot;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><a href="https://stackoverflow.com/questions/44653261/android-dependency-has-different-version-for-the-compile-and-runtime" target="_blank" rel="noopener">参考链接</a></p>
+</blockquote>
+</li>
+</ul>
+    
+    <a class="article-more-a" href="/2020/05/10/Android%E7%BB%8F%E9%AA%8C%E7%A7%AF%E7%B4%AF/#more">more >></a>
+    
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    <div class="article-pop-out tagcloud">
+      <i class="icon-tuding"></i>
+      <a class="article-tag-list-link color3">置顶</a>
+    </div>
+    
+    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Android</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+    
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2020/05/10/Android%E7%BB%8F%E9%AA%8C%E7%A7%AF%E7%B4%AF/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-仿fooView悬浮球拖拽识别屏幕文字" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -356,105 +455,6 @@
     
     <p class="article-more-link">
       <a class="article-more-a" href="/2020/05/10/gitlab-server-side-hooks%E9%85%8D%E7%BD%AE%E5%AE%9E%E8%B7%B5/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Android经验积累" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2020/05/10/Android%E7%BB%8F%E9%AA%8C%E7%A7%AF%E7%B4%AF/" target="_blank">Android 经验积累</a>
-  
-    </h1>
-  
-
-
-  
-  
-<a href="/2020/05/10/Android%E7%BB%8F%E9%AA%8C%E7%A7%AF%E7%B4%AF/" class="archive-article-date">
-        <time datetime="2020-05-10T06:25:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-10</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <h2 id="Build-amp-Compile"><a href="#Build-amp-Compile" class="headerlink" title="Build &amp; Compile"></a>Build &amp; Compile</h2><h4 id="gradle"><a href="#gradle" class="headerlink" title="gradle"></a>gradle</h4><h5 id="指定某个-dependency-library-在项目中依赖的唯一版本"><a href="#指定某个-dependency-library-在项目中依赖的唯一版本" class="headerlink" title="指定某个 dependency library 在项目中依赖的唯一版本"></a>指定某个 <code>dependency library</code> 在项目中依赖的唯一版本</h5><ul>
-<li>通过配置 gradle 任务，指定唯一版本  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">subprojects &#123;</span><br><span class="line">    project.configurations.all &#123;</span><br><span class="line">        resolutionStrategy.eachDependency &#123; details -&gt;</span><br><span class="line">            if (details.requested.group &#x3D;&#x3D; &#39;com.android.support&#39;</span><br><span class="line">                    &amp;&amp; !details.requested.name.contains(&#39;multidex&#39;)) &#123;</span><br><span class="line">                details.useVersion &quot;28.0.0&quot;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p><a href="https://stackoverflow.com/questions/44653261/android-dependency-has-different-version-for-the-compile-and-runtime" target="_blank" rel="noopener">参考链接</a></p>
-</blockquote>
-</li>
-</ul>
-    
-    <a class="article-more-a" href="/2020/05/10/Android%E7%BB%8F%E9%AA%8C%E7%A7%AF%E7%B4%AF/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    <div class="article-pop-out tagcloud">
-      <i class="icon-tuding"></i>
-      <a class="article-tag-list-link color3">置顶</a>
-    </div>
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Android</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2020/05/10/Android%E7%BB%8F%E9%AA%8C%E7%A7%AF%E7%B4%AF/">展开全文 >></a>
     </p>
     
 
