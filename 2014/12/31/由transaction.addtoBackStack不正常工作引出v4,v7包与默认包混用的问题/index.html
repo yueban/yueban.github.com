@@ -421,6 +421,29 @@
 
 
 
+  
+  <div id="gitment-ctn"></div>
+  
+    <!-- 中文 -->
+    <link rel="stylesheet" href="/lib/gitment.css">
+    <script src="/lib/gitment.js"></script>
+  
+  <script>
+    <!-- id: "由 transaction.addtoBackStack 不正常工作引出 v4,v7 包与默认包混用的问题" -->
+    var gitment = new Gitment({
+      id: "20141231090203",
+      owner: 'yueban',
+      repo: 'yueban_blog_comment',
+      oauth: {
+        client_id: '0f00df319b4700319525',
+        client_secret: '231161c65ada7d4d4da3329ea2e97b3bc7523d5a',
+      },
+    })
+    gitment.render('gitment-ctn')
+  </script>
+
+
+  
 
 
 
