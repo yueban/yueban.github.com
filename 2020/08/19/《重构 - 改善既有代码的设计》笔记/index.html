@@ -6,22 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yueban.github.io">
-  <title>月半兄的小站</title>
+  <title>《重构 - 改善既有代码的设计》笔记 | 月半兄的小站</title><meta name="robots" content="noindex">
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-    
-    <!-- <meta name="keywords" content="">
-    <meta name="description" content="新生活~~~"> -->
-  
-  <meta name="description" content="新生活~~~">
-<meta property="og:type" content="website">
-<meta property="og:title" content="月半兄的小站">
-<meta property="og:url" content="http://yueban.github.io/page/3/index.html">
+  <meta name="description" content="一、重构，第一个示例 重构前，先确保有一套完整的测试工具，可对待重构的代码进行验证 每次重构一小块，编译，测试保证代码功能正确，然后 commit。保持小步快走 过程更可控，随时抽身，不容易陷入其中 出现问题可追溯，可回滚   重构的目的是使代码变得更容易被人理解，而不是性能更好或代码量更少 好代码的标准: 更容易理解，更容易修改的代码 如果现有代码结构不易于新特性的添加，则先重构，再添加新特性">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《重构 - 改善既有代码的设计》笔记">
+<meta property="og:url" content="http://yueban.github.io/2020/08/19/%E3%80%8A%E9%87%8D%E6%9E%84%20-%20%E6%94%B9%E5%96%84%E6%97%A2%E6%9C%89%E4%BB%A3%E7%A0%81%E7%9A%84%E8%AE%BE%E8%AE%A1%E3%80%8B%E7%AC%94%E8%AE%B0/index.html">
 <meta property="og:site_name" content="月半兄的小站">
-<meta property="og:description" content="新生活~~~">
+<meta property="og:description" content="一、重构，第一个示例 重构前，先确保有一套完整的测试工具，可对待重构的代码进行验证 每次重构一小块，编译，测试保证代码功能正确，然后 commit。保持小步快走 过程更可控，随时抽身，不容易陷入其中 出现问题可追溯，可回滚   重构的目的是使代码变得更容易被人理解，而不是性能更好或代码量更少 好代码的标准: 更容易理解，更容易修改的代码 如果现有代码结构不易于新特性的添加，则先重构，再添加新特性">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-08-19T07:45:07.000Z">
+<meta property="article:modified_time" content="2020-08-23T08:21:12.210Z">
 <meta property="article:author" content="月半兄">
+<meta property="article:tag" content="笔记">
 <meta name="twitter:card" content="summary">
   
   
@@ -190,800 +189,116 @@
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-
-  
-    <article id="post-MaterialDesign学习——Demo实战" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-《重构 - 改善既有代码的设计》笔记" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
   
   
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2015/03/20/MaterialDesign%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94Demo%E5%AE%9E%E6%88%98/" target="_blank">Material Design 学习——Demo实战</a>
-  
+    <h1 class="article-title" itemprop="name">
+      《重构 - 改善既有代码的设计》笔记
     </h1>
   
 
 
   
   
-<a href="/2015/03/20/MaterialDesign%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94Demo%E5%AE%9E%E6%88%98/" class="archive-article-date">
-        <time datetime="2015-03-20T03:40:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-03-20</time>
+        
+        <span id="busuanzi_container_page_pv" style='display:none' class="archive-article-date">
+              <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
+        </span>
+
+<a href="/2020/08/19/%E3%80%8A%E9%87%8D%E6%9E%84%20-%20%E6%94%B9%E5%96%84%E6%97%A2%E6%9C%89%E4%BB%A3%E7%A0%81%E7%9A%84%E8%AE%BE%E8%AE%A1%E3%80%8B%E7%AC%94%E8%AE%B0/" class="archive-article-date">
+        <time datetime="2020-08-19T07:45:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-19</time>
 </a>
 
   
   
     
+<div style="margin-top:10px;">
+  <span class="post-time">
+    <span class="post-meta-item-icon">
+      <!-- fonts.scss -->
+      <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
+      <i class="icon-statistics"></i>
+      <span class="post-meta-item-text"> 字数统计:</span>
+      <span class="post-count">786字</span>
+    </span>
+  </span>
+
+  <span class="post-time">
+    &nbsp; | &nbsp;
+    <span class="post-meta-item-icon">
+      <i class="icon-book icon"></i>
+      <span class="post-meta-item-text"> 阅读时长≈</span>
+      <span class="post-count">2分</span>
+    </span>
+  </span>
+</div>
+
 
   
   </header>
   
   <div class="article-entry" itemprop="articleBody">
     
-    <h3 id="1-成品展示"><a href="#1-成品展示" class="headerlink" title="1 成品展示"></a>1 成品展示</h3><p>整个Demo只有两个Activity，一个叫MainActivity，一个叫DetailActivity，在MainActivity点击一张壁纸，会平滑过渡到DetailActivity。在DetailActivity中可以切换壁纸。</p>
-    
-    <a class="article-more-a" href="/2015/03/20/MaterialDesign%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94Demo%E5%AE%9E%E6%88%98/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Android</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Material Design</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2015/03/20/MaterialDesign%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94Demo%E5%AE%9E%E6%88%98/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-MaterialDesign学习——控件" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2015/03/20/MaterialDesign%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E6%8E%A7%E4%BB%B6/" target="_blank">Material Design 学习——控件</a>
-  
-    </h1>
-  
-
-
-  
-  
-<a href="/2015/03/20/MaterialDesign%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E6%8E%A7%E4%BB%B6/" class="archive-article-date">
-        <time datetime="2015-03-20T02:47:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-03-20</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <h3 id="1-Toolbar"><a href="#1-Toolbar" class="headerlink" title="1 Toolbar"></a>1 Toolbar</h3><h4 id="1-1-Android5-0中使用"><a href="#1-1-Android5-0中使用" class="headerlink" title="1.1 Android5.0中使用"></a>1.1 Android5.0中使用</h4><h5 id="1-1-1-将Toolbar设置为ActionBar"><a href="#1-1-1-将Toolbar设置为ActionBar" class="headerlink" title="1.1.1 将Toolbar设置为ActionBar"></a>1.1.1 将Toolbar设置为ActionBar</h5><pre><code>setActionBar(Toolbar toolbar);</code></pre>
-    
-    <a class="article-more-a" href="/2015/03/20/MaterialDesign%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E6%8E%A7%E4%BB%B6/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Android</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Material Design</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2015/03/20/MaterialDesign%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E6%8E%A7%E4%BB%B6/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-MaterialDesign学习——动画" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2015/03/19/MaterialDesign%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E5%8A%A8%E7%94%BB/" target="_blank">Material Design 学习——动画</a>
-  
-    </h1>
-  
-
-
-  
-  
-<a href="/2015/03/19/MaterialDesign%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E5%8A%A8%E7%94%BB/" class="archive-article-date">
-        <time datetime="2015-03-19T07:32:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-03-19</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <h3 id="1-触摸反馈（波纹效果）"><a href="#1-触摸反馈（波纹效果）" class="headerlink" title="1 触摸反馈（波纹效果）"></a>1 触摸反馈（波纹效果）</h3><ul>
-<li><p>默认状态下，背景正常，波纹有边界</p>
-</li>
-<li><p>波纹做背景，波纹有边界<code>android:background=&quot;?android:attr/selectableItemBackground</code></p>
-</li>
-<li><p>波纹做背景，波纹超出边界<code>android:background=&quot;?android:attr/selectableItemBackgroundBorderless</code></p>
-</li>
-<li><p>波纹颜色<code>android:colorControlHighlight</code></p>
-    
-    <a class="article-more-a" href="/2015/03/19/MaterialDesign%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E5%8A%A8%E7%94%BB/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Android</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Material Design</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2015/03/19/MaterialDesign%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E5%8A%A8%E7%94%BB/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-MaterialDesign学习——阴影、轮廓、裁剪、着色" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2015/03/19/MaterialDesign%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E9%98%B4%E5%BD%B1%E3%80%81%E8%BD%AE%E5%BB%93%E3%80%81%E8%A3%81%E5%89%AA%E3%80%81%E7%9D%80%E8%89%B2/" target="_blank">Material Design 学习——阴影、轮廓、裁剪、着色</a>
-  
-    </h1>
-  
-
-
-  
-  
-<a href="/2015/03/19/MaterialDesign%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E9%98%B4%E5%BD%B1%E3%80%81%E8%BD%AE%E5%BB%93%E3%80%81%E8%A3%81%E5%89%AA%E3%80%81%E7%9D%80%E8%89%B2/" class="archive-article-date">
-        <time datetime="2015-03-19T05:48:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-03-19</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <h3 id="1-阴影"><a href="#1-阴影" class="headerlink" title="1 阴影"></a>1 阴影</h3><p>Android5.0 上实现阴影很简单，只需两点</p>
-<ul>
-<li>Z 轴上的高度</li>
-<li>背景/轮廓</li>
+    <h2 id="一、重构，第一个示例"><a href="#一、重构，第一个示例" class="headerlink" title="一、重构，第一个示例"></a>一、重构，第一个示例</h2><ul>
+<li>重构前，先确保有一套完整的测试工具，可对待重构的代码进行验证</li>
+<li>每次重构一小块，编译，测试保证代码功能正确，然后 commit。保持小步快走<ul>
+<li>过程更可控，随时抽身，不容易陷入其中</li>
+<li>出现问题可追溯，可回滚</li>
 </ul>
-    
-    <a class="article-more-a" href="/2015/03/19/MaterialDesign%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E9%98%B4%E5%BD%B1%E3%80%81%E8%BD%AE%E5%BB%93%E3%80%81%E8%A3%81%E5%89%AA%E3%80%81%E7%9D%80%E8%89%B2/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Android</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Material Design</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2015/03/19/MaterialDesign%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E9%98%B4%E5%BD%B1%E3%80%81%E8%BD%AE%E5%BB%93%E3%80%81%E8%A3%81%E5%89%AA%E3%80%81%E7%9D%80%E8%89%B2/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-MaterialDesign学习——style" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2015/03/19/MaterialDesign%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94style/" target="_blank">Material Design 学习——style</a>
-  
-    </h1>
-  
-
-
-  
-  
-<a href="/2015/03/19/MaterialDesign%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94style/" class="archive-article-date">
-        <time datetime="2015-03-19T04:32:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-03-19</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <h3 id="1-主题"><a href="#1-主题" class="headerlink" title="1 主题"></a>1 主题</h3><p>使用继承自<code>android:Theme.Material</code>的主题，如：</p>
-<pre><code>&lt;style name=&quot;AppTheme&quot; parent=&quot;android:Theme.Material.Light.NoActionBar&quot;&gt;
-&lt;/style&gt;</code></pre>
-    
-    <a class="article-more-a" href="/2015/03/19/MaterialDesign%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94style/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Android</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Material Design</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2015/03/19/MaterialDesign%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94style/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-9patch的内容显示区域" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2015/01/30/9patch%E7%9A%84%E5%86%85%E5%AE%B9%E6%98%BE%E7%A4%BA%E5%8C%BA%E5%9F%9F/" target="_blank">9-patch-png 的内容显示区域</a>
-  
-    </h1>
-  
-
-
-  
-  
-<a href="/2015/01/30/9patch%E7%9A%84%E5%86%85%E5%AE%B9%E6%98%BE%E7%A4%BA%E5%8C%BA%E5%9F%9F/" class="archive-article-date">
-        <time datetime="2015-01-30T01:32:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-01-30</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <p>.9.png可以在上下左右四个方向画<strong>黑线</strong>，左、上代表<strong>可拉伸区域</strong>，右、下代表<strong>内容显示区域</strong>。<strong>可拉伸区域</strong>就是指在图片需要拉伸时，优先拉伸的区域，<strong>内容显示区域</strong>是指在该.9.png图片上显示文字/图片等内容时，该内容显示的区域，该区域不可拉伸，只可等比缩放。</p>
-    
-    <a class="article-more-a" href="/2015/01/30/9patch%E7%9A%84%E5%86%85%E5%AE%B9%E6%98%BE%E7%A4%BA%E5%8C%BA%E5%9F%9F/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Android</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2015/01/30/9patch%E7%9A%84%E5%86%85%E5%AE%B9%E6%98%BE%E7%A4%BA%E5%8C%BA%E5%9F%9F/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-由transaction.addtoBackStack不正常工作引出v4,v7包与默认包混用的问题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2014/12/31/%E7%94%B1transaction.addtoBackStack%E4%B8%8D%E6%AD%A3%E5%B8%B8%E5%B7%A5%E4%BD%9C%E5%BC%95%E5%87%BAv4,v7%E5%8C%85%E4%B8%8E%E9%BB%98%E8%AE%A4%E5%8C%85%E6%B7%B7%E7%94%A8%E7%9A%84%E9%97%AE%E9%A2%98/" target="_blank">由 transaction.addtoBackStack 不正常工作引出 v4,v7 包与默认包混用的问题</a>
-  
-    </h1>
-  
-
-
-  
-  
-<a href="/2014/12/31/%E7%94%B1transaction.addtoBackStack%E4%B8%8D%E6%AD%A3%E5%B8%B8%E5%B7%A5%E4%BD%9C%E5%BC%95%E5%87%BAv4,v7%E5%8C%85%E4%B8%8E%E9%BB%98%E8%AE%A4%E5%8C%85%E6%B7%B7%E7%94%A8%E7%9A%84%E9%97%AE%E9%A2%98/" class="archive-article-date">
-        <time datetime="2014-12-31T01:02:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2014-12-31</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <h3 id="一、现象"><a href="#一、现象" class="headerlink" title="一、现象"></a>一、现象</h3><p>如下，是一段普通的替换 Fragment 的代码：</p>
-<pre><code>AnotherRightFragment fragment = new AnotherRightFragment();
-                FragmentManager fragmentManager = getSupportFragmentManager();
-                FragmentTransaction transaction = fragmentManager.beginTransaction();
-                transaction.replace(R.id.right_layout, fragment);
-                transaction.commit();</code></pre>
-    
-    <a class="article-more-a" href="/2014/12/31/%E7%94%B1transaction.addtoBackStack%E4%B8%8D%E6%AD%A3%E5%B8%B8%E5%B7%A5%E4%BD%9C%E5%BC%95%E5%87%BAv4,v7%E5%8C%85%E4%B8%8E%E9%BB%98%E8%AE%A4%E5%8C%85%E6%B7%B7%E7%94%A8%E7%9A%84%E9%97%AE%E9%A2%98/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Android</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2014/12/31/%E7%94%B1transaction.addtoBackStack%E4%B8%8D%E6%AD%A3%E5%B8%B8%E5%B7%A5%E4%BD%9C%E5%BC%95%E5%87%BAv4,v7%E5%8C%85%E4%B8%8E%E9%BB%98%E8%AE%A4%E5%8C%85%E6%B7%B7%E7%94%A8%E7%9A%84%E9%97%AE%E9%A2%98/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-This-Handler-class-should-be-static-or-leaks-might-occur" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2014/11/29/This-Handler-class-should-be-static-or-leaks-might-occur/" target="_blank">This Handler class should be static or leaks might occur</a>
-  
-    </h1>
-  
-
-
-  
-  
-<a href="/2014/11/29/This-Handler-class-should-be-static-or-leaks-might-occur/" class="archive-article-date">
-        <time datetime="2014-11-29T11:28:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2014-11-29</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <blockquote>
-<p>原文链接：<a href="http://my.oschina.net/rengwuxian/blog/181449" target="_blank" rel="noopener">http://my.oschina.net/rengwuxian/blog/181449</a></p>
-</blockquote>
-<h3 id="一、现象"><a href="#一、现象" class="headerlink" title="一、现象"></a>一、现象</h3><p>当使用内部类（包括匿名内部类）来创建 Handler 时，我们会看到一条警告信息：<code>This Handler class should be static or leaks might occur</code>。翻译过来大概是：这个 Handler 对象应该是静态的，否则有可能造成内存泄露。</p>
-    
-    <a class="article-more-a" href="/2014/11/29/This-Handler-class-should-be-static-or-leaks-might-occur/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Android</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2014/11/29/This-Handler-class-should-be-static-or-leaks-might-occur/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Java构造函数执行顺序" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2014/09/13/Java%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E6%89%A7%E8%A1%8C%E9%A1%BA%E5%BA%8F/" target="_blank">Java 构造函数执行顺序</a>
-  
-    </h1>
-  
-
-
-  
-  
-<a href="/2014/09/13/Java%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E6%89%A7%E8%A1%8C%E9%A1%BA%E5%BA%8F/" class="archive-article-date">
-        <time datetime="2014-09-13T07:31:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2014-09-13</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <blockquote>
-<p>归纳自《JAVA编程思想》</p>
-</blockquote>
-<h4 id="概述"><a href="#概述" class="headerlink" title="概述"></a><strong>概述</strong></h4><p>Java中构造函数调用按以下顺序进行：</p>
-<ol>
-<li><p>找寻所有的基类（父类）</p>
 </li>
-<li><p>按基类→导出来的顺序初始化静态成员（静态成员只会初始化一次，对应类）</p>
+<li>重构的目的是使代码变得更容易被人理解，而不是性能更好或代码量更少</li>
+<li>好代码的标准: 更容易理解，更容易修改的代码</li>
+<li>如果现有代码结构不易于新特性的添加，则先重构，再添加新特性</li>
+</ul>
+<h2 id="二、重构的原则"><a href="#二、重构的原则" class="headerlink" title="二、重构的原则"></a>二、重构的原则</h2><ul>
+<li>重构是一种经济驱动的行为。重构的意义不在于把代码打磨得闪闪发光，而是纯粹经济角度出发的考量。之所以重构，是为了添加功能更快，修复 bug 更快。</li>
+<li>开发时，做一会功能，做一会重构，交替进行</li>
+<li>对于复杂的功能不要用大量时间做重构，而应一次改一点，依旧小步快走</li>
+</ul>
+<h3 id="何时重构"><a href="#何时重构" class="headerlink" title="何时重构"></a>何时重构</h3><ul>
+<li>预备性重构<ul>
+<li>在动手添加新功能前，先观察现有代码库，合适的重构会让新功能添加更容易</li>
+</ul>
 </li>
-<li><p>按基类→导出类的顺序构造对象（构造对象将会执行4，5两个步骤）</p>
+<li>帮助理解的重构<ul>
+<li>先理解代码在做什么，并在这个过程中做一定的修改，使代码更易理解</li>
+</ul>
 </li>
-<li><p>初始化非静态成员（非静态成员在每次构造对象的时候都会初始化一次，对应所构造的对象）</p>
+<li>捡垃圾式重构<ul>
+<li>已经理解代码在做什么，但发现做的不够好，可以对它进行重构</li>
+</ul>
 </li>
-<li><p>调用相应的构造函数</p>
-    
-    <a class="article-more-a" href="/2014/09/13/Java%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E6%89%A7%E8%A1%8C%E9%A1%BA%E5%BA%8F/#more">more >></a>
-    
+<li>有计划的重构<ul>
+<li>我们总是应该把重构作为日常开发的一部分来进行</li>
+<li>对于代码债过多的情况，可以按照有计划的重构，花更多时间解决</li>
+</ul>
+</li>
+<li>长期重构<ul>
+<li>重构应该是一个常态化的行为，每次修改一小点，不影响现有代码行为</li>
+</ul>
+</li>
+<li>code review 时的重构<ul>
+<li>code review 时的重构，可以让作者与 reviewer 在一起结对编程，作者可以更好的让 reviewer 理解代码逻辑</li>
+</ul>
+</li>
+<li>何时不应该重构<ul>
+<li>经济价值低的重构。比如一块脏代码，藏在某一个 API 下，不需要修改时可以先不动它</li>
+<li>重写比重构还容易时，应直接重写</li>
+</ul>
+</li>
+</ul>
+<h3 id="重构的挑战"><a href="#重构的挑战" class="headerlink" title="重构的挑战"></a>重构的挑战</h3><h4 id="代码的所有权"><a href="#代码的所有权" class="headerlink" title="代码的所有权"></a>代码的所有权</h4><p>代码的所有权应该属于某个团队，而不是个人。整个团队都有权修改某块代码。如果代码所有权属于个人，则会导致各个负责人之间的对接接口暴增的问题。</p>
+<h4 id="分支"><a href="#分支" class="headerlink" title="分支"></a>分支</h4><p>应基于主干分支持续开发，利用 CI 工具保证编译与测试通过。不要让独立的 feature 分支离开主干太久，合并分支的成本太高。</p>
+<h4 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h4><p>不会改变程序可观察的行为，这是重构的一个重要特征。通过测试可以在每一步的重构中保证这点。</p>
+<p>测试也是 CI 的关键环节。</p>
+<h4 id="遗留代码"><a href="#遗留代码" class="headerlink" title="遗留代码"></a>遗留代码</h4><ul>
+<li>添加自测代码</li>
+<li>每次重构一点，小步快走，避免陷入其中</li>
+</ul>
+<h3 id="重构、架构和YAGNI"><a href="#重构、架构和YAGNI" class="headerlink" title="重构、架构和YAGNI"></a>重构、架构和YAGNI</h3><!-- flag of hidden posts -->
     
 
     
@@ -999,7 +314,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
         		</li>
       		
 		</ul>
@@ -1008,16 +323,66 @@
     
 
     
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2014/09/13/Java%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E6%89%A7%E8%A1%8C%E9%A1%BA%E5%BA%8F/">展开全文 >></a>
-    </p>
+
     
+    
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <!-- <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a> -->
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+     <!-- <img src="//pan.baidu.com/share/qrcode?url=http://yueban.github.io/2020/08/19/%E3%80%8A%E9%87%8D%E6%9E%84%20-%20%E6%94%B9%E5%96%84%E6%97%A2%E6%9C%89%E4%BB%A3%E7%A0%81%E7%9A%84%E8%AE%BE%E8%AE%A1%E3%80%8B%E7%AC%94%E8%AE%B0/" alt="微信分享二维码"> -->
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
 
     
     <div class="clearfix"></div>
   </div>
   </div>
 </article>
+
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -1032,106 +397,56 @@
         </div>
         
         
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-多ViewType的BaseAdapter使用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2014/09/13/%E5%A4%9AViewType%E7%9A%84BaseAdapter%E4%BD%BF%E7%94%A8/" target="_blank">多 ViewType 的 BaseAdapter 使用</a>
-  
-    </h1>
-  
-
-
-  
-  
-<a href="/2014/09/13/%E5%A4%9AViewType%E7%9A%84BaseAdapter%E4%BD%BF%E7%94%A8/" class="archive-article-date">
-        <time datetime="2014-09-13T07:31:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2014-09-13</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <p>&emsp;BaseAdapter可以说是最常用的Adapter了，尤其是它还支持convertView的复用，使得我们的加载View的效率大大提高，然而在实际使用中，存在这样一种情况，ListView中的Item是多种样式的，这样getView()方法中复用的convertView肯定是不同的，那么针对这种情况，我们如何实现convertView的复用呢。其实Android已经考虑到这种情况了，甚至在第一版的API中就为这种情况提供了解决方案，详见下文。  </p>
-    
-    <a class="article-more-a" href="/2014/09/13/%E5%A4%9AViewType%E7%9A%84BaseAdapter%E4%BD%BF%E7%94%A8/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Android</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2014/09/13/%E5%A4%9AViewType%E7%9A%84BaseAdapter%E4%BD%BF%E7%94%A8/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、重构，第一个示例"><span class="toc-number">1.</span> <span class="toc-text">一、重构，第一个示例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、重构的原则"><span class="toc-number">2.</span> <span class="toc-text">二、重构的原则</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#何时重构"><span class="toc-number">2.1.</span> <span class="toc-text">何时重构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#重构的挑战"><span class="toc-number">2.2.</span> <span class="toc-text">重构的挑战</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#代码的所有权"><span class="toc-number">2.2.1.</span> <span class="toc-text">代码的所有权</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#分支"><span class="toc-number">2.2.2.</span> <span class="toc-text">分支</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#测试"><span class="toc-number">2.2.3.</span> <span class="toc-text">测试</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#遗留代码"><span class="toc-number">2.2.4.</span> <span class="toc-text">遗留代码</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#重构、架构和YAGNI"><span class="toc-number">2.3.</span> <span class="toc-text">重构、架构和YAGNI</span></a></li></ol></li></ol>
+                    </div>
+                </span>
             </div>
         </div>
         
-        
     </div>
 </aside>
 
 
 
 
+
+
+
+
+
+
+
   
+  <div id="gitment-ctn"></div>
   
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/2/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/">Next &amp;raquo;</a>
-    </nav>
+    <!-- 中文 -->
+    <link rel="stylesheet" href="/lib/gitment.css">
+    <script src="/lib/gitment.js"></script>
   
+  <script>
+    <!-- id: "《重构 - 改善既有代码的设计》笔记" -->
+    var gitment = new Gitment({
+      id: "20200819154507",
+      owner: 'yueban',
+      repo: 'yueban.github.com',
+      oauth: {
+        client_id: '0f00df319b4700319525',
+        client_secret: '231161c65ada7d4d4da3329ea2e97b3bc7523d5a',
+      },
+    })
+    gitment.render('gitment-ctn')
+  </script>
+
+
+  
+
 
 
           </div>
@@ -1171,8 +486,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
