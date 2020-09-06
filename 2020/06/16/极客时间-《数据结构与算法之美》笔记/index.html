@@ -17,13 +17,15 @@
 <meta property="og:site_name" content="月半兄的小站">
 <meta property="og:description" content="复杂度分析（上）：如何分析、统计算法的执行效率和资源消耗？事后统计法将算法跑一遍，并统计其时间消耗和空间消耗。但是，这种统计方法有非常大的局限性。  测试结果非常依赖测试环境测试环境中硬件的不同会对测试结果有很大的影响 测试结果受数据规模的影响很大  大 O 复杂度表示法假设每行代码执行的时间都一样，为 unit_time，则所有代码的执行时间 T(n) 与每行代码的执行次数成正比。 如下代码，第">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i.loli.net/2020/09/06/SLa9ErAHpPuXBht.jpg">
 <meta property="article:published_time" content="2020-06-16T12:40:25.000Z">
-<meta property="article:modified_time" content="2020-07-26T12:51:13.355Z">
+<meta property="article:modified_time" content="2020-09-06T11:42:27.255Z">
 <meta property="article:author" content="月半兄">
 <meta property="article:tag" content="笔记">
 <meta property="article:tag" content="数据结构">
 <meta property="article:tag" content="算法">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2020/09/06/SLa9ErAHpPuXBht.jpg">
   
   
     <link rel="icon" href="/img/favicon.ico">
@@ -224,7 +226,7 @@
       <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
       <i class="icon-statistics"></i>
       <span class="post-meta-item-text"> 字数统计:</span>
-      <span class="post-count">1.5k字</span>
+      <span class="post-count">4.9k字</span>
     </span>
   </span>
 
@@ -233,7 +235,7 @@
     <span class="post-meta-item-icon">
       <i class="icon-book icon"></i>
       <span class="post-meta-item-text"> 阅读时长≈</span>
-      <span class="post-count">6分</span>
+      <span class="post-count">18分</span>
     </span>
   </span>
 </div>
@@ -320,7 +322,203 @@
 <p>对于刚才的案例，其最好情况时间复杂度为 $O(1)$，最坏情况时间复杂度为 $O(n)$</p>
 <h3 id="平均情况时间复杂度"><a href="#平均情况时间复杂度" class="headerlink" title="平均情况时间复杂度"></a>平均情况时间复杂度</h3><p>对于上述案例，有 n+1 种情况: <strong>在数组 0 ~ n-1 位置中</strong>，以及<strong>不在数组中</strong>，我们把每种情况的时间累加起来，除以 n+1，就可以得到平均的时间复杂度，即：</p>
 <p>$T(n)=O(\frac{1+2+3+…+n+n}{n+1})=O(\frac{n(n+3)}{2(n+1)})=O(n)$</p>
-<h3 id="均摊时间复杂度"><a href="#均摊时间复杂度" class="headerlink" title="均摊时间复杂度"></a>均摊时间复杂度</h3><!-- flag of hidden posts -->
+<h3 id="均摊时间复杂度"><a href="#均摊时间复杂度" class="headerlink" title="均摊时间复杂度"></a>均摊时间复杂度</h3><p>对一个数据结构进行一组连续操作中，大部分情况下时间复杂度都很低，只有个别情况下时间复杂度比较高，而且这些操作之间存在前后连贯的时序关系。这个时候，我们就可以将这一组操作放在一块儿分析，看是否能将较高时间复杂度那次操作的耗时，平摊到其他那些时间复杂度比较低的操作上。</p>
+<p>而且，在能够应用均摊时间复杂度分析的场合，一般均摊时间复杂度就等于最好情况时间复杂度。</p>
+<h3 id="练习题"><a href="#练习题" class="headerlink" title="练习题"></a>练习题</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 全局变量，大小为10的数组array，长度len，下标i。</span></span><br><span class="line"><span class="keyword">int</span> array[] = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">10</span>]; </span><br><span class="line"><span class="keyword">int</span> len = <span class="number">10</span>;</span><br><span class="line"><span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 往数组中添加一个元素</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> element)</span> </span>&#123;</span><br><span class="line">   <span class="keyword">if</span> (i &gt;= len) &#123; <span class="comment">// 数组空间不够了</span></span><br><span class="line">     <span class="comment">// 重新申请一个2倍大小的数组空间</span></span><br><span class="line">     <span class="keyword">int</span> new_array[] = <span class="keyword">new</span> <span class="keyword">int</span>[len*<span class="number">2</span>];</span><br><span class="line">     <span class="comment">// 把原来array数组中的数据依次copy到new_array</span></span><br><span class="line">     <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; len; ++j) &#123;</span><br><span class="line">       new_array[j] = array[j];</span><br><span class="line">     &#125;</span><br><span class="line">     <span class="comment">// new_array复制给array，array现在大小就是2倍len了</span></span><br><span class="line">     array = new_array;</span><br><span class="line">     len = <span class="number">2</span> * len;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="comment">// 将element放到下标为i的位置，下标i加一</span></span><br><span class="line">   array[i] = element;</span><br><span class="line">   ++i;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>最好情况时间复杂度，直接插入 $$O(1)$$</li>
+<li>最坏情况时间复杂度，数组扩容后插入 $$O(n)$$</li>
+<li>平均情况时间复杂度，n-1 种情况是 O(1), 最后一种情况是 O(n)，平均是 $$O(\frac{n-1+n}{n})=O(2-\frac{1}{n})=O(1)$$</li>
+<li>均摊时间复杂度，最后一种 O(n) 均摊在前面 n-1 个 O(1)，所以均摊为 $$O(1)$$</li>
+</ul>
+<h2 id="05-数组：为什么很多编程语言中数组都从0开始编号？"><a href="#05-数组：为什么很多编程语言中数组都从0开始编号？" class="headerlink" title="05 | 数组：为什么很多编程语言中数组都从0开始编号？"></a>05 | 数组：为什么很多编程语言中数组都从0开始编号？</h2><p>数组（Array）是一种线性表数据结构。它用一组连续的内存空间，来存储一组具有相同类型的数据。</p>
+<h3 id="如何实现随机访问？"><a href="#如何实现随机访问？" class="headerlink" title="如何实现随机访问？"></a>如何实现随机访问？</h3><ul>
+<li>数组是<strong>线性表（Linear List）</strong>。线性表就是数据排成像一条线一样的结构。每个线性表上的数据最多只有前和后两个方向。数组，链表、队列、栈等都是线性表结构。<ul>
+<li><strong>非线性表</strong>是二叉树、堆、图等。之所以叫非线性，是因为数据之间并不是简单的前后关系。</li>
+</ul>
+</li>
+<li>数组是<strong>连续的内存空间和相同类型的数据</strong>。</li>
+</ul>
+<p>因为以上两者，数组可以做到“随机访问”。但也让数组的删除、插入等操作变得非常低效，为了保证连续性，需要做大量的数据搬移工作。</p>
+<p>当计算机需要随机访问数组中的某个元素时，它会首先通过下面的寻址公式，计算出该元素存储的内存地址，其中 <code>data_type_size</code> 表示数组中每个元素的大小：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a[i]_address = base_address + i * data_type_size</span><br></pre></td></tr></table></figure>
+
+<h3 id="低效的“插入”和“删除”"><a href="#低效的“插入”和“删除”" class="headerlink" title="低效的“插入”和“删除”"></a>低效的“插入”和“删除”</h3><p><strong>插入操作</strong></p>
+<p>假设数组的长度为 n，现在，如果我们需要将一个数据插入到数组中的第 k 个位置。为了把第 k 个位置腾出来，给新来的数据，我们需要将第 k～n 这部分的元素都顺序地往后挪一位。</p>
+<ul>
+<li>最好时间复杂度 $O(1)$</li>
+<li>最坏时间复杂度 $O(n)$</li>
+<li>平均时间复杂度 $O(n)$</li>
+</ul>
+<p>如果不要求保持顺序，仅做存储。可以直接将第 k 位的数据搬移到数组元素的最后，把新的元素直接放入第 k 个位置。时间复杂度永远为 $O(1)$。</p>
+<p><strong>删除操作</strong></p>
+<p>与插入相同，如果要保持数组顺序。</p>
+<ul>
+<li>最好时间复杂度 $O(1)$</li>
+<li>最坏时间复杂度 $O(n)$</li>
+<li>平均时间复杂度 $O(n)$</li>
+</ul>
+<p>在某些特殊场景下，可以将多次删除操作集中在一起执行。例如数组 a[10]中存储了 8 个元素：a，b，c，d，e，f，g，h。现在要依次删除 a，b，c 三个元素。为了避免 d，e，f，g，h 这几个数据会被搬移三次，我们可以先记录下已经删除的数据。每次的删除操作并不是真正地搬移数据，只是记录数据已经被删除。当数组没有更多空间存储数据时，我们再触发执行一次真正的删除操作，这样就大大减少了删除操作导致的数据搬移。（JVM 标记清除垃圾回收算法的核心思想就是如此）</p>
+<h3 id="容器能否完全替代数组？"><a href="#容器能否完全替代数组？" class="headerlink" title="容器能否完全替代数组？"></a>容器能否完全替代数组？</h3><p>数组是基础数据结构，很多容器是对数组的二次封装。</p>
+<ul>
+<li>容器封装了数组操作细节</li>
+<li>容器支持动态扩容<ul>
+<li>如果预先知道容器需要的体积，可以预设大小，避免频繁扩容的损耗</li>
+</ul>
+</li>
+<li>容器在 java 语言中自动装箱拆箱浪费额外性能</li>
+<li>数组性能更好</li>
+</ul>
+<p>一般的开发中，容器的性能损耗完全可以忽略。最求机制的性能优化，则需要用数组。</p>
+<h3 id="为什么很多编程语言中数组都从0开始编号？"><a href="#为什么很多编程语言中数组都从0开始编号？" class="headerlink" title="为什么很多编程语言中数组都从0开始编号？"></a>为什么很多编程语言中数组都从0开始编号？</h3><p><strong>从数组存储的内存模型上来看</strong>，“下标”最确切的定义应该是“偏移（offset）”。如果用 a 来表示数组的首地址，a[0]就是偏移为 0 的位置，也就是首地址，a[k]就表示偏移 k 个 <code>type_size</code> 的位置，所以计算 a[k]的内存地址只需要用这个公式：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a[k]_address = base_address + k * type_size</span><br></pre></td></tr></table></figure>
+
+<p>如果数组从 1 开始计数，那我们计算数组元素 a[k]的内存地址就会变为：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a[k]_address = base_address + (k-<span class="number">1</span>)*type_size</span><br></pre></td></tr></table></figure>
+
+<p>每次随机访问数组元素都多了一次减法运算，对于 CPU 来说，就是多了一次减法指令。数组作为非常基础的数据结构，通过下标随机访问数组元素又是其非常基础的编程操作，效率的优化就要尽可能做到极致。所以为了减少一次减法操作，数组选择了从 0 开始编号，而不是从 1 开始。</p>
+<p><strong>从编程语言历史发展上来看</strong>，C 语言设计者用 0 开始计数数组下标，之后的 Java、JavaScript 等高级语言都效仿了 C 语言。为了在一定程度上减少 C 语言程序员学习 Java 的学习成本，因此继续沿用了从 0 开始计数的习惯。</p>
+<h2 id="06-链表（上）：如何实现LRU缓存淘汰算法"><a href="#06-链表（上）：如何实现LRU缓存淘汰算法" class="headerlink" title="06 | 链表（上）：如何实现LRU缓存淘汰算法?"></a>06 | 链表（上）：如何实现LRU缓存淘汰算法?</h2><p>单链表</p>
+<ul>
+<li>不需要连续的内存空间</li>
+<li>存储数据的内存块称为<strong>结点</strong>，指向下一个结点的指针称为<strong>后继指针next</strong></li>
+<li>第一个结点叫做<strong>头结点</strong>，最后一个节点叫做<strong>尾结点</strong></li>
+<li>尾结点后继指针指向一个空地址</li>
+<li>插入和删除操作时间复杂度: $O(1)$</li>
+<li>查找时间复杂度: $O(n)$</li>
+</ul>
+<p>循环链表</p>
+<ul>
+<li>与单链表相比，循环链表的尾结点指向头结点</li>
+<li>善于解决如 “约瑟夫问题” 等特定场景</li>
+</ul>
+<blockquote>
+<p>约瑟夫问题: N个人围成一圈，第一个人从1开始报数，报M的将被杀掉，下一个人接着从1开始报。 如此反复，最后剩下一个，求最后的胜利者。</p>
+</blockquote>
+<p>双向链表</p>
+<ul>
+<li>与单链表相比，双向链表每个结点还有一个<strong>前驱指针prev</strong>指向前面的结点</li>
+<li>当删除某一个结点时，双向链表的查找速度与普通链表一样；但在结点删除后，需要把被删除结点前的结点指向被删除后的结点，这是又一次查询操作，普通链表需要 $O(n)$，双向链表需要 $O(1)$</li>
+</ul>
+<blockquote>
+<p>双向链表是一个典型的空间换时间的案例</p>
+</blockquote>
+<p>双向循环链表</p>
+<ul>
+<li>顾名思义，不多解释</li>
+</ul>
+<h3 id="链表数组性能对比"><a href="#链表数组性能对比" class="headerlink" title="链表数组性能对比"></a>链表数组性能对比</h3><table>
+<thead>
+<tr>
+<th>时间复杂度</th>
+<th>数组</th>
+<th>链表</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>插入、删除</td>
+<td>$O(n)$</td>
+<td>$O(1)$</td>
+</tr>
+<tr>
+<td>随机访问</td>
+<td>$O(1)$</td>
+<td>$O(n)$</td>
+</tr>
+</tbody></table>
+<h3 id="用链表实现-LRU-算法"><a href="#用链表实现-LRU-算法" class="headerlink" title="用链表实现 LRU 算法"></a>用链表实现 LRU 算法</h3><p>维护一个有序单链表，越靠近尾部的结点是越早之前访问的，链表有大小限制。</p>
+<p>当有一个新数据被访问时：</p>
+<ul>
+<li>如果该数据已经在链表中，则将该数据从原来的位置删除，再插入到链表的头部</li>
+<li>如果该数据没有在链表中<ul>
+<li>如果此时链表未满，则将该数据插入链表头部</li>
+<li>如果此时链表已满，则将尾结点删除，将该数据插入链表头部</li>
+</ul>
+</li>
+</ul>
+<p>时间复杂度为 $O(n)$</p>
+<h2 id="07-链表（下）：如何轻松写出正确的链表代码？"><a href="#07-链表（下）：如何轻松写出正确的链表代码？" class="headerlink" title="07 | 链表（下）：如何轻松写出正确的链表代码？"></a>07 | 链表（下）：如何轻松写出正确的链表代码？</h2><p>无</p>
+<h2 id="08-栈：如何实现浏览器的前进和后退功能？"><a href="#08-栈：如何实现浏览器的前进和后退功能？" class="headerlink" title="08 | 栈：如何实现浏览器的前进和后退功能？"></a>08 | 栈：如何实现浏览器的前进和后退功能？</h2><ul>
+<li>后进者先出，先进者后出</li>
+<li>仅支持入栈(push)、出栈(pop)两个操作<ul>
+<li>入栈: 将元素压入栈顶</li>
+<li>出栈: 从栈顶取出元素</li>
+</ul>
+</li>
+<li>一种『操作受限』的线性表，只允许在一端插入和删除数据</li>
+<li>数组实现的栈叫做『顺序栈』，链表实现的栈叫做『链式栈』</li>
+<li>出栈、入栈时间复杂度 $O(1)$，空间复杂度 $O(1)$</li>
+</ul>
+<blockquote>
+<p>特定的数据结构适用于特定的使用场景，虽然栈的功能相比于数据组链表更受限，但在特定的使用场景下，也减少了出错的可能性</p>
+</blockquote>
+<h3 id="支持动态扩容的顺序栈"><a href="#支持动态扩容的顺序栈" class="headerlink" title="支持动态扩容的顺序栈"></a>支持动态扩容的顺序栈</h3><ul>
+<li>动态扩容原理与普通数组一样，将原数据复制到新的数组中</li>
+<li>平均时间复杂度为 $O(1)$，均摊时间复杂度为 $O(1)$</li>
+</ul>
+<h3 id="栈在函数调用中的应用"><a href="#栈在函数调用中的应用" class="headerlink" title="栈在函数调用中的应用"></a>栈在函数调用中的应用</h3><p>操作系统为每个线程分配了一块独立的内存空间，这块内存被组织成<strong>栈</strong>这种结构，用来存储函数调用时的临时变量。每进入一个函数，就会将临时变量作为一个栈帧入栈，当被调用的函数执行完成，将这个函数对应的栈帧出栈。</p>
+<blockquote>
+<p>不一定非要用栈来保存临时变量，只不过如果这个函数调用符合后进先出的特性，用栈这种数据结构来实现，是最顺理成章的选择。<br>从调用函数进入被调用函数，对于数据来说，变化的是作用域。所以根本上，只要能保证每进入一个新的函数，都是一个新的作用域就可以。而要实现这个，用栈就非常方便。在进入被调用函数的时候，分配一段栈空间给这个函数的变量，在函数结束的时候，将栈顶复位，正好回到调用函数的作用域内。</p>
+</blockquote>
+<h3 id="栈在表达式求值中的应用"><a href="#栈在表达式求值中的应用" class="headerlink" title="栈在表达式求值中的应用"></a>栈在表达式求值中的应用</h3><p>编译器通过两个栈实现四则运算</p>
+<ul>
+<li>一个栈保存操作数</li>
+<li>一个栈保存运算符</li>
+</ul>
+<p>从左向右遍历表达式</p>
+<ul>
+<li>当遇到数字，直接压入操作数栈</li>
+<li>当遇到运算符，与运算符栈顶的元素进行比较<ul>
+<li>如果比栈顶运算符优先级高，则入栈</li>
+<li>如果比栈顶运算符优先级低或相同，则栈顶运算符出栈，从操作数栈中取出栈顶的两个数，与栈顶运算符计算，再将计算完的结果压入操作数栈，继续比较</li>
+</ul>
+</li>
+</ul>
+<p>例如: <code>3+5*8-6</code>，其计算过程如下</p>
+<p><img src="https://i.loli.net/2020/09/06/SLa9ErAHpPuXBht.jpg" alt="algorithm_data_structure_stack_1.jpg"></p>
+<h3 id="栈实现浏览器前进、后退"><a href="#栈实现浏览器前进、后退" class="headerlink" title="栈实现浏览器前进、后退"></a>栈实现浏览器前进、后退</h3><p>用两个栈 X, Y</p>
+<ul>
+<li>首次浏览的页面压入 X 栈</li>
+<li>点击后退按钮时，从 X 出栈，压入 Y 栈</li>
+<li>点击前进按钮时，从 Y 出栈，压入 X 栈</li>
+<li>当 X 栈中没有数据，则无法继续后退</li>
+<li>当 Y 栈中没有数据，则无法继续前进</li>
+</ul>
+<h2 id="09-队列：队列在线程池等有限资源池中的应用"><a href="#09-队列：队列在线程池等有限资源池中的应用" class="headerlink" title="09 | 队列：队列在线程池等有限资源池中的应用"></a>09 | 队列：队列在线程池等有限资源池中的应用</h2><ul>
+<li>先进者先出</li>
+<li>仅支持入队(enqueue)、出队(dequeue)两个操作<ul>
+<li>入队: 将元素加入队尾</li>
+<li>出队: 从队头取出元素</li>
+</ul>
+</li>
+<li>队列是一种操作受限的线性表数据结构</li>
+<li>数组实现的队列叫做『顺序队列』，链表实现的队列叫做『链式队列』</li>
+<li>对于栈来说，只需要一个栈顶指针；队列需要一个队头指针 head，一个队尾指针 tail</li>
+<li>入队、出队时间复杂度 $O(1)$，空间复杂度 $O(1)$</li>
+<li>队空的判断 <code>head == tail</code>,队满的判断 <code>tail == n</code></li>
+</ul>
+<h3 id="循环队列"><a href="#循环队列" class="headerlink" title="循环队列"></a>循环队列</h3><ul>
+<li>队空的判断 <code>head == tail</code>,队满的判断 <code>(tail+1)%n=head</code></li>
+</ul>
+<h3 id="阻塞队列"><a href="#阻塞队列" class="headerlink" title="阻塞队列"></a>阻塞队列</h3><ul>
+<li>在队列为空的时候，从队头取数据的操作会被阻塞，直到队列中有了数据</li>
+<li>在队列已满时，队尾添加数据的操作会被阻塞，直到有空闲位置</li>
+</ul>
+<blockquote>
+<p>阻塞队列是一个标准的 <strong>生产者 - 消费者模型</strong></p>
+</blockquote>
+<h3 id="并发队列"><a href="#并发队列" class="headerlink" title="并发队列"></a>并发队列</h3><p>线程安全的队列叫做<strong>并发队列</strong></p>
+<ul>
+<li>最简单的并发队列可以在入队、出队方法上加速，但锁的颗粒度打，并发度会比较低</li>
+<li>用 CAS 原子操作，可以实现高效的并发队列，在实际使用中更广泛 (CAS 原子操作需要循环队列来实现)</li>
+</ul>
+<h3 id="线程池中的队列"><a href="#线程池中的队列" class="headerlink" title="线程池中的队列"></a>线程池中的队列</h3><p>当线程池中没有空闲线程时</p>
+<ul>
+<li>非阻塞方式: 直接拒绝任务请求</li>
+<li>阻塞方式: 任务排队，直到有空闲线程</li>
+</ul>
+<h2 id="10-递归：如何用三行代码找到“最终推荐人”？"><a href="#10-递归：如何用三行代码找到“最终推荐人”？" class="headerlink" title="10 | 递归：如何用三行代码找到“最终推荐人”？"></a>10 | 递归：如何用三行代码找到“最终推荐人”？</h2><!-- flag of hidden posts -->
     
 
     
@@ -434,7 +632,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#复杂度分析（上）：如何分析、统计算法的执行效率和资源消耗？"><span class="toc-number">1.</span> <span class="toc-text">复杂度分析（上）：如何分析、统计算法的执行效率和资源消耗？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#事后统计法"><span class="toc-number">1.1.</span> <span class="toc-text">事后统计法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#大-O-复杂度表示法"><span class="toc-number">1.2.</span> <span class="toc-text">大 O 复杂度表示法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#时间复杂度分析"><span class="toc-number">1.3.</span> <span class="toc-text">时间复杂度分析</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#只关注循环执行次数最多的一段代码"><span class="toc-number">1.3.1.</span> <span class="toc-text">只关注循环执行次数最多的一段代码</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#加法法则：总复杂度等于量级最大的那段代码的复杂度"><span class="toc-number">1.3.2.</span> <span class="toc-text">加法法则：总复杂度等于量级最大的那段代码的复杂度</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#乘法法则：嵌套代码的复杂度等于嵌套内外代码复杂度的乘积"><span class="toc-number">1.3.3.</span> <span class="toc-text">乘法法则：嵌套代码的复杂度等于嵌套内外代码复杂度的乘积</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#几种常见时间复杂度实例分析"><span class="toc-number">1.4.</span> <span class="toc-text">几种常见时间复杂度实例分析</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#O-1"><span class="toc-number">1.4.1.</span> <span class="toc-text">O(1)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#O-logn-O-nlogn"><span class="toc-number">1.4.2.</span> <span class="toc-text">O(logn), O(nlogn)</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#空间复杂度分析"><span class="toc-number">1.5.</span> <span class="toc-text">空间复杂度分析</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#04-复杂度分析（下）：浅析最好、最坏、平均、均摊时间复杂度"><span class="toc-number">2.</span> <span class="toc-text">04 | 复杂度分析（下）：浅析最好、最坏、平均、均摊时间复杂度</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#最好、最坏情况时间复杂度"><span class="toc-number">2.1.</span> <span class="toc-text">最好、最坏情况时间复杂度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#平均情况时间复杂度"><span class="toc-number">2.2.</span> <span class="toc-text">平均情况时间复杂度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#均摊时间复杂度"><span class="toc-number">2.3.</span> <span class="toc-text">均摊时间复杂度</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#复杂度分析（上）：如何分析、统计算法的执行效率和资源消耗？"><span class="toc-number">1.</span> <span class="toc-text">复杂度分析（上）：如何分析、统计算法的执行效率和资源消耗？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#事后统计法"><span class="toc-number">1.1.</span> <span class="toc-text">事后统计法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#大-O-复杂度表示法"><span class="toc-number">1.2.</span> <span class="toc-text">大 O 复杂度表示法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#时间复杂度分析"><span class="toc-number">1.3.</span> <span class="toc-text">时间复杂度分析</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#只关注循环执行次数最多的一段代码"><span class="toc-number">1.3.1.</span> <span class="toc-text">只关注循环执行次数最多的一段代码</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#加法法则：总复杂度等于量级最大的那段代码的复杂度"><span class="toc-number">1.3.2.</span> <span class="toc-text">加法法则：总复杂度等于量级最大的那段代码的复杂度</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#乘法法则：嵌套代码的复杂度等于嵌套内外代码复杂度的乘积"><span class="toc-number">1.3.3.</span> <span class="toc-text">乘法法则：嵌套代码的复杂度等于嵌套内外代码复杂度的乘积</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#几种常见时间复杂度实例分析"><span class="toc-number">1.4.</span> <span class="toc-text">几种常见时间复杂度实例分析</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#O-1"><span class="toc-number">1.4.1.</span> <span class="toc-text">O(1)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#O-logn-O-nlogn"><span class="toc-number">1.4.2.</span> <span class="toc-text">O(logn), O(nlogn)</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#空间复杂度分析"><span class="toc-number">1.5.</span> <span class="toc-text">空间复杂度分析</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#04-复杂度分析（下）：浅析最好、最坏、平均、均摊时间复杂度"><span class="toc-number">2.</span> <span class="toc-text">04 | 复杂度分析（下）：浅析最好、最坏、平均、均摊时间复杂度</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#最好、最坏情况时间复杂度"><span class="toc-number">2.1.</span> <span class="toc-text">最好、最坏情况时间复杂度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#平均情况时间复杂度"><span class="toc-number">2.2.</span> <span class="toc-text">平均情况时间复杂度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#均摊时间复杂度"><span class="toc-number">2.3.</span> <span class="toc-text">均摊时间复杂度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#练习题"><span class="toc-number">2.4.</span> <span class="toc-text">练习题</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#05-数组：为什么很多编程语言中数组都从0开始编号？"><span class="toc-number">3.</span> <span class="toc-text">05 | 数组：为什么很多编程语言中数组都从0开始编号？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#如何实现随机访问？"><span class="toc-number">3.1.</span> <span class="toc-text">如何实现随机访问？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#低效的“插入”和“删除”"><span class="toc-number">3.2.</span> <span class="toc-text">低效的“插入”和“删除”</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#容器能否完全替代数组？"><span class="toc-number">3.3.</span> <span class="toc-text">容器能否完全替代数组？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#为什么很多编程语言中数组都从0开始编号？"><span class="toc-number">3.4.</span> <span class="toc-text">为什么很多编程语言中数组都从0开始编号？</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#06-链表（上）：如何实现LRU缓存淘汰算法"><span class="toc-number">4.</span> <span class="toc-text">06 | 链表（上）：如何实现LRU缓存淘汰算法?</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#链表数组性能对比"><span class="toc-number">4.1.</span> <span class="toc-text">链表数组性能对比</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#用链表实现-LRU-算法"><span class="toc-number">4.2.</span> <span class="toc-text">用链表实现 LRU 算法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#07-链表（下）：如何轻松写出正确的链表代码？"><span class="toc-number">5.</span> <span class="toc-text">07 | 链表（下）：如何轻松写出正确的链表代码？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#08-栈：如何实现浏览器的前进和后退功能？"><span class="toc-number">6.</span> <span class="toc-text">08 | 栈：如何实现浏览器的前进和后退功能？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#支持动态扩容的顺序栈"><span class="toc-number">6.1.</span> <span class="toc-text">支持动态扩容的顺序栈</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#栈在函数调用中的应用"><span class="toc-number">6.2.</span> <span class="toc-text">栈在函数调用中的应用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#栈在表达式求值中的应用"><span class="toc-number">6.3.</span> <span class="toc-text">栈在表达式求值中的应用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#栈实现浏览器前进、后退"><span class="toc-number">6.4.</span> <span class="toc-text">栈实现浏览器前进、后退</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#09-队列：队列在线程池等有限资源池中的应用"><span class="toc-number">7.</span> <span class="toc-text">09 | 队列：队列在线程池等有限资源池中的应用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#循环队列"><span class="toc-number">7.1.</span> <span class="toc-text">循环队列</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#阻塞队列"><span class="toc-number">7.2.</span> <span class="toc-text">阻塞队列</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#并发队列"><span class="toc-number">7.3.</span> <span class="toc-text">并发队列</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#线程池中的队列"><span class="toc-number">7.4.</span> <span class="toc-text">线程池中的队列</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10-递归：如何用三行代码找到“最终推荐人”？"><span class="toc-number">8.</span> <span class="toc-text">10 | 递归：如何用三行代码找到“最终推荐人”？</span></a></li></ol>
                     </div>
                 </span>
             </div>
