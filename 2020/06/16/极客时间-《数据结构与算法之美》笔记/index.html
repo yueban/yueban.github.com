@@ -19,7 +19,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://i.loli.net/2020/09/06/SLa9ErAHpPuXBht.jpg">
 <meta property="article:published_time" content="2020-06-16T12:40:25.000Z">
-<meta property="article:modified_time" content="2020-09-06T11:42:27.255Z">
+<meta property="article:modified_time" content="2020-10-25T10:50:03.174Z">
 <meta property="article:author" content="月半兄">
 <meta property="article:tag" content="笔记">
 <meta property="article:tag" content="数据结构">
@@ -226,7 +226,7 @@
       <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
       <i class="icon-statistics"></i>
       <span class="post-meta-item-text"> 字数统计:</span>
-      <span class="post-count">4.9k字</span>
+      <span class="post-count">9.3k字</span>
     </span>
   </span>
 
@@ -235,7 +235,7 @@
     <span class="post-meta-item-icon">
       <i class="icon-book icon"></i>
       <span class="post-meta-item-text"> 阅读时长≈</span>
-      <span class="post-count">18分</span>
+      <span class="post-count">35分</span>
     </span>
   </span>
 </div>
@@ -277,9 +277,9 @@
 <p>多项式级 P(Polynomial) (n 出现在底数的位置)</p>
 <ul>
 <li>常量阶 $O(1)$</li>
-<li>对数阶 $O(logn)$</li>
+<li>对数阶 $O(\log n)$</li>
 <li>线性阶 $O(n)$</li>
-<li>线性对数阶 $O(nlogn)$</li>
+<li>线性对数阶 $O(n\log n)$</li>
 <li>平方阶 $O(n^2)$<ul>
 <li>立方阶 $O(n^3)$</li>
 <li>k 次方阶级 $O(n^k)$</li>
@@ -297,15 +297,15 @@
 <h4 id="O-1"><a href="#O-1" class="headerlink" title="O(1)"></a>O(1)</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> i = <span class="number">8</span>;</span><br><span class="line"><span class="keyword">int</span> j = <span class="number">6</span>;</span><br><span class="line"><span class="keyword">int</span> sum = i + k;</span><br></pre></td></tr></table></figure>
 
 <p>$T(n)=O(3)=O(1)$</p>
-<h4 id="O-logn-O-nlogn"><a href="#O-logn-O-nlogn" class="headerlink" title="O(logn), O(nlogn)"></a>O(logn), O(nlogn)</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">i = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">while</span> (i &lt;= x) &#123;</span><br><span class="line">    i = i * <span class="number">2</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="O-log-n-与-O-n-log-n"><a href="#O-log-n-与-O-n-log-n" class="headerlink" title="$O(\log n)$ 与 $O(n\log n)$"></a>$O(\log n)$ 与 $O(n\log n)$</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">i = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">while</span> (i &lt;= x) &#123;</span><br><span class="line">    i = i * <span class="number">2</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>因为 $2^0<em>2^1</em>2^2…2^n=x$<br>所以 $T(n)=O(log_2n)=O(logn)$</p>
-<p>一段 $O(logn)$ 代码执行 n 次，其时间复杂度就是 $O(nlongn)$, 如 <strong>归并排序, 快速排序</strong></p>
+<p>因为 $2^0<em>2^1</em>2^2…2^n=x$<br>所以 $T(n)=O(\log_{2}n)=O(\log n)$</p>
+<p>一段 $O(\log n)$ 代码执行 n 次，其时间复杂度就是 $O(nlongn)$, 如 <strong>归并排序, 快速排序</strong></p>
 <h3 id="空间复杂度分析"><a href="#空间复杂度分析" class="headerlink" title="空间复杂度分析"></a>空间复杂度分析</h3><p>空间复杂度全称 <strong>渐进空间复杂度, 表示算法的存储空间与数据规模之间的增长关系</strong></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">print</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">int</span>[] a = <span class="keyword">new</span> <span class="keyword">int</span>[n];</span><br><span class="line">  <span class="keyword">for</span> (i; i &lt;n; ++i) &#123;</span><br><span class="line">    a[i] = i * i;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> (i = n-<span class="number">1</span>; i &gt;= <span class="number">0</span>; --i) &#123;</span><br><span class="line">    print out a[i]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>对于上述代码，在第 2 行代码申请一个空间存储 i，第 3 行盛情一个数组的空间，即 n 个空间，因此整段代码的空间复杂度就是 $O(n+1)=O(n)$</p>
-<p>常见的空间复杂度有 $O(1)$, $O(n)$, $O(n^2)$, 此外像 $O(logn)$, $O(nlogn)$ 的空间复杂度很少用到。</p>
+<p>常见的空间复杂度有 $O(1)$, $O(n)$, $O(n^2)$, 此外像 $O(\log n)$, $O(n\log n)$ 的空间复杂度很少用到。</p>
 <h2 id="04-复杂度分析（下）：浅析最好、最坏、平均、均摊时间复杂度"><a href="#04-复杂度分析（下）：浅析最好、最坏、平均、均摊时间复杂度" class="headerlink" title="04 | 复杂度分析（下）：浅析最好、最坏、平均、均摊时间复杂度"></a>04 | 复杂度分析（下）：浅析最好、最坏、平均、均摊时间复杂度</h2><h3 id="最好、最坏情况时间复杂度"><a href="#最好、最坏情况时间复杂度" class="headerlink" title="最好、最坏情况时间复杂度"></a>最好、最坏情况时间复杂度</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// n表示数组array的长度</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">find</span><span class="params">(<span class="keyword">int</span>[] array, <span class="keyword">int</span> n, <span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">int</span> pos = -<span class="number">1</span>;</span><br><span class="line">  <span class="keyword">for</span> (; i &lt; n; ++i) &#123;</span><br><span class="line">    <span class="keyword">if</span> (array[i] == x) &#123;</span><br><span class="line">        pos = i;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> pos;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>上述代码每次都要循环整个数组，其时间复杂度是 $O(n)$</p>
@@ -324,7 +324,7 @@
 <p>$T(n)=O(\frac{1+2+3+…+n+n}{n+1})=O(\frac{n(n+3)}{2(n+1)})=O(n)$</p>
 <h3 id="均摊时间复杂度"><a href="#均摊时间复杂度" class="headerlink" title="均摊时间复杂度"></a>均摊时间复杂度</h3><p>对一个数据结构进行一组连续操作中，大部分情况下时间复杂度都很低，只有个别情况下时间复杂度比较高，而且这些操作之间存在前后连贯的时序关系。这个时候，我们就可以将这一组操作放在一块儿分析，看是否能将较高时间复杂度那次操作的耗时，平摊到其他那些时间复杂度比较低的操作上。</p>
 <p>而且，在能够应用均摊时间复杂度分析的场合，一般均摊时间复杂度就等于最好情况时间复杂度。</p>
-<h3 id="练习题"><a href="#练习题" class="headerlink" title="练习题"></a>练习题</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 全局变量，大小为10的数组array，长度len，下标i。</span></span><br><span class="line"><span class="keyword">int</span> array[] = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">10</span>]; </span><br><span class="line"><span class="keyword">int</span> len = <span class="number">10</span>;</span><br><span class="line"><span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 往数组中添加一个元素</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> element)</span> </span>&#123;</span><br><span class="line">   <span class="keyword">if</span> (i &gt;= len) &#123; <span class="comment">// 数组空间不够了</span></span><br><span class="line">     <span class="comment">// 重新申请一个2倍大小的数组空间</span></span><br><span class="line">     <span class="keyword">int</span> new_array[] = <span class="keyword">new</span> <span class="keyword">int</span>[len*<span class="number">2</span>];</span><br><span class="line">     <span class="comment">// 把原来array数组中的数据依次copy到new_array</span></span><br><span class="line">     <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; len; ++j) &#123;</span><br><span class="line">       new_array[j] = array[j];</span><br><span class="line">     &#125;</span><br><span class="line">     <span class="comment">// new_array复制给array，array现在大小就是2倍len了</span></span><br><span class="line">     array = new_array;</span><br><span class="line">     len = <span class="number">2</span> * len;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="comment">// 将element放到下标为i的位置，下标i加一</span></span><br><span class="line">   array[i] = element;</span><br><span class="line">   ++i;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="练习题"><a href="#练习题" class="headerlink" title="练习题"></a>练习题</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 全局变量，大小为10的数组array，长度len，下标i。</span></span><br><span class="line"><span class="keyword">int</span> array[] = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">10</span>];</span><br><span class="line"><span class="keyword">int</span> len = <span class="number">10</span>;</span><br><span class="line"><span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 往数组中添加一个元素</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> element)</span> </span>&#123;</span><br><span class="line">   <span class="keyword">if</span> (i &gt;= len) &#123; <span class="comment">// 数组空间不够了</span></span><br><span class="line">     <span class="comment">// 重新申请一个2倍大小的数组空间</span></span><br><span class="line">     <span class="keyword">int</span> new_array[] = <span class="keyword">new</span> <span class="keyword">int</span>[len*<span class="number">2</span>];</span><br><span class="line">     <span class="comment">// 把原来array数组中的数据依次copy到new_array</span></span><br><span class="line">     <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; len; ++j) &#123;</span><br><span class="line">       new_array[j] = array[j];</span><br><span class="line">     &#125;</span><br><span class="line">     <span class="comment">// new_array复制给array，array现在大小就是2倍len了</span></span><br><span class="line">     array = new_array;</span><br><span class="line">     len = <span class="number">2</span> * len;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="comment">// 将element放到下标为i的位置，下标i加一</span></span><br><span class="line">   array[i] = element;</span><br><span class="line">   ++i;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <ul>
 <li>最好情况时间复杂度，直接插入 $$O(1)$$</li>
@@ -332,7 +332,7 @@
 <li>平均情况时间复杂度，n-1 种情况是 O(1), 最后一种情况是 O(n)，平均是 $$O(\frac{n-1+n}{n})=O(2-\frac{1}{n})=O(1)$$</li>
 <li>均摊时间复杂度，最后一种 O(n) 均摊在前面 n-1 个 O(1)，所以均摊为 $$O(1)$$</li>
 </ul>
-<h2 id="05-数组：为什么很多编程语言中数组都从0开始编号？"><a href="#05-数组：为什么很多编程语言中数组都从0开始编号？" class="headerlink" title="05 | 数组：为什么很多编程语言中数组都从0开始编号？"></a>05 | 数组：为什么很多编程语言中数组都从0开始编号？</h2><p>数组（Array）是一种线性表数据结构。它用一组连续的内存空间，来存储一组具有相同类型的数据。</p>
+<h2 id="05-数组：为什么很多编程语言中数组都从-0-开始编号？"><a href="#05-数组：为什么很多编程语言中数组都从-0-开始编号？" class="headerlink" title="05 | 数组：为什么很多编程语言中数组都从 0 开始编号？"></a>05 | 数组：为什么很多编程语言中数组都从 0 开始编号？</h2><p>数组（Array）是一种线性表数据结构。它用一组连续的内存空间，来存储一组具有相同类型的数据。</p>
 <h3 id="如何实现随机访问？"><a href="#如何实现随机访问？" class="headerlink" title="如何实现随机访问？"></a>如何实现随机访问？</h3><ul>
 <li>数组是<strong>线性表（Linear List）</strong>。线性表就是数据排成像一条线一样的结构。每个线性表上的数据最多只有前和后两个方向。数组，链表、队列、栈等都是线性表结构。<ul>
 <li><strong>非线性表</strong>是二叉树、堆、图等。之所以叫非线性，是因为数据之间并不是简单的前后关系。</li>
@@ -345,7 +345,7 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a[i]_address = base_address + i * data_type_size</span><br></pre></td></tr></table></figure>
 
 <h3 id="低效的“插入”和“删除”"><a href="#低效的“插入”和“删除”" class="headerlink" title="低效的“插入”和“删除”"></a>低效的“插入”和“删除”</h3><p><strong>插入操作</strong></p>
-<p>假设数组的长度为 n，现在，如果我们需要将一个数据插入到数组中的第 k 个位置。为了把第 k 个位置腾出来，给新来的数据，我们需要将第 k～n 这部分的元素都顺序地往后挪一位。</p>
+<p>假设数组的长度为 n，现在，如果我们需要将一个数据插入到数组中的第 k 个位置。为了把第 k 个位置腾出来，给新来的数据，我们需要将第 k ～ n 这部分的元素都顺序地往后挪一位。</p>
 <ul>
 <li>最好时间复杂度 $O(1)$</li>
 <li>最坏时间复杂度 $O(n)$</li>
@@ -371,7 +371,7 @@
 <li>数组性能更好</li>
 </ul>
 <p>一般的开发中，容器的性能损耗完全可以忽略。最求机制的性能优化，则需要用数组。</p>
-<h3 id="为什么很多编程语言中数组都从0开始编号？"><a href="#为什么很多编程语言中数组都从0开始编号？" class="headerlink" title="为什么很多编程语言中数组都从0开始编号？"></a>为什么很多编程语言中数组都从0开始编号？</h3><p><strong>从数组存储的内存模型上来看</strong>，“下标”最确切的定义应该是“偏移（offset）”。如果用 a 来表示数组的首地址，a[0]就是偏移为 0 的位置，也就是首地址，a[k]就表示偏移 k 个 <code>type_size</code> 的位置，所以计算 a[k]的内存地址只需要用这个公式：</p>
+<h3 id="为什么很多编程语言中数组都从-0-开始编号？"><a href="#为什么很多编程语言中数组都从-0-开始编号？" class="headerlink" title="为什么很多编程语言中数组都从 0 开始编号？"></a>为什么很多编程语言中数组都从 0 开始编号？</h3><p><strong>从数组存储的内存模型上来看</strong>，“下标”最确切的定义应该是“偏移（offset）”。如果用 a 来表示数组的首地址，a[0]就是偏移为 0 的位置，也就是首地址，a[k]就表示偏移 k 个 <code>type_size</code> 的位置，所以计算 a[k]的内存地址只需要用这个公式：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a[k]_address = base_address + k * type_size</span><br></pre></td></tr></table></figure>
 
 <p>如果数组从 1 开始计数，那我们计算数组元素 a[k]的内存地址就会变为：</p>
@@ -379,10 +379,10 @@
 
 <p>每次随机访问数组元素都多了一次减法运算，对于 CPU 来说，就是多了一次减法指令。数组作为非常基础的数据结构，通过下标随机访问数组元素又是其非常基础的编程操作，效率的优化就要尽可能做到极致。所以为了减少一次减法操作，数组选择了从 0 开始编号，而不是从 1 开始。</p>
 <p><strong>从编程语言历史发展上来看</strong>，C 语言设计者用 0 开始计数数组下标，之后的 Java、JavaScript 等高级语言都效仿了 C 语言。为了在一定程度上减少 C 语言程序员学习 Java 的学习成本，因此继续沿用了从 0 开始计数的习惯。</p>
-<h2 id="06-链表（上）：如何实现LRU缓存淘汰算法"><a href="#06-链表（上）：如何实现LRU缓存淘汰算法" class="headerlink" title="06 | 链表（上）：如何实现LRU缓存淘汰算法?"></a>06 | 链表（上）：如何实现LRU缓存淘汰算法?</h2><p>单链表</p>
+<h2 id="06-链表（上）：如何实现-LRU-缓存淘汰算法"><a href="#06-链表（上）：如何实现-LRU-缓存淘汰算法" class="headerlink" title="06 | 链表（上）：如何实现 LRU 缓存淘汰算法?"></a>06 | 链表（上）：如何实现 LRU 缓存淘汰算法?</h2><p>单链表</p>
 <ul>
 <li>不需要连续的内存空间</li>
-<li>存储数据的内存块称为<strong>结点</strong>，指向下一个结点的指针称为<strong>后继指针next</strong></li>
+<li>存储数据的内存块称为<strong>结点</strong>，指向下一个结点的指针称为<strong>后继指针 next</strong></li>
 <li>第一个结点叫做<strong>头结点</strong>，最后一个节点叫做<strong>尾结点</strong></li>
 <li>尾结点后继指针指向一个空地址</li>
 <li>插入和删除操作时间复杂度: $O(1)$</li>
@@ -394,11 +394,11 @@
 <li>善于解决如 “约瑟夫问题” 等特定场景</li>
 </ul>
 <blockquote>
-<p>约瑟夫问题: N个人围成一圈，第一个人从1开始报数，报M的将被杀掉，下一个人接着从1开始报。 如此反复，最后剩下一个，求最后的胜利者。</p>
+<p>约瑟夫问题: N 个人围成一圈，第一个人从 1 开始报数，报 M 的将被杀掉，下一个人接着从 1 开始报。 如此反复，最后剩下一个，求最后的胜利者。</p>
 </blockquote>
 <p>双向链表</p>
 <ul>
-<li>与单链表相比，双向链表每个结点还有一个<strong>前驱指针prev</strong>指向前面的结点</li>
+<li>与单链表相比，双向链表每个结点还有一个<strong>前驱指针 prev</strong>指向前面的结点</li>
 <li>当删除某一个结点时，双向链表的查找速度与普通链表一样；但在结点删除后，需要把被删除结点前的结点指向被删除后的结点，这是又一次查询操作，普通链表需要 $O(n)$，双向链表需要 $O(1)$</li>
 </ul>
 <blockquote>
@@ -518,7 +518,232 @@
 <li>非阻塞方式: 直接拒绝任务请求</li>
 <li>阻塞方式: 任务排队，直到有空闲线程</li>
 </ul>
-<h2 id="10-递归：如何用三行代码找到“最终推荐人”？"><a href="#10-递归：如何用三行代码找到“最终推荐人”？" class="headerlink" title="10 | 递归：如何用三行代码找到“最终推荐人”？"></a>10 | 递归：如何用三行代码找到“最终推荐人”？</h2><!-- flag of hidden posts -->
+<h2 id="10-递归：如何用三行代码找到“最终推荐人”？"><a href="#10-递归：如何用三行代码找到“最终推荐人”？" class="headerlink" title="10 | 递归：如何用三行代码找到“最终推荐人”？"></a>10 | 递归：如何用三行代码找到“最终推荐人”？</h2><h3 id="递归需要满足的三个条件"><a href="#递归需要满足的三个条件" class="headerlink" title="递归需要满足的三个条件"></a>递归需要满足的三个条件</h3><ol>
+<li>一个问题的解可以分解为几个子问题的解</li>
+<li>这个问题和分解后的子问题，除了数据规模不同，求解思路完全一样</li>
+<li>存在递归终止的条件</li>
+</ol>
+<h3 id="如何编写递归代码"><a href="#如何编写递归代码" class="headerlink" title="如何编写递归代码"></a>如何编写递归代码</h3><ol>
+<li>写出递推公式</li>
+<li>找到终止条件</li>
+</ol>
+<h4 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h4><p>假设有 n 个台阶，每次可以跨 1 个或 2 个台阶，请问走完 n 个台阶有几种走法？</p>
+<p>首先写出递推公式。不管还剩几个台阶，走法都只有两种，即走 1 个台阶和走 2 个台阶，所以递推公式为:</p>
+<p>$f(n)=f(n-1)+f(n-2)$</p>
+<p>再确认终止条件。从公式来开，<code>n</code> 一直减小，因此需要确认 <code>n</code> 多小时，递推公式无法继续递推，此时的 <code>n</code> 就是终止条件。</p>
+<p>当 <code>n&lt;=2</code> 时，通过递推公式分解出现 <code>f(-1)</code> 和 <code>f(0)</code>，而在实际场景中 <code>n</code> 必须大于 <code>0</code>，因此 <code>n=1</code> 和 <code>n=2</code> 就是两个终止条件。当 <code>n=1</code> 时，只有 1 种走法；当 <code>n=2</code> 时，只有 2 种走法。因此终止条件为:</p>
+<p>$f(1)=1$<br>$f(2)=2$</p>
+<p>综上，可写出递推方法的代码:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">f</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (n == <span class="number">1</span>) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">if</span> (n == <span class="number">2</span>) <span class="keyword">return</span> <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">return</span> f(n-<span class="number">1</span>) + f(n-<span class="number">2</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>写递归代码的关键是找到如何将大问题分解为小问题的规律，并且基于此写出递推公式，然后再推敲终止条件，最终将递推公式和终止条件翻译为代码</strong></p>
+<h3 id="递归的风险与优化"><a href="#递归的风险与优化" class="headerlink" title="递归的风险与优化"></a>递归的风险与优化</h3><ul>
+<li>递归会不停向方法栈压入参数，如果递归层级过深，可能导致方法栈溢出</li>
+<li>递归可能导致重复计算<ul>
+<li>以上述代码为例，f(5) 需要计算 f(4), f(3)，f(4) 需要计算 f(3), f(2)，这个过程中，f(3) 被计算了两次</li>
+</ul>
+</li>
+<li>空间复杂度: 递归每调用一次，就需要在内存栈中保存一次现场数据，因此需要考虑这部分开销</li>
+<li>时间复杂度: 递归算法的伴随着小问题的分解，时间复杂度往往较高</li>
+</ul>
+<p>可以用散列表保存已计算过的 f(k) 来优化递归导致的重复计算。以上述代码为例，可以改写为:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">f</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (n == <span class="number">1</span>) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">if</span> (n == <span class="number">2</span>) <span class="keyword">return</span> <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// hasSolvedList可以理解成一个Map，key是n，value是f(n)</span></span><br><span class="line">    <span class="keyword">if</span> (hasSolvedList.containsKey(n)) &#123;</span><br><span class="line">        <span class="keyword">return</span> hasSolvedList.get(n);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> ret = f(n-<span class="number">1</span>) + f(n-<span class="number">2</span>);</span><br><span class="line">    hasSolvedList.put(n, ret);</span><br><span class="line">    <span class="keyword">return</span> ret;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="将递归代码改写为非递归代码"><a href="#将递归代码改写为非递归代码" class="headerlink" title="将递归代码改写为非递归代码"></a>将递归代码改写为非递归代码</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">f</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (n == <span class="number">1</span>) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">if</span> (n == <span class="number">2</span>) <span class="keyword">return</span> <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 如果 n &gt; 2, 则需要循环计算</span></span><br><span class="line">    <span class="comment">// pre 表示 f(n-1)</span></span><br><span class="line">    <span class="comment">// prepre 表示 f(n-2)</span></span><br><span class="line">    <span class="comment">// ret 表示 f(n)</span></span><br><span class="line">    <span class="keyword">int</span> ret = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> pre = <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">int</span> prepre = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">3</span>; i &lt;= n; i++) &#123;</span><br><span class="line">        ret = pre + prepre;</span><br><span class="line">        prepre = pre;</span><br><span class="line">        pre = ret;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ret;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>笼统的来说，所有递归代码都可以改写为非递归代码。</strong> 因为递归本身就是借助栈来实现的，只要将系统默认提供的方法栈想办法手动模拟出来，都可以改写为非递归代码。</p>
+<p><strong>手动将递归代码改写为非递归代码，只是徒增实现的复杂度，并没有解决递归原有的问题，且代码可读性往往不好。</strong></p>
+<h2 id="11-排序（上）：为什么插入排序比冒泡排序更受欢迎？"><a href="#11-排序（上）：为什么插入排序比冒泡排序更受欢迎？" class="headerlink" title="11 | 排序（上）：为什么插入排序比冒泡排序更受欢迎？"></a>11 | 排序（上）：为什么插入排序比冒泡排序更受欢迎？</h2><table>
+<thead>
+<tr>
+<th>章节</th>
+<th>排序算法</th>
+<th>时间复杂度</th>
+<th>是否基于比较</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>11</td>
+<td>冒泡、插入、选择</td>
+<td>$O(n^2)$</td>
+<td>是</td>
+</tr>
+<tr>
+<td>12</td>
+<td>快排、归并</td>
+<td>$O(n\log n)$</td>
+<td>是</td>
+</tr>
+<tr>
+<td>13</td>
+<td>桶、计数、基数</td>
+<td>$O(n)$</td>
+<td>否</td>
+</tr>
+</tbody></table>
+<h3 id="排序算法的衡量标准"><a href="#排序算法的衡量标准" class="headerlink" title="排序算法的衡量标准"></a>排序算法的衡量标准</h3><h4 id="排序算法的执行效率"><a href="#排序算法的执行效率" class="headerlink" title="排序算法的执行效率"></a>排序算法的执行效率</h4><p>比较排序算法的执行效率，需要考量如下几个方面:</p>
+<ul>
+<li>最好情况、最坏情况、平均情况时间复杂度<ul>
+<li>还要给出最好、最坏情况，其对应的原始待排序数据是什么样的</li>
+</ul>
+</li>
+<li>时间复杂度的系数、常数、低阶<ul>
+<li>实际的软件开发中，排序往往是 1000 以内的小规模数据，因此系数、常数、低阶的影响就会放大</li>
+</ul>
+</li>
+<li>比较次数和交换(或移动)次数<ul>
+<li>基于比较的排序算法，会有比较与交换(或移动)两种操作，在分析算法执行效率时，也要把这两种操作也考虑进来</li>
+</ul>
+</li>
+</ul>
+<h4 id="排序算法的内存消耗"><a href="#排序算法的内存消耗" class="headerlink" title="排序算法的内存消耗"></a>排序算法的内存消耗</h4><p>排序算法有一个特殊的概念叫 <strong>原地排序(Sorted in place)</strong>，特指空间复杂度为 $O(1)$ 的排序算法。</p>
+<h4 id="排序算法的稳定性"><a href="#排序算法的稳定性" class="headerlink" title="排序算法的稳定性"></a>排序算法的稳定性</h4><p>经过排序后，如果两个相等值的前后顺序没有变化，则叫做 <strong>稳定的排序算法</strong>，否则叫做 <strong>不稳定的排序算法</strong>。</p>
+<h3 id="冒泡排序-Bubble-Sort"><a href="#冒泡排序-Bubble-Sort" class="headerlink" title="冒泡排序 (Bubble Sort)"></a>冒泡排序 (Bubble Sort)</h3><p>冒泡排序只会操作相邻的两个数据。每次冒泡操作都会对相邻的两个元素进行比较，看是否满足大小关系要求。如果不满足就交换元素。一次冒泡操作至少会让一个元素移动到它该在的位置，重复 n 次，就完成了 n 个数据的排序工作。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// n 表示数组大小</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">bubbleSort</span><span class="params">(<span class="keyword">int</span>[]a , <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (n &lt;= <span class="number">1</span>) <span class="keyword">return</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">        <span class="comment">// 提前退出冒泡循环的标志位</span></span><br><span class="line">        <span class="keyword">boolean</span> flag = <span class="keyword">false</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; n - i -<span class="number">1</span>; j++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (a[j] &gt; a[j+<span class="number">1</span>]) &#123;</span><br><span class="line">                <span class="keyword">int</span> tmp = a[j];</span><br><span class="line">                a[j] = a[j+<span class="number">1</span>];</span><br><span class="line">                a[j+<span class="number">1</span>] = tmp;</span><br><span class="line">                flag = <span class="keyword">true</span>; <span class="comment">// 表示有数据交换</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (!flag) <span class="keyword">break</span>; <span class="comment">// 没有数据交换，表示排序已经完成</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>冒泡排序只涉及相邻数据的交换操作，只需要常量级的临时空间，空间复杂度为 $O(1)$，是 <strong>原地排序算法</strong>。</li>
+<li>冒泡排序对于两个相当元素，不会交换，保留了相当元素前后顺序，因此是 <strong>稳定的排序算法</strong>。</li>
+<li>冒泡的排序的时间复杂度<ul>
+<li>最好情况时间复杂度: 数据已排序好，只需进行一次循环，为 $O(n)$</li>
+<li>最坏情况时间复杂度: 数据完全倒序，需要做 n 次循环，为 $O(n^2)$</li>
+<li>平均情况时间复杂度: 参考下述推到过程，为 $O(n^2)$</li>
+</ul>
+</li>
+</ul>
+<h4 id="通过有序度和逆序度来计算排序算法的平均情况时间复杂度"><a href="#通过有序度和逆序度来计算排序算法的平均情况时间复杂度" class="headerlink" title="通过有序度和逆序度来计算排序算法的平均情况时间复杂度"></a>通过有序度和逆序度来计算排序算法的平均情况时间复杂度</h4><p><strong>有序度</strong> 是数组中具有有序关系的元素对的个数。数学表达式如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">有序元素对: a[i] &lt;&#x3D; a[j]，如果 i &lt; j。</span><br></pre></td></tr></table></figure>
+
+<p>举例: 一组数据 <code>[2, 4, 3, 1, 5, 6]</code>，有序度为 11，因为其有序元素对有 11 个:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">(2,4) (2,3) (2,5) (2,6)</span><br><span class="line">(4,5) (4,6)</span><br><span class="line">(3,5) (3,6)</span><br><span class="line">(1,5) (1,6)</span><br><span class="line">(5,6)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>对于一个倒序排列的数组，其有序度为 <code>0</code></li>
+<li>对于一个正序排列的数组，其有序度为 <code>n*(n-1)/2</code>，称为 <strong>满有序度</strong></li>
+</ul>
+<p>关于逆序度</p>
+<ul>
+<li><strong>逆序度</strong> 与 <strong>有序度</strong> 刚好相反</li>
+<li><code>逆序度 = 满有序度 - 有序度</code></li>
+</ul>
+<p>对于上述示例 <code>[2, 4, 3, 1, 5, 6]</code>，其有序度为 11，满有序度为 15。不论如何优化算法，只要采用冒泡排序，都要进行 15-11=4 次交换操作。</p>
+<p>对于 n 个数据的数组。</p>
+<ul>
+<li>最好情况下，有序度为满有序度，需要交换 <code>0</code> 次</li>
+<li>最坏情况下，有序度为 0，需要交换满有序度次，即 <code>n*(n-1)/2</code> 次</li>
+</ul>
+<p>平均有序度可以取最好、最坏的平均值，即 <code>n*(n-1)/4</code>，因此平均情况时间复杂度就是 $O(n^2)$。</p>
+<blockquote>
+<p>这种平均情况时间复杂度的推导过程并不严格，但大多时候有效。</p>
+</blockquote>
+<h3 id="插入排序-Insertion-Sort"><a href="#插入排序-Insertion-Sort" class="headerlink" title="插入排序 (Insertion Sort)"></a>插入排序 (Insertion Sort)</h3><ol>
+<li>将数组中的数据分为两个区间，<strong>已排序区间</strong>和<strong>未排序区间</strong>。</li>
+<li>初始已排序区间只有一个元素，就是数组的第一个元素。</li>
+<li>取未排序区间中的元素，在已排序区间中找到合适的插入位置将其插入，并保证已排序区间数据一直有序。</li>
+<li>重复这个过程，直到未排序区间中元素为空，算法结束。</li>
+</ol>
+<p>插入排序也包含两种操作:</p>
+<ul>
+<li>元素的比较。当我们需要将一个数据 a 插入到已排序区间时，需要拿 a 与已排序区间的元素依次比较大小，找到合适的插入位置。</li>
+<li>元素的移动。找到插入点之后，我们还需要将插入点之后的元素顺序往后移动一位，这样才能腾出位置给元素 a 插入。</li>
+</ul>
+<p>对于一个给定的初始序列，对于不同的查找插入点方法（从头到尾、从尾到头）：</p>
+<ul>
+<li>元素的比较次数是有区别的</li>
+<li>移动操作的次数总是固定的，就等于逆序度</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 插入排序，a表示数组，n表示数组大小</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">insertionSort</span><span class="params">(<span class="keyword">int</span>[] a, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (n &lt;= <span class="number">1</span>) <span class="keyword">return</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; n; ++i) &#123;</span><br><span class="line">    <span class="keyword">int</span> value = a[i];</span><br><span class="line">    <span class="keyword">int</span> j = i - <span class="number">1</span>;</span><br><span class="line">    <span class="comment">// 查找插入的位置</span></span><br><span class="line">    <span class="keyword">for</span> (; j &gt;= <span class="number">0</span>; --j) &#123;</span><br><span class="line">      <span class="keyword">if</span> (a[j] &gt; value) &#123;</span><br><span class="line">        a[j+<span class="number">1</span>] = a[j];  <span class="comment">// 数据移动</span></span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    a[j+<span class="number">1</span>] = value; <span class="comment">// 插入数据</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>时空复杂度:</p>
+<ul>
+<li>空间复杂度为 $O(1)$，是一种原地排序算法。</li>
+<li>最好是时间复杂度为 $O(n)$</li>
+<li>最坏情况时间复杂度为 $O(n^2)$</li>
+<li>平均时间复杂度为 $O(n^2)$<ul>
+<li>对于插入排序来说，每次插入操作都相当于在数组中插入一个数据，在数组中插入一个数据的平均时间复杂度是 O(n)，循环执行 n 次插入操作。</li>
+</ul>
+</li>
+<li>插入排序是稳定的排序算法<ul>
+<li>对于值相同的元素，我们可以选择将后面出现的元素，插入到前面出现元素的后面，这样就可以保持原有的前后顺序不变，所以是稳定的排序算法。</li>
+</ul>
+</li>
+</ul>
+<h3 id="选择排序（Selection-Sort）"><a href="#选择排序（Selection-Sort）" class="headerlink" title="选择排序（Selection Sort）"></a>选择排序（Selection Sort）</h3><ol>
+<li>将数组中的数据分为两个区间，<strong>已排序区间</strong>和<strong>未排序区间</strong>。</li>
+<li>每次会从未排序区间中找到最小的元素，将其放到已排序区间的末尾。</li>
+<li>重复这个过程，直到未排序区间中元素为空，算法结束。</li>
+</ol>
+<p>插入排序也包含两种操作:</p>
+<ul>
+<li>元素的比较。比较选出未排序区间中的最小的元素。</li>
+<li>元素的移动。将最小元素移动至未排序区间。</li>
+</ul>
+<p>时空复杂度:</p>
+<ul>
+<li>空间复杂度为 $O(1)$，是一种原地排序算法。</li>
+<li>最好是时间复杂度为 $O(n^2)$</li>
+<li>最坏情况时间复杂度为 $O(n^2)$</li>
+<li>平均时间复杂度为 $O(n^2)$</li>
+<li>选择排序是一种不稳定的排序算法。<ul>
+<li>选择排序每次都要找剩余未排序元素中的最小值，并和前面的元素交换位置，这样破坏了稳定性。</li>
+</ul>
+</li>
+</ul>
+<h3 id="冒泡排序和插入排序的时间复杂度都是-O-n2-，都是原地排序算法，为什么插入排序要比冒泡排序更受欢迎呢？"><a href="#冒泡排序和插入排序的时间复杂度都是-O-n2-，都是原地排序算法，为什么插入排序要比冒泡排序更受欢迎呢？" class="headerlink" title="冒泡排序和插入排序的时间复杂度都是 O(n2)，都是原地排序算法，为什么插入排序要比冒泡排序更受欢迎呢？"></a>冒泡排序和插入排序的时间复杂度都是 O(n2)，都是原地排序算法，为什么插入排序要比冒泡排序更受欢迎呢？</h3><p>从代码实现上来看，冒泡排序的数据交换要比插入排序的数据移动要复杂，冒泡排序需要 3 个赋值操作，而插入排序只需要 1 个。</p>
+<p>把执行一个赋值语句的时间粗略地计为单位时间（unit_time），对一个逆序度是 K 的数组进行排序。</p>
+<ul>
+<li>用冒泡排序，需要 K 次交换操作，每次需要 3 个赋值语句，交换操作总耗时就是 3*K 单位时间。</li>
+<li>插入排序中数据移动操作只需要 K 个单位时间。</li>
+</ul>
+<p><strong>虽然冒泡排序和插入排序在时间复杂度上是一样的，都是 O(n2)，但是如果我们希望把性能优化做到极致，那肯定首选插入排序。</strong></p>
+<h2 id="12-排序（下）：如何用快排思想在-O-n-内查找第-K-大元素？"><a href="#12-排序（下）：如何用快排思想在-O-n-内查找第-K-大元素？" class="headerlink" title="12 | 排序（下）：如何用快排思想在 O(n)内查找第 K 大元素？"></a>12 | 排序（下）：如何用快排思想在 O(n)内查找第 K 大元素？</h2><h3 id="归并排序（Merge-Sort）"><a href="#归并排序（Merge-Sort）" class="headerlink" title="归并排序（Merge Sort）"></a>归并排序（Merge Sort）</h3><ol>
+<li>把数组从中间分成前后两部分，然后对前后两部分分别排序。</li>
+<li>依次执行上述操作，直到数组不再可分。</li>
+<li>将排好序的两部分合并在一起，直到所有部分完全合并在一起。</li>
+</ol>
+<p>归并排序使用的就是<strong>分治思想</strong>。分治，顾名思义，就是分而治之，将一个大问题分解成小的子问题来解决。小的子问题解决了，大问题也就解决了。</p>
+<p>分治算法一般都是用递归来实现的。</p>
+<ul>
+<li>分治是一种解决问题的处理思想</li>
+<li>递归是一种编程技巧</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">递推公式：</span><br><span class="line">merge_sort(p…r) = merge(merge_sort(p…q), merge_sort(q+<span class="number">1</span>…r))</span><br><span class="line"></span><br><span class="line">终止条件：</span><br><span class="line">p &gt;= r 不用再继续分解</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 归并排序算法, A是数组，n表示数组大小</span></span><br><span class="line">merge_sort(A, n) &#123;</span><br><span class="line">  merge_sort_c(A, <span class="number">0</span>, n-<span class="number">1</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 递归调用函数</span></span><br><span class="line">merge_sort_c(A, p, r) &#123;</span><br><span class="line">  <span class="comment">// 递归终止条件</span></span><br><span class="line">  <span class="keyword">if</span> p &gt;= r  then <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// 取p到r之间的中间位置q</span></span><br><span class="line">  q = (p+r) / <span class="number">2</span></span><br><span class="line">  <span class="comment">// 分治递归</span></span><br><span class="line">  merge_sort_c(A, p, q)</span><br><span class="line">  merge_sort_c(A, q+<span class="number">1</span>, r)</span><br><span class="line">  <span class="comment">// 将A[p...q]和A[q+1...r]合并为A[p...r]</span></span><br><span class="line">  merge(A[p...r], A[p...q], A[q+<span class="number">1</span>...r])</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>merge 函数的作用是将已经有序的 A[p…q] 和 A[q+1…r]合并成一个有序的数组，并且放入 A[p…r]，流程如下:</p>
+<ol>
+<li>申请一个临时数组 tmp，大小与 A[p…r]相同。两个游标 i 和 j，分别指向 A[p…q]和 A[q+1…r]的第一个元素。</li>
+<li>比较 A[i]和 A[j]，如果 A[i]&lt;=A[j]，我们就把 A[i]放入到临时数组 tmp，并且 i 后移一位，否则将 A[j]放入到数组 tmp，j 后移一位。</li>
+<li>继续上述过程，直到其中一个子数组中的所有数据都放入临时数组中，再把另一个数组中的数据依次加入到临时数组的末尾。</li>
+<li>最后再把临时数组 tmp 中的数据拷贝到原数组 A[p…r]中。</li>
+</ol>
+<p>merge 函数代码示例如下:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">merge(A[p...r], A[p...q], A[q+<span class="number">1</span>...r]) &#123;</span><br><span class="line">  <span class="keyword">var</span> i := p，j := q+<span class="number">1</span>，k := <span class="number">0</span> <span class="comment">// 初始化变量i, j, k</span></span><br><span class="line">  <span class="keyword">var</span> tmp := <span class="keyword">new</span> array[<span class="number">0</span>...r-p] <span class="comment">// 申请一个大小跟A[p...r]一样的临时数组</span></span><br><span class="line">  <span class="keyword">while</span> i&lt;=q AND j&lt;=r <span class="keyword">do</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> A[i] &lt;= A[j] &#123;</span><br><span class="line">      tmp[k++] = A[i++] <span class="comment">// i++等于i:=i+1</span></span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      tmp[k++] = A[j++]</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 判断哪个子数组中有剩余的数据</span></span><br><span class="line">  <span class="keyword">var</span> start := i，end := q</span><br><span class="line">  <span class="keyword">if</span> j&lt;=r then start := j, end:=r</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 将剩余的数据拷贝到临时数组tmp</span></span><br><span class="line">  <span class="keyword">while</span> start &lt;= end <span class="keyword">do</span> &#123;</span><br><span class="line">    tmp[k++] = A[start++]</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 将tmp中的数组拷贝回A[p...r]</span></span><br><span class="line">  <span class="keyword">for</span> i:=<span class="number">0</span> to r-p <span class="keyword">do</span> &#123;</span><br><span class="line">    A[p+i] = tmp[i]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>归并排序是一个稳定的排序算法。</strong> 在合并的过程中，如果 A[p…q]和 A[q+1…r]之间有值相同的元素，可以先把 A[p…q]中的元素放入 tmp 数组。这样就保证了值相同的元素，在合并前后的先后顺序不变。</p>
+<h4 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a>时间复杂度</h4><p>假设对 n 个元素进行归并排序需要的时间是 T(n)，那分解成两个子数组排序的时间都是 T(n/2)。而 merge() 函数合并两个有序子数组的时间复杂度是 O(n)。因此归并排序的时间复杂度的计算公式就是:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">T(1) &#x3D; C；   n&#x3D;1时，只需要常量级的执行时间，所以表示为C。</span><br><span class="line">T(n) &#x3D; 2*T(n&#x2F;2) + n； n&gt;1</span><br></pre></td></tr></table></figure>
+
+<p>综上 T(n) 可以做如下分解，k 表示分解的次数:</p>
+<p>$$<br>\begin{aligned}<br>T(n) &amp;= 2<em>T(n/2) + n \<br>     &amp;= 2</em>(2<em>T(n/4) + n/2) + n = 4<em>T(n/4) + 2</em>n \<br>     &amp;= 4</em>(2<em>T(n/8) + n/4) + 2<em>n = 8</em>T(n/8) + 3*n \<br>     &amp;= 8</em>(2<em>T(n/16) + n/8) + 3</em>n = 16<em>T(n/16) + 4</em>n \<br>     &amp;…… \<br>     &amp;= 2^k * T(n/2^k) + k * n \<br>     &amp;…… \<br>\end{aligned}<br>$$</p>
+<p>算法结束需要数据规模分解至 1，也就是 T(n/2^k)=T(1) 时，也就是 n/2^k=1，我们得到 $k=log_2n$。</p>
+<p>将 $k=log_2n$ 带入上述公式，得到 $T(n)=Cn+nlog_2n$，<strong>使用大 O 标记法为 $O(nlogn)$，也就是归并排序的时间复杂度。</strong></p>
+<h4 id="空间复杂度"><a href="#空间复杂度" class="headerlink" title="空间复杂度"></a>空间复杂度</h4><p><strong>递归代码的空间复杂度并不能像时间复杂度那样累加。</strong> 尽管每次合并操作都需要申请额外的内存空间，但在合并完成之后，临时开辟的内存空间就被释放掉了。<strong>在任意时刻，CPU 只会有一个函数在执行，也就只会有一个临时的内存空间在使用。</strong> 临时内存空间最大也不会超过 n 个数据的大小，所以<strong>空间复杂度是 O(n)</strong>。</p>
+<blockquote>
+<p>归并排序的时间复杂度任何情况下都是 O(nlogn)，明显好过其他常见的排序算法，但并没有像其他算法一样广泛使用，只因归并排序不是原地排序算法。</p>
+</blockquote>
+<h3 id="快速排序（Quicksort）"><a href="#快速排序（Quicksort）" class="headerlink" title="快速排序（Quicksort）"></a>快速排序（Quicksort）</h3><ol>
+<li>如果要排序数组中下标从 p 到 r 之间的一组数据，我们选择 p 到 r 之间的任意一个数据作为 pivot（分区点）。</li>
+<li>遍历 p 到 r 之间的数据，将小于 pivot 的放到左边，将大于 pivot 的放到右边，将 pivot 放到中间。</li>
+<li>重复上述步骤，对每一个分组继续分组，直到分组大小为 1。</li>
+</ol>
+<p>递推公式为:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">递推公式：</span><br><span class="line">quick_sort(p…r) = quick_sort(p…q-<span class="number">1</span>) + quick_sort(q+<span class="number">1</span>… r)</span><br><span class="line"></span><br><span class="line">终止条件：</span><br><span class="line">p &gt;= r</span><br></pre></td></tr></table></figure>
+
+<p>递归代码:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 快速排序，A是数组，n表示数组的大小</span></span><br><span class="line">quick_sort(A, n) &#123;</span><br><span class="line">  quick_sort_c(A, <span class="number">0</span>, n-<span class="number">1</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 快速排序递归函数，p,r为下标</span></span><br><span class="line">quick_sort_c(A, p, r) &#123;</span><br><span class="line">  <span class="keyword">if</span> p &gt;= r then <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line">  q = partition(A, p, r) <span class="comment">// 获取分区点</span></span><br><span class="line">  quick_sort_c(A, p, q-<span class="number">1</span>)</span><br><span class="line">  quick_sort_c(A, q+<span class="number">1</span>, r)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<!-- flag of hidden posts -->
     
 
     
@@ -632,7 +857,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#复杂度分析（上）：如何分析、统计算法的执行效率和资源消耗？"><span class="toc-number">1.</span> <span class="toc-text">复杂度分析（上）：如何分析、统计算法的执行效率和资源消耗？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#事后统计法"><span class="toc-number">1.1.</span> <span class="toc-text">事后统计法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#大-O-复杂度表示法"><span class="toc-number">1.2.</span> <span class="toc-text">大 O 复杂度表示法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#时间复杂度分析"><span class="toc-number">1.3.</span> <span class="toc-text">时间复杂度分析</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#只关注循环执行次数最多的一段代码"><span class="toc-number">1.3.1.</span> <span class="toc-text">只关注循环执行次数最多的一段代码</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#加法法则：总复杂度等于量级最大的那段代码的复杂度"><span class="toc-number">1.3.2.</span> <span class="toc-text">加法法则：总复杂度等于量级最大的那段代码的复杂度</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#乘法法则：嵌套代码的复杂度等于嵌套内外代码复杂度的乘积"><span class="toc-number">1.3.3.</span> <span class="toc-text">乘法法则：嵌套代码的复杂度等于嵌套内外代码复杂度的乘积</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#几种常见时间复杂度实例分析"><span class="toc-number">1.4.</span> <span class="toc-text">几种常见时间复杂度实例分析</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#O-1"><span class="toc-number">1.4.1.</span> <span class="toc-text">O(1)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#O-logn-O-nlogn"><span class="toc-number">1.4.2.</span> <span class="toc-text">O(logn), O(nlogn)</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#空间复杂度分析"><span class="toc-number">1.5.</span> <span class="toc-text">空间复杂度分析</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#04-复杂度分析（下）：浅析最好、最坏、平均、均摊时间复杂度"><span class="toc-number">2.</span> <span class="toc-text">04 | 复杂度分析（下）：浅析最好、最坏、平均、均摊时间复杂度</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#最好、最坏情况时间复杂度"><span class="toc-number">2.1.</span> <span class="toc-text">最好、最坏情况时间复杂度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#平均情况时间复杂度"><span class="toc-number">2.2.</span> <span class="toc-text">平均情况时间复杂度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#均摊时间复杂度"><span class="toc-number">2.3.</span> <span class="toc-text">均摊时间复杂度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#练习题"><span class="toc-number">2.4.</span> <span class="toc-text">练习题</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#05-数组：为什么很多编程语言中数组都从0开始编号？"><span class="toc-number">3.</span> <span class="toc-text">05 | 数组：为什么很多编程语言中数组都从0开始编号？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#如何实现随机访问？"><span class="toc-number">3.1.</span> <span class="toc-text">如何实现随机访问？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#低效的“插入”和“删除”"><span class="toc-number">3.2.</span> <span class="toc-text">低效的“插入”和“删除”</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#容器能否完全替代数组？"><span class="toc-number">3.3.</span> <span class="toc-text">容器能否完全替代数组？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#为什么很多编程语言中数组都从0开始编号？"><span class="toc-number">3.4.</span> <span class="toc-text">为什么很多编程语言中数组都从0开始编号？</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#06-链表（上）：如何实现LRU缓存淘汰算法"><span class="toc-number">4.</span> <span class="toc-text">06 | 链表（上）：如何实现LRU缓存淘汰算法?</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#链表数组性能对比"><span class="toc-number">4.1.</span> <span class="toc-text">链表数组性能对比</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#用链表实现-LRU-算法"><span class="toc-number">4.2.</span> <span class="toc-text">用链表实现 LRU 算法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#07-链表（下）：如何轻松写出正确的链表代码？"><span class="toc-number">5.</span> <span class="toc-text">07 | 链表（下）：如何轻松写出正确的链表代码？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#08-栈：如何实现浏览器的前进和后退功能？"><span class="toc-number">6.</span> <span class="toc-text">08 | 栈：如何实现浏览器的前进和后退功能？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#支持动态扩容的顺序栈"><span class="toc-number">6.1.</span> <span class="toc-text">支持动态扩容的顺序栈</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#栈在函数调用中的应用"><span class="toc-number">6.2.</span> <span class="toc-text">栈在函数调用中的应用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#栈在表达式求值中的应用"><span class="toc-number">6.3.</span> <span class="toc-text">栈在表达式求值中的应用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#栈实现浏览器前进、后退"><span class="toc-number">6.4.</span> <span class="toc-text">栈实现浏览器前进、后退</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#09-队列：队列在线程池等有限资源池中的应用"><span class="toc-number">7.</span> <span class="toc-text">09 | 队列：队列在线程池等有限资源池中的应用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#循环队列"><span class="toc-number">7.1.</span> <span class="toc-text">循环队列</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#阻塞队列"><span class="toc-number">7.2.</span> <span class="toc-text">阻塞队列</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#并发队列"><span class="toc-number">7.3.</span> <span class="toc-text">并发队列</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#线程池中的队列"><span class="toc-number">7.4.</span> <span class="toc-text">线程池中的队列</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10-递归：如何用三行代码找到“最终推荐人”？"><span class="toc-number">8.</span> <span class="toc-text">10 | 递归：如何用三行代码找到“最终推荐人”？</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#复杂度分析（上）：如何分析、统计算法的执行效率和资源消耗？"><span class="toc-number">1.</span> <span class="toc-text">复杂度分析（上）：如何分析、统计算法的执行效率和资源消耗？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#事后统计法"><span class="toc-number">1.1.</span> <span class="toc-text">事后统计法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#大-O-复杂度表示法"><span class="toc-number">1.2.</span> <span class="toc-text">大 O 复杂度表示法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#时间复杂度分析"><span class="toc-number">1.3.</span> <span class="toc-text">时间复杂度分析</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#只关注循环执行次数最多的一段代码"><span class="toc-number">1.3.1.</span> <span class="toc-text">只关注循环执行次数最多的一段代码</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#加法法则：总复杂度等于量级最大的那段代码的复杂度"><span class="toc-number">1.3.2.</span> <span class="toc-text">加法法则：总复杂度等于量级最大的那段代码的复杂度</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#乘法法则：嵌套代码的复杂度等于嵌套内外代码复杂度的乘积"><span class="toc-number">1.3.3.</span> <span class="toc-text">乘法法则：嵌套代码的复杂度等于嵌套内外代码复杂度的乘积</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#几种常见时间复杂度实例分析"><span class="toc-number">1.4.</span> <span class="toc-text">几种常见时间复杂度实例分析</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#O-1"><span class="toc-number">1.4.1.</span> <span class="toc-text">O(1)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#O-log-n-与-O-n-log-n"><span class="toc-number">1.4.2.</span> <span class="toc-text">$O(\log n)$ 与 $O(n\log n)$</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#空间复杂度分析"><span class="toc-number">1.5.</span> <span class="toc-text">空间复杂度分析</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#04-复杂度分析（下）：浅析最好、最坏、平均、均摊时间复杂度"><span class="toc-number">2.</span> <span class="toc-text">04 | 复杂度分析（下）：浅析最好、最坏、平均、均摊时间复杂度</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#最好、最坏情况时间复杂度"><span class="toc-number">2.1.</span> <span class="toc-text">最好、最坏情况时间复杂度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#平均情况时间复杂度"><span class="toc-number">2.2.</span> <span class="toc-text">平均情况时间复杂度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#均摊时间复杂度"><span class="toc-number">2.3.</span> <span class="toc-text">均摊时间复杂度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#练习题"><span class="toc-number">2.4.</span> <span class="toc-text">练习题</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#05-数组：为什么很多编程语言中数组都从-0-开始编号？"><span class="toc-number">3.</span> <span class="toc-text">05 | 数组：为什么很多编程语言中数组都从 0 开始编号？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#如何实现随机访问？"><span class="toc-number">3.1.</span> <span class="toc-text">如何实现随机访问？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#低效的“插入”和“删除”"><span class="toc-number">3.2.</span> <span class="toc-text">低效的“插入”和“删除”</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#容器能否完全替代数组？"><span class="toc-number">3.3.</span> <span class="toc-text">容器能否完全替代数组？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#为什么很多编程语言中数组都从-0-开始编号？"><span class="toc-number">3.4.</span> <span class="toc-text">为什么很多编程语言中数组都从 0 开始编号？</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#06-链表（上）：如何实现-LRU-缓存淘汰算法"><span class="toc-number">4.</span> <span class="toc-text">06 | 链表（上）：如何实现 LRU 缓存淘汰算法?</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#链表数组性能对比"><span class="toc-number">4.1.</span> <span class="toc-text">链表数组性能对比</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#用链表实现-LRU-算法"><span class="toc-number">4.2.</span> <span class="toc-text">用链表实现 LRU 算法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#07-链表（下）：如何轻松写出正确的链表代码？"><span class="toc-number">5.</span> <span class="toc-text">07 | 链表（下）：如何轻松写出正确的链表代码？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#08-栈：如何实现浏览器的前进和后退功能？"><span class="toc-number">6.</span> <span class="toc-text">08 | 栈：如何实现浏览器的前进和后退功能？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#支持动态扩容的顺序栈"><span class="toc-number">6.1.</span> <span class="toc-text">支持动态扩容的顺序栈</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#栈在函数调用中的应用"><span class="toc-number">6.2.</span> <span class="toc-text">栈在函数调用中的应用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#栈在表达式求值中的应用"><span class="toc-number">6.3.</span> <span class="toc-text">栈在表达式求值中的应用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#栈实现浏览器前进、后退"><span class="toc-number">6.4.</span> <span class="toc-text">栈实现浏览器前进、后退</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#09-队列：队列在线程池等有限资源池中的应用"><span class="toc-number">7.</span> <span class="toc-text">09 | 队列：队列在线程池等有限资源池中的应用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#循环队列"><span class="toc-number">7.1.</span> <span class="toc-text">循环队列</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#阻塞队列"><span class="toc-number">7.2.</span> <span class="toc-text">阻塞队列</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#并发队列"><span class="toc-number">7.3.</span> <span class="toc-text">并发队列</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#线程池中的队列"><span class="toc-number">7.4.</span> <span class="toc-text">线程池中的队列</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10-递归：如何用三行代码找到“最终推荐人”？"><span class="toc-number">8.</span> <span class="toc-text">10 | 递归：如何用三行代码找到“最终推荐人”？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#递归需要满足的三个条件"><span class="toc-number">8.1.</span> <span class="toc-text">递归需要满足的三个条件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#如何编写递归代码"><span class="toc-number">8.2.</span> <span class="toc-text">如何编写递归代码</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#示例"><span class="toc-number">8.2.1.</span> <span class="toc-text">示例</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#递归的风险与优化"><span class="toc-number">8.3.</span> <span class="toc-text">递归的风险与优化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#将递归代码改写为非递归代码"><span class="toc-number">8.4.</span> <span class="toc-text">将递归代码改写为非递归代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#11-排序（上）：为什么插入排序比冒泡排序更受欢迎？"><span class="toc-number">9.</span> <span class="toc-text">11 | 排序（上）：为什么插入排序比冒泡排序更受欢迎？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#排序算法的衡量标准"><span class="toc-number">9.1.</span> <span class="toc-text">排序算法的衡量标准</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#排序算法的执行效率"><span class="toc-number">9.1.1.</span> <span class="toc-text">排序算法的执行效率</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#排序算法的内存消耗"><span class="toc-number">9.1.2.</span> <span class="toc-text">排序算法的内存消耗</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#排序算法的稳定性"><span class="toc-number">9.1.3.</span> <span class="toc-text">排序算法的稳定性</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#冒泡排序-Bubble-Sort"><span class="toc-number">9.2.</span> <span class="toc-text">冒泡排序 (Bubble Sort)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#通过有序度和逆序度来计算排序算法的平均情况时间复杂度"><span class="toc-number">9.2.1.</span> <span class="toc-text">通过有序度和逆序度来计算排序算法的平均情况时间复杂度</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#插入排序-Insertion-Sort"><span class="toc-number">9.3.</span> <span class="toc-text">插入排序 (Insertion Sort)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#选择排序（Selection-Sort）"><span class="toc-number">9.4.</span> <span class="toc-text">选择排序（Selection Sort）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#冒泡排序和插入排序的时间复杂度都是-O-n2-，都是原地排序算法，为什么插入排序要比冒泡排序更受欢迎呢？"><span class="toc-number">9.5.</span> <span class="toc-text">冒泡排序和插入排序的时间复杂度都是 O(n2)，都是原地排序算法，为什么插入排序要比冒泡排序更受欢迎呢？</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#12-排序（下）：如何用快排思想在-O-n-内查找第-K-大元素？"><span class="toc-number">10.</span> <span class="toc-text">12 | 排序（下）：如何用快排思想在 O(n)内查找第 K 大元素？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#归并排序（Merge-Sort）"><span class="toc-number">10.1.</span> <span class="toc-text">归并排序（Merge Sort）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#时间复杂度"><span class="toc-number">10.1.1.</span> <span class="toc-text">时间复杂度</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#空间复杂度"><span class="toc-number">10.1.2.</span> <span class="toc-text">空间复杂度</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#快速排序（Quicksort）"><span class="toc-number">10.2.</span> <span class="toc-text">快速排序（Quicksort）</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -835,6 +1060,10 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">密码学</a>
               </li>
             
             <div class="clearfix"></div>

@@ -6,22 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yueban.github.io">
-  <title>桶式排序与基数排序举例及 JAVA 代码实现 | 月半兄的小站</title>
+  <title>Diffie–Hellman 密钥协商算法详解 | 月半兄的小站</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="description" content="桶式排序概念有限个数字 m，每个数字的大小都在 1 与 n 之间，则我们可以假设有 n 个桶，遍历 m 个数字，将其存入对应的桶中（如数字的值为 3，就存入 3 号桶，桶的值对应存入数字的个数）">
+  <meta name="description" content="简介迪菲－赫尔曼（Diffie–Hellman）密钥协商是在美国密码学家惠特菲尔德·迪菲和马丁·赫尔曼的合作下发明的，发表于 1976 年。它是第一个实用的在非保护信道中创建共享密钥方法。 描述了这个算法的美国专利第 4,200,770 号，已经于 1997 年 4 月 29 日后过期，专利文件表明了 Hellman、Diffie 和 Merkle 是算法的发明者。 解决的问题DH 算法可以在一个">
 <meta property="og:type" content="article">
-<meta property="og:title" content="桶式排序与基数排序举例及 JAVA 代码实现">
-<meta property="og:url" content="http://yueban.github.io/2014/05/01/%E6%A1%B6%E5%BC%8F%E6%8E%92%E5%BA%8F%E4%B8%8E%E5%9F%BA%E6%95%B0%E6%8E%92%E5%BA%8F%E4%B8%BE%E4%BE%8B%E5%8F%8AJAVA%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0/index.html">
+<meta property="og:title" content="Diffie–Hellman 密钥协商算法详解">
+<meta property="og:url" content="http://yueban.github.io/2020/11/01/Diffie%E2%80%93Hellman%20%E5%AF%86%E9%92%A5%E5%8D%8F%E5%95%86%E7%AE%97%E6%B3%95%E8%AF%A6%E8%A7%A3/index.html">
 <meta property="og:site_name" content="月半兄的小站">
-<meta property="og:description" content="桶式排序概念有限个数字 m，每个数字的大小都在 1 与 n 之间，则我们可以假设有 n 个桶，遍历 m 个数字，将其存入对应的桶中（如数字的值为 3，就存入 3 号桶，桶的值对应存入数字的个数）">
+<meta property="og:description" content="简介迪菲－赫尔曼（Diffie–Hellman）密钥协商是在美国密码学家惠特菲尔德·迪菲和马丁·赫尔曼的合作下发明的，发表于 1976 年。它是第一个实用的在非保护信道中创建共享密钥方法。 描述了这个算法的美国专利第 4,200,770 号，已经于 1997 年 4 月 29 日后过期，专利文件表明了 Hellman、Diffie 和 Merkle 是算法的发明者。 解决的问题DH 算法可以在一个">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2014-05-01T02:00:40.000Z">
-<meta property="article:modified_time" content="2020-05-16T08:22:00.195Z">
+<meta property="article:published_time" content="2020-11-01T05:59:54.000Z">
+<meta property="article:modified_time" content="2020-11-07T11:14:40.518Z">
 <meta property="article:author" content="月半兄">
-<meta property="article:tag" content="Java">
 <meta property="article:tag" content="算法">
+<meta property="article:tag" content="密码学">
 <meta name="twitter:card" content="summary">
   
   
@@ -190,14 +190,14 @@
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-桶式排序与基数排序举例及JAVA代码实现" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-Diffie–Hellman 密钥协商算法详解" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
   
   
     <h1 class="article-title" itemprop="name">
-      桶式排序与基数排序举例及 JAVA 代码实现
+      Diffie–Hellman 密钥协商算法详解
     </h1>
   
 
@@ -209,8 +209,8 @@
               <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
         </span>
 
-<a href="/2014/05/01/%E6%A1%B6%E5%BC%8F%E6%8E%92%E5%BA%8F%E4%B8%8E%E5%9F%BA%E6%95%B0%E6%8E%92%E5%BA%8F%E4%B8%BE%E4%BE%8B%E5%8F%8AJAVA%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0/" class="archive-article-date">
-        <time datetime="2014-05-01T02:00:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2014-05-01</time>
+<a href="/2020/11/01/Diffie%E2%80%93Hellman%20%E5%AF%86%E9%92%A5%E5%8D%8F%E5%95%86%E7%AE%97%E6%B3%95%E8%AF%A6%E8%A7%A3/" class="archive-article-date">
+        <time datetime="2020-11-01T05:59:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-11-01</time>
 </a>
 
   
@@ -223,7 +223,7 @@
       <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
       <i class="icon-statistics"></i>
       <span class="post-meta-item-text"> 字数统计:</span>
-      <span class="post-count">2.4k字</span>
+      <span class="post-count">2.3k字</span>
     </span>
   </span>
 
@@ -243,262 +243,168 @@
   
   <div class="article-entry" itemprop="articleBody">
     
-    <h3 id="桶式排序"><a href="#桶式排序" class="headerlink" title="桶式排序"></a>桶式排序</h3><h4 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h4><p>有限个数字 m，每个数字的大小都在 1 与 n 之间，则我们可以假设有 n 个桶，遍历 m 个数字，将其存入对应的桶中（如数字的值为 3，就存入 3 号桶，桶的值对应存入数字的个数）</p>
-<a id="more"></a>
-
-<h4 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h4><p>有数字 3,3,5,1,2，大小均在 0-5 之间，所以我们假设有 5 个桶，分别标号 1,2,3,4,5，遍历所有数字，将其存入桶中，则存储之后，所有桶的计数如下：</p>
-<table><tr><td>桶号</td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td></tr><tr><td>计数</td><td>1</td><td>1</td><td>2</td><td>0</td><td>1</td></tr></table>
-
-<p>我们按照桶的序号将数字倒出来，如下：</p>
-<table><tr><td>桶的倒出顺序</td><td>数字队列</td></tr><tr><td>5号桶倒出1个5</td><td>5</td></tr><tr><td>4号桶倒出0个4</td><td>5</td></tr><tr><td>3号桶倒出2个3</td><td>5,3,3</td></tr><tr><td>2号桶倒出1个2</td><td>5,3,3,2</td></tr><tr><td>1号桶倒出1个1</td><td>5,3,3,2,1</td></tr></table>
-
-<p>如上所示，我们成功将所给数列按照从大到小的排序，反之，如果从 1 号桶开始倒出，我们会得到从小到大排列的数字</p>
-<br/>
-
-<h4 id="代码实现（JAVA）"><a href="#代码实现（JAVA）" class="headerlink" title="代码实现（JAVA）"></a>代码实现（JAVA）</h4><pre><code>//桶式排序
-public class BucketSort{
-     public static void main(String[] args){
-          int[] a = {2,4,15,11,6,3,7,19,8,5,4};
-          sort(a,19);
-     }
-
-     //桶式排序函数
-     //a是要排序的数组
-     //max是最大数字（这里我们默认数字最小为0）
-     public static void sort(int[] a,int max){
-          //声明一个数组，这就是桶，编号从0到max的桶，一共max+1个
-          int[] count = new int[max + 1];
-          //遍历数组，用桶计数
-          for(int i = 0;i &lt; a.length;i++){
-               count[a[i]]++;
-          }
-          //将桶里面的数字倒出
-          for(int i = max;i &gt; 0;i--){
-               while(count[i] &gt; 0){
-                    System.out.print(i + &quot; &quot;);
-                    count[i]--;
-               }
-          }
-     }
-}</code></pre><br/>
-
-<h4 id="弊端"><a href="#弊端" class="headerlink" title="弊端"></a>弊端</h4><p>如果我们的数字波动范围非常大，比如 1 到 10000，那么我们需要一个 10000 元素数组的空间开销，而且在倒出数字的时候需要遍历 10000 个桶，这样效率是非常低的，于是我们有了基于桶式排序的基数排序</p>
-<br/>
-***
-<br/>
-
-<h3 id="基数排序"><a href="#基数排序" class="headerlink" title="基数排序"></a>基数排序</h3><h4 id="概念-1"><a href="#概念-1" class="headerlink" title="概念"></a>概念</h4><p>基于桶式排序，将要排序的数字一位一位的比较，经历多次桶式排序，得出最终的序列<br>如果要排序的元素可以分成多位，并且每一位都在一个固定的范围内，则可以用这种排序方法，如对 10 进制数字的排序</p>
-<br/>
-
-<h4 id="例子-1"><a href="#例子-1" class="headerlink" title="例子"></a>例子</h4><p>有数字 23,35,9,73,3,314,11,1234,5，可以看出来，每一位数字的取值范围都是 0 到 9，所以我们可以用 10 个桶来进行排序，分别编号 0 到 9。</p>
-<ul>
-<li>第一遍排序，按照最低位数字将各个数字存入桶中：</li>
-</ul>
-<table><tr><td>桶号</td><td>0</td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td><td>9</td></tr><tr><td>存放数字</td><td></td><td>11</td><td></td><td>23,73,3</td><td>3,141,234</td><td>35,5</td><td></td><td></td><td></td><td>9</td></tr></table>
-
-<p>按照桶的序号将所有的数字倒出来，对于一个桶内有多个数字的情况，我们按照先进先出的原则倒出数字：</p>
-<table><tr><td>桶的倒出顺序</td><td>数字队列</td></tr><tr><td>9</td><td>9</td></tr><tr><td>8</td><td>9</td></tr><tr><td>7</td><td>9</td></tr><tr><td>6</td><td>9</td></tr><tr><td>5</td><td>9,35,5</td></tr><tr><td>4</td><td>9,35,5,314,1234</td></tr><tr><td>3</td><td>9,35,5,314,1234,23,73,3</td></tr><tr><td>2</td><td>9,35,5,314,1234,23,73,3</td></tr><tr><td>1</td><td>9,35,5,314,1234,23,73,3,11</td></tr><tr><td>0</td><td>9,35,5,314,1234,23,73,3,11</td></tr></table>
-
-<p>我们可以看到第一遍排序好的数字还是很乱的，可能还不能基数排序的妙处，不急，下面我们进行第二次排序</p>
-<br/>
-
-<ul>
-<li>第二遍排序，将第一次排好的序列 9,35,5,314,1234,23,73,3,11，按照第二位的数字存入桶中（只有一位的数第二位为 0）：</li>
-</ul>
-<table><tr><td>桶号</td><td>0</td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td><td>9</td></tr><tr><td>存放数字</td><td>9,5,3</td><td>314,11</td><td>23</td><td>35,1234</td><td></td><td></td><td></td><td>73</td><td></td><td></td></tr></table>
-
-<p>按照桶的序号将所有的数字倒出来，对于一个桶内有多个数字的情况，我们按照先进先出的原则倒出数字：</p>
-<table><tr><td>桶的倒出顺序</td><td>数字队列</td></tr><tr><td>9</td><td></td></tr><tr><td>8</td><td></td></tr><tr><td>7</td><td>73</td></tr><tr><td>6</td><td>73</td></tr><tr><td>5</td><td>73</td></tr><tr><td>4</td><td>73</td></tr><tr><td>3</td><td>73,35,1234</td></tr><tr><td>2</td><td>73,35,1234,23</td></tr><tr><td>1</td><td>73,35,1234,23,314,11</td></tr><tr><td>0</td><td>73,35,1234,23,314,11,9,5,3</td></tr></table>
-
-<p>我们发现，第二遍之后，有些数字好像已经排序好了，经过两次排序，或许你已经能看出来一些基数排序的原理了，下面我们进行第三遍排序</p>
-<br/>
-
-<ul>
-<li>第三遍排序，将第二次排好的序列 73,35,1234,23,314,11,9,5,3，按照第三位的数字存入桶中（只有两位的数第三位为 0）：</li>
-</ul>
-<table><tr><td>桶号</td><td>0</td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td><td>9</td></tr><tr><td>存放数字</td><td>73,35,23,11,9,5,3</td><td></td><td>1234</td><td>314</td><td></td><td></td><td></td><td></td><td></td><td></td></tr></table>
-
-<p>按照桶的序号将所有的数字倒出来，对于一个桶内有多个数字的情况，我们按照先进先出的原则倒出数字：</p>
-<table><tr><td>桶的倒出顺序</td><td>数字队列</td></tr><tr><td>9</td><td></td></tr><tr><td>8</td><td></td></tr><tr><td>7</td><td></td></tr><tr><td>6</td><td></td></tr><tr><td>5</td><td></td></tr><tr><td>4</td><td></td></tr><tr><td>3</td><td>314</td></tr><tr><td>2</td><td>314,1234</td></tr><tr><td>1</td><td>314,1234</td></tr><tr><td>0</td><td>314,1234,73,35,23,11,9,5,3</td></tr></table>
-
-<p>第三遍排序结束，相信你已经看出来基数排序的原理了，如果你还不懂，后面会有一个 flash，清晰明了的一步一步为你分解基数排序，在这之前，让我们先勤勤恳恳的把第四遍，也是最后一遍排序完成</p>
-<br/>
-
-<ul>
-<li>第四遍排序，将第三次排好的序列 314,1234,73,35,23,11,9,5,3，按照第四位的数字存入桶中（只有三位的数第四位为 0）：</li>
-</ul>
-<table><tr><td>桶号</td><td>0</td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td><td>9</td></tr><tr><td>存放数字</td><td>314,73,35,23,11,9,5,3</td><td>1234</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr></table>
-
-<p>按照桶的序号将所有的数字倒出来，对于一个桶内有多个数字的情况，我们按照先进先出的原则倒出数字：</p>
-<table><tr><td>桶的倒出顺序</td><td>数字队列</td></tr><tr><td>9</td><td></td></tr><tr><td>8</td><td></td></tr><tr><td>7</td><td></td></tr><tr><td>6</td><td></td></tr><tr><td>5</td><td></td></tr><tr><td>4</td><td></td></tr><tr><td>3</td><td></td></tr><tr><td>2</td><td></td></tr><tr><td>1</td><td>1234</td></tr><tr><td>0</td><td>1234,314,73,35,23,11,9,5,3</td></tr></table>
-
-<br/>
-
-<p>至此，我们终于完成了排序，如果你还是不能理解，请戳下面的链接，里面的 flash 比文字简单直接好理解的多</p>
-<br/>
-
-<h4 id="代码实现（JAVA）-1"><a href="#代码实现（JAVA）-1" class="headerlink" title="代码实现（JAVA）"></a>代码实现（JAVA）</h4><p>正常情况下，我们是要告诉我们的排序方法，我们最高位的数字是几位的，这样在最高位也排序完成后就会停止排序，但是我们在这段代码中用了一个叫 hasNum 的 boolean 型变量，用来表征我们的数组中是否还存在更高的位数，具体实现参见下面的代码，有注释，不难理解（PS：虽然省事了，方法更通用了，但是也产生了额外的开销）</p>
-<pre><code>public class RadixSort{
-     public static void main(String[] args){
-          //声明要排序的数组
-          int[] data = {73,22,93,867494,43,55,123,8978,10000,14,28,65,39,81,33,100,567};
-          //调用基数排序函数
-          sort(data,10);
-          //输出排序后的数组
-          for(int i = 0;i &lt; data.length;i++){
-               System.out.print(data[i] + &quot; &quot;);
-          }
-     }
-
-     ///基数排序函数
-     //a表示要排序的数组
-     //d表示每一位数字的范围（这里是10进制数，有0~9一共10种情况）
-     public static void sort(int[] a,int d){
-          //n用来表示当前排序的是第几位
-          int n = 1;
-          //hasNum用来表示数组中是否有至少一个数字存在第n位
-          boolean hasNum = false;
-          //二维数组temp用来保存当前排序的数字
-          //第一维d表示一共有d个桶
-          //第二维a.length表示每个桶最多可能存放a.length个数字
-          int[][] temp = new int[d][a.length];
-          int[] order = new int[d];
-          while(true){
-               //判断是否所有元素均无比更高位，因为第一遍一定要先排序一次，所以有n!=1的判断
-               if(n != 1 &amp;&amp; !hasNum){
-                    break;
-               }
-               hasNum = false;
-               //遍历要排序的数组，将其存入temp数组中（按照第n位上的数字将数字放入桶中）
-               for(int i = 0;i &lt; a.length;i++){
-                    int x = a[i]/(n*10);
-                    if(x != 0){
-                         hasNum = true;
-                    }
-                    int lsd = (x%10);
-                    temp[lsd][order[lsd]] = a[i];
-                    order[lsd]++;
-               }
-               //k用来将排序好的temp数组存入data数组（将桶中的数字倒出）
-               int k = 0;
-               for(int i = 0;i &lt; d;i++){
-                    if(order[i] != 0){
-                         for(int j = 0;j &lt; order[i];j++){
-                              a[k] = temp[i][j];
-                              k++;
-                         }
-                    }
-                    order[i] = 0;
-               }
-               n++;
-          }
-     }
-}</code></pre><br/>
-***
-<br/>
-
-<h3 id="基数排序（给英文字符串排序）"><a href="#基数排序（给英文字符串排序）" class="headerlink" title="基数排序（给英文字符串排序）"></a>基数排序（给英文字符串排序）</h3><h4 id="排序规则"><a href="#排序规则" class="headerlink" title="排序规则"></a>排序规则</h4><ol>
-<li>字符串更长的在前</li>
-<li>z 在最前，a 在最后</li>
+    <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>迪菲－赫尔曼（Diffie–Hellman）密钥协商是在美国密码学家惠特菲尔德·迪菲和马丁·赫尔曼的合作下发明的，发表于 1976 年。它是第一个实用的在非保护信道中创建共享密钥方法。</p>
+<p>描述了这个算法的<a href="https://www.google.com/patents/US4200770" target="_blank" rel="noopener">美国专利第 4,200,770 号</a>，已经于 1997 年 4 月 29 日后过期，专利文件表明了 Hellman、Diffie 和 Merkle 是算法的发明者。</p>
+<h2 id="解决的问题"><a href="#解决的问题" class="headerlink" title="解决的问题"></a>解决的问题</h2><p>DH 算法可以在一个不安全的信道上建立安全连接，从而解决的不安全信道上信息安全交换的问题。</p>
+<h2 id="算法流程与数学原理"><a href="#算法流程与数学原理" class="headerlink" title="算法流程与数学原理"></a>算法流程与数学原理</h2><p>DH 算法通过公共信道交换<strong>一个</strong>信息，就可以创建一个可以用于在公共信道上安全通信的共享秘密（shared secret）。</p>
+<p>假设 Client_A 与 Client_B 在不安全的信道上交换信息，他们通过 DH 算法协商出一个密钥，具体流程如下:</p>
+<ol>
+<li>Client_A 与 Client_B 确定算法协商使用质数 p 的整数模 n 乘法群以及其原根 g</li>
+<li>Client_A 生成随机数 $a \in [1, p-1]$，计算 $A = g^a \mod p$，将 A 发送给 Client_B</li>
+<li>Client_B 生成随机数 $b \in [1, p-1]$，计算 $B = g^b \mod p$，将 B 发送给 Client_A</li>
+<li>Client_A 计算 $s = B^a \mod p = g^{ba} \mod p$</li>
+<li>Client_B 计算 $s = A^b \mod p = g^{ab} \mod p$</li>
 </ol>
-<br/>
+<p>通过上述过程，Client_A 与 Client_B 得到了一个安全的共享密钥 s。</p>
+<p>下图描述了整个协商的过程，可以辅助理解算法流程:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">participant Client_A as A</span><br><span class="line">participant Client_B as B</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">A -&gt; B:确定算法协商使用质数 p 的整数模 n 乘法群以及其原根 g</span><br><span class="line">B -&gt; A:确认回执</span><br><span class="line"></span><br><span class="line">A -&gt; A:生成随机数 a ∈ [1, p-1]</span><br><span class="line">A -&gt; A:计算 A &#x3D; g^a mod p</span><br><span class="line">A -&gt; B:发送 A</span><br><span class="line">B -&gt; B:生成随机数 b ∈ [1, p-1]</span><br><span class="line">B -&gt; B:计算 B &#x3D; g^b mod p</span><br><span class="line">B -&gt; A:发送 B</span><br><span class="line">A -&gt; A:计算 s &#x3D; B^a mod p &#x3D; g^(ba) mod p</span><br><span class="line">B -&gt; B:计算 s &#x3D; A^b mod p &#x3D; g^(ab) mod p</span><br></pre></td></tr></table></figure>
 
-<h4 id="代码实现（JAVA）-2"><a href="#代码实现（JAVA）-2" class="headerlink" title="代码实现（JAVA）"></a>代码实现（JAVA）</h4><p>总感觉代码写的比较笨，但是智商确实有点不够用了…………..</p>
-<pre><code>public class RadixSort_Letter{
-     public static void main(String[] args){
-          //声明要排序的数组
-          String[] a = {&quot;ac&quot;,&quot;ee&quot;,&quot;ef&quot;,&quot;b&quot;,&quot;z&quot;,&quot;f&quot;,&quot;ep&quot;,&quot;gaaa&quot;,&quot;azh&quot;,&quot;az&quot;,&quot;r&quot;};
-          //调用基数排序函数
-          sort(a,4);
-          //输出排序后的数组
-          for(int i = a.length - 1;i &gt;= 0;i--){
-               System.out.print(a[i] + &quot; &quot;);
-          }
-     }
+<h3 id="Client-A-与-Client-B-算出-s-相等的数学证明"><a href="#Client-A-与-Client-B-算出-s-相等的数学证明" class="headerlink" title="Client_A 与 Client_B 算出 s 相等的数学证明"></a>Client_A 与 Client_B 算出 s 相等的数学证明</h3><p>我们需要证明 Client_A 计算的 s 等于 Client_B 计算的 s，下面对于 Client_A 计算 s 的过程进行分析。</p>
+<p>首先对于 B 可做如下变换</p>
+<p>$<br>\begin{aligned}<br>g^b \mod p &amp;= B \<br>g^b &amp;= kp + B, (k \in N) \<br>B &amp;= g^b - kp, (k \in N)<br>\end{aligned}<br>$</p>
+<p>则 Client_A 计算 s 的过程可做如下变换</p>
+<p>$<br>\begin{aligned}<br>s &amp;=  B^a \mod p \<br>&amp;= (g^b - kp)^a \mod p \<br>&amp;= (\binom{a}{0}g^{ba}(-kp)^0 + \binom{a}{1}g^{b(a-1)}(-kp) + \binom{a}{2}g^{b(a-2)}(-kp)^2 + … + \binom{a}{a}g^0(-kp)^a) \mod p \<br>\end{aligned}<br>$</p>
+<p>上述展开使用到<a href="https://zh.wikipedia.org/wiki/%E4%BA%8C%E9%A1%B9%E5%BC%8F%E5%AE%9A%E7%90%86" target="_blank" rel="noopener">二项式定理</a>，其中每个形如 $\binom{a}{k}$ 的项称作二项式系数的特定正整数，其等于 ${\frac {a!}{k!(a-k)!}}$。除了第一项外，其余所有项都有 kp 因子参与乘积，因此其结果 mod p 后均等于 0，等式可以变换为。</p>
+<p>$<br>\begin{aligned}<br>s &amp;= (\binom{a}{0}g^{ba}(kp)^0) \mod p \<br>&amp;= g^{ab} \mod p<br>\end{aligned}<br>$</p>
+<p>至此，完成对 Client_A 计算 s 的公式推导，对于 Client_B 计算 s 的过程可由同样方式推导为 $g^{ab} \mod p$，因此 Client_A 计算的 s 等于 Client_B 计算的 s。</p>
+<h3 id="g-的取值范围"><a href="#g-的取值范围" class="headerlink" title="g 的取值范围"></a>g 的取值范围</h3><p>DH 算法定义 <strong>质数 p 的整数模 n 乘法群以及其原根 g</strong>，参考关于<a href="https://zh.wikipedia.org/wiki/%E5%8E%9F%E6%A0%B9" target="_blank" rel="noopener">原跟</a>、<a href="https://zh.wikipedia.org/zh-hans/%E6%95%B4%E6%95%B0%E6%A8%A1n%E4%B9%98%E6%B3%95%E7%BE%A4" target="_blank" rel="noopener">整数模n乘法群</a>的数学定义可以知道，原根 g 的取值范围其实是通过 p 计算得出，且范围一定在 [1, p-1] 内。</p>
+<h3 id="a-b-的取值范围"><a href="#a-b-的取值范围" class="headerlink" title="a, b 的取值范围"></a>a, b 的取值范围</h3><p>如果 a、b 取值大于等于 p，则以 a 为例，我们做如下分析。</p>
+<p>首先我们将 a 分解为 j 个 (p-1) 项，加一个余数项 k，即：</p>
+<p>$a = (p-1)j + k \quad (j \in N, k \in [1, p-1])$</p>
+<p>则 $g^a$ 可以做如下变换：</p>
+<p>$<br>\begin{aligned}<br>g^a &amp;= g^{(p-1)j+k} \<br>&amp;= g^{(p-1)j}\cdot g^k \<br>&amp;= (g^{(p-1)j} \mod p ) \cdot (g^k \mod p) \<br>&amp;= ((g^{(p-1)})^j \mod p ) \cdot (g^k \mod p) \<br>&amp;= ((g^{(p-1)} \mod p)^j \mod p ) \cdot (g^k \mod p) \<br>&amp;= ((1)^j \mod p ) \cdot (g^k \mod p) \<br>&amp;= (1 \mod p ) \cdot (g^k \mod p) \<br>&amp;= 1 \cdot (g^k \mod p) \<br>&amp;= g^k \mod p \<br>\end{aligned}<br>$</p>
+<p>上述等式变化使用到的数学原理包括：</p>
+<ul>
+<li><a href="https://zh.wikipedia.org/wiki/%E6%A8%A1%E9%99%A4" target="_blank" rel="noopener">模除</a>中的<strong>恒等式</strong>、<strong>乘法分配律</strong>、<strong>幂运算</strong>。</li>
+<li><a href="https://zh.wikipedia.org/wiki/%E8%B4%B9%E9%A9%AC%E5%B0%8F%E5%AE%9A%E7%90%86" target="_blank" rel="noopener">费马小定理</a>，对于整数 g，质数 p，有 $g^p \mod p = g \mod p$。若 g 不是 p 的倍数，有 $g^{p-1} \mod p = 1$。</li>
+</ul>
+<p>综上，我们可以得出结论，当 a 的值大于等于 p 时，$g^a$ 的计算结果范围与 $a \in [1, p-1]$ 时的计算结果范围相同。用数学表示为以下结论，集合 A 与集合 B 相等。</p>
+<p>$$<br>\begin{aligned}<br>A &amp;= { g^a, a \in N, a \geq p } \<br>B &amp;= { g^a, a \in N, a \in [1, p-1] } \<br>A &amp;= B<br>\end{aligned}<br>$$</p>
+<p>考虑到 DH 算法的安全性主要由 p 与 g 的取值确定（参考下一节安全性分析），且高阶幂运算本身具有一定的性能损耗，因此我们对 a、b 的取值范围限定在 $[1, p-1]$。</p>
+<h2 id="安全性分析"><a href="#安全性分析" class="headerlink" title="安全性分析"></a>安全性分析</h2><p>如果有中间人 Client_C 可以获取到 Client_A 与 Client_B 交换的所有信息，它仍然无法推导出密钥 s。对于 Client_A，Client_B，Client_C 在整个密钥协商过程中，能获取到的信息如下表展示。可以看到，Client_C 可以拦截到传输过程中的 p, g, A, B，但由于不知道 a, b，无法最终计算出 s。</p>
+<table>
+<thead>
+<tr>
+<th>信息</th>
+<th>Client_A</th>
+<th>Client_B</th>
+<th>Client_C</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>p</td>
+<td>✔️</td>
+<td>✔️</td>
+<td>✔️</td>
+</tr>
+<tr>
+<td>g</td>
+<td>✔️</td>
+<td>✔️</td>
+<td>✔️</td>
+</tr>
+<tr>
+<td>a</td>
+<td>✔️</td>
+<td>❌</td>
+<td>❌</td>
+</tr>
+<tr>
+<td>b</td>
+<td>❌</td>
+<td>✔️</td>
+<td>❌</td>
+</tr>
+<tr>
+<td>A = g^a mod p</td>
+<td>✔️</td>
+<td>✔️</td>
+<td>✔️</td>
+</tr>
+<tr>
+<td>B = g^b mod p</td>
+<td>✔️</td>
+<td>✔️</td>
+<td>✔️</td>
+</tr>
+<tr>
+<td>s = A^b mod p</td>
+<td>❌</td>
+<td>✔️</td>
+<td>❌</td>
+</tr>
+<tr>
+<td>s = B^a mod p</td>
+<td>✔️</td>
+<td>❌</td>
+<td>❌</td>
+</tr>
+</tbody></table>
+<p>中间人如果想要计算出 s，必须先计算出 a 或 b，也就是求解离散对数问题 $Ind_{g}A \equiv a {\pmod {m}}$ 或 $Ind_{g}B \equiv b {\pmod {m}}$。</p>
+<p>离散对数问题被认为是一个<strong>难解</strong>的数学问题，公钥密码学中几个重要算法的基础，是假设寻找离散对数的问题解，在仔细选择过的群中，并不存在有效率的求解算法。</p>
+<h3 id="p-的安全范围"><a href="#p-的安全范围" class="headerlink" title="p 的安全范围"></a>p 的安全范围</h3><p>如果 p 的取值范围过小，DH 算法的安全性就会大打折扣，参考下面这个示例。</p>
+<p>假如我们选择 p = 7，g = 3。随机数 a = 2，b = 5，则整个 DH 协商过程如下：</p>
+<ol>
+<li>Client_A 计算 $A = 3^2 \mod 7 = 2$，将 A 发送给 Client_B</li>
+<li>Client_B 计算 $B = 3^5 \mod 7 = 5$，将 B 发送给 Client_A</li>
+<li>Client_A 计算 $s = 5^2 \mod 7 = 4$</li>
+<li>Client_B 计算 $s = 2^5 \mod 7 = 4$</li>
+</ol>
+<p>中间人拦截到 p = 7，g = 3，A = 2，B = 5。中间人只需要遍历 a 的取值范围 [1, 6]，并分别计算 $A = g^a \mod p$ 直到算出一个值，等于拦截到的 A 值，也就是 2，则中间人就算出了 a，从而可以通过 $s = B^a \mod p$ 计算出 s。</p>
+<p>进一步分析所有 $g^a$ 的结果，对于 $a \in [1, 6]$，其计算结果如下。可以看出来，一共只有 6 种值，因此中间人可以很容易通过枚举 a 的方式碰撞出 a 的值。</p>
+<table>
+<thead>
+<tr>
+<th>$a$</th>
+<th>$g^a \mod p$</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>3</td>
+</tr>
+<tr>
+<td>2</td>
+<td>2</td>
+</tr>
+<tr>
+<td>3</td>
+<td>6</td>
+</tr>
+<tr>
+<td>4</td>
+<td>4</td>
+</tr>
+<tr>
+<td>5</td>
+<td>5</td>
+</tr>
+<tr>
+<td>6</td>
+<td>1</td>
+</tr>
+</tbody></table>
+<p>因此我们在选择时，必须选择一个足够大的质数 p，以保证 a，b 的选择范围足够大，无法被轻易碰撞出来。一般来说，128 bit 的质数 p 在现有硬件算力的环境下是足够安全的。</p>
+<p>在实际的操作中，一个<a href="https://zh.wikipedia.org/wiki/%E7%B4%A2%E8%8F%B2%C2%B7%E7%86%B1%E7%88%BE%E6%9B%BC%E8%B3%AA%E6%95%B8" target="_blank" rel="noopener">索菲热尔曼素数</a> q 可以用来计算素数 p = 2q + 1，这样的 p 称为安全素数，因为使用它之后 G 的阶只能被 2 和 q 整除。</p>
+<p>除此之外，根据上面的分析，我们也应该尽量选择足够大的数来作为随机数 a 和 b，以防止暴力破解。一般选择一个足够大的素因子以防止使用 <a href="https://en.wikipedia.org/wiki/Pohlig%E2%80%93Hellman_algorithm" target="_blank" rel="noopener">Pohlig–Hellman 算法</a>来得到 a 或 b。</p>
+<p>对于使用索菲热尔曼素数 q 来计算 p 的场景，维基百科同样提到了下面这段有关 g 的安全取值的描述。（限于个人技术水平，没搞懂原理)</p>
+<blockquote>
+<p>g 有时被选择成 G 的 q 阶子群的生成元，而不是 G 本身的生成元，这样 $g^a$ 的勒让德符号将不会显示出 a 的低位。</p>
+</blockquote>
+<h3 id="身份验证"><a href="#身份验证" class="headerlink" title="身份验证"></a>身份验证</h3><p>DH 密钥交换本身并没有提供通讯双方的身份验证服务，因此它很容易受到中间人攻击。 一个中间人在信道的中央进行两次 DH 密钥交换，一次和 A 另一次和 B，就能够成功的向 A 假装自己是B，反之亦然。中间人者可以解密（读取和存储）任何一个人的信息并重新加密信息，然后传递给另一个人。通常需要一个能够验证通讯双方身份的机制来防止这类攻击，比如一个公钥基础设施。</p>
+<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><ul>
+<li><a href="https://zh.wikipedia.org/wiki/%E8%BF%AA%E8%8F%B2-%E8%B5%AB%E7%88%BE%E6%9B%BC%E5%AF%86%E9%91%B0%E4%BA%A4%E6%8F%9B" target="_blank" rel="noopener">迪菲-赫尔曼密钥交换</a></li>
+<li><a href="https://blog.csdn.net/mrpre/article/details/52608867" target="_blank" rel="noopener">DH 算法原理</a></li>
+<li><a href="https://zh.wikipedia.org/wiki/%E4%BA%8C%E9%A1%B9%E5%BC%8F%E5%AE%9A%E7%90%86" target="_blank" rel="noopener">二项式定理</a></li>
+<li><a href="https://zh.wikipedia.org/wiki/%E5%8E%9F%E6%A0%B9" target="_blank" rel="noopener">原根</a></li>
+<li><a href="https://zh.wikipedia.org/zh-hans/%E6%95%B4%E6%95%B0%E6%A8%A1n%E4%B9%98%E6%B3%95%E7%BE%A4" target="_blank" rel="noopener">整数模n乘法群</a></li>
+<li><a href="https://zh.wikipedia.org/wiki/%E8%B4%B9%E9%A9%AC%E5%B0%8F%E5%AE%9A%E7%90%86" target="_blank" rel="noopener">费马小定理</a></li>
+<li><a href="https://zh.wikipedia.org/wiki/%E6%A8%A1%E9%99%A4" target="_blank" rel="noopener">模除</a></li>
+<li><a href="https://zh.wikipedia.org/wiki/%E7%A6%BB%E6%95%A3%E5%AF%B9%E6%95%B0" target="_blank" rel="noopener">离散对数</a></li>
+</ul>
 
-     ///基数排序函数
-     //a是要排序的数组
-     //m表示数组元素最高位数，如我们排序的数组中位数最高的元素为gaaa，有4位
-     public static void sort(String[] a,int m){
-          int n = 0;
-          //27表示每一位字符分成27类，其中1~26对应&apos;a&apos;~&apos;z&apos;
-          //第0位专门用来存放没有高位字符的数组元素，如在比较第二位字符时，b,z,f等没有第二位字符的元素就存在temp[0]中
-          //相对应的，ac存在temp[1]中，ef存在temp[5]中
-          String[][] temp = new String[27][a.length];
-          int[] order = new int[27];
-          while(n &lt; m){
-               //这里声明String类型的数组b，将数组a中的每个元素倒序，然后放入数组b
-               //如a[0]=&quot;abc&quot;，则b[0]=&quot;cba&quot;
-               //之所以这样做，是为了解决下面调用charAt方法时索引的问题，脑子太笨，没想到更好的方法
-               String[] b = new String[a.length];
-               for(int i = 0;i &lt; a.length;i++){
-                    if(a[i].length() &gt; 1){
-                         StringBuffer sb = new StringBuffer(a[i]);
-                         sb.reverse();
-                         b[i] = new String(sb);
-                    }else{
-                         b[i] = a[i];
-                    }
-               }
-
-               for(int i = 0;i &lt; a.length;i++){
-                    if(a[i].length() &gt; n){
-                         int lsd = b[i].charAt(n) - &apos;a&apos; + 1;
-                         temp[lsd][order[lsd]] = a[i];
-                         order[lsd]++;
-                    }else{
-                         temp[0][order[0]] = a[i];
-                         order[0]++;
-                    }
-               }
-
-               int k = 0;
-               for(int i = 0;i &lt; 27;i++){
-                    for(int j = 0;j &lt; order[i];j++){
-                         a[k] = temp[i][j];
-                         k++;
-                    }
-                    order[i] = 0;
-               }
-
-               n++;
-          }
-     }
-}</code></pre>
     
 
-    
-    <div class="page-reward">
-      <a href="javascript:void(0);" class="page-reward-btn tooltip-top" target="_self">
-        <div class="tooltip tooltip-east">
-          <span class="tooltip-item">
-            赏
-          </span>
-          <span class="tooltip-content">
-            <span class="tooltip-text">
-              <span class="tooltip-inner">
-                <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i
-                    class="icon icon-quo-right"></i></p>
-                <div class="reward-box">
-                  
-                  <div class="reward-box-item">
-                    <img class="reward-img" src="/img/alipay.jpg">
-                    <span class="reward-type">支付宝</span>
-                  </div>
-                  
-                  
-                  <div class="reward-box-item">
-                    <img class="reward-img" src="/img/weixin.png">
-                    <span class="reward-type">微信</span>
-                  </div>
-                  
-                </div>
-              </span>
-            </span>
-          </span>
-        </div>
-      </a>
-    </div>
     
 
     
@@ -512,11 +418,11 @@ public class BucketSort{
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">密码学</a>
         		</li>
       		
 		</ul>
@@ -572,7 +478,7 @@ public class BucketSort{
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-     <!-- <img src="//pan.baidu.com/share/qrcode?url=http://yueban.github.io/2014/05/01/%E6%A1%B6%E5%BC%8F%E6%8E%92%E5%BA%8F%E4%B8%8E%E5%9F%BA%E6%95%B0%E6%8E%92%E5%BA%8F%E4%B8%BE%E4%BE%8B%E5%8F%8AJAVA%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0/" alt="微信分享二维码"> -->
+     <!-- <img src="//pan.baidu.com/share/qrcode?url=http://yueban.github.io/2020/11/01/Diffie%E2%80%93Hellman%20%E5%AF%86%E9%92%A5%E5%8D%8F%E5%95%86%E7%AE%97%E6%B3%95%E8%AF%A6%E8%A7%A3/" alt="微信分享二维码"> -->
     </div>
 </div>
 
@@ -587,15 +493,11 @@ public class BucketSort{
 
 <nav id="article-nav">
   
-    <a href="/2014/05/02/%E9%93%BE%E8%A1%A8%E7%9A%84%E6%B8%B8%E6%A0%87%E5%AE%9E%E7%8E%B0(Java)/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          链表的游标实现 (Java)
-        
-      </div>
-    </a>
   
+    <a href="/2020/08/23/%E4%BF%AE%E6%94%B9%20Nexus%20Repository%20Manager%20%E5%8F%91%E5%B8%83%20scope%20%E4%B8%BA%20runtime/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">修改 Sonatype Nexus Repository Manager 发布 scope 为 runtime</div>
+      <i class="icon-circle-right"></i>
+    </a>
   
 </nav>
 
@@ -634,9 +536,9 @@ public class BucketSort{
     <script src="/lib/gitment.js"></script>
   
   <script>
-    <!-- id: "桶式排序与基数排序举例及 JAVA 代码实现" -->
+    <!-- id: "Diffie–Hellman 密钥协商算法详解" -->
     var gitment = new Gitment({
-      id: "20140501100040",
+      id: "20201101135954",
       owner: 'yueban',
       repo: 'yueban.github.com',
       oauth: {
