@@ -17,7 +17,7 @@
 <meta property="og:image" content="http://7xshsn.com2.z0.glb.clouddn.com/flux_demo_analysisQQ20160328-0@2x.png?imageView2/2/w/400">
 <meta property="og:image" content="http://7xshsn.com2.z0.glb.clouddn.com/flux_demo_analysis1459559236063_2.png?imageView2/2/w/720">
 <meta property="article:published_time" content="2016-03-31T11:15:24.000Z">
-<meta property="article:modified_time" content="2020-11-08T10:24:15.991Z">
+<meta property="article:modified_time" content="2020-11-08T10:32:36.172Z">
 <meta property="article:author" content="月半兄">
 <meta property="article:tag" content="Android">
 <meta name="twitter:card" content="summary">
@@ -118,7 +118,7 @@
 
     </div>
     <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#包结构"><span class="toc-number">1.</span> <span class="toc-text">包结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#UML-类图"><span class="toc-number">2.</span> <span class="toc-text">UML 类图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#一次-Flux-闭环"><span class="toc-number">3.</span> <span class="toc-text">一次 Flux 闭环</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#小结"><span class="toc-number">3.1.</span> <span class="toc-text">小结</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#包结构"><span class="toc-number">1.</span> <span class="toc-text">包结构</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#UML-类图"><span class="toc-number">2.</span> <span class="toc-text">UML 类图</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#一次-Flux-闭环"><span class="toc-number">3.</span> <span class="toc-text">一次 Flux 闭环</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#小结"><span class="toc-number">3.1.</span> <span class="toc-text">小结</span></a></li></ol></li></ol>
     </div>
   </span>
 </div>
@@ -144,7 +144,7 @@
       
         <time datetime="2016-03-31T11:15:24.000Z" itemprop="datePublished">2016-03-31</time>
         
-        (Updated: <time datetime="2020-11-08T10:24:15.991Z" itemprop="dateModified">2020-11-08</time>)
+        (Updated: <time datetime="2020-11-08T10:32:36.172Z" itemprop="dateModified">2020-11-08</time>)
         
       
     </div>
@@ -175,7 +175,7 @@
 </blockquote>
 <a id="more"></a>
 
-<h3 id="包结构"><a href="#包结构" class="headerlink" title="包结构"></a>包结构</h3><p><img src="http://7xshsn.com2.z0.glb.clouddn.com/flux_demo_analysisQQ20160328-0@2x.png?imageView2/2/w/400" alt="Flux Package Architecture"></p>
+<h1 id="包结构"><a href="#包结构" class="headerlink" title="包结构"></a>包结构</h1><p><img src="http://7xshsn.com2.z0.glb.clouddn.com/flux_demo_analysisQQ20160328-0@2x.png?imageView2/2/w/400" alt="Flux Package Architecture"></p>
 <p>Flux Demo 的包结构相当简洁，文件也不多，除了 <code>View</code> 层的 <code>TodoActivity</code> 与 <code>TodoRecyclerAdapter</code>，model 包下的 <code>Todo</code>，其余 3 个 package 分别对应着 Flux 架构的三个模块 <code>Action</code>，<code>Dispatcher</code>，<code>Store</code>，具体分析如下：</p>
 <ul>
 <li><code>actions</code> : Action 模块<ul>
@@ -200,9 +200,9 @@
 <li><code>TodoActivity</code></li>
 <li><code>TodoRecyclerAdapter</code></li>
 </ul>
-<h3 id="UML-类图"><a href="#UML-类图" class="headerlink" title="UML 类图"></a>UML 类图</h3><p>类图能很清晰的反映出各个类/模块之间的关系（plantuml 生成的类图一眼看去确实比较乱，建议大家放大查看），与上一篇博客所说的相吻合，类图中可以很清晰的看到 <code>View</code> → <code>ActionsCreator</code> → <code>Action</code> → <code>Dispatcher</code> → <code>Store</code> → <code>storeChangeEvent</code> → <code>View</code> 所形成的闭环。</p>
+<h1 id="UML-类图"><a href="#UML-类图" class="headerlink" title="UML 类图"></a>UML 类图</h1><p>类图能很清晰的反映出各个类/模块之间的关系（plantuml 生成的类图一眼看去确实比较乱，建议大家放大查看），与上一篇博客所说的相吻合，类图中可以很清晰的看到 <code>View</code> → <code>ActionsCreator</code> → <code>Action</code> → <code>Dispatcher</code> → <code>Store</code> → <code>storeChangeEvent</code> → <code>View</code> 所形成的闭环。</p>
 <p><img src="http://7xshsn.com2.z0.glb.clouddn.com/flux_demo_analysis1459559236063_2.png?imageView2/2/w/720" alt="Flux UML Class"></p>
-<h3 id="一次-Flux-闭环"><a href="#一次-Flux-闭环" class="headerlink" title="一次 Flux 闭环"></a>一次 Flux 闭环</h3><p>最后我们以 <code>创建一个 Todo 事项</code> 举例来说明 Flux 架构的工作流程，并分析具体的代码实现。</p>
+<h1 id="一次-Flux-闭环"><a href="#一次-Flux-闭环" class="headerlink" title="一次 Flux 闭环"></a>一次 Flux 闭环</h1><p>最后我们以 <code>创建一个 Todo 事项</code> 举例来说明 Flux 架构的工作流程，并分析具体的代码实现。</p>
 <ol>
 <li><strong>TodoActivity.java →</strong> 用户输入</li>
 <li><strong>TodoActivity.java →</strong> 用户点击创建按钮</li>
@@ -225,7 +225,7 @@
 <li><strong>TodoActivity.java →</strong> <code>onTodoStoreChange(TodoStore.TodoStoreChangeEvent event)</code> 方法接收到 Bus 发送的 TodoStoreChangeEvent 对象</li>
 <li><strong>TodoActivity.java →</strong> 执行 <code>updateUI()</code> 从 TodoStore 获取数据（第 9 步时更新了 TodoStore 中的数据）更新界面</li>
 </ol>
-<h4 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h4><p>一次简单的创建 Todo 的过程被我们拆解成出 14 个步骤，看起来很麻烦，但不难从中发现 Flux 架构极的单向数据流传输与可定制性。我们在 ActionsCreator 中对处理各种各样的业务逻辑，根据结果分发不同的 Action，每一个 Action 对应的都是一条干净，清晰，完整的数据流传递。我们在 Store 中针对 Action 响应数据更新，最后再通知 View 更新，这个过程中也存在强大的可定制性，比如在上面的例子中，我们创建完成后提交的 StoreChangeEvent 不再是通用的 TodoStoreChangeEvent，而是针对 TODO_CREATE Action 发送特定的 TodoCreateStoreChangeEvent，View 层响应 TodoCreateStoreChangeEvent 执行的操作则是从 TodoStore 中取出最新的一条数据，调用 notifyItemInserted 动态的添加到 View 界面，这样用户体验无疑会好很多。</p>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>一次简单的创建 Todo 的过程被我们拆解成出 14 个步骤，看起来很麻烦，但不难从中发现 Flux 架构极的单向数据流传输与可定制性。我们在 ActionsCreator 中对处理各种各样的业务逻辑，根据结果分发不同的 Action，每一个 Action 对应的都是一条干净，清晰，完整的数据流传递。我们在 Store 中针对 Action 响应数据更新，最后再通知 View 更新，这个过程中也存在强大的可定制性，比如在上面的例子中，我们创建完成后提交的 StoreChangeEvent 不再是通用的 TodoStoreChangeEvent，而是针对 TODO_CREATE Action 发送特定的 TodoCreateStoreChangeEvent，View 层响应 TodoCreateStoreChangeEvent 执行的操作则是从 TodoStore 中取出最新的一条数据，调用 notifyItemInserted 动态的添加到 View 界面，这样用户体验无疑会好很多。</p>
 <p>Flux 架构的特点与优势在于 <code>闭环</code> 与 <code>单向数据流</code>，在 Flux 架构上写业务是一个通畅的过程，但 Flux 的定位还是与 MVP 类似，只是业务逻辑层的架构，如果放在当前大热的 CleanArchitecture 中，仅相当于 presentation 这一层，domain 层与 data 层则不是 Flux 关心的事情，或许后面会写一篇关于 CleanArchitecture 的简介。</p>
 
   </div>
@@ -250,7 +250,7 @@
     </div>
 
     <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#包结构"><span class="toc-number">1.</span> <span class="toc-text">包结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#UML-类图"><span class="toc-number">2.</span> <span class="toc-text">UML 类图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#一次-Flux-闭环"><span class="toc-number">3.</span> <span class="toc-text">一次 Flux 闭环</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#小结"><span class="toc-number">3.1.</span> <span class="toc-text">小结</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#包结构"><span class="toc-number">1.</span> <span class="toc-text">包结构</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#UML-类图"><span class="toc-number">2.</span> <span class="toc-text">UML 类图</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#一次-Flux-闭环"><span class="toc-number">3.</span> <span class="toc-text">一次 Flux 闭环</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#小结"><span class="toc-number">3.1.</span> <span class="toc-text">小结</span></a></li></ol></li></ol>
     </div>
 
     <div id="share-footer" style="display: none">

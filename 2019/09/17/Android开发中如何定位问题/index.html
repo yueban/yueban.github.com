@@ -15,7 +15,7 @@
 <meta property="og:description" content="本文旨在总结个人在 Android 开发中定位问题的经验与技巧。 概述定位问题的三个步骤，1. 确认重点，2. 查找共性，3. 尝试复现。其中确认重点与查找共性的关键在于收集足够多的问题信息。  LogcatLogCat 是 Android 开发中最便捷，最常用的信息收集工具，没有之一。LogCat 中建议输出如下信息：  Application, Activity 与 Fragment 中的 c">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2019-09-17T09:30:11.000Z">
-<meta property="article:modified_time" content="2020-11-07T11:18:48.861Z">
+<meta property="article:modified_time" content="2020-11-08T10:32:00.818Z">
 <meta property="article:author" content="月半兄">
 <meta property="article:tag" content="Android">
 <meta name="twitter:card" content="summary">
@@ -102,9 +102,9 @@
   <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yueban.github.io/2019/09/17/Android%E5%BC%80%E5%8F%91%E4%B8%AD%E5%A6%82%E4%BD%95%E5%AE%9A%E4%BD%8D%E9%97%AE%E9%A2%98/&title=Android 开发中如何定位问题" target="_blank" rel="noopener"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
   <li><a class="icon" href="http://digg.com/submit?url=http://yueban.github.io/2019/09/17/Android%E5%BC%80%E5%8F%91%E4%B8%AD%E5%A6%82%E4%BD%95%E5%AE%9A%E4%BD%8D%E9%97%AE%E9%A2%98/&title=Android 开发中如何定位问题" target="_blank" rel="noopener"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
   <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yueban.github.io/2019/09/17/Android%E5%BC%80%E5%8F%91%E4%B8%AD%E5%A6%82%E4%BD%95%E5%AE%9A%E4%BD%8D%E9%97%AE%E9%A2%98/&name=Android 开发中如何定位问题&description=&lt;p&gt;本文旨在总结个人在 Android 开发中定位问题的经验与技巧。&lt;/p&gt;
-&lt;h3 id=&#34;概述&#34;&gt;&lt;a href=&#34;#概述&#34; class=&#34;headerlink&#34; title=&#34;概述&#34;&gt;&lt;/a&gt;概述&lt;/h3&gt;&lt;p&gt;定位问题的三个步骤，&lt;strong&gt;1. 确认重点&lt;/strong&gt;，&lt;strong&gt;2. 查找共性&lt;/strong&gt;，&lt;strong&gt;3. 尝试复现&lt;/strong&gt;。其中&lt;strong&gt;确认重点&lt;/strong&gt;与&lt;strong&gt;查找共性&lt;/strong&gt;的关键在于&lt;strong&gt;收集足够多的问题信息&lt;/strong&gt;。&lt;/p&gt;
+&lt;h1 id=&#34;概述&#34;&gt;&lt;a href=&#34;#概述&#34; class=&#34;headerlink&#34; title=&#34;概述&#34;&gt;&lt;/a&gt;概述&lt;/h1&gt;&lt;p&gt;定位问题的三个步骤，&lt;strong&gt;1. 确认重点&lt;/strong&gt;，&lt;strong&gt;2. 查找共性&lt;/strong&gt;，&lt;strong&gt;3. 尝试复现&lt;/strong&gt;。其中&lt;strong&gt;确认重点&lt;/strong&gt;与&lt;strong&gt;查找共性&lt;/strong&gt;的关键在于&lt;strong&gt;收集足够多的问题信息&lt;/strong&gt;。&lt;/p&gt;
 &lt;hr&gt;
-&lt;h4 id=&#34;Logcat&#34;&gt;&lt;a href=&#34;#Logcat&#34; class=&#34;headerlink&#34; title=&#34;Logcat&#34;&gt;&lt;/a&gt;Logcat&lt;/h4&gt;&lt;p&gt;LogCat 是 Android 开发中最便捷，最常用的信息收集工具，没有之一。LogCat 中建议输出如下信息：&lt;/p&gt;
+&lt;h2 id=&#34;Logcat&#34;&gt;&lt;a href=&#34;#Logcat&#34; class=&#34;headerlink&#34; title=&#34;Logcat&#34;&gt;&lt;/a&gt;Logcat&lt;/h2&gt;&lt;p&gt;LogCat 是 Android 开发中最便捷，最常用的信息收集工具，没有之一。LogCat 中建议输出如下信息：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;Application&lt;/code&gt;, &lt;code&gt;Activity&lt;/code&gt; 与 &lt;code&gt;Fragment&lt;/code&gt; 中的 &lt;code&gt;create&lt;/code&gt;, &lt;code&gt;destroy&lt;/code&gt;, &lt;code&gt;start&lt;/code&gt;, &lt;code&gt;stop&lt;/code&gt; 四个生命周期方法&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;网络请求:&lt;/strong&gt; 包括 &lt;code&gt;request&lt;/code&gt; 的 &lt;code&gt;url&lt;/code&gt;, &lt;code&gt;header&lt;/code&gt;, &lt;code&gt;params&lt;/code&gt;, 以及 &lt;code&gt;response&lt;/code&gt; 的&lt;code&gt;header&lt;/code&gt;, &lt;code&gt;body&lt;/code&gt;，需要注意的是，输出 &lt;code&gt;response&lt;/code&gt; 信息，也需要添加 &lt;code&gt;url&lt;/code&gt;，方便我们知道是哪一个请求。&lt;/li&gt;
@@ -122,7 +122,7 @@
 
     </div>
     <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#概述"><span class="toc-number">1.</span> <span class="toc-text">概述</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Logcat"><span class="toc-number">1.1.</span> <span class="toc-text">Logcat</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Debug-tools"><span class="toc-number">1.2.</span> <span class="toc-text">Debug tools</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Profiler"><span class="toc-number">1.3.</span> <span class="toc-text">Profiler</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#第三方库"><span class="toc-number">1.4.</span> <span class="toc-text">第三方库</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#崩溃信息收集"><span class="toc-number">1.5.</span> <span class="toc-text">崩溃信息收集</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#反编译"><span class="toc-number">1.6.</span> <span class="toc-text">反编译</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Android-OS-开发者模式选项"><span class="toc-number">1.7.</span> <span class="toc-text">Android OS 开发者模式选项</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#git-bisect"><span class="toc-number">1.8.</span> <span class="toc-text">git bisect</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#概述"><span class="toc-number">1.</span> <span class="toc-text">概述</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Logcat"><span class="toc-number">1.1.</span> <span class="toc-text">Logcat</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Debug-tools"><span class="toc-number">1.2.</span> <span class="toc-text">Debug tools</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Profiler"><span class="toc-number">1.3.</span> <span class="toc-text">Profiler</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第三方库"><span class="toc-number">1.4.</span> <span class="toc-text">第三方库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#崩溃信息收集"><span class="toc-number">1.5.</span> <span class="toc-text">崩溃信息收集</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#反编译"><span class="toc-number">1.6.</span> <span class="toc-text">反编译</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Android-OS-开发者模式选项"><span class="toc-number">1.7.</span> <span class="toc-text">Android OS 开发者模式选项</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#git-bisect"><span class="toc-number">1.8.</span> <span class="toc-text">git bisect</span></a></li></ol></li></ol>
     </div>
   </span>
 </div>
@@ -148,7 +148,7 @@
       
         <time datetime="2019-09-17T09:30:11.000Z" itemprop="datePublished">2019-09-17</time>
         
-        (Updated: <time datetime="2020-11-07T11:18:48.861Z" itemprop="dateModified">2020-11-07</time>)
+        (Updated: <time datetime="2020-11-08T10:32:00.818Z" itemprop="dateModified">2020-11-08</time>)
         
       
     </div>
@@ -169,9 +169,9 @@
 
   <div class="content" itemprop="articleBody">
     <p>本文旨在总结个人在 Android 开发中定位问题的经验与技巧。</p>
-<h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p>定位问题的三个步骤，<strong>1. 确认重点</strong>，<strong>2. 查找共性</strong>，<strong>3. 尝试复现</strong>。其中<strong>确认重点</strong>与<strong>查找共性</strong>的关键在于<strong>收集足够多的问题信息</strong>。</p>
+<h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>定位问题的三个步骤，<strong>1. 确认重点</strong>，<strong>2. 查找共性</strong>，<strong>3. 尝试复现</strong>。其中<strong>确认重点</strong>与<strong>查找共性</strong>的关键在于<strong>收集足够多的问题信息</strong>。</p>
 <hr>
-<h4 id="Logcat"><a href="#Logcat" class="headerlink" title="Logcat"></a>Logcat</h4><p>LogCat 是 Android 开发中最便捷，最常用的信息收集工具，没有之一。LogCat 中建议输出如下信息：</p>
+<h2 id="Logcat"><a href="#Logcat" class="headerlink" title="Logcat"></a>Logcat</h2><p>LogCat 是 Android 开发中最便捷，最常用的信息收集工具，没有之一。LogCat 中建议输出如下信息：</p>
 <ul>
 <li><code>Application</code>, <code>Activity</code> 与 <code>Fragment</code> 中的 <code>create</code>, <code>destroy</code>, <code>start</code>, <code>stop</code> 四个生命周期方法</li>
 <li><strong>网络请求:</strong> 包括 <code>request</code> 的 <code>url</code>, <code>header</code>, <code>params</code>, 以及 <code>response</code> 的<code>header</code>, <code>body</code>，需要注意的是，输出 <code>response</code> 信息，也需要添加 <code>url</code>，方便我们知道是哪一个请求。</li>
@@ -187,7 +187,7 @@
 <a id="more"></a>
 
 <hr>
-<h4 id="Debug-tools"><a href="#Debug-tools" class="headerlink" title="Debug tools"></a>Debug tools</h4><p>Debug 工具是 Android Studio 自带的一套非常强大的调试工具，也是比较为大家熟知的，但大部分人对于 Debug 工具的使用仍停留在打个断点的程度，下面简单列举一下 Debug 工具能做到的事。</p>
+<h2 id="Debug-tools"><a href="#Debug-tools" class="headerlink" title="Debug tools"></a>Debug tools</h2><p>Debug 工具是 Android Studio 自带的一套非常强大的调试工具，也是比较为大家熟知的，但大部分人对于 Debug 工具的使用仍停留在打个断点的程度，下面简单列举一下 Debug 工具能做到的事。</p>
 <ul>
 <li>断点类型<ul>
 <li><strong>普通断点</strong></li>
@@ -210,7 +210,7 @@
 <p><a href="https://blog.csdn.net/My_TrueLove/article/details/52240558" target="_blank" rel="noopener">超详细：用图诠释 Android Studio 调试技巧</a> &gt;<a href="https://developer.android.com/studio/debug?hl=zh-cn" target="_blank" rel="noopener">Google 官方 debug 工具教程</a></p>
 </blockquote>
 <hr>
-<h4 id="Profiler"><a href="#Profiler" class="headerlink" title="Profiler"></a>Profiler</h4><p>Profiler 是 Android Studio 自带的一套性能监测工具，它可以监测 app（以及设备）的实时运行状态，提供如下几个类型的监测：</p>
+<h2 id="Profiler"><a href="#Profiler" class="headerlink" title="Profiler"></a>Profiler</h2><p>Profiler 是 Android Studio 自带的一套性能监测工具，它可以监测 app（以及设备）的实时运行状态，提供如下几个类型的监测：</p>
 <ul>
 <li><strong>CPU:</strong> 可以监测 Activity 生命周期事件，实时 CPU 使用率，线程活动。支持对一段时间内的数据进行追踪，分析一段时间内方法的 cpu 耗时等。</li>
 <li><strong>内存:</strong> 可以查看实时内存用量，及 <code>Java</code>，<code>Native</code>，<code>Graphics</code> 等的内存占比。查看一段时间内的内存中对象的信息，包括创建对象的方法调用栈等。支持手动 gc。</li>
@@ -221,14 +221,14 @@
 <p><a href="https://developer.android.com/studio/profile/android-profiler" target="_blank" rel="noopener">Android 官方 Profiler 教程</a></p>
 </blockquote>
 <hr>
-<h4 id="第三方库"><a href="#第三方库" class="headerlink" title="第三方库"></a>第三方库</h4><ul>
+<h2 id="第三方库"><a href="#第三方库" class="headerlink" title="第三方库"></a>第三方库</h2><ul>
 <li><strong><a href="https://github.com/facebook/stetho" target="_blank" rel="noopener">stetho</a>:</strong> facebook 出品的强大的调试工具，可以借助 chrome 开发者工具，方便的查看 Android app 的 ui 布局，网络请求，资源文件，assets 文件，数据库内容等</li>
 <li><strong><a href="https://github.com/amitshekhariitbhu/Android-Debug-Database" target="_blank" rel="noopener">Android Debug Database</a>:</strong> 通过浏览器访问设备，直接查看数据库内容</li>
 <li><strong><a href="https://github.com/square/leakcanary" target="_blank" rel="noopener">LeakCanary</a>:</strong> 强大的内存泄露检测库</li>
 <li><strong><a href="https://github.com/markzhai/AndroidPerformanceMonitor" target="_blank" rel="noopener">AndroidPerformanceMonitor (BlockCanary)</a>:</strong> 卡顿检测库（似乎已停止维护）</li>
 </ul>
 <hr>
-<h4 id="崩溃信息收集"><a href="#崩溃信息收集" class="headerlink" title="崩溃信息收集"></a>崩溃信息收集</h4><p>崩溃信息的收集主要通过 <code>UncaughtExceptionHandler</code> 捕获，常见的第三方崩溃信息收集工具，如 bugly，友盟等，均通过该方法实现崩溃信息的手机。</p>
+<h2 id="崩溃信息收集"><a href="#崩溃信息收集" class="headerlink" title="崩溃信息收集"></a>崩溃信息收集</h2><p>崩溃信息的收集主要通过 <code>UncaughtExceptionHandler</code> 捕获，常见的第三方崩溃信息收集工具，如 bugly，友盟等，均通过该方法实现崩溃信息的手机。</p>
 <p>对于一个崩溃，需要收集以下信息：</p>
 <ul>
 <li><strong>方法调用栈</strong></li>
@@ -249,13 +249,13 @@
 <li>部分第三方的崩溃信息收集库（<code>fabric - crashlytics</code>）会自己对 <code>UncaughtExceptionHandler</code> 进行一层封装，以避免破坏已有的逻辑，但某些三方库（<code>umeng</code>）不会考虑的这么周到，这时可以注意三方库的初始化顺序，并自己实现一层封装</li>
 </ul>
 <hr>
-<h4 id="反编译"><a href="#反编译" class="headerlink" title="反编译"></a>反编译</h4><p>有时需要确认 apk 中是否包含我们所需要的资源/代码，而 apk 解压后的 <code>AndroidManifest.xml</code> 是二进制码，java 类也都是 <code>smali</code> 文件。这时我们可以通过一些成熟的反编译工具，直接查看 apk 中的明文内容。</p>
+<h2 id="反编译"><a href="#反编译" class="headerlink" title="反编译"></a>反编译</h2><p>有时需要确认 apk 中是否包含我们所需要的资源/代码，而 apk 解压后的 <code>AndroidManifest.xml</code> 是二进制码，java 类也都是 <code>smali</code> 文件。这时我们可以通过一些成熟的反编译工具，直接查看 apk 中的明文内容。</p>
 <ul>
 <li><strong><a href="https://github.com/java-decompiler/jd-gui" target="_blank" rel="noopener">jd-gui</a>:</strong> 带有 gui 的 Android / java 反编译工具</li>
 <li><strong>Android Studio:</strong> 直接将 apk 文件拖拽入 Android Studio 中即可反编译查看 apk 内容</li>
 </ul>
 <hr>
-<h4 id="Android-OS-开发者模式选项"><a href="#Android-OS-开发者模式选项" class="headerlink" title="Android OS 开发者模式选项"></a>Android OS 开发者模式选项</h4><p>Android 系统的开发者选项中，提供了许多方便我们调试以及定位问题的选项。</p>
+<h2 id="Android-OS-开发者模式选项"><a href="#Android-OS-开发者模式选项" class="headerlink" title="Android OS 开发者模式选项"></a>Android OS 开发者模式选项</h2><p>Android 系统的开发者选项中，提供了许多方便我们调试以及定位问题的选项。</p>
 <ul>
 <li>显示布局边界</li>
 <li>显示过度绘制</li>
@@ -267,7 +267,7 @@
 <li>…</li>
 </ul>
 <hr>
-<h4 id="git-bisect"><a href="#git-bisect" class="headerlink" title="git bisect"></a>git bisect</h4><p><code>git bisect</code> 是 <code>git</code> 提供的一套二分法查找问题的工具。有时我们在某个节点发现了错误，但之前已经提交了多个 commit，我们并不知道出错的的到底是哪一个，但我们知道在很早之前的一个 commit 是正常的。如果按照 commit 一个个的 <code>check out</code> 排查效率是很低的，这时我们就可以使用 <code>git bisect</code>。</p>
+<h2 id="git-bisect"><a href="#git-bisect" class="headerlink" title="git bisect"></a>git bisect</h2><p><code>git bisect</code> 是 <code>git</code> 提供的一套二分法查找问题的工具。有时我们在某个节点发现了错误，但之前已经提交了多个 commit，我们并不知道出错的的到底是哪一个，但我们知道在很早之前的一个 commit 是正常的。如果按照 commit 一个个的 <code>check out</code> 排查效率是很低的，这时我们就可以使用 <code>git bisect</code>。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">$ git bisect start</span><br><span class="line">$ git bisect bad  commit_19    <span class="comment"># commit_19 是有问题的</span></span><br><span class="line">$ git bisect good commit_5    <span class="comment"># commit_5 是正常的</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># git 开始切换到 commit_19 与 commit_5 中间的节点，并要求你确认这个节点是否正常</span></span><br><span class="line"><span class="comment"># 同时告诉你，按照二分法，还有3次 git bisect 操作就能定位到有问题的节点了</span></span><br><span class="line">Bisecting: 675 revisions left to <span class="built_in">test</span> after this (roughly 3 steps)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 在这个节点进行测试，并将测试结果告诉 git</span></span><br><span class="line">git bisect good <span class="comment"># 如果节点异常就是 git bisect bad</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 继续执行，直到定位到问题节点</span></span><br></pre></td></tr></table></figure>
 
 <blockquote>
@@ -296,7 +296,7 @@
     </div>
 
     <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#概述"><span class="toc-number">1.</span> <span class="toc-text">概述</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Logcat"><span class="toc-number">1.1.</span> <span class="toc-text">Logcat</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Debug-tools"><span class="toc-number">1.2.</span> <span class="toc-text">Debug tools</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Profiler"><span class="toc-number">1.3.</span> <span class="toc-text">Profiler</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#第三方库"><span class="toc-number">1.4.</span> <span class="toc-text">第三方库</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#崩溃信息收集"><span class="toc-number">1.5.</span> <span class="toc-text">崩溃信息收集</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#反编译"><span class="toc-number">1.6.</span> <span class="toc-text">反编译</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Android-OS-开发者模式选项"><span class="toc-number">1.7.</span> <span class="toc-text">Android OS 开发者模式选项</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#git-bisect"><span class="toc-number">1.8.</span> <span class="toc-text">git bisect</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#概述"><span class="toc-number">1.</span> <span class="toc-text">概述</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Logcat"><span class="toc-number">1.1.</span> <span class="toc-text">Logcat</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Debug-tools"><span class="toc-number">1.2.</span> <span class="toc-text">Debug tools</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Profiler"><span class="toc-number">1.3.</span> <span class="toc-text">Profiler</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第三方库"><span class="toc-number">1.4.</span> <span class="toc-text">第三方库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#崩溃信息收集"><span class="toc-number">1.5.</span> <span class="toc-text">崩溃信息收集</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#反编译"><span class="toc-number">1.6.</span> <span class="toc-text">反编译</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Android-OS-开发者模式选项"><span class="toc-number">1.7.</span> <span class="toc-text">Android OS 开发者模式选项</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#git-bisect"><span class="toc-number">1.8.</span> <span class="toc-text">git bisect</span></a></li></ol></li></ol>
     </div>
 
     <div id="share-footer" style="display: none">
@@ -311,9 +311,9 @@
   <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yueban.github.io/2019/09/17/Android%E5%BC%80%E5%8F%91%E4%B8%AD%E5%A6%82%E4%BD%95%E5%AE%9A%E4%BD%8D%E9%97%AE%E9%A2%98/&title=Android 开发中如何定位问题" target="_blank" rel="noopener"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
   <li><a class="icon" href="http://digg.com/submit?url=http://yueban.github.io/2019/09/17/Android%E5%BC%80%E5%8F%91%E4%B8%AD%E5%A6%82%E4%BD%95%E5%AE%9A%E4%BD%8D%E9%97%AE%E9%A2%98/&title=Android 开发中如何定位问题" target="_blank" rel="noopener"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
   <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yueban.github.io/2019/09/17/Android%E5%BC%80%E5%8F%91%E4%B8%AD%E5%A6%82%E4%BD%95%E5%AE%9A%E4%BD%8D%E9%97%AE%E9%A2%98/&name=Android 开发中如何定位问题&description=&lt;p&gt;本文旨在总结个人在 Android 开发中定位问题的经验与技巧。&lt;/p&gt;
-&lt;h3 id=&#34;概述&#34;&gt;&lt;a href=&#34;#概述&#34; class=&#34;headerlink&#34; title=&#34;概述&#34;&gt;&lt;/a&gt;概述&lt;/h3&gt;&lt;p&gt;定位问题的三个步骤，&lt;strong&gt;1. 确认重点&lt;/strong&gt;，&lt;strong&gt;2. 查找共性&lt;/strong&gt;，&lt;strong&gt;3. 尝试复现&lt;/strong&gt;。其中&lt;strong&gt;确认重点&lt;/strong&gt;与&lt;strong&gt;查找共性&lt;/strong&gt;的关键在于&lt;strong&gt;收集足够多的问题信息&lt;/strong&gt;。&lt;/p&gt;
+&lt;h1 id=&#34;概述&#34;&gt;&lt;a href=&#34;#概述&#34; class=&#34;headerlink&#34; title=&#34;概述&#34;&gt;&lt;/a&gt;概述&lt;/h1&gt;&lt;p&gt;定位问题的三个步骤，&lt;strong&gt;1. 确认重点&lt;/strong&gt;，&lt;strong&gt;2. 查找共性&lt;/strong&gt;，&lt;strong&gt;3. 尝试复现&lt;/strong&gt;。其中&lt;strong&gt;确认重点&lt;/strong&gt;与&lt;strong&gt;查找共性&lt;/strong&gt;的关键在于&lt;strong&gt;收集足够多的问题信息&lt;/strong&gt;。&lt;/p&gt;
 &lt;hr&gt;
-&lt;h4 id=&#34;Logcat&#34;&gt;&lt;a href=&#34;#Logcat&#34; class=&#34;headerlink&#34; title=&#34;Logcat&#34;&gt;&lt;/a&gt;Logcat&lt;/h4&gt;&lt;p&gt;LogCat 是 Android 开发中最便捷，最常用的信息收集工具，没有之一。LogCat 中建议输出如下信息：&lt;/p&gt;
+&lt;h2 id=&#34;Logcat&#34;&gt;&lt;a href=&#34;#Logcat&#34; class=&#34;headerlink&#34; title=&#34;Logcat&#34;&gt;&lt;/a&gt;Logcat&lt;/h2&gt;&lt;p&gt;LogCat 是 Android 开发中最便捷，最常用的信息收集工具，没有之一。LogCat 中建议输出如下信息：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;Application&lt;/code&gt;, &lt;code&gt;Activity&lt;/code&gt; 与 &lt;code&gt;Fragment&lt;/code&gt; 中的 &lt;code&gt;create&lt;/code&gt;, &lt;code&gt;destroy&lt;/code&gt;, &lt;code&gt;start&lt;/code&gt;, &lt;code&gt;stop&lt;/code&gt; 四个生命周期方法&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;网络请求:&lt;/strong&gt; 包括 &lt;code&gt;request&lt;/code&gt; 的 &lt;code&gt;url&lt;/code&gt;, &lt;code&gt;header&lt;/code&gt;, &lt;code&gt;params&lt;/code&gt;, 以及 &lt;code&gt;response&lt;/code&gt; 的&lt;code&gt;header&lt;/code&gt;, &lt;code&gt;body&lt;/code&gt;，需要注意的是，输出 &lt;code&gt;response&lt;/code&gt; 信息，也需要添加 &lt;code&gt;url&lt;/code&gt;，方便我们知道是哪一个请求。&lt;/li&gt;

@@ -16,7 +16,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://7xshsn.com1.z0.glb.clouddn.com/constraintlayout_constraintlayout_convert.png?imageView2/2/w/480">
 <meta property="article:published_time" content="2017-07-21T12:22:15.000Z">
-<meta property="article:modified_time" content="2020-11-07T11:18:48.860Z">
+<meta property="article:modified_time" content="2020-11-08T10:32:23.804Z">
 <meta property="article:author" content="月半兄">
 <meta property="article:tag" content="Android">
 <meta name="twitter:card" content="summary">
@@ -103,7 +103,7 @@
   <li><a class="icon" href="http://reddit.com/submit?url=http://yueban.github.io/2017/07/21/ConstraintLayout%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86/&title=ConstraintLayout 知识点整理" target="_blank" rel="noopener"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
   <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yueban.github.io/2017/07/21/ConstraintLayout%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86/&title=ConstraintLayout 知识点整理" target="_blank" rel="noopener"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
   <li><a class="icon" href="http://digg.com/submit?url=http://yueban.github.io/2017/07/21/ConstraintLayout%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86/&title=ConstraintLayout 知识点整理" target="_blank" rel="noopener"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yueban.github.io/2017/07/21/ConstraintLayout%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86/&name=ConstraintLayout 知识点整理&description=&lt;h2 id=&#34;概述&#34;&gt;&lt;a href=&#34;#概述&#34; class=&#34;headerlink&#34; title=&#34;概述&#34;&gt;&lt;/a&gt;概述&lt;/h2&gt;&lt;ul&gt;
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yueban.github.io/2017/07/21/ConstraintLayout%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86/&name=ConstraintLayout 知识点整理&description=&lt;h1 id=&#34;概述&#34;&gt;&lt;a href=&#34;#概述&#34; class=&#34;headerlink&#34; title=&#34;概述&#34;&gt;&lt;/a&gt;概述&lt;/h1&gt;&lt;ul&gt;
 &lt;li&gt;每个&lt;code&gt;View&lt;/code&gt;在 &lt;strong&gt;水平&lt;/strong&gt; 和 &lt;strong&gt;竖直&lt;/strong&gt; 方向都需至少一个约束&lt;/li&gt;
 &lt;li&gt;未定义约束的&lt;code&gt;View&lt;/code&gt;默认在左上角 (0,0) 进行绘制&lt;/li&gt;
 &lt;li&gt;布局文件 &lt;code&gt;Design Tab&lt;/code&gt; 的 &lt;code&gt;Component Tree&lt;/code&gt; 中右击 &lt;em&gt;layout&lt;/em&gt; 可将原 &lt;em&gt;layout&lt;/em&gt; 快速转换为 &lt;code&gt;ConstraintLayout&lt;/code&gt; 布局&lt;/li&gt;
@@ -113,7 +113,7 @@
 
     </div>
     <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#概述"><span class="toc-number">1.</span> <span class="toc-text">概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#约束类型详解"><span class="toc-number">2.</span> <span class="toc-text">约束类型详解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#约束偏移"><span class="toc-number">3.</span> <span class="toc-text">约束偏移</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#视图尺寸约束"><span class="toc-number">4.</span> <span class="toc-text">视图尺寸约束</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#控制链式布局"><span class="toc-number">5.</span> <span class="toc-text">控制链式布局</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#概述"><span class="toc-number">1.</span> <span class="toc-text">概述</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#约束类型详解"><span class="toc-number">2.</span> <span class="toc-text">约束类型详解</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#约束偏移"><span class="toc-number">3.</span> <span class="toc-text">约束偏移</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#视图尺寸约束"><span class="toc-number">4.</span> <span class="toc-text">视图尺寸约束</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#控制链式布局"><span class="toc-number">5.</span> <span class="toc-text">控制链式布局</span></a></li></ol>
     </div>
   </span>
 </div>
@@ -139,7 +139,7 @@
       
         <time datetime="2017-07-21T12:22:15.000Z" itemprop="datePublished">2017-07-21</time>
         
-        (Updated: <time datetime="2020-11-07T11:18:48.860Z" itemprop="dateModified">2020-11-07</time>)
+        (Updated: <time datetime="2020-11-08T10:32:23.804Z" itemprop="dateModified">2020-11-08</time>)
         
       
     </div>
@@ -159,7 +159,7 @@
   
 
   <div class="content" itemprop="articleBody">
-    <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><ul>
+    <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><ul>
 <li>每个<code>View</code>在 <strong>水平</strong> 和 <strong>竖直</strong> 方向都需至少一个约束</li>
 <li>未定义约束的<code>View</code>默认在左上角 (0,0) 进行绘制</li>
 <li>布局文件 <code>Design Tab</code> 的 <code>Component Tree</code> 中右击 <em>layout</em> 可将原 <em>layout</em> 快速转换为 <code>ConstraintLayout</code> 布局</li>
@@ -167,17 +167,17 @@
 <a id="more"></a>
 
 <p><img src="http://7xshsn.com1.z0.glb.clouddn.com/constraintlayout_constraintlayout_convert.png?imageView2/2/w/480" alt="ConstraintLayout Convert"></p>
-<h2 id="约束类型详解"><a href="#约束类型详解" class="headerlink" title="约束类型详解"></a>约束类型详解</h2><ul>
+<h1 id="约束类型详解"><a href="#约束类型详解" class="headerlink" title="约束类型详解"></a>约束类型详解</h1><ul>
 <li>父布局位置: 约束<code>View</code>至父布局相应边界</li>
 <li>位置顺序: 定义两个<code>View</code>的显示顺序，如定义<code>BView</code>永远在<code>AView</code>右边</li>
 <li>对齐: 定义两个<code>View</code>边缘对齐</li>
 <li>基线对齐: 定义两个<code>View</code>的文本基线对齐</li>
 <li>约束辅线: 定义一条水平/竖直方向上的不可见辅助线，<code>View</code>可基于该辅助线定义约束，辅助线可通过<strong>百分比</strong>或<strong>固定值</strong>来定义其在水平/竖直方向上的位置</li>
 </ul>
-<h2 id="约束偏移"><a href="#约束偏移" class="headerlink" title="约束偏移"></a>约束偏移</h2><ul>
+<h1 id="约束偏移"><a href="#约束偏移" class="headerlink" title="约束偏移"></a>约束偏移</h1><ul>
 <li>如果一个<code>View</code>的相对两边均定义了约束，且为相同类型（均为固定值或均为自适应），则<code>View</code>两侧的默认约束偏移为 50%，你可以通过调整约束偏移来进一步调整<code>View</code>的位置</li>
 </ul>
-<h2 id="视图尺寸约束"><a href="#视图尺寸约束" class="headerlink" title="视图尺寸约束"></a>视图尺寸约束</h2><ul>
+<h1 id="视图尺寸约束"><a href="#视图尺寸约束" class="headerlink" title="视图尺寸约束"></a>视图尺寸约束</h1><ul>
 <li>高宽计量方式<ul>
 <li><strong>Wrap Content</strong>: <code>View</code>将拉伸至足够包裹内容</li>
 <li><strong>Match Constraints</strong>: <code>View</code>将拉伸至约束边缘</li>
@@ -186,7 +186,7 @@
 </li>
 <li>比例约束: 在<code>View</code>的高/宽中某一项为<code>match constraints</code>(0dp) 时，可以为<code>View</code>设置高宽比约束</li>
 </ul>
-<h2 id="控制链式布局"><a href="#控制链式布局" class="headerlink" title="控制链式布局"></a>控制链式布局</h2><ul>
+<h1 id="控制链式布局"><a href="#控制链式布局" class="headerlink" title="控制链式布局"></a>控制链式布局</h1><ul>
 <li>当一组<code>View</code>中的任何一个都跟同组中的另一<code>View</code>处于双向约束时（水平或竖直方向），可为该组<code>View</code>设置以下几种分布方式：<ul>
 <li>Spread: 均匀分布</li>
 <li>Spread inside: 首位被固定在链的两端，其他均匀分布</li>
@@ -218,7 +218,7 @@
     </div>
 
     <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#概述"><span class="toc-number">1.</span> <span class="toc-text">概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#约束类型详解"><span class="toc-number">2.</span> <span class="toc-text">约束类型详解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#约束偏移"><span class="toc-number">3.</span> <span class="toc-text">约束偏移</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#视图尺寸约束"><span class="toc-number">4.</span> <span class="toc-text">视图尺寸约束</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#控制链式布局"><span class="toc-number">5.</span> <span class="toc-text">控制链式布局</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#概述"><span class="toc-number">1.</span> <span class="toc-text">概述</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#约束类型详解"><span class="toc-number">2.</span> <span class="toc-text">约束类型详解</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#约束偏移"><span class="toc-number">3.</span> <span class="toc-text">约束偏移</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#视图尺寸约束"><span class="toc-number">4.</span> <span class="toc-text">视图尺寸约束</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#控制链式布局"><span class="toc-number">5.</span> <span class="toc-text">控制链式布局</span></a></li></ol>
     </div>
 
     <div id="share-footer" style="display: none">
@@ -232,7 +232,7 @@
   <li><a class="icon" href="http://reddit.com/submit?url=http://yueban.github.io/2017/07/21/ConstraintLayout%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86/&title=ConstraintLayout 知识点整理" target="_blank" rel="noopener"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
   <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yueban.github.io/2017/07/21/ConstraintLayout%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86/&title=ConstraintLayout 知识点整理" target="_blank" rel="noopener"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
   <li><a class="icon" href="http://digg.com/submit?url=http://yueban.github.io/2017/07/21/ConstraintLayout%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86/&title=ConstraintLayout 知识点整理" target="_blank" rel="noopener"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yueban.github.io/2017/07/21/ConstraintLayout%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86/&name=ConstraintLayout 知识点整理&description=&lt;h2 id=&#34;概述&#34;&gt;&lt;a href=&#34;#概述&#34; class=&#34;headerlink&#34; title=&#34;概述&#34;&gt;&lt;/a&gt;概述&lt;/h2&gt;&lt;ul&gt;
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yueban.github.io/2017/07/21/ConstraintLayout%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86/&name=ConstraintLayout 知识点整理&description=&lt;h1 id=&#34;概述&#34;&gt;&lt;a href=&#34;#概述&#34; class=&#34;headerlink&#34; title=&#34;概述&#34;&gt;&lt;/a&gt;概述&lt;/h1&gt;&lt;ul&gt;
 &lt;li&gt;每个&lt;code&gt;View&lt;/code&gt;在 &lt;strong&gt;水平&lt;/strong&gt; 和 &lt;strong&gt;竖直&lt;/strong&gt; 方向都需至少一个约束&lt;/li&gt;
 &lt;li&gt;未定义约束的&lt;code&gt;View&lt;/code&gt;默认在左上角 (0,0) 进行绘制&lt;/li&gt;
 &lt;li&gt;布局文件 &lt;code&gt;Design Tab&lt;/code&gt; 的 &lt;code&gt;Component Tree&lt;/code&gt; 中右击 &lt;em&gt;layout&lt;/em&gt; 可将原 &lt;em&gt;layout&lt;/em&gt; 快速转换为 &lt;code&gt;ConstraintLayout&lt;/code&gt; 布局&lt;/li&gt;
