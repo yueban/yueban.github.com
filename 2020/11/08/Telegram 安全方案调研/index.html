@@ -7,19 +7,21 @@
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <link href="/katexify/katex.min.css" rel="stylesheet" />
-    <meta name="description" content="简介参考">
+    <meta name="description" content="简介Telegram（非正式简称TG）是跨平台的即时通信软件，其客户端是自由及开放源代码软件，但服务器是专有软件。用户可以相互交换加密与自毁消息，发送照片、影片等所有类型文件。官方提供手机版（Android、iOS、Windows Phone）、桌面版（Windows、macOS、Linux）和网页版等多种平台客户端；同时官方开放应用程序接口（API），因此拥有许多第三方的客户端可供选择，其中多款">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Telegram 安全方案调研">
 <meta property="og:url" content="http://yueban.github.io/2020/11/08/Telegram%20%E5%AE%89%E5%85%A8%E6%96%B9%E6%A1%88%E8%B0%83%E7%A0%94/index.html">
 <meta property="og:site_name" content="月半兄的小站">
-<meta property="og:description" content="简介参考">
+<meta property="og:description" content="简介Telegram（非正式简称TG）是跨平台的即时通信软件，其客户端是自由及开放源代码软件，但服务器是专有软件。用户可以相互交换加密与自毁消息，发送照片、影片等所有类型文件。官方提供手机版（Android、iOS、Windows Phone）、桌面版（Windows、macOS、Linux）和网页版等多种平台客户端；同时官方开放应用程序接口（API），因此拥有许多第三方的客户端可供选择，其中多款">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://core.telegram.org/file/811140746/2/CzMyJPVnPo8.81605/c2310d6ede1a5e220f">
 <meta property="article:published_time" content="2020-11-08T08:16:53.000Z">
-<meta property="article:modified_time" content="2020-11-08T08:33:25.818Z">
+<meta property="article:modified_time" content="2020-11-09T03:18:38.625Z">
 <meta property="article:author" content="月半兄">
 <meta property="article:tag" content="算法">
 <meta property="article:tag" content="网络安全">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://core.telegram.org/file/811140746/2/CzMyJPVnPo8.81605/c2310d6ede1a5e220f">
     
     
       
@@ -106,7 +108,7 @@
 
     </div>
     <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#简介"><span class="toc-number">1.</span> <span class="toc-text">简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-number">2.</span> <span class="toc-text">参考</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#简介"><span class="toc-number">1.</span> <span class="toc-text">简介</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#客户端到服务端加密"><span class="toc-number">2.</span> <span class="toc-text">客户端到服务端加密</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#客户端到客户端"><span class="toc-number">2.1.</span> <span class="toc-text">客户端到客户端</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#音视频通话"><span class="toc-number">2.2.</span> <span class="toc-text">音视频通话</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#术语介绍"><span class="toc-number">2.3.</span> <span class="toc-text">术语介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#计算-aes-key-和-aes-iv"><span class="toc-number">2.4.</span> <span class="toc-text">计算 aes_key 和 aes_iv</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#服务端检查"><span class="toc-number">2.5.</span> <span class="toc-text">服务端检查</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#客户端缓存-auth-key"><span class="toc-number">2.6.</span> <span class="toc-text">客户端缓存 auth_key</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#不加密信息"><span class="toc-number">2.7.</span> <span class="toc-text">不加密信息</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#消息结构"><span class="toc-number">2.8.</span> <span class="toc-text">消息结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#创建-auth-key"><span class="toc-number">2.9.</span> <span class="toc-text">创建 auth_key</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#参考"><span class="toc-number">3.</span> <span class="toc-text">参考</span></a></li></ol>
     </div>
   </span>
 </div>
@@ -132,7 +134,7 @@
       
         <time datetime="2020-11-08T08:16:53.000Z" itemprop="datePublished">2020-11-08</time>
         
-        (Updated: <time datetime="2020-11-08T08:33:25.818Z" itemprop="dateModified">2020-11-08</time>)
+        (Updated: <time datetime="2020-11-09T03:18:38.625Z" itemprop="dateModified">2020-11-09</time>)
         
       
     </div>
@@ -152,7 +154,195 @@
   
 
   <div class="content" itemprop="articleBody">
-    <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><!-- flag of hidden posts -->
+    <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>Telegram（非正式简称TG）是跨平台的即时通信软件，其客户端是自由及开放源代码软件，但服务器是专有软件。用户可以相互交换加密与自毁消息，发送照片、影片等所有类型文件。官方提供手机版（Android、iOS、Windows Phone）、桌面版（Windows、macOS、Linux）和网页版等多种平台客户端；同时官方开放应用程序接口（API），因此拥有许多第三方的客户端可供选择，其中多款内置中文。</p>
+<p>Telegram 移动端网络通信协议称作 Mobile Protocol，其最新版本为 2.0（旧的 1.0 版本已废弃）。本文将仅对 Mobile Protocol 2.0 的原理与流程展开描述。</p>
+<h1 id="客户端到服务端加密"><a href="#客户端到服务端加密" class="headerlink" title="客户端到服务端加密"></a>客户端到服务端加密</h1><p>协议架构如下图所示。</p>
+<p><img src="https://core.telegram.org/file/811140746/2/CzMyJPVnPo8.81605/c2310d6ede1a5e220f" alt=""></p>
+<ol>
+<li>客户端与服务端通过 DH 算法协商一个 auth_key，对 auth_key 做 SHA1 得到 auth_key_id</li>
+<li>客户端对 [auth_key || 待加密的内容] 做 SHA-256 得到 msg_key<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">待加密的内容包含如下</span><br><span class="line">- server salt (64-Bit)</span><br><span class="line">- session id</span><br><span class="line">- message sequence number</span><br><span class="line">- message length</span><br><span class="line">- time</span><br></pre></td></tr></table></figure></li>
+<li>根据 auth_key 和 msg_key 用 KDF 算法，计算出对称加密 aes_key 和 aes_iv</li>
+<li>对要加密的内容进行 AES-256 IGE 加密，得到加密内容</li>
+<li>将 [auth_key_id + msg_key + 加密内容] 发给服务端</li>
+<li>服务端做信息校验<ul>
+<li>msg_key</li>
+<li>message length</li>
+<li>session_id</li>
+<li>msg_id</li>
+</ul>
+</li>
+<li>服务端根据 auth_key_id 找到 auth_key，根据 auth_key，msg_key 同样生成 aes_key，aes_iv，解密消息</li>
+</ol>
+<p>其他技术细节</p>
+<ul>
+<li>文件本身不加密，文件消息加密</li>
+<li>音视频通话加密</li>
+</ul>
+<h2 id="客户端到客户端"><a href="#客户端到客户端" class="headerlink" title="客户端到客户端"></a>客户端到客户端</h2><ol>
+<li>客户端到客户端的加密通信，是对客户端到服务端的 payload 部分做如下加密，生成新的 payload，再通过客户端到服务端的流程发送</li>
+<li>客户端与客户端通过 DH 算法协商一个 secret_chat_key<ul>
+<li>使用超过 100 次，或超过 7 天的 secret_chat_key 将会被丢弃，重新生成新的密钥，以保证前向保密</li>
+</ul>
+</li>
+<li>客户端对 [secret_chat_key + 要加密的内容] 做 SHA-256，算出一个 msg_key</li>
+<li>根据 secret_chat_key 和 msg_key 用 KDF 算法，计算出对称加密 aes_key 和 aes_iv</li>
+<li>根据 aes_key 和 aes_iv 生成 key_fingerprint<ul>
+<li>digest = md5(aes_key + aes_iv)</li>
+<li>key_fingerprint = substr(digest, 0, 4) XOR substr(digest, 4, 4)</li>
+</ul>
+</li>
+<li>对要加密的内容进行 AES-256 IGE 加密，得到加密内容</li>
+<li>将 [key_fingerprint + msg_key + 加密内容] 作为新的 payload，通过客户端到服务端的流程发送</li>
+</ol>
+<p>其他技术细节</p>
+<ul>
+<li>文件本身不加密，文件消息加密</li>
+</ul>
+<h2 id="音视频通话"><a href="#音视频通话" class="headerlink" title="音视频通话"></a>音视频通话</h2><ul>
+<li>客户端与客户端 DH 协商生成对称密钥 key</li>
+<li>语音分为一包一包发送，每包数据不超过 1kb</li>
+<li>每包数据用 key 加密后再封装为特定格式的数据包</li>
+<li>视频通话刚发布 alpha 版本，加密方案与音频通话相同</li>
+</ul>
+<h2 id="术语介绍"><a href="#术语介绍" class="headerlink" title="术语介绍"></a>术语介绍</h2><p>Authorization Key (auth_key)</p>
+<ul>
+<li>在用户注册时生成</li>
+<li>由客户端和服务端通过 DH 算法协商生成，在客户端和服务端共享</li>
+<li>属于唯一的用户</li>
+<li>永远不通过网络传输</li>
+<li>2048 bit</li>
+</ul>
+<p>Server Key</p>
+<ul>
+<li>Server 端 RSA 私钥，用于在用户注册，auth_key 生成期间给 Server 端发送的消息签名</li>
+<li>Client 内置对应的公钥，用于验签</li>
+<li>几乎不改变</li>
+<li>2048 bit</li>
+</ul>
+<p>Key Identifier (auth_key_id)</p>
+<ul>
+<li>对 auth_key 做 SHA1，取低阶 64 位</li>
+<li>如果与已有 auth_key_id 冲突，则 auth_key 需要重新生成</li>
+<li>如果 auth_key_id 为 0，则表示不使用 auth_key 加密，主要用于 auth_key 生成过程(DH 交换)中的消息</li>
+<li>64 bit</li>
+</ul>
+<p>Session</p>
+<ul>
+<li>客户端生成随机数，用于区分不同会话（比如不同客户端与服务器通信，auth_key 相同，session 不同）</li>
+<li>auth_key_id + session 确定一个应用程序实例</li>
+<li>服务端会维护 session 状态</li>
+<li>任何情况下，都不可能将一个会话的消息发送到另一个会话</li>
+<li>服务器可能会单方面舍弃 session 信息，客户端需要自己维护</li>
+<li>64 bit</li>
+</ul>
+<p>Server Salt</p>
+<ul>
+<li>服务端生成随机数，周期性变化(每个 session 相互独立)</li>
+<li>新的 salt 生成后，后续的所有消息都必须包含新的 salt（旧的 salt 在 300 秒内仍有效）</li>
+<li>防重放攻击，防客户端手动修改时间</li>
+<li>64 bit</li>
+</ul>
+<p>Message Identifier (msg_id)</p>
+<ul>
+<li>唯一标识一个 session 中的某一条 message</li>
+<li>客户端 msg_id 可以被 4 整除</li>
+<li>服务端 msg_id 被 4 除余 3，如果是对客户端消息的响应，则被 4 除余 1</li>
+<li>客户端与服务端 msg_id 在一个 session 都必须单调增加，并且必须约等于 unixtime * 2 ^ 32。从而保证 msg_id 可以对应一个 message 被创建的大致时间</li>
+<li>一条消息在创建的 300 秒后，或创建的 30 秒前将被拒收（以防重放攻击）</li>
+<li>一个 message container 的 msg_id 必须比它包含的所有 msg_id 大</li>
+<li><strong>为了应对重放攻击，客户端传递的 msg_id 的低 32 位一定不能为空，并且必须显示创建消息时的时间点的一小部分。</strong></li>
+<li>64 bit</li>
+</ul>
+<p>Content-related Message</p>
+<ul>
+<li>需要明确确认的消息</li>
+<li>包括所有用户消息和许多服务消息，几乎全部都包括容器和确认消息</li>
+</ul>
+<p>Message Sequence Number (msg_seqno)</p>
+<ul>
+<li>等于 Content-related Message 数量的两倍</li>
+<li>如果当前消息是 Content-related Message，则后续消息 msg_seqno 加 1</li>
+<li>一个消息容器总是在它的内容之后创建，所以消息容器的 msg_seqno 总是大于或等于 它所包含的消息的 msg_seqno</li>
+<li>32 bit</li>
+</ul>
+<p>Message Key (msg_key)</p>
+<ul>
+<li>对待加密消息做 SHA-256，并前缀 32-byte 的 auth_key 片段，取中间的 128 bit</li>
+<li>128 bit</li>
+</ul>
+<p>Internal (cryptographic) Header</p>
+<ul>
+<li>由 server salt (64 bit) 和 session (64 bit) 组成</li>
+<li>在 message 或 container 之前</li>
+<li>在 message 或 container 所有内容加密之前</li>
+<li>128 bit</li>
+</ul>
+<p>External (cryptographic) Header</p>
+<ul>
+<li>由 auth_key_id (64 bit) 和 msg_key (128 bit) 组成</li>
+<li>在 message 或 container 之前</li>
+<li>192 bit</li>
+</ul>
+<p>Payload</p>
+<ul>
+<li>[External header] + [encrypted message or container]</li>
+</ul>
+<h2 id="计算-aes-key-和-aes-iv"><a href="#计算-aes-key-和-aes-iv" class="headerlink" title="计算 aes_key 和 aes_iv"></a>计算 aes_key 和 aes_iv</h2><p>通过 <code>auth_key</code> 和 <code>msg_key</code> 计算 <code>aes_key</code> 和 <code>aes_iv</code> 的流程如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">1. msg_key_large &#x3D; SHA256 (substr (auth_key, 88+x, 32) + plaintext + random_padding);</span><br><span class="line">2. msg_key &#x3D; substr (msg_key_large, 8, 16);</span><br><span class="line">3. sha256_a &#x3D; SHA256 (msg_key + substr (auth_key, x, 36));</span><br><span class="line">4. sha256_b &#x3D; SHA256 (substr (auth_key, 40+x, 36) + msg_key);</span><br><span class="line">5. aes_key &#x3D; substr (sha256_a, 0, 8) + substr (sha256_b, 8, 16) + substr (sha256_a, 24, 8);</span><br><span class="line">6. aes_iv &#x3D; substr (sha256_b, 0, 8) + substr (sha256_a, 8, 16) + substr (sha256_b, 24, 8);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>对于 x 值<ul>
+<li>客户端发送到服务端，x = 0</li>
+<li>服务端发送到客户端，x = 8</li>
+</ul>
+</li>
+<li>auth_key 的低 1024 位不会参与计算，但可能用于服务端发送到客户端的数据的本地加密备份</li>
+<li>auth_key 的低 512 位不会保存在服务端<ul>
+<li>如果用于加密本地数据后丢失了 auth_key，则这部分数据将永远无法解密</li>
+</ul>
+</li>
+<li>padding 填充 12 ~ 1024 bytes，要求填充后可以被 16 bytes 整除</li>
+</ul>
+<h2 id="服务端检查"><a href="#服务端检查" class="headerlink" title="服务端检查"></a>服务端检查</h2><p>Server 会校验收到 message 的合法性</p>
+<ul>
+<li>msg_key 必须等于 已解密数据做 SHA-256 前缀 32 byte auth_key 片段</li>
+<li>msg_id 奇偶校验<ul>
+<li>客户端发送到服务端为偶数</li>
+<li>服务端发送到客户端为奇数</li>
+</ul>
+</li>
+<li>如果新消息的 msg_id 小于最近 N 条消息的所有 msg_id，则该消息会被忽略</li>
+<li>msg_id 值超过当前 30s，或早于当前 300s，则该消息会被忽略</li>
+<li>部分特定的客户端发送至服务端的服务消息，即使时间不正确，可以在客户端被处理</li>
+</ul>
+<h2 id="客户端缓存-auth-key"><a href="#客户端缓存-auth-key" class="headerlink" title="客户端缓存 auth_key"></a>客户端缓存 auth_key</h2><ul>
+<li>建议用类似 ssh 的方式对 auth_key 进行密码保护</li>
+<li>对 auth_key 做 SHA-256，并拼接在 auth_key 前面。使用用户输入密码对前面拼接的内容加密，并保存在本地。用户解密时只需要输入密码，本地与解密后的内容重新做一次 SHA-256 验证其正确性。</li>
+</ul>
+<h2 id="不加密信息"><a href="#不加密信息" class="headerlink" title="不加密信息"></a>不加密信息</h2><p>部分纯文本消息可以不加密发送</p>
+<ul>
+<li>创建 auth_key 或时间同步消息</li>
+<li>auth_key_id = 0，表示没有 auth_key</li>
+<li>没有 Internal Header 和 External Header</li>
+<li>消息体前添加 64 bit 的 msg_id 和 32bytes 的消息长度</li>
+</ul>
+<h2 id="消息结构"><a href="#消息结构" class="headerlink" title="消息结构"></a>消息结构</h2><p>加密消息格式<br>| auth_key_id | msg_key | salt  | session_id | message_id | seq_no | message_data_length | message_data | padding12..1024 |<br>| ———– | ——- | —– | ———- | ———- | —— | ——————- | ———— | ————— |<br>| int64       | int128  | int64 | int64      | int64      | int32  | int32               | bytes        | bytes           |</p>
+<p>明文消息格式<br>| auth_key_id = 0 | message_id | message_data_length | message_data |<br>| ————— | ———- | ——————- | ———— |<br>| int64           | int64      | int32               | bytes        |</p>
+<h2 id="创建-auth-key"><a href="#创建-auth-key" class="headerlink" title="创建 auth_key"></a>创建 auth_key</h2><ul>
+<li>auth_key 在用户注册前生成</li>
+<li>client 在后台静默与服务器通信生成 auth_key</li>
+<li>用户填写注册信息时，auth_key 可能尚未生成，此时可以用用户按键的间隔作为 auth_key 生成过程中随机数生成的熵源</li>
+<li>每个 client 的 auth_key 都不相同</li>
+</ul>
+<blockquote>
+<p>auth_key 生成的详细流程: <a href="https://core.telegram.org/mtproto/auth_key" target="_blank" rel="noopener">https://core.telegram.org/mtproto/auth_key</a></p>
+</blockquote>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ul>
+<li><a href="https://core.telegram.org/mtproto/description#defining-aes-key-and-initialization-vector" target="_blank" rel="noopener">Mobile Protocol: Detailed Description</a></li>
+<li><a href="https://core.telegram.org/api/end-to-end" target="_blank" rel="noopener">End-to-End Encryption, Secret Chats</a></li>
+<li><a href="https://core.telegram.org/mtproto/security_guidelines" target="_blank" rel="noopener">Security Guidelines for Client Developers</a></li>
+</ul>
+<!-- flag of hidden posts -->
   </div>
 </article>
 
@@ -177,7 +367,7 @@
     </div>
 
     <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#简介"><span class="toc-number">1.</span> <span class="toc-text">简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-number">2.</span> <span class="toc-text">参考</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#简介"><span class="toc-number">1.</span> <span class="toc-text">简介</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#客户端到服务端加密"><span class="toc-number">2.</span> <span class="toc-text">客户端到服务端加密</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#客户端到客户端"><span class="toc-number">2.1.</span> <span class="toc-text">客户端到客户端</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#音视频通话"><span class="toc-number">2.2.</span> <span class="toc-text">音视频通话</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#术语介绍"><span class="toc-number">2.3.</span> <span class="toc-text">术语介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#计算-aes-key-和-aes-iv"><span class="toc-number">2.4.</span> <span class="toc-text">计算 aes_key 和 aes_iv</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#服务端检查"><span class="toc-number">2.5.</span> <span class="toc-text">服务端检查</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#客户端缓存-auth-key"><span class="toc-number">2.6.</span> <span class="toc-text">客户端缓存 auth_key</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#不加密信息"><span class="toc-number">2.7.</span> <span class="toc-text">不加密信息</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#消息结构"><span class="toc-number">2.8.</span> <span class="toc-text">消息结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#创建-auth-key"><span class="toc-number">2.9.</span> <span class="toc-text">创建 auth_key</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#参考"><span class="toc-number">3.</span> <span class="toc-text">参考</span></a></li></ol>
     </div>
 
     <div id="share-footer" style="display: none">
