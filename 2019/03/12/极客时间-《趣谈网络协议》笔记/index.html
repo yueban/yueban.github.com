@@ -149,8 +149,9 @@
 <meta property="og:image" content="https://static001.geekbang.org/resource/image/2b/0b/2bf7de23e5bda856c606a73f66dd050b.jpg">
 <meta property="og:image" content="https://static001.geekbang.org/resource/image/56/f8/56e282315a2ef361aa0a8bb1cf0b38f8.jpg">
 <meta property="article:published_time" content="2019-03-12T12:04:53.000Z">
-<meta property="article:modified_time" content="2020-11-08T10:35:32.488Z">
+<meta property="article:modified_time" content="2020-11-26T03:07:33.204Z">
 <meta property="article:author" content="月半兄">
+<meta property="article:tag" content="网络安全">
 <meta property="article:tag" content="笔记">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://static001.geekbang.org/resource/image/39/1f/395b304f49559034af34c882bd86f11f.jpg">
@@ -173,7 +174,7 @@
       
     
     <!-- title -->
-    <title>极客时间 - 《趣谈网络协议》笔记</title><meta name="robots" content="noindex">
+    <title>极客时间 - 《趣谈网络协议》笔记</title>
     <!-- styles -->
     
 <link rel="stylesheet" href="/css/style.css">
@@ -213,6 +214,10 @@
     <span id="actions">
       <ul>
         
+        <li><a class="icon" href="/2019/04/07/xlwings-%E5%9C%A8-mac-%E7%8E%AF%E5%A2%83%E4%B8%8B%E7%9A%84%E5%87%A0%E4%B8%AA%E5%9D%91/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2018/10/10/%E3%80%8A%E7%B2%BE%E9%80%9A%E6%AF%94%E7%89%B9%E5%B8%81%E3%80%8B%E7%AC%94%E8%AE%B0/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
         
         <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
         <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
@@ -277,7 +282,7 @@
       
         <time datetime="2019-03-12T12:04:53.000Z" itemprop="datePublished">2019-03-12</time>
         
-        (Updated: <time datetime="2020-11-08T10:35:32.488Z" itemprop="dateModified">2020-11-08</time>)
+        (Updated: <time datetime="2020-11-26T03:07:33.204Z" itemprop="dateModified">2020-11-26</time>)
         
       
     </div>
@@ -288,7 +293,7 @@
       
     <div class="article-tag">
         <i class="fas fa-tag"></i>
-        <a class="tag-link" href="/tags/%E7%AC%94%E8%AE%B0/" rel="tag">笔记</a>
+        <a class="tag-link" href="/tags/%E7%AC%94%E8%AE%B0/" rel="tag">笔记</a>, <a class="tag-link" href="/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/" rel="tag">网络安全</a>
     </div>
 
 
@@ -3524,7 +3529,7 @@
 <li>这样，无论是入口的流量，还是出口的流量，全部用 envoy 做成了“汉堡包”。envoy 根据服务发现的配置，做最终的对外调用。</li>
 <li>这个时候，iptables 规则会对从 envoy 出去的流量做一个特殊处理，允许它发出去，不再使用上面的 output 规则。</li>
 </ol>
-<!-- flag of hidden posts -->
+
   </div>
 </article>
 
