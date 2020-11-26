@@ -16,7 +16,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://img3.tuchuang.org/uploads/2014/09/device_2014_09_13_184031.png">
 <meta property="article:published_time" content="2014-09-13T07:31:20.000Z">
-<meta property="article:modified_time" content="2020-11-08T10:35:21.743Z">
+<meta property="article:modified_time" content="2020-11-26T03:16:18.734Z">
 <meta property="article:author" content="月半兄">
 <meta property="article:tag" content="Android">
 <meta name="twitter:card" content="summary">
@@ -111,7 +111,7 @@
 
     </div>
     <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#一、关键方法介绍"><span class="toc-number">1.</span> <span class="toc-text">一、关键方法介绍</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#二、代码实现"><span class="toc-number">2.</span> <span class="toc-text">二、代码实现</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#三、效果图"><span class="toc-number">3.</span> <span class="toc-text">三、效果图</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、关键方法介绍"><span class="toc-number">1.</span> <span class="toc-text">一、关键方法介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、代码实现"><span class="toc-number">2.</span> <span class="toc-text">二、代码实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、效果图"><span class="toc-number">3.</span> <span class="toc-text">三、效果图</span></a></li></ol>
     </div>
   </span>
 </div>
@@ -137,7 +137,7 @@
       
         <time datetime="2014-09-13T07:31:20.000Z" itemprop="datePublished">2014-09-13</time>
         
-        (Updated: <time datetime="2020-11-08T10:35:21.743Z" itemprop="dateModified">2020-11-08</time>)
+        (Updated: <time datetime="2020-11-26T03:16:18.734Z" itemprop="dateModified">2020-11-26</time>)
         
       
     </div>
@@ -159,7 +159,7 @@
   <div class="content" itemprop="articleBody">
     <p>&emsp;BaseAdapter可以说是最常用的Adapter了，尤其是它还支持convertView的复用，使得我们的加载View的效率大大提高，然而在实际使用中，存在这样一种情况，ListView中的Item是多种样式的，这样getView()方法中复用的convertView肯定是不同的，那么针对这种情况，我们如何实现convertView的复用呢。其实Android已经考虑到这种情况了，甚至在第一版的API中就为这种情况提供了解决方案，详见下文。  </p>
 <a id="more"></a>
-<h1 id="一、关键方法介绍"><a href="#一、关键方法介绍" class="headerlink" title="一、关键方法介绍"></a><strong>一、关键方法介绍</strong></h1><p><strong>1.getViewTypeCount ()</strong>  </p>
+<h2 id="一、关键方法介绍"><a href="#一、关键方法介绍" class="headerlink" title="一、关键方法介绍"></a><strong>一、关键方法介绍</strong></h2><p><strong>1.getViewTypeCount ()</strong>  </p>
 <ul>
 <li>返回值类型：int</li>
 <li>返回值：当前BaseAdapter中View类型的总数</li>
@@ -171,7 +171,7 @@
 <li>返回值：一个表示View类型的int值。如果多个view可以在getView()方法中被互相转换（converted），那么这些view应该是相同的类型，返回相同的类型值。<strong>（注意：类型值应该是<code>0</code>至<code>getViewTypeCount()-1</code>之间的一个值，也可以返回常量IGNORE_ITEM_VIEW_TYPE：-1）</strong></li>
 <li>参考：<a href="http://developer.android.com/reference/android/widget/BaseAdapter.html#getItemViewType(int)" target="_blank" rel="noopener" title="getItemViewType">API文档</a></li>
 </ul>
-<h1 id="二、代码实现"><a href="#二、代码实现" class="headerlink" title="二、代码实现"></a><strong>二、代码实现</strong></h1><p><strong>三个布局文件</strong><br><strong>list_item_red.xml</strong></p>
+<h2 id="二、代码实现"><a href="#二、代码实现" class="headerlink" title="二、代码实现"></a><strong>二、代码实现</strong></h2><p><strong>三个布局文件</strong><br><strong>list_item_red.xml</strong></p>
 <pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
 &lt;LinearLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
     android:layout_width=&quot;match_parent&quot;
@@ -320,7 +320,7 @@
     private final class HolderBlue {
         TextView textBlue;
     }
-}</code></pre><h1 id="三、效果图"><a href="#三、效果图" class="headerlink" title="三、效果图"></a><strong>三、效果图</strong></h1><p><img src="http://img3.tuchuang.org/uploads/2014/09/device_2014_09_13_184031.png" alt="效果图"></p>
+}</code></pre><h2 id="三、效果图"><a href="#三、效果图" class="headerlink" title="三、效果图"></a><strong>三、效果图</strong></h2><p><img src="http://img3.tuchuang.org/uploads/2014/09/device_2014_09_13_184031.png" alt="效果图"></p>
 
   </div>
 </article>
@@ -346,7 +346,7 @@
     </div>
 
     <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#一、关键方法介绍"><span class="toc-number">1.</span> <span class="toc-text">一、关键方法介绍</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#二、代码实现"><span class="toc-number">2.</span> <span class="toc-text">二、代码实现</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#三、效果图"><span class="toc-number">3.</span> <span class="toc-text">三、效果图</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、关键方法介绍"><span class="toc-number">1.</span> <span class="toc-text">一、关键方法介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、代码实现"><span class="toc-number">2.</span> <span class="toc-text">二、代码实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、效果图"><span class="toc-number">3.</span> <span class="toc-text">三、效果图</span></a></li></ol>
     </div>
 
     <div id="share-footer" style="display: none">

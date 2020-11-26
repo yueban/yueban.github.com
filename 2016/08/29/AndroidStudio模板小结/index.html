@@ -15,7 +15,7 @@
 <meta property="og:description" content="本文不是 Android Studio 模板入门&#x2F;详解，而是自己的使用经验。1 概述 Android 官方并未提供自定义模板功能，现在的自定义模板均通过仿写默认模板完成 Android Studio 模板采用 FreeMaker 语法编写，但仅 ftl（FreeMaker Template Language）文件支持 FreeMaker 语法">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2016-08-28T16:34:55.000Z">
-<meta property="article:modified_time" content="2020-11-08T10:35:21.743Z">
+<meta property="article:modified_time" content="2020-11-26T03:16:18.734Z">
 <meta property="article:author" content="月半兄">
 <meta property="article:tag" content="Android">
 <meta name="twitter:card" content="summary">
@@ -103,7 +103,7 @@
   <li><a class="icon" href="http://reddit.com/submit?url=http://yueban.github.io/2016/08/29/AndroidStudio%E6%A8%A1%E6%9D%BF%E5%B0%8F%E7%BB%93/&title=Android Studio 模板小结" target="_blank" rel="noopener"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
   <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yueban.github.io/2016/08/29/AndroidStudio%E6%A8%A1%E6%9D%BF%E5%B0%8F%E7%BB%93/&title=Android Studio 模板小结" target="_blank" rel="noopener"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
   <li><a class="icon" href="http://digg.com/submit?url=http://yueban.github.io/2016/08/29/AndroidStudio%E6%A8%A1%E6%9D%BF%E5%B0%8F%E7%BB%93/&title=Android Studio 模板小结" target="_blank" rel="noopener"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yueban.github.io/2016/08/29/AndroidStudio%E6%A8%A1%E6%9D%BF%E5%B0%8F%E7%BB%93/&name=Android Studio 模板小结&description=&lt;h1 id=&#34;本文不是-Android-Studio-模板入门-详解，而是自己的使用经验。&#34;&gt;&lt;a href=&#34;#本文不是-Android-Studio-模板入门-详解，而是自己的使用经验。&#34; class=&#34;headerlink&#34; title=&#34;本文不是 Android Studio 模板入门/详解，而是自己的使用经验。&#34;&gt;&lt;/a&gt;&lt;strong&gt;本文不是 Android Studio 模板入门/详解，而是自己的使用经验。&lt;/strong&gt;&lt;/h1&gt;&lt;h1 id=&#34;1-概述&#34;&gt;&lt;a href=&#34;#1-概述&#34; class=&#34;headerlink&#34; title=&#34;1 概述&#34;&gt;&lt;/a&gt;1 概述&lt;/h1&gt;&lt;ul&gt;
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yueban.github.io/2016/08/29/AndroidStudio%E6%A8%A1%E6%9D%BF%E5%B0%8F%E7%BB%93/&name=Android Studio 模板小结&description=&lt;h2 id=&#34;本文不是-Android-Studio-模板入门-详解，而是自己的使用经验。&#34;&gt;&lt;a href=&#34;#本文不是-Android-Studio-模板入门-详解，而是自己的使用经验。&#34; class=&#34;headerlink&#34; title=&#34;本文不是 Android Studio 模板入门/详解，而是自己的使用经验。&#34;&gt;&lt;/a&gt;&lt;strong&gt;本文不是 Android Studio 模板入门/详解，而是自己的使用经验。&lt;/strong&gt;&lt;/h2&gt;&lt;h2 id=&#34;1-概述&#34;&gt;&lt;a href=&#34;#1-概述&#34; class=&#34;headerlink&#34; title=&#34;1 概述&#34;&gt;&lt;/a&gt;1 概述&lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;Android 官方并未提供自定义模板功能，现在的自定义模板均通过仿写默认模板完成&lt;/li&gt;
 &lt;li&gt;Android Studio 模板采用 FreeMaker 语法编写，但仅 ftl（FreeMaker Template Language）文件支持 FreeMaker 语法&lt;/li&gt;
 &lt;/ul&gt;"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
@@ -112,7 +112,7 @@
 
     </div>
     <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#本文不是-Android-Studio-模板入门-详解，而是自己的使用经验。"><span class="toc-number">1.</span> <span class="toc-text">本文不是 Android Studio 模板入门&#x2F;详解，而是自己的使用经验。</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-概述"><span class="toc-number">2.</span> <span class="toc-text">1 概述</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-模板结构"><span class="toc-number">3.</span> <span class="toc-text">2 模板结构</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-模板工作原理"><span class="toc-number">4.</span> <span class="toc-text">3 模板工作原理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#3-1-全局变量"><span class="toc-number">4.1.</span> <span class="toc-text">3.1 全局变量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-2-局部变量"><span class="toc-number">4.2.</span> <span class="toc-text">3.2 局部变量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-3-语法"><span class="toc-number">4.3.</span> <span class="toc-text">3.3 语法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-4-模板文件生成过程"><span class="toc-number">4.4.</span> <span class="toc-text">3.4 模板文件生成过程</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-参考"><span class="toc-number">5.</span> <span class="toc-text">4 参考</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#本文不是-Android-Studio-模板入门-详解，而是自己的使用经验。"><span class="toc-number">1.</span> <span class="toc-text">本文不是 Android Studio 模板入门&#x2F;详解，而是自己的使用经验。</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-概述"><span class="toc-number">2.</span> <span class="toc-text">1 概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-模板结构"><span class="toc-number">3.</span> <span class="toc-text">2 模板结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-模板工作原理"><span class="toc-number">4.</span> <span class="toc-text">3 模板工作原理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-全局变量"><span class="toc-number">4.1.</span> <span class="toc-text">3.1 全局变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-局部变量"><span class="toc-number">4.2.</span> <span class="toc-text">3.2 局部变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-语法"><span class="toc-number">4.3.</span> <span class="toc-text">3.3 语法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-4-模板文件生成过程"><span class="toc-number">4.4.</span> <span class="toc-text">3.4 模板文件生成过程</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-参考"><span class="toc-number">5.</span> <span class="toc-text">4 参考</span></a></li></ol>
     </div>
   </span>
 </div>
@@ -138,7 +138,7 @@
       
         <time datetime="2016-08-28T16:34:55.000Z" itemprop="datePublished">2016-08-29</time>
         
-        (Updated: <time datetime="2020-11-08T10:35:21.743Z" itemprop="dateModified">2020-11-08</time>)
+        (Updated: <time datetime="2020-11-26T03:16:18.734Z" itemprop="dateModified">2020-11-26</time>)
         
       
     </div>
@@ -158,13 +158,13 @@
   
 
   <div class="content" itemprop="articleBody">
-    <h1 id="本文不是-Android-Studio-模板入门-详解，而是自己的使用经验。"><a href="#本文不是-Android-Studio-模板入门-详解，而是自己的使用经验。" class="headerlink" title="本文不是 Android Studio 模板入门/详解，而是自己的使用经验。"></a><strong>本文不是 Android Studio 模板入门/详解，而是自己的使用经验。</strong></h1><h1 id="1-概述"><a href="#1-概述" class="headerlink" title="1 概述"></a>1 概述</h1><ul>
+    <h2 id="本文不是-Android-Studio-模板入门-详解，而是自己的使用经验。"><a href="#本文不是-Android-Studio-模板入门-详解，而是自己的使用经验。" class="headerlink" title="本文不是 Android Studio 模板入门/详解，而是自己的使用经验。"></a><strong>本文不是 Android Studio 模板入门/详解，而是自己的使用经验。</strong></h2><h2 id="1-概述"><a href="#1-概述" class="headerlink" title="1 概述"></a>1 概述</h2><ul>
 <li>Android 官方并未提供自定义模板功能，现在的自定义模板均通过仿写默认模板完成</li>
 <li>Android Studio 模板采用 FreeMaker 语法编写，但仅 ftl（FreeMaker Template Language）文件支持 FreeMaker 语法</li>
 </ul>
 <a id="more"></a>
 
-<h1 id="2-模板结构"><a href="#2-模板结构" class="headerlink" title="2 模板结构"></a>2 模板结构</h1><p>OS X 系统下模板文件路径: <code>/Applications/Android Studio.app/Contents/plugins/android/lib/templates</code>，以 <code>activities</code> 目录下的 <code>EmptyActivity</code> 模板为例，目录下共包含 5 项（实际上所有的模板都是由这 5 项组成的）：</p>
+<h2 id="2-模板结构"><a href="#2-模板结构" class="headerlink" title="2 模板结构"></a>2 模板结构</h2><p>OS X 系统下模板文件路径: <code>/Applications/Android Studio.app/Contents/plugins/android/lib/templates</code>，以 <code>activities</code> 目录下的 <code>EmptyActivity</code> 模板为例，目录下共包含 5 项（实际上所有的模板都是由这 5 项组成的）：</p>
 <ul>
 <li><code>template.xml</code>: 模板 GUI 配置文件</li>
 <li><code>globals.xml.ftl</code>: 全局变量</li>
@@ -172,7 +172,7 @@
 <li><code>root 文件夹</code>: 存放对应源码的 ftl 文件，以及资源文件</li>
 <li><code>template_blank_activity.png</code>: 效果缩略图</li>
 </ul>
-<h1 id="3-模板工作原理"><a href="#3-模板工作原理" class="headerlink" title="3 模板工作原理"></a>3 模板工作原理</h1><h2 id="3-1-全局变量"><a href="#3-1-全局变量" class="headerlink" title="3.1 全局变量"></a>3.1 全局变量</h2><p>全局变量分类</p>
+<h2 id="3-模板工作原理"><a href="#3-模板工作原理" class="headerlink" title="3 模板工作原理"></a>3 模板工作原理</h2><h3 id="3-1-全局变量"><a href="#3-1-全局变量" class="headerlink" title="3.1 全局变量"></a>3.1 全局变量</h3><p>全局变量分类</p>
 <ul>
 <li><code>template.xml</code> 定义元素：通过 <code>parameter</code> 标签定义的 id 元素，一般由用户通过 GUI 输入</li>
 <li>Android Template 预定义元素：如 <code>${applicationPackage}</code></li>
@@ -184,14 +184,14 @@
 <li>Android Template 预定义元素：可以在 <code>globals.xml.ftl</code>,<code>recipe.xml.ftl</code> 及 <code>root 文件夹</code> 下所有模板 ftl 文件中使用</li>
 <li><code>globals.xml.ftl</code> 中 global 标签声明的元素：可以在 <code>globals.xml.ftl</code>,<code>recipe.xml.ftl</code> 及 <code>root 文件夹</code> 下所有模板 ftl 文件中使用</li>
 </ul>
-<h2 id="3-2-局部变量"><a href="#3-2-局部变量" class="headerlink" title="3.2 局部变量"></a>3.2 局部变量</h2><p>局部变量指 ftl 文件中通过 assign 标签声明的元素，作用范围仅在当前 ftl 文件中</p>
-<h2 id="3-3-语法"><a href="#3-3-语法" class="headerlink" title="3.3 语法"></a>3.3 语法</h2><p>在整个模板系统中我们可以使用 <code>Android Template</code> 和 <code>FreeMaker</code> 两种语法，但其使用范围有所不同</p>
+<h3 id="3-2-局部变量"><a href="#3-2-局部变量" class="headerlink" title="3.2 局部变量"></a>3.2 局部变量</h3><p>局部变量指 ftl 文件中通过 assign 标签声明的元素，作用范围仅在当前 ftl 文件中</p>
+<h3 id="3-3-语法"><a href="#3-3-语法" class="headerlink" title="3.3 语法"></a>3.3 语法</h3><p>在整个模板系统中我们可以使用 <code>Android Template</code> 和 <code>FreeMaker</code> 两种语法，但其使用范围有所不同</p>
 <ul>
 <li>Android Template：可以在 <code>template.xml</code> 及 <code>其他所有 ftl 文件</code> 中使用，语法规则参考 <a href="http://crypto.nknu.edu.tw/AOSP/AOSP/sdk/templates/docs/" target="_blank" rel="noopener" title="Android IDE Template Format">Android IDE Template Format</a></li>
 <li>FreeMaker：仅在 ftl 文件中可以使用，特别注意 <code>template.xml</code> 文件中不可使用 FreeMaker 语法，语法规则参考 <a href="http://freemarker.org/docs/index.html" target="_blank" rel="noopener" title="Apache FreeMarker Manual">Apache FreeMarker Manual</a></li>
 </ul>
-<h2 id="3-4-模板文件生成过程"><a href="#3-4-模板文件生成过程" class="headerlink" title="3.4 模板文件生成过程"></a>3.4 模板文件生成过程</h2><p><code>所有全局变量</code> 及 <code>模板文件</code> 交由 <code>recipe.xml.ftl</code>，依据 <code>recipe.xml.ftl</code> 所定义规则生成模板</p>
-<h1 id="4-参考"><a href="#4-参考" class="headerlink" title="4 参考"></a>4 参考</h1><ul>
+<h3 id="3-4-模板文件生成过程"><a href="#3-4-模板文件生成过程" class="headerlink" title="3.4 模板文件生成过程"></a>3.4 模板文件生成过程</h3><p><code>所有全局变量</code> 及 <code>模板文件</code> 交由 <code>recipe.xml.ftl</code>，依据 <code>recipe.xml.ftl</code> 所定义规则生成模板</p>
+<h2 id="4-参考"><a href="#4-参考" class="headerlink" title="4 参考"></a>4 参考</h2><ul>
 <li>入门教程：<a href="http://mp.weixin.qq.com/s?__biz=MzAxMTI4MTkwNQ==&mid=2650820397&idx=1&sn=dd26d1dc56a31bff805afbbf65e15d3d&scene=0#wechat_redirect" target="_blank" rel="noopener" title="Android Studio 自定义模板  写页面竟然可以如此轻松">Android Studio 自定义模板 写页面竟然可以如此轻松</a></li>
 <li>Android Template 语法：<a href="http://crypto.nknu.edu.tw/AOSP/AOSP/sdk/templates/docs/" target="_blank" rel="noopener" title="Android IDE Template Format">Android IDE Template Format</a></li>
 <li>FreeMaker 语法：<a href="http://freemarker.org/docs/index.html" target="_blank" rel="noopener" title="Apache FreeMarker Manual">Apache FreeMarker Manual</a></li>
@@ -221,7 +221,7 @@
     </div>
 
     <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#本文不是-Android-Studio-模板入门-详解，而是自己的使用经验。"><span class="toc-number">1.</span> <span class="toc-text">本文不是 Android Studio 模板入门&#x2F;详解，而是自己的使用经验。</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-概述"><span class="toc-number">2.</span> <span class="toc-text">1 概述</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-模板结构"><span class="toc-number">3.</span> <span class="toc-text">2 模板结构</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-模板工作原理"><span class="toc-number">4.</span> <span class="toc-text">3 模板工作原理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#3-1-全局变量"><span class="toc-number">4.1.</span> <span class="toc-text">3.1 全局变量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-2-局部变量"><span class="toc-number">4.2.</span> <span class="toc-text">3.2 局部变量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-3-语法"><span class="toc-number">4.3.</span> <span class="toc-text">3.3 语法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-4-模板文件生成过程"><span class="toc-number">4.4.</span> <span class="toc-text">3.4 模板文件生成过程</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-参考"><span class="toc-number">5.</span> <span class="toc-text">4 参考</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#本文不是-Android-Studio-模板入门-详解，而是自己的使用经验。"><span class="toc-number">1.</span> <span class="toc-text">本文不是 Android Studio 模板入门&#x2F;详解，而是自己的使用经验。</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-概述"><span class="toc-number">2.</span> <span class="toc-text">1 概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-模板结构"><span class="toc-number">3.</span> <span class="toc-text">2 模板结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-模板工作原理"><span class="toc-number">4.</span> <span class="toc-text">3 模板工作原理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-全局变量"><span class="toc-number">4.1.</span> <span class="toc-text">3.1 全局变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-局部变量"><span class="toc-number">4.2.</span> <span class="toc-text">3.2 局部变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-语法"><span class="toc-number">4.3.</span> <span class="toc-text">3.3 语法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-4-模板文件生成过程"><span class="toc-number">4.4.</span> <span class="toc-text">3.4 模板文件生成过程</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-参考"><span class="toc-number">5.</span> <span class="toc-text">4 参考</span></a></li></ol>
     </div>
 
     <div id="share-footer" style="display: none">
@@ -235,7 +235,7 @@
   <li><a class="icon" href="http://reddit.com/submit?url=http://yueban.github.io/2016/08/29/AndroidStudio%E6%A8%A1%E6%9D%BF%E5%B0%8F%E7%BB%93/&title=Android Studio 模板小结" target="_blank" rel="noopener"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
   <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yueban.github.io/2016/08/29/AndroidStudio%E6%A8%A1%E6%9D%BF%E5%B0%8F%E7%BB%93/&title=Android Studio 模板小结" target="_blank" rel="noopener"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
   <li><a class="icon" href="http://digg.com/submit?url=http://yueban.github.io/2016/08/29/AndroidStudio%E6%A8%A1%E6%9D%BF%E5%B0%8F%E7%BB%93/&title=Android Studio 模板小结" target="_blank" rel="noopener"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yueban.github.io/2016/08/29/AndroidStudio%E6%A8%A1%E6%9D%BF%E5%B0%8F%E7%BB%93/&name=Android Studio 模板小结&description=&lt;h1 id=&#34;本文不是-Android-Studio-模板入门-详解，而是自己的使用经验。&#34;&gt;&lt;a href=&#34;#本文不是-Android-Studio-模板入门-详解，而是自己的使用经验。&#34; class=&#34;headerlink&#34; title=&#34;本文不是 Android Studio 模板入门/详解，而是自己的使用经验。&#34;&gt;&lt;/a&gt;&lt;strong&gt;本文不是 Android Studio 模板入门/详解，而是自己的使用经验。&lt;/strong&gt;&lt;/h1&gt;&lt;h1 id=&#34;1-概述&#34;&gt;&lt;a href=&#34;#1-概述&#34; class=&#34;headerlink&#34; title=&#34;1 概述&#34;&gt;&lt;/a&gt;1 概述&lt;/h1&gt;&lt;ul&gt;
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yueban.github.io/2016/08/29/AndroidStudio%E6%A8%A1%E6%9D%BF%E5%B0%8F%E7%BB%93/&name=Android Studio 模板小结&description=&lt;h2 id=&#34;本文不是-Android-Studio-模板入门-详解，而是自己的使用经验。&#34;&gt;&lt;a href=&#34;#本文不是-Android-Studio-模板入门-详解，而是自己的使用经验。&#34; class=&#34;headerlink&#34; title=&#34;本文不是 Android Studio 模板入门/详解，而是自己的使用经验。&#34;&gt;&lt;/a&gt;&lt;strong&gt;本文不是 Android Studio 模板入门/详解，而是自己的使用经验。&lt;/strong&gt;&lt;/h2&gt;&lt;h2 id=&#34;1-概述&#34;&gt;&lt;a href=&#34;#1-概述&#34; class=&#34;headerlink&#34; title=&#34;1 概述&#34;&gt;&lt;/a&gt;1 概述&lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;Android 官方并未提供自定义模板功能，现在的自定义模板均通过仿写默认模板完成&lt;/li&gt;
 &lt;li&gt;Android Studio 模板采用 FreeMaker 语法编写，但仅 ftl（FreeMaker Template Language）文件支持 FreeMaker 语法&lt;/li&gt;
 &lt;/ul&gt;"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>

@@ -15,7 +15,7 @@
 <meta property="og:description" content="归纳自《数据结构与算法分析——Java 语言描述》  概念对于数中的每个节点 X，它的左子树中所有项的值小于 X 中的项，而它的右子树中所有项的值大于 X 中的项。 从概念中我们可以得到两个信息：  该树的所有元素是按照【左子树&lt;父节点&lt;右子树】的方式排序好的，我们可以通过某种方法把所有元素按顺序输出 该树所存储的元素必须是可以比较大小的，这就需要该类型元素实现 Comparable">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2014-05-04T08:08:10.000Z">
-<meta property="article:modified_time" content="2020-11-08T10:35:21.743Z">
+<meta property="article:modified_time" content="2020-11-26T03:16:18.734Z">
 <meta property="article:author" content="月半兄">
 <meta property="article:tag" content="Java">
 <meta property="article:tag" content="数据结构">
@@ -107,7 +107,7 @@
   <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yueban.github.io/2014/05/04/%E4%BA%8C%E5%8F%89%E6%9F%A5%E6%89%BE%E6%A0%91(Java)/&name=二叉查找树 (Java)&description=&lt;blockquote&gt;
 &lt;p&gt;归纳自《数据结构与算法分析——Java 语言描述》&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;h1 id=&#34;概念&#34;&gt;&lt;a href=&#34;#概念&#34; class=&#34;headerlink&#34; title=&#34;概念&#34;&gt;&lt;/a&gt;概念&lt;/h1&gt;&lt;p&gt;对于数中的每个节点 X，它的左子树中所有项的值小于 X 中的项，而它的右子树中所有项的值大于 X 中的项。&lt;/p&gt;
+&lt;h2 id=&#34;概念&#34;&gt;&lt;a href=&#34;#概念&#34; class=&#34;headerlink&#34; title=&#34;概念&#34;&gt;&lt;/a&gt;概念&lt;/h2&gt;&lt;p&gt;对于数中的每个节点 X，它的左子树中所有项的值小于 X 中的项，而它的右子树中所有项的值大于 X 中的项。&lt;/p&gt;
 &lt;p&gt;从概念中我们可以得到两个信息：&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;该树的所有元素是按照【左子树&amp;lt;父节点&amp;lt;右子树】的方式排序好的，我们可以通过某种方法把所有元素按顺序输出&lt;/li&gt;
@@ -118,7 +118,7 @@
 
     </div>
     <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#概念"><span class="toc-number">1.</span> <span class="toc-text">概念</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#代码实现（Java）"><span class="toc-number">2.</span> <span class="toc-text">代码实现（Java）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#二叉查找树节点（类）"><span class="toc-number">2.1.</span> <span class="toc-text">二叉查找树节点（类）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二叉查找树（类）"><span class="toc-number">2.2.</span> <span class="toc-text">二叉查找树（类）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#find（方法）"><span class="toc-number">2.3.</span> <span class="toc-text">find（方法）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#findMax（方法）"><span class="toc-number">2.4.</span> <span class="toc-text">findMax（方法）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#findMin（方法）"><span class="toc-number">2.5.</span> <span class="toc-text">findMin（方法）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#insert（方法）"><span class="toc-number">2.6.</span> <span class="toc-text">insert（方法）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#remove（方法）"><span class="toc-number">2.7.</span> <span class="toc-text">remove（方法）</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#概念"><span class="toc-number">1.</span> <span class="toc-text">概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码实现（Java）"><span class="toc-number">2.</span> <span class="toc-text">代码实现（Java）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#二叉查找树节点（类）"><span class="toc-number">2.1.</span> <span class="toc-text">二叉查找树节点（类）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二叉查找树（类）"><span class="toc-number">2.2.</span> <span class="toc-text">二叉查找树（类）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#find（方法）"><span class="toc-number">2.3.</span> <span class="toc-text">find（方法）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#findMax（方法）"><span class="toc-number">2.4.</span> <span class="toc-text">findMax（方法）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#findMin（方法）"><span class="toc-number">2.5.</span> <span class="toc-text">findMin（方法）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#insert（方法）"><span class="toc-number">2.6.</span> <span class="toc-text">insert（方法）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#remove（方法）"><span class="toc-number">2.7.</span> <span class="toc-text">remove（方法）</span></a></li></ol></li></ol>
     </div>
   </span>
 </div>
@@ -144,7 +144,7 @@
       
         <time datetime="2014-05-04T08:08:10.000Z" itemprop="datePublished">2014-05-04</time>
         
-        (Updated: <time datetime="2020-11-08T10:35:21.743Z" itemprop="dateModified">2020-11-08</time>)
+        (Updated: <time datetime="2020-11-26T03:16:18.734Z" itemprop="dateModified">2020-11-26</time>)
         
       
     </div>
@@ -167,7 +167,7 @@
     <blockquote>
 <p>归纳自《数据结构与算法分析——Java 语言描述》</p>
 </blockquote>
-<h1 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h1><p>对于数中的每个节点 X，它的左子树中所有项的值小于 X 中的项，而它的右子树中所有项的值大于 X 中的项。</p>
+<h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>对于数中的每个节点 X，它的左子树中所有项的值小于 X 中的项，而它的右子树中所有项的值大于 X 中的项。</p>
 <p>从概念中我们可以得到两个信息：</p>
 <ol>
 <li>该树的所有元素是按照【左子树&lt;父节点&lt;右子树】的方式排序好的，我们可以通过某种方法把所有元素按顺序输出</li>
@@ -175,7 +175,7 @@
 </ol>
 <a id="more"></a>
 
-<h1 id="代码实现（Java）"><a href="#代码实现（Java）" class="headerlink" title="代码实现（Java）"></a>代码实现（Java）</h1><h2 id="二叉查找树节点（类）"><a href="#二叉查找树节点（类）" class="headerlink" title="二叉查找树节点（类）"></a>二叉查找树节点（类）</h2><p>很清楚的节点类，三个成员变量，一个该节点所存储的元素（element），一个指向左子树（left），一个指向右子树（right）</p>
+<h2 id="代码实现（Java）"><a href="#代码实现（Java）" class="headerlink" title="代码实现（Java）"></a>代码实现（Java）</h2><h3 id="二叉查找树节点（类）"><a href="#二叉查找树节点（类）" class="headerlink" title="二叉查找树节点（类）"></a>二叉查找树节点（类）</h3><p>很清楚的节点类，三个成员变量，一个该节点所存储的元素（element），一个指向左子树（left），一个指向右子树（right）</p>
 <pre><code>class BinaryNode{
     BinaryNode(Comparable theElement){
         this(theElement,null,null);
@@ -190,7 +190,7 @@
     Comparable element;
     BinaryNode left;
     BinaryNode right;
-}</code></pre><h2 id="二叉查找树（类）"><a href="#二叉查找树（类）" class="headerlink" title="二叉查找树（类）"></a>二叉查找树（类）</h2><p>类的结构还是比较清楚的，私有成员 root 表示树的根节点，构造函数初始化 root=null，构造了一颗空树，isEmpty()和 makeEmpty()都很直观，不再细说，下面会详细讲解二叉查找树的插入、删除等方法。</p>
+}</code></pre><h3 id="二叉查找树（类）"><a href="#二叉查找树（类）" class="headerlink" title="二叉查找树（类）"></a>二叉查找树（类）</h3><p>类的结构还是比较清楚的，私有成员 root 表示树的根节点，构造函数初始化 root=null，构造了一颗空树，isEmpty()和 makeEmpty()都很直观，不再细说，下面会详细讲解二叉查找树的插入、删除等方法。</p>
 <pre><code>class BinarySearchTree{
     public BinarySearchTree(){
         root = null;
@@ -261,7 +261,7 @@
     private void printTree(BinaryNode t){
         //请看下面
     }
-}</code></pre><h2 id="find（方法）"><a href="#find（方法）" class="headerlink" title="find（方法）"></a>find（方法）</h2><p>形参列表传入两个量，我们要实现的是从 t 树中找到值为 x 的节点并返回该节点。这里我们使用了递归调用，如果 x 小于当前节点的值，就 return find(x,t.left)，继续从该节点的左子树中查找 x，直到 x 与某一节点的值相等，return t，返回该节点，如果是空，就表示树中没有 x，返回 null。</p>
+}</code></pre><h3 id="find（方法）"><a href="#find（方法）" class="headerlink" title="find（方法）"></a>find（方法）</h3><p>形参列表传入两个量，我们要实现的是从 t 树中找到值为 x 的节点并返回该节点。这里我们使用了递归调用，如果 x 小于当前节点的值，就 return find(x,t.left)，继续从该节点的左子树中查找 x，直到 x 与某一节点的值相等，return t，返回该节点，如果是空，就表示树中没有 x，返回 null。</p>
 <pre><code>private BinaryNode find(Comparable x,BinaryNode t){
     if(t == null){
         return null;
@@ -273,7 +273,7 @@
     }else{
         return t;
     }
-}</code></pre><h2 id="findMax（方法）"><a href="#findMax（方法）" class="headerlink" title="findMax（方法）"></a>findMax（方法）</h2><p>if 判断 t!=null 只是为了确定该树是否为空，当然我们可以用 !isEmpty() 来替代，主体部分是一个很简单的循环，二叉排序树的定义就是右子树的元素要大于父节点的元素，所以我们只要找到树最右边的那个节点就一定是最大的。</p>
+}</code></pre><h3 id="findMax（方法）"><a href="#findMax（方法）" class="headerlink" title="findMax（方法）"></a>findMax（方法）</h3><p>if 判断 t!=null 只是为了确定该树是否为空，当然我们可以用 !isEmpty() 来替代，主体部分是一个很简单的循环，二叉排序树的定义就是右子树的元素要大于父节点的元素，所以我们只要找到树最右边的那个节点就一定是最大的。</p>
 <pre><code>private BinaryNode findMax(BinaryNode t){
     if(t != null){
         while(t.right != null){
@@ -281,7 +281,7 @@
         }
     }
     return t;
-}</code></pre><h2 id="findMin（方法）"><a href="#findMin（方法）" class="headerlink" title="findMin（方法）"></a>findMin（方法）</h2><p>与 findMax 方法不同，我们在 findMin 方法中采用递归的思路来实现，当然你也可以采用和 findMin 一样的思路来实现 findMax 方法，最终目的是要找到树最左边的节点。</p>
+}</code></pre><h3 id="findMin（方法）"><a href="#findMin（方法）" class="headerlink" title="findMin（方法）"></a>findMin（方法）</h3><p>与 findMax 方法不同，我们在 findMin 方法中采用递归的思路来实现，当然你也可以采用和 findMin 一样的思路来实现 findMax 方法，最终目的是要找到树最左边的节点。</p>
 <pre><code>private BinaryNode findMin(BinaryNode t){
     if(t == null){
         return null;
@@ -289,7 +289,7 @@
         return t;
     }
     return findMin(t.left);
-}</code></pre><h2 id="insert（方法）"><a href="#insert（方法）" class="headerlink" title="insert（方法）"></a>insert（方法）</h2><p>方法要实现的是将元素 x 插入树 t 中，先看后两部分判断，如果 x 小于当前节点的值，就将 x 插入 t 的左子树，这里需要注意的是，将 x 插入 t 的左子树后，其左子树应变成插入之后的左子树，所以不能简单的调用 insert(x,t.left) ，而应该是 t.left=insert(x,t.left) ，插入右子树同样如此，直到 t==null ，表示该部分没有新的节点，那么 t 就是这个新节点了，我们可以看出来，t 没有左右子树，是一片叶子。</p>
+}</code></pre><h3 id="insert（方法）"><a href="#insert（方法）" class="headerlink" title="insert（方法）"></a>insert（方法）</h3><p>方法要实现的是将元素 x 插入树 t 中，先看后两部分判断，如果 x 小于当前节点的值，就将 x 插入 t 的左子树，这里需要注意的是，将 x 插入 t 的左子树后，其左子树应变成插入之后的左子树，所以不能简单的调用 insert(x,t.left) ，而应该是 t.left=insert(x,t.left) ，插入右子树同样如此，直到 t==null ，表示该部分没有新的节点，那么 t 就是这个新节点了，我们可以看出来，t 没有左右子树，是一片叶子。</p>
 <pre><code>private BinaryNode insert(Comparable x,BinaryNode t){
     if(t == null){
         t = new BinaryNode(x,null,null);
@@ -299,7 +299,7 @@
         t.right = insert(x,t.right);
     }
     return t;
-}</code></pre><h2 id="remove（方法）"><a href="#remove（方法）" class="headerlink" title="remove（方法）"></a>remove（方法）</h2><pre><code>private BinaryNode remove(Comparable x,BinaryNode t){
+}</code></pre><h3 id="remove（方法）"><a href="#remove（方法）" class="headerlink" title="remove（方法）"></a>remove（方法）</h3><pre><code>private BinaryNode remove(Comparable x,BinaryNode t){
     if(t == null){
         return null;
     }
@@ -339,7 +339,7 @@
     </div>
 
     <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#概念"><span class="toc-number">1.</span> <span class="toc-text">概念</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#代码实现（Java）"><span class="toc-number">2.</span> <span class="toc-text">代码实现（Java）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#二叉查找树节点（类）"><span class="toc-number">2.1.</span> <span class="toc-text">二叉查找树节点（类）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二叉查找树（类）"><span class="toc-number">2.2.</span> <span class="toc-text">二叉查找树（类）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#find（方法）"><span class="toc-number">2.3.</span> <span class="toc-text">find（方法）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#findMax（方法）"><span class="toc-number">2.4.</span> <span class="toc-text">findMax（方法）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#findMin（方法）"><span class="toc-number">2.5.</span> <span class="toc-text">findMin（方法）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#insert（方法）"><span class="toc-number">2.6.</span> <span class="toc-text">insert（方法）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#remove（方法）"><span class="toc-number">2.7.</span> <span class="toc-text">remove（方法）</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#概念"><span class="toc-number">1.</span> <span class="toc-text">概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码实现（Java）"><span class="toc-number">2.</span> <span class="toc-text">代码实现（Java）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#二叉查找树节点（类）"><span class="toc-number">2.1.</span> <span class="toc-text">二叉查找树节点（类）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二叉查找树（类）"><span class="toc-number">2.2.</span> <span class="toc-text">二叉查找树（类）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#find（方法）"><span class="toc-number">2.3.</span> <span class="toc-text">find（方法）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#findMax（方法）"><span class="toc-number">2.4.</span> <span class="toc-text">findMax（方法）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#findMin（方法）"><span class="toc-number">2.5.</span> <span class="toc-text">findMin（方法）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#insert（方法）"><span class="toc-number">2.6.</span> <span class="toc-text">insert（方法）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#remove（方法）"><span class="toc-number">2.7.</span> <span class="toc-text">remove（方法）</span></a></li></ol></li></ol>
     </div>
 
     <div id="share-footer" style="display: none">
@@ -356,7 +356,7 @@
   <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yueban.github.io/2014/05/04/%E4%BA%8C%E5%8F%89%E6%9F%A5%E6%89%BE%E6%A0%91(Java)/&name=二叉查找树 (Java)&description=&lt;blockquote&gt;
 &lt;p&gt;归纳自《数据结构与算法分析——Java 语言描述》&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;h1 id=&#34;概念&#34;&gt;&lt;a href=&#34;#概念&#34; class=&#34;headerlink&#34; title=&#34;概念&#34;&gt;&lt;/a&gt;概念&lt;/h1&gt;&lt;p&gt;对于数中的每个节点 X，它的左子树中所有项的值小于 X 中的项，而它的右子树中所有项的值大于 X 中的项。&lt;/p&gt;
+&lt;h2 id=&#34;概念&#34;&gt;&lt;a href=&#34;#概念&#34; class=&#34;headerlink&#34; title=&#34;概念&#34;&gt;&lt;/a&gt;概念&lt;/h2&gt;&lt;p&gt;对于数中的每个节点 X，它的左子树中所有项的值小于 X 中的项，而它的右子树中所有项的值大于 X 中的项。&lt;/p&gt;
 &lt;p&gt;从概念中我们可以得到两个信息：&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;该树的所有元素是按照【左子树&amp;lt;父节点&amp;lt;右子树】的方式排序好的，我们可以通过某种方法把所有元素按顺序输出&lt;/li&gt;

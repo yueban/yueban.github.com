@@ -17,7 +17,7 @@
 <meta property="og:image" content="https://core.telegram.org/file/811140746/2/CzMyJPVnPo8.81605/c2310d6ede1a5e220f">
 <meta property="og:image" content="https://core.telegram.org/file/811140633/4/hHw6Zy2DPyQ.109500/cabc10049a7190694f">
 <meta property="article:published_time" content="2020-11-08T08:16:53.000Z">
-<meta property="article:modified_time" content="2020-11-21T09:01:52.612Z">
+<meta property="article:modified_time" content="2020-11-26T03:16:18.733Z">
 <meta property="article:author" content="月半兄">
 <meta property="article:tag" content="算法">
 <meta property="article:tag" content="网络安全">
@@ -109,7 +109,7 @@
 
     </div>
     <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#简介"><span class="toc-number">1.</span> <span class="toc-text">简介</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#加密方案概述"><span class="toc-number">2.</span> <span class="toc-text">加密方案概述</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#客户端到服务端的加密"><span class="toc-number">2.1.</span> <span class="toc-text">客户端到服务端的加密</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#客户端到客户端的加密"><span class="toc-number">2.2.</span> <span class="toc-text">客户端到客户端的加密</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#客户端到客户端的安全检查"><span class="toc-number">2.2.1.</span> <span class="toc-text">客户端到客户端的安全检查</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#客户端到客户端的加密文件发送"><span class="toc-number">2.2.2.</span> <span class="toc-text">客户端到客户端的加密文件发送</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#音视频通话"><span class="toc-number">2.3.</span> <span class="toc-text">音视频通话</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#术语介绍"><span class="toc-number">2.4.</span> <span class="toc-text">术语介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#计算-aes-key-和-aes-iv"><span class="toc-number">2.5.</span> <span class="toc-text">计算 aes_key 和 aes_iv</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#服务端检查"><span class="toc-number">2.6.</span> <span class="toc-text">服务端检查</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#客户端缓存-auth-key"><span class="toc-number">2.7.</span> <span class="toc-text">客户端缓存 auth_key</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#不加密信息"><span class="toc-number">2.8.</span> <span class="toc-text">不加密信息</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#消息结构"><span class="toc-number">2.9.</span> <span class="toc-text">消息结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#创建-auth-key"><span class="toc-number">2.10.</span> <span class="toc-text">创建 auth_key</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#音视频通话加密"><span class="toc-number">3.</span> <span class="toc-text">音视频通话加密</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#单人音视频通话加密"><span class="toc-number">4.</span> <span class="toc-text">单人音视频通话加密</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#多人音视频通话"><span class="toc-number">5.</span> <span class="toc-text">多人音视频通话</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#参考"><span class="toc-number">6.</span> <span class="toc-text">参考</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#简介"><span class="toc-number">1.</span> <span class="toc-text">简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#加密方案概述"><span class="toc-number">2.</span> <span class="toc-text">加密方案概述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#客户端到服务端的加密"><span class="toc-number">2.1.</span> <span class="toc-text">客户端到服务端的加密</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#客户端到客户端的加密"><span class="toc-number">2.2.</span> <span class="toc-text">客户端到客户端的加密</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#客户端到客户端的安全检查"><span class="toc-number">2.2.1.</span> <span class="toc-text">客户端到客户端的安全检查</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#客户端到客户端的加密文件发送"><span class="toc-number">2.2.2.</span> <span class="toc-text">客户端到客户端的加密文件发送</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#音视频通话"><span class="toc-number">2.3.</span> <span class="toc-text">音视频通话</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#术语介绍"><span class="toc-number">2.4.</span> <span class="toc-text">术语介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#计算-aes-key-和-aes-iv"><span class="toc-number">2.5.</span> <span class="toc-text">计算 aes_key 和 aes_iv</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#服务端检查"><span class="toc-number">2.6.</span> <span class="toc-text">服务端检查</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#客户端缓存-auth-key"><span class="toc-number">2.7.</span> <span class="toc-text">客户端缓存 auth_key</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#不加密信息"><span class="toc-number">2.8.</span> <span class="toc-text">不加密信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#消息结构"><span class="toc-number">2.9.</span> <span class="toc-text">消息结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建-auth-key"><span class="toc-number">2.10.</span> <span class="toc-text">创建 auth_key</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#音视频通话加密"><span class="toc-number">3.</span> <span class="toc-text">音视频通话加密</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#单人音视频通话加密"><span class="toc-number">4.</span> <span class="toc-text">单人音视频通话加密</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#多人音视频通话"><span class="toc-number">5.</span> <span class="toc-text">多人音视频通话</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-number">6.</span> <span class="toc-text">参考</span></a></li></ol>
     </div>
   </span>
 </div>
@@ -135,7 +135,7 @@
       
         <time datetime="2020-11-08T08:16:53.000Z" itemprop="datePublished">2020-11-08</time>
         
-        (Updated: <time datetime="2020-11-21T09:01:52.612Z" itemprop="dateModified">2020-11-21</time>)
+        (Updated: <time datetime="2020-11-26T03:16:18.733Z" itemprop="dateModified">2020-11-26</time>)
         
       
     </div>
@@ -155,9 +155,9 @@
   
 
   <div class="content" itemprop="articleBody">
-    <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>Telegram（非正式简称TG）是跨平台的即时通信软件，其客户端是自由及开放源代码软件，但服务器是专有软件。用户可以相互交换加密与自毁消息，发送照片、影片等所有类型文件。官方提供手机版（Android、iOS、Windows Phone）、桌面版（Windows、macOS、Linux）和网页版等多种平台客户端；同时官方开放应用程序接口（API），因此拥有许多第三方的客户端可供选择，其中多款内置中文。</p>
+    <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>Telegram（非正式简称TG）是跨平台的即时通信软件，其客户端是自由及开放源代码软件，但服务器是专有软件。用户可以相互交换加密与自毁消息，发送照片、影片等所有类型文件。官方提供手机版（Android、iOS、Windows Phone）、桌面版（Windows、macOS、Linux）和网页版等多种平台客户端；同时官方开放应用程序接口（API），因此拥有许多第三方的客户端可供选择，其中多款内置中文。</p>
 <p>Telegram 移动端网络通信协议称作 Mobile Protocol，其最新版本为 2.0（旧的 1.0 版本已废弃）。本文将仅对 Mobile Protocol 2.0 的原理与流程展开描述。</p>
-<h1 id="加密方案概述"><a href="#加密方案概述" class="headerlink" title="加密方案概述"></a>加密方案概述</h1><p>Telegram 使用自研的 MTProto Mobile Protocol 协议进行网络通信，该协议旨在使移动设备上运行的应用程序访问服务器 API。</p>
+<h2 id="加密方案概述"><a href="#加密方案概述" class="headerlink" title="加密方案概述"></a>加密方案概述</h2><p>Telegram 使用自研的 MTProto Mobile Protocol 协议进行网络通信，该协议旨在使移动设备上运行的应用程序访问服务器 API。</p>
 <p>该协议被细分为以下三个部分：</p>
 <ul>
 <li>高级组件（API查询语言）：定义将 API 查询和响应转换为二进制消息的方法。</li>
@@ -167,7 +167,7 @@
 <blockquote>
 <p>主要的 Telegram 客户端自 4.6 版开始，均使用 MTProto 2.0 协议，本文阐述的也即 MTProto 2.0 协议。MTProto 1.0 正在逐步淘汰，不推荐使用。</p>
 </blockquote>
-<h2 id="客户端到服务端的加密"><a href="#客户端到服务端的加密" class="headerlink" title="客户端到服务端的加密"></a>客户端到服务端的加密</h2><p>客户端到服务端的加密方案架构如下图所示。</p>
+<h3 id="客户端到服务端的加密"><a href="#客户端到服务端的加密" class="headerlink" title="客户端到服务端的加密"></a>客户端到服务端的加密</h3><p>客户端到服务端的加密方案架构如下图所示。</p>
 <p><img src="https://core.telegram.org/file/811140746/2/CzMyJPVnPo8.81605/c2310d6ede1a5e220f" alt=""></p>
 <p>假设 A 与 B 进行通信，其主要流程如下所示。无所谓 A 与 B 谁是服务端或客户端，即服务端 A 与客户端 B 通信，或客户端 A 与服务端 B 通信，均适用如下流程。</p>
 <ol>
@@ -180,7 +180,7 @@
 <li>B 根据 auth_key_id 找到 auth_key，根据 auth_key，msg_key 同样生成 aes_key，aes_iv，解密消息</li>
 </ol>
 <p>Telegram 默认使用的加密方式就是如上的客户端到服务端的加密，同样使用此类加密方式的还有 Zoom 等产品。而开发者之间口口相传的『端到端加密』实际上是下面将要介绍的客户端到客户端之间的加密，采用此种加密方式，服务端不具有解密消息的能力。</p>
-<h2 id="客户端到客户端的加密"><a href="#客户端到客户端的加密" class="headerlink" title="客户端到客户端的加密"></a>客户端到客户端的加密</h2><p>客户端到客户端的加密方案架构如下图所示。</p>
+<h3 id="客户端到客户端的加密"><a href="#客户端到客户端的加密" class="headerlink" title="客户端到客户端的加密"></a>客户端到客户端的加密</h3><p>客户端到客户端的加密方案架构如下图所示。</p>
 <p><img src="https://core.telegram.org/file/811140633/4/hHw6Zy2DPyQ.109500/cabc10049a7190694f" alt=""></p>
 <p>假设 A 与 B 进行通信，其主要流程如下所示。</p>
 <ol>
@@ -210,14 +210,14 @@
 <li>对待加密的内容进行 AES-256 IGE 加密，得到加密内容</li>
 <li>将 [key_fingerprint || msg_key || 加密内容] 作为新的 payload，通过<a href="#客户端到服务端的加密">客户端到服务端的加密</a>流程发送</li>
 </ol>
-<h3 id="客户端到客户端的安全检查"><a href="#客户端到客户端的安全检查" class="headerlink" title="客户端到客户端的安全检查"></a>客户端到客户端的安全检查</h3><p>todo: msg_key<br>todo: seq_no <a href="https://core.telegram.org/api/end-to-end/seq_no" target="_blank" rel="noopener">Sequence numbers in Secret Chats</a></p>
-<h3 id="客户端到客户端的加密文件发送"><a href="#客户端到客户端的加密文件发送" class="headerlink" title="客户端到客户端的加密文件发送"></a>客户端到客户端的加密文件发送</h3><h2 id="音视频通话"><a href="#音视频通话" class="headerlink" title="音视频通话"></a>音视频通话</h2><ul>
+<h4 id="客户端到客户端的安全检查"><a href="#客户端到客户端的安全检查" class="headerlink" title="客户端到客户端的安全检查"></a>客户端到客户端的安全检查</h4><p>todo: msg_key<br>todo: seq_no <a href="https://core.telegram.org/api/end-to-end/seq_no" target="_blank" rel="noopener">Sequence numbers in Secret Chats</a></p>
+<h4 id="客户端到客户端的加密文件发送"><a href="#客户端到客户端的加密文件发送" class="headerlink" title="客户端到客户端的加密文件发送"></a>客户端到客户端的加密文件发送</h4><h3 id="音视频通话"><a href="#音视频通话" class="headerlink" title="音视频通话"></a>音视频通话</h3><ul>
 <li>客户端与客户端 DH 协商生成对称密钥 key</li>
 <li>语音分为一包一包发送，每包数据不超过 1kb</li>
 <li>每包数据用 key 加密后再封装为特定格式的数据包</li>
 <li>视频通话刚发布 alpha 版本，加密方案与音频通话相同</li>
 </ul>
-<h2 id="术语介绍"><a href="#术语介绍" class="headerlink" title="术语介绍"></a>术语介绍</h2><p>Authorization Key (auth_key)</p>
+<h3 id="术语介绍"><a href="#术语介绍" class="headerlink" title="术语介绍"></a>术语介绍</h3><p>Authorization Key (auth_key)</p>
 <ul>
 <li>在用户注册时生成</li>
 <li>由客户端和服务端通过 DH 算法协商生成，在客户端和服务端共享</li>
@@ -300,7 +300,7 @@
 <ul>
 <li>[External header] + [encrypted message or container]</li>
 </ul>
-<h2 id="计算-aes-key-和-aes-iv"><a href="#计算-aes-key-和-aes-iv" class="headerlink" title="计算 aes_key 和 aes_iv"></a>计算 aes_key 和 aes_iv</h2><p>通过 <code>auth_key</code> 和 <code>msg_key</code> 计算 <code>aes_key</code> 和 <code>aes_iv</code> 的流程如下:</p>
+<h3 id="计算-aes-key-和-aes-iv"><a href="#计算-aes-key-和-aes-iv" class="headerlink" title="计算 aes_key 和 aes_iv"></a>计算 aes_key 和 aes_iv</h3><p>通过 <code>auth_key</code> 和 <code>msg_key</code> 计算 <code>aes_key</code> 和 <code>aes_iv</code> 的流程如下:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">1. msg_key_large &#x3D; SHA256 (substr (auth_key, 88+x, 32) + plaintext + random_padding);</span><br><span class="line">2. msg_key &#x3D; substr (msg_key_large, 8, 16);</span><br><span class="line">3. sha256_a &#x3D; SHA256 (msg_key + substr (auth_key, x, 36));</span><br><span class="line">4. sha256_b &#x3D; SHA256 (substr (auth_key, 40+x, 36) + msg_key);</span><br><span class="line">5. aes_key &#x3D; substr (sha256_a, 0, 8) + substr (sha256_b, 8, 16) + substr (sha256_a, 24, 8);</span><br><span class="line">6. aes_iv &#x3D; substr (sha256_b, 0, 8) + substr (sha256_a, 8, 16) + substr (sha256_b, 24, 8);</span><br></pre></td></tr></table></figure>
 
 <ul>
@@ -316,7 +316,7 @@
 </li>
 <li>padding 填充 12 ~ 1024 bytes，要求填充后可以被 16 bytes 整除</li>
 </ul>
-<h2 id="服务端检查"><a href="#服务端检查" class="headerlink" title="服务端检查"></a>服务端检查</h2><p>Server 会校验收到 message 的合法性</p>
+<h3 id="服务端检查"><a href="#服务端检查" class="headerlink" title="服务端检查"></a>服务端检查</h3><p>Server 会校验收到 message 的合法性</p>
 <ul>
 <li>msg_key 必须等于 已解密数据做 SHA-256 前缀 32 byte auth_key 片段</li>
 <li>msg_id 奇偶校验<ul>
@@ -328,20 +328,20 @@
 <li>msg_id 值超过当前 30s，或早于当前 300s，则该消息会被忽略</li>
 <li>部分特定的客户端发送至服务端的服务消息，即使时间不正确，可以在客户端被处理</li>
 </ul>
-<h2 id="客户端缓存-auth-key"><a href="#客户端缓存-auth-key" class="headerlink" title="客户端缓存 auth_key"></a>客户端缓存 auth_key</h2><ul>
+<h3 id="客户端缓存-auth-key"><a href="#客户端缓存-auth-key" class="headerlink" title="客户端缓存 auth_key"></a>客户端缓存 auth_key</h3><ul>
 <li>建议用类似 ssh 的方式对 auth_key 进行密码保护</li>
 <li>对 auth_key 做 SHA-256，并拼接在 auth_key 前面。使用用户输入密码对前面拼接的内容加密，并保存在本地。用户解密时只需要输入密码，本地与解密后的内容重新做一次 SHA-256 验证其正确性。</li>
 </ul>
-<h2 id="不加密信息"><a href="#不加密信息" class="headerlink" title="不加密信息"></a>不加密信息</h2><p>部分纯文本消息可以不加密发送</p>
+<h3 id="不加密信息"><a href="#不加密信息" class="headerlink" title="不加密信息"></a>不加密信息</h3><p>部分纯文本消息可以不加密发送</p>
 <ul>
 <li>创建 auth_key 或时间同步消息</li>
 <li>auth_key_id = 0，表示没有 auth_key</li>
 <li>没有 Internal Header 和 External Header</li>
 <li>消息体前添加 64 bit 的 msg_id 和 32bytes 的消息长度</li>
 </ul>
-<h2 id="消息结构"><a href="#消息结构" class="headerlink" title="消息结构"></a>消息结构</h2><p>加密消息格式<br>| auth_key_id | msg_key | salt  | session_id | message_id | seq_no | message_data_length | message_data | padding12..1024 |<br>| ———– | ——- | —– | ———- | ———- | —— | ——————- | ———— | ————— |<br>| int64       | int128  | int64 | int64      | int64      | int32  | int32               | bytes        | bytes           |</p>
+<h3 id="消息结构"><a href="#消息结构" class="headerlink" title="消息结构"></a>消息结构</h3><p>加密消息格式<br>| auth_key_id | msg_key | salt  | session_id | message_id | seq_no | message_data_length | message_data | padding12..1024 |<br>| ———– | ——- | —– | ———- | ———- | —— | ——————- | ———— | ————— |<br>| int64       | int128  | int64 | int64      | int64      | int32  | int32               | bytes        | bytes           |</p>
 <p>明文消息格式<br>| auth_key_id = 0 | message_id | message_data_length | message_data |<br>| ————— | ———- | ——————- | ———— |<br>| int64           | int64      | int32               | bytes        |</p>
-<h2 id="创建-auth-key"><a href="#创建-auth-key" class="headerlink" title="创建 auth_key"></a>创建 auth_key</h2><ul>
+<h3 id="创建-auth-key"><a href="#创建-auth-key" class="headerlink" title="创建 auth_key"></a>创建 auth_key</h3><ul>
 <li>auth_key 在用户注册前生成</li>
 <li>client 在后台静默与服务器通信生成 auth_key</li>
 <li>用户填写注册信息时，auth_key 可能尚未生成，此时可以用用户按键的间隔作为 auth_key 生成过程中随机数生成的熵源</li>
@@ -350,15 +350,15 @@
 <blockquote>
 <p>auth_key 生成的详细流程: <a href="https://core.telegram.org/mtproto/auth_key" target="_blank" rel="noopener">https://core.telegram.org/mtproto/auth_key</a></p>
 </blockquote>
-<h1 id="音视频通话加密"><a href="#音视频通话加密" class="headerlink" title="音视频通话加密"></a>音视频通话加密</h1><p>todo</p>
-<h1 id="单人音视频通话加密"><a href="#单人音视频通话加密" class="headerlink" title="单人音视频通话加密"></a>单人音视频通话加密</h1><p>也叫端到端音视频通话，参考: </p>
+<h2 id="音视频通话加密"><a href="#音视频通话加密" class="headerlink" title="音视频通话加密"></a>音视频通话加密</h2><p>todo</p>
+<h2 id="单人音视频通话加密"><a href="#单人音视频通话加密" class="headerlink" title="单人音视频通话加密"></a>单人音视频通话加密</h2><p>也叫端到端音视频通话，参考: </p>
 <ul>
 <li><a href="https://core.telegram.org/api/end-to-end/voice-calls" target="_blank" rel="noopener">https://core.telegram.org/api/end-to-end/voice-calls</a></li>
 <li><a href="https://core.telegram.org/api/end-to-end/video-calls" target="_blank" rel="noopener">https://core.telegram.org/api/end-to-end/video-calls</a></li>
 </ul>
-<h1 id="多人音视频通话"><a href="#多人音视频通话" class="headerlink" title="多人音视频通话"></a>多人音视频通话</h1><p>也叫群组音视频通话，仍在研发中心，预计在 2020 年末推出，参考:</p>
+<h2 id="多人音视频通话"><a href="#多人音视频通话" class="headerlink" title="多人音视频通话"></a>多人音视频通话</h2><p>也叫群组音视频通话，仍在研发中心，预计在 2020 年末推出，参考:</p>
 <p><a href="https://telegram.org/blog/video-calls" target="_blank" rel="noopener">https://telegram.org/blog/video-calls</a></p>
-<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ul>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
 <li><a href="https://core.telegram.org/mtproto/description#defining-aes-key-and-initialization-vector" target="_blank" rel="noopener">Mobile Protocol: Detailed Description</a></li>
 <li><a href="https://core.telegram.org/api/end-to-end" target="_blank" rel="noopener">End-to-End Encryption, Secret Chats</a></li>
 <li><a href="https://core.telegram.org/mtproto/security_guidelines" target="_blank" rel="noopener">Security Guidelines for Client Developers</a></li>
@@ -388,7 +388,7 @@
     </div>
 
     <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#简介"><span class="toc-number">1.</span> <span class="toc-text">简介</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#加密方案概述"><span class="toc-number">2.</span> <span class="toc-text">加密方案概述</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#客户端到服务端的加密"><span class="toc-number">2.1.</span> <span class="toc-text">客户端到服务端的加密</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#客户端到客户端的加密"><span class="toc-number">2.2.</span> <span class="toc-text">客户端到客户端的加密</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#客户端到客户端的安全检查"><span class="toc-number">2.2.1.</span> <span class="toc-text">客户端到客户端的安全检查</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#客户端到客户端的加密文件发送"><span class="toc-number">2.2.2.</span> <span class="toc-text">客户端到客户端的加密文件发送</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#音视频通话"><span class="toc-number">2.3.</span> <span class="toc-text">音视频通话</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#术语介绍"><span class="toc-number">2.4.</span> <span class="toc-text">术语介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#计算-aes-key-和-aes-iv"><span class="toc-number">2.5.</span> <span class="toc-text">计算 aes_key 和 aes_iv</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#服务端检查"><span class="toc-number">2.6.</span> <span class="toc-text">服务端检查</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#客户端缓存-auth-key"><span class="toc-number">2.7.</span> <span class="toc-text">客户端缓存 auth_key</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#不加密信息"><span class="toc-number">2.8.</span> <span class="toc-text">不加密信息</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#消息结构"><span class="toc-number">2.9.</span> <span class="toc-text">消息结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#创建-auth-key"><span class="toc-number">2.10.</span> <span class="toc-text">创建 auth_key</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#音视频通话加密"><span class="toc-number">3.</span> <span class="toc-text">音视频通话加密</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#单人音视频通话加密"><span class="toc-number">4.</span> <span class="toc-text">单人音视频通话加密</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#多人音视频通话"><span class="toc-number">5.</span> <span class="toc-text">多人音视频通话</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#参考"><span class="toc-number">6.</span> <span class="toc-text">参考</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#简介"><span class="toc-number">1.</span> <span class="toc-text">简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#加密方案概述"><span class="toc-number">2.</span> <span class="toc-text">加密方案概述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#客户端到服务端的加密"><span class="toc-number">2.1.</span> <span class="toc-text">客户端到服务端的加密</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#客户端到客户端的加密"><span class="toc-number">2.2.</span> <span class="toc-text">客户端到客户端的加密</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#客户端到客户端的安全检查"><span class="toc-number">2.2.1.</span> <span class="toc-text">客户端到客户端的安全检查</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#客户端到客户端的加密文件发送"><span class="toc-number">2.2.2.</span> <span class="toc-text">客户端到客户端的加密文件发送</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#音视频通话"><span class="toc-number">2.3.</span> <span class="toc-text">音视频通话</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#术语介绍"><span class="toc-number">2.4.</span> <span class="toc-text">术语介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#计算-aes-key-和-aes-iv"><span class="toc-number">2.5.</span> <span class="toc-text">计算 aes_key 和 aes_iv</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#服务端检查"><span class="toc-number">2.6.</span> <span class="toc-text">服务端检查</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#客户端缓存-auth-key"><span class="toc-number">2.7.</span> <span class="toc-text">客户端缓存 auth_key</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#不加密信息"><span class="toc-number">2.8.</span> <span class="toc-text">不加密信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#消息结构"><span class="toc-number">2.9.</span> <span class="toc-text">消息结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建-auth-key"><span class="toc-number">2.10.</span> <span class="toc-text">创建 auth_key</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#音视频通话加密"><span class="toc-number">3.</span> <span class="toc-text">音视频通话加密</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#单人音视频通话加密"><span class="toc-number">4.</span> <span class="toc-text">单人音视频通话加密</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#多人音视频通话"><span class="toc-number">5.</span> <span class="toc-text">多人音视频通话</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-number">6.</span> <span class="toc-text">参考</span></a></li></ol>
     </div>
 
     <div id="share-footer" style="display: none">

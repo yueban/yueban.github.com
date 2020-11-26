@@ -15,7 +15,7 @@
 <meta property="og:description" content="original: Android UI : Fixing skipped frameswritten by Vaibhav Tolia translated by yueban  任何开发 Android 的人都会在 logcat 上看到这条信息：“Choreographer(abc): Skipped xx frames! The application may be doing too m">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2014-05-10T03:20:22.000Z">
-<meta property="article:modified_time" content="2020-11-08T10:30:59.432Z">
+<meta property="article:modified_time" content="2020-11-26T03:16:18.734Z">
 <meta property="article:author" content="月半兄">
 <meta property="article:tag" content="Android">
 <meta name="twitter:card" content="summary">
@@ -112,7 +112,7 @@
 
     </div>
     <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#这条信息是什么意思"><span class="toc-number">1.</span> <span class="toc-text">这条信息是什么意思</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#你为什么应该关注"><span class="toc-number">2.</span> <span class="toc-text">你为什么应该关注</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#如何修复它"><span class="toc-number">3.</span> <span class="toc-text">如何修复它</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#这条信息是什么意思"><span class="toc-number">1.</span> <span class="toc-text">这条信息是什么意思</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#你为什么应该关注"><span class="toc-number">2.</span> <span class="toc-text">你为什么应该关注</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如何修复它"><span class="toc-number">3.</span> <span class="toc-text">如何修复它</span></a></li></ol>
     </div>
   </span>
 </div>
@@ -138,7 +138,7 @@
       
         <time datetime="2014-05-10T03:20:22.000Z" itemprop="datePublished">2014-05-10</time>
         
-        (Updated: <time datetime="2020-11-08T10:30:59.432Z" itemprop="dateModified">2020-11-08</time>)
+        (Updated: <time datetime="2020-11-26T03:16:18.734Z" itemprop="dateModified">2020-11-26</time>)
         
       
     </div>
@@ -164,7 +164,7 @@
 <p>任何开发 Android 的人都会在 logcat 上看到这条信息：<br><strong>“Choreographer(abc): Skipped xx frames! The application may be doing too much work on its main thread.”</strong>接下来将介绍，这条信息是什么意思，为什么你应该关注它以及怎样解决这个问题。</p>
 <a id="more"></a>
 
-<h1 id="这条信息是什么意思"><a href="#这条信息是什么意思" class="headerlink" title="这条信息是什么意思"></a>这条信息是什么意思</h1><p>这条信息意味着有很多<a href="http://baike.baidu.com/view/24183.htm#5" target="_blank" rel="noopener">帧</a>被跳过了，因为你的代码耗费了过长的时间进行处理，这可能是由于你的应用的核心部分的大量运算、数据库访问或其他事情造成线程停顿。下面是更多的细节说明：</p>
+<h2 id="这条信息是什么意思"><a href="#这条信息是什么意思" class="headerlink" title="这条信息是什么意思"></a>这条信息是什么意思</h2><p>这条信息意味着有很多<a href="http://baike.baidu.com/view/24183.htm#5" target="_blank" rel="noopener">帧</a>被跳过了，因为你的代码耗费了过长的时间进行处理，这可能是由于你的应用的核心部分的大量运算、数据库访问或其他事情造成线程停顿。下面是更多的细节说明：</p>
 <blockquote>
 <p>Choreographer（编排器）将应用与垂直同步（显示模式）更好的结合，合理地规划事情的时间以提高性能。</p>
 <p>Android 内部显示动画时使用 Choreographer（编排器）也是为了同样的目的：合理地规划动画显示时间以尽可能地提高性能。</p>
@@ -173,8 +173,8 @@
 <p>这条信息可能会产生误导。</p>
 </blockquote>
 <p>引用来源：<a href="http://stackoverflow.com/questions/11266535/meaning-of-choreographer-messages-in-logcat" target="_blank" rel="noopener">http://stackoverflow.com/questions/11266535/meaning-of-choreographer-messages-in-logcat</a></p>
-<h1 id="你为什么应该关注"><a href="#你为什么应该关注" class="headerlink" title="你为什么应该关注"></a>你为什么应该关注</h1><p>当这条信息在 Android 模拟器上弹出时，如果被跳过的帧数比较少（小于 100），毫无疑问，你的模拟器几乎无时无刻都在卡顿；然而，如果被跳过的帧数很多甚至于超过 300，那么你的代码中可能有很严重的问题。与 ios 和 windows 设备不同，Android 设备有繁多的硬件，内存和 CPU 是在不断改变的，因此，如果你希望在所有设备上都保持可靠的性能和良好的用户体验，你需要修复这个问题。当帧被跳过时，UI 将会变慢、延迟，而这并不是理想的用户体验。</p>
-<h1 id="如何修复它"><a href="#如何修复它" class="headerlink" title="如何修复它"></a>如何修复它</h1><p>修复这个问题需要找出代码中哪里的处理过程耗费了或可能耗费了较长时间。最好的方法是将无论大小的所有处理放在主 UI 线程之外的线程中进行。因此，无论是访问数据库还是核心数学计算甚至简单的整理数组——把它们放在不同线程中执行。</p>
+<h2 id="你为什么应该关注"><a href="#你为什么应该关注" class="headerlink" title="你为什么应该关注"></a>你为什么应该关注</h2><p>当这条信息在 Android 模拟器上弹出时，如果被跳过的帧数比较少（小于 100），毫无疑问，你的模拟器几乎无时无刻都在卡顿；然而，如果被跳过的帧数很多甚至于超过 300，那么你的代码中可能有很严重的问题。与 ios 和 windows 设备不同，Android 设备有繁多的硬件，内存和 CPU 是在不断改变的，因此，如果你希望在所有设备上都保持可靠的性能和良好的用户体验，你需要修复这个问题。当帧被跳过时，UI 将会变慢、延迟，而这并不是理想的用户体验。</p>
+<h2 id="如何修复它"><a href="#如何修复它" class="headerlink" title="如何修复它"></a>如何修复它</h2><p>修复这个问题需要找出代码中哪里的处理过程耗费了或可能耗费了较长时间。最好的方法是将无论大小的所有处理放在主 UI 线程之外的线程中进行。因此，无论是访问数据库还是核心数学计算甚至简单的整理数组——把它们放在不同线程中执行。</p>
 <p>现在有一个问题，当你创建新的线程执行上述操作并运行你的应用时，应用将会崩溃报错<strong>“Only the original thread that created a view hierarchy can touch its views”</strong>。要知道，在 Android 中，只有主线程和 UI 线程可以改变 UI，其他尝试改变 UI 的线程会崩溃并弹出这个错误。你需要调用 runOnUIThread 方法创建一个 Runnable 对象，并将所有涉及 UI 的操作放在这个 Runnable 对象中执行。参考这个<a href="http://stackoverflow.com/questions/11254523/android-runonuithread-explanation" target="_blank" rel="noopener">例子</a>。</p>
 <p>我们通过 Runnable 对象和线程，在主线程外进行数据的处理，可以解决这个问题，除此之外，还有别的方法吗？Android 中的 AsyncTask 类允许在 UI 线程上进行长时间的处理。如果你的应用是数据驱动、web api 驱动或使用了复杂的 UI（如通过 canvas 绘制），那么 AsyncTask 类是最合适的。AsyncTask 允许代码后台执行，一旦执行完毕，你可以毫无延迟的在 UI 上执行需要的操作——所有通过 AsyncTask 在 UI 上的操作是在一个独立于主 UI 线程的线程上执行的，不会阻碍用户交互。</p>
 <p>以上就是制作流畅的 Android 应用需要了解的。据我所知，每一个初学者都会在控制台上看到那条信息。</p>
@@ -204,7 +204,7 @@
     </div>
 
     <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#这条信息是什么意思"><span class="toc-number">1.</span> <span class="toc-text">这条信息是什么意思</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#你为什么应该关注"><span class="toc-number">2.</span> <span class="toc-text">你为什么应该关注</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#如何修复它"><span class="toc-number">3.</span> <span class="toc-text">如何修复它</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#这条信息是什么意思"><span class="toc-number">1.</span> <span class="toc-text">这条信息是什么意思</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#你为什么应该关注"><span class="toc-number">2.</span> <span class="toc-text">你为什么应该关注</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如何修复它"><span class="toc-number">3.</span> <span class="toc-text">如何修复它</span></a></li></ol>
     </div>
 
     <div id="share-footer" style="display: none">

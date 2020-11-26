@@ -15,7 +15,7 @@
 <meta property="og:description" content="原文链接：http:&#x2F;&#x2F;my.oschina.net&#x2F;rengwuxian&#x2F;blog&#x2F;181449  一、现象当使用内部类（包括匿名内部类）来创建 Handler 时，我们会看到一条警告信息：This Handler class should be static or leaks might occur。翻译过来大概是：这个 Handler 对象应该是静态的，否则有可能造成内存泄露。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2014-11-29T11:28:37.000Z">
-<meta property="article:modified_time" content="2020-11-08T10:33:19.635Z">
+<meta property="article:modified_time" content="2020-11-26T03:16:18.738Z">
 <meta property="article:author" content="月半兄">
 <meta property="article:tag" content="Android">
 <meta name="twitter:card" content="summary">
@@ -106,13 +106,13 @@
   <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yueban.github.io/2014/11/29/This-Handler-class-should-be-static-or-leaks-might-occur/&name=This Handler class should be static or leaks might occur&description=&lt;blockquote&gt;
 &lt;p&gt;原文链接：&lt;a href=&#34;http://my.oschina.net/rengwuxian/blog/181449&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;http://my.oschina.net/rengwuxian/blog/181449&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;h1 id=&#34;一、现象&#34;&gt;&lt;a href=&#34;#一、现象&#34; class=&#34;headerlink&#34; title=&#34;一、现象&#34;&gt;&lt;/a&gt;一、现象&lt;/h1&gt;&lt;p&gt;当使用内部类（包括匿名内部类）来创建 Handler 时，我们会看到一条警告信息：&lt;code&gt;This Handler class should be static or leaks might occur&lt;/code&gt;。翻译过来大概是：这个 Handler 对象应该是静态的，否则有可能造成内存泄露。&lt;/p&gt;"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+&lt;h2 id=&#34;一、现象&#34;&gt;&lt;a href=&#34;#一、现象&#34; class=&#34;headerlink&#34; title=&#34;一、现象&#34;&gt;&lt;/a&gt;一、现象&lt;/h2&gt;&lt;p&gt;当使用内部类（包括匿名内部类）来创建 Handler 时，我们会看到一条警告信息：&lt;code&gt;This Handler class should be static or leaks might occur&lt;/code&gt;。翻译过来大概是：这个 Handler 对象应该是静态的，否则有可能造成内存泄露。&lt;/p&gt;"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
   <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=http://yueban.github.io/2014/11/29/This-Handler-class-should-be-static-or-leaks-might-occur/&t=This Handler class should be static or leaks might occur" target="_blank" rel="noopener"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
     <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#一、现象"><span class="toc-number">1.</span> <span class="toc-text">一、现象</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#二、原理"><span class="toc-number">2.</span> <span class="toc-text">二、原理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#内存泄露是什么"><span class="toc-number">2.1.</span> <span class="toc-text">内存泄露是什么</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Handler-为何会造成内存泄露"><span class="toc-number">2.2.</span> <span class="toc-text">Handler 为何会造成内存泄露</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Handler-与-Thread-配合实现异步任务"><span class="toc-number">2.2.1.</span> <span class="toc-text">1.Handler 与 Thread 配合实现异步任务</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Handler-调用-postDelay-方法"><span class="toc-number">2.2.2.</span> <span class="toc-text">2.Handler 调用 postDelay()方法</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#三、解决方案"><span class="toc-number">3.</span> <span class="toc-text">三、解决方案</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-完善程序逻辑"><span class="toc-number">3.1.</span> <span class="toc-text">1.完善程序逻辑</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-将-Handler-声明为静态类"><span class="toc-number">3.2.</span> <span class="toc-text">2.将 Handler 声明为静态类</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#四、什么是弱引用（WeakReference）"><span class="toc-number">4.</span> <span class="toc-text">四、什么是弱引用（WeakReference）</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、现象"><span class="toc-number">1.</span> <span class="toc-text">一、现象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、原理"><span class="toc-number">2.</span> <span class="toc-text">二、原理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#内存泄露是什么"><span class="toc-number">2.1.</span> <span class="toc-text">内存泄露是什么</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Handler-为何会造成内存泄露"><span class="toc-number">2.2.</span> <span class="toc-text">Handler 为何会造成内存泄露</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-Handler-与-Thread-配合实现异步任务"><span class="toc-number">2.2.1.</span> <span class="toc-text">1.Handler 与 Thread 配合实现异步任务</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-Handler-调用-postDelay-方法"><span class="toc-number">2.2.2.</span> <span class="toc-text">2.Handler 调用 postDelay()方法</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、解决方案"><span class="toc-number">3.</span> <span class="toc-text">三、解决方案</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-完善程序逻辑"><span class="toc-number">3.1.</span> <span class="toc-text">1.完善程序逻辑</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-将-Handler-声明为静态类"><span class="toc-number">3.2.</span> <span class="toc-text">2.将 Handler 声明为静态类</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四、什么是弱引用（WeakReference）"><span class="toc-number">4.</span> <span class="toc-text">四、什么是弱引用（WeakReference）</span></a></li></ol>
     </div>
   </span>
 </div>
@@ -138,7 +138,7 @@
       
         <time datetime="2014-11-29T11:28:37.000Z" itemprop="datePublished">2014-11-29</time>
         
-        (Updated: <time datetime="2020-11-08T10:33:19.635Z" itemprop="dateModified">2020-11-08</time>)
+        (Updated: <time datetime="2020-11-26T03:16:18.738Z" itemprop="dateModified">2020-11-26</time>)
         
       
     </div>
@@ -161,23 +161,23 @@
     <blockquote>
 <p>原文链接：<a href="http://my.oschina.net/rengwuxian/blog/181449" target="_blank" rel="noopener">http://my.oschina.net/rengwuxian/blog/181449</a></p>
 </blockquote>
-<h1 id="一、现象"><a href="#一、现象" class="headerlink" title="一、现象"></a>一、现象</h1><p>当使用内部类（包括匿名内部类）来创建 Handler 时，我们会看到一条警告信息：<code>This Handler class should be static or leaks might occur</code>。翻译过来大概是：这个 Handler 对象应该是静态的，否则有可能造成内存泄露。</p>
+<h2 id="一、现象"><a href="#一、现象" class="headerlink" title="一、现象"></a>一、现象</h2><p>当使用内部类（包括匿名内部类）来创建 Handler 时，我们会看到一条警告信息：<code>This Handler class should be static or leaks might occur</code>。翻译过来大概是：这个 Handler 对象应该是静态的，否则有可能造成内存泄露。</p>
 <a id="more"></a>
 
-<h1 id="二、原理"><a href="#二、原理" class="headerlink" title="二、原理"></a>二、原理</h1><h2 id="内存泄露是什么"><a href="#内存泄露是什么" class="headerlink" title="内存泄露是什么"></a>内存泄露是什么</h2><p>Java 有自己的垃圾回收机制（gc），gc 会检查内存中的对象（何时检查由 gc 自己决定），如果对象满足下列两种情况之一，gc 就会回收该对象：</p>
+<h2 id="二、原理"><a href="#二、原理" class="headerlink" title="二、原理"></a>二、原理</h2><h3 id="内存泄露是什么"><a href="#内存泄露是什么" class="headerlink" title="内存泄露是什么"></a>内存泄露是什么</h3><p>Java 有自己的垃圾回收机制（gc），gc 会检查内存中的对象（何时检查由 gc 自己决定），如果对象满足下列两种情况之一，gc 就会回收该对象：</p>
 <ul>
 <li>该对象未被任何其他对象持有（即其他对象没有该对象的引用）</li>
 <li>该对象在的一组对象中，该组对象只有相互之间的引用</li>
 </ul>
 <p>而内存泄露就是 gc 未能成功回收某些应该被回收的对象，导致内存池中对象越来越多，最终突破 Android 对单个 app 的内存限制（一般是 24m），造成内存溢出，也就是我们常说的 OOM（out of memory）。</p>
-<h2 id="Handler-为何会造成内存泄露"><a href="#Handler-为何会造成内存泄露" class="headerlink" title="Handler 为何会造成内存泄露"></a>Handler 为何会造成内存泄露</h2><h3 id="1-Handler-与-Thread-配合实现异步任务"><a href="#1-Handler-与-Thread-配合实现异步任务" class="headerlink" title="1.Handler 与 Thread 配合实现异步任务"></a>1.Handler 与 Thread 配合实现异步任务</h3><p>比如我们通过 Handler 和 Thread 实现一个网络请求，在请求的过程中，Activity 被关闭了（比如用户按了返回键），那么在 gc 检查时这个 Activity 是应该被回收掉的，但是你的网络请求（Thread）并未结束，也就是 Thread 持有 Handler，而 Handler 又持有 Activity，从而形成了一条 Thread→Handler→Activity 的链，导致 Activity 未能被成功回收，这就出现了内存泄露。</p>
-<h3 id="2-Handler-调用-postDelay-方法"><a href="#2-Handler-调用-postDelay-方法" class="headerlink" title="2.Handler 调用 postDelay()方法"></a>2.Handler 调用 postDelay()方法</h3><p>postDealy()方法会把你的 Handler 对象装入一个 Message 对象中，然后将这个 Message 对象推入 MessageQueue 队列中，假如你的 Activity 关闭时，delay 的时间还没到，就会形成一条 MessageQueue→Message→Handler→Activity 的链，导致 gc 不能成功回收 Activity，从而造成内存泄露。</p>
-<h1 id="三、解决方案"><a href="#三、解决方案" class="headerlink" title="三、解决方案"></a>三、解决方案</h1><h2 id="1-完善程序逻辑"><a href="#1-完善程序逻辑" class="headerlink" title="1.完善程序逻辑"></a>1.完善程序逻辑</h2><p>在 Activity 被关闭（onDestory()方法）时关闭或移除某些对象，从而避免对 Activity 的引用链。</p>
+<h3 id="Handler-为何会造成内存泄露"><a href="#Handler-为何会造成内存泄露" class="headerlink" title="Handler 为何会造成内存泄露"></a>Handler 为何会造成内存泄露</h3><h4 id="1-Handler-与-Thread-配合实现异步任务"><a href="#1-Handler-与-Thread-配合实现异步任务" class="headerlink" title="1.Handler 与 Thread 配合实现异步任务"></a>1.Handler 与 Thread 配合实现异步任务</h4><p>比如我们通过 Handler 和 Thread 实现一个网络请求，在请求的过程中，Activity 被关闭了（比如用户按了返回键），那么在 gc 检查时这个 Activity 是应该被回收掉的，但是你的网络请求（Thread）并未结束，也就是 Thread 持有 Handler，而 Handler 又持有 Activity，从而形成了一条 Thread→Handler→Activity 的链，导致 Activity 未能被成功回收，这就出现了内存泄露。</p>
+<h4 id="2-Handler-调用-postDelay-方法"><a href="#2-Handler-调用-postDelay-方法" class="headerlink" title="2.Handler 调用 postDelay()方法"></a>2.Handler 调用 postDelay()方法</h4><p>postDealy()方法会把你的 Handler 对象装入一个 Message 对象中，然后将这个 Message 对象推入 MessageQueue 队列中，假如你的 Activity 关闭时，delay 的时间还没到，就会形成一条 MessageQueue→Message→Handler→Activity 的链，导致 gc 不能成功回收 Activity，从而造成内存泄露。</p>
+<h2 id="三、解决方案"><a href="#三、解决方案" class="headerlink" title="三、解决方案"></a>三、解决方案</h2><h3 id="1-完善程序逻辑"><a href="#1-完善程序逻辑" class="headerlink" title="1.完善程序逻辑"></a>1.完善程序逻辑</h3><p>在 Activity 被关闭（onDestory()方法）时关闭或移除某些对象，从而避免对 Activity 的引用链。</p>
 <ul>
 <li>使用 Handler 和 Thread，在 Activity 被关闭时将网络连接切断即可。</li>
 <li>使用 postDealy 方法，在 Activity 被关闭时调用相应 Handler 的 removeCallbacks()方法将 Message 从 MessageQueue 中移除即可。</li>
 </ul>
-<h2 id="2-将-Handler-声明为静态类"><a href="#2-将-Handler-声明为静态类" class="headerlink" title="2.将 Handler 声明为静态类"></a>2.将 Handler 声明为静态类</h2><p>静态类本身不会持有外部类对象，也就是说，在 Activity 中的 Handler 内部类如果被声明为静态的，就不会持有外部的 Activity 对象了。然而，这样一来 Handler 同时也不能像平常一样操作 Activity 中的那些非静态对象了，解决方法是在静态 Handler 类中声明一个对外部 Activity 的弱引用（关于弱引用的解释在文章底部），实现代码如下：</p>
+<h3 id="2-将-Handler-声明为静态类"><a href="#2-将-Handler-声明为静态类" class="headerlink" title="2.将 Handler 声明为静态类"></a>2.将 Handler 声明为静态类</h3><p>静态类本身不会持有外部类对象，也就是说，在 Activity 中的 Handler 内部类如果被声明为静态的，就不会持有外部的 Activity 对象了。然而，这样一来 Handler 同时也不能像平常一样操作 Activity 中的那些非静态对象了，解决方法是在静态 Handler 类中声明一个对外部 Activity 的弱引用（关于弱引用的解释在文章底部），实现代码如下：</p>
 <pre><code>static class MyHandler extends Handler {
     WeakReference&lt;Activity &gt; mActivityReference;
 
@@ -192,7 +192,7 @@
             mImageView.setImageBitmap(mBitmap);
         }
     }
-}</code></pre><h1 id="四、什么是弱引用（WeakReference）"><a href="#四、什么是弱引用（WeakReference）" class="headerlink" title="四、什么是弱引用（WeakReference）"></a>四、什么是弱引用（WeakReference）</h1><p>弱引用 WeakReference，与强引用（即我们常说的引用）相对，它的特点是，gc 在回收时会忽略掉弱引用，即就算有弱引用指向某对象，但只要该对象没有被强引用指向，该对象就会在被 gc 检查到时回收掉。因此，在 Handler 中声明一个对 Activity 的弱引用，既可以操作 Activity 中的非静态对象，又可以避免因 Handler 对 Activity 的强引用造成的内存泄露。</p>
+}</code></pre><h2 id="四、什么是弱引用（WeakReference）"><a href="#四、什么是弱引用（WeakReference）" class="headerlink" title="四、什么是弱引用（WeakReference）"></a>四、什么是弱引用（WeakReference）</h2><p>弱引用 WeakReference，与强引用（即我们常说的引用）相对，它的特点是，gc 在回收时会忽略掉弱引用，即就算有弱引用指向某对象，但只要该对象没有被强引用指向，该对象就会在被 gc 检查到时回收掉。因此，在 Handler 中声明一个对 Activity 的弱引用，既可以操作 Activity 中的非静态对象，又可以避免因 Handler 对 Activity 的强引用造成的内存泄露。</p>
 
   </div>
 </article>
@@ -218,7 +218,7 @@
     </div>
 
     <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#一、现象"><span class="toc-number">1.</span> <span class="toc-text">一、现象</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#二、原理"><span class="toc-number">2.</span> <span class="toc-text">二、原理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#内存泄露是什么"><span class="toc-number">2.1.</span> <span class="toc-text">内存泄露是什么</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Handler-为何会造成内存泄露"><span class="toc-number">2.2.</span> <span class="toc-text">Handler 为何会造成内存泄露</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Handler-与-Thread-配合实现异步任务"><span class="toc-number">2.2.1.</span> <span class="toc-text">1.Handler 与 Thread 配合实现异步任务</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Handler-调用-postDelay-方法"><span class="toc-number">2.2.2.</span> <span class="toc-text">2.Handler 调用 postDelay()方法</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#三、解决方案"><span class="toc-number">3.</span> <span class="toc-text">三、解决方案</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-完善程序逻辑"><span class="toc-number">3.1.</span> <span class="toc-text">1.完善程序逻辑</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-将-Handler-声明为静态类"><span class="toc-number">3.2.</span> <span class="toc-text">2.将 Handler 声明为静态类</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#四、什么是弱引用（WeakReference）"><span class="toc-number">4.</span> <span class="toc-text">四、什么是弱引用（WeakReference）</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、现象"><span class="toc-number">1.</span> <span class="toc-text">一、现象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、原理"><span class="toc-number">2.</span> <span class="toc-text">二、原理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#内存泄露是什么"><span class="toc-number">2.1.</span> <span class="toc-text">内存泄露是什么</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Handler-为何会造成内存泄露"><span class="toc-number">2.2.</span> <span class="toc-text">Handler 为何会造成内存泄露</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-Handler-与-Thread-配合实现异步任务"><span class="toc-number">2.2.1.</span> <span class="toc-text">1.Handler 与 Thread 配合实现异步任务</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-Handler-调用-postDelay-方法"><span class="toc-number">2.2.2.</span> <span class="toc-text">2.Handler 调用 postDelay()方法</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、解决方案"><span class="toc-number">3.</span> <span class="toc-text">三、解决方案</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-完善程序逻辑"><span class="toc-number">3.1.</span> <span class="toc-text">1.完善程序逻辑</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-将-Handler-声明为静态类"><span class="toc-number">3.2.</span> <span class="toc-text">2.将 Handler 声明为静态类</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四、什么是弱引用（WeakReference）"><span class="toc-number">4.</span> <span class="toc-text">四、什么是弱引用（WeakReference）</span></a></li></ol>
     </div>
 
     <div id="share-footer" style="display: none">
@@ -235,7 +235,7 @@
   <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yueban.github.io/2014/11/29/This-Handler-class-should-be-static-or-leaks-might-occur/&name=This Handler class should be static or leaks might occur&description=&lt;blockquote&gt;
 &lt;p&gt;原文链接：&lt;a href=&#34;http://my.oschina.net/rengwuxian/blog/181449&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;http://my.oschina.net/rengwuxian/blog/181449&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;h1 id=&#34;一、现象&#34;&gt;&lt;a href=&#34;#一、现象&#34; class=&#34;headerlink&#34; title=&#34;一、现象&#34;&gt;&lt;/a&gt;一、现象&lt;/h1&gt;&lt;p&gt;当使用内部类（包括匿名内部类）来创建 Handler 时，我们会看到一条警告信息：&lt;code&gt;This Handler class should be static or leaks might occur&lt;/code&gt;。翻译过来大概是：这个 Handler 对象应该是静态的，否则有可能造成内存泄露。&lt;/p&gt;"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+&lt;h2 id=&#34;一、现象&#34;&gt;&lt;a href=&#34;#一、现象&#34; class=&#34;headerlink&#34; title=&#34;一、现象&#34;&gt;&lt;/a&gt;一、现象&lt;/h2&gt;&lt;p&gt;当使用内部类（包括匿名内部类）来创建 Handler 时，我们会看到一条警告信息：&lt;code&gt;This Handler class should be static or leaks might occur&lt;/code&gt;。翻译过来大概是：这个 Handler 对象应该是静态的，否则有可能造成内存泄露。&lt;/p&gt;"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
   <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=http://yueban.github.io/2014/11/29/This-Handler-class-should-be-static-or-leaks-might-occur/&t=This Handler class should be static or leaks might occur" target="_blank" rel="noopener"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
 </ul>
 

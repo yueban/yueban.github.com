@@ -15,7 +15,7 @@
 <meta property="og:description" content="现象 如果界面上有 EditText 控件，则它会自动获取焦点并使软键盘弹出 与界面上其他控件进行交互（触摸、点击）时，软键盘不会自动隐藏">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2014-08-14T10:20:41.000Z">
-<meta property="article:modified_time" content="2020-11-08T10:35:21.743Z">
+<meta property="article:modified_time" content="2020-11-26T03:16:18.734Z">
 <meta property="article:author" content="月半兄">
 <meta property="article:tag" content="Android">
 <meta name="twitter:card" content="summary">
@@ -103,7 +103,7 @@
   <li><a class="icon" href="http://reddit.com/submit?url=http://yueban.github.io/2014/08/14/%E6%9C%89%E8%BE%93%E5%85%A5%E6%A1%86EditText%E7%9A%84%E7%95%8C%E9%9D%A2%EF%BC%8C%E5%A6%82%E4%BD%95%E5%A4%84%E7%90%86%E8%BD%AF%E9%94%AE%E7%9B%98%E7%9A%84%E5%BC%B9%E5%87%BA%E6%94%B6%E8%B5%B7/&title=有输入框 EditText 的界面，如何处理软键盘的弹出/收起" target="_blank" rel="noopener"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
   <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yueban.github.io/2014/08/14/%E6%9C%89%E8%BE%93%E5%85%A5%E6%A1%86EditText%E7%9A%84%E7%95%8C%E9%9D%A2%EF%BC%8C%E5%A6%82%E4%BD%95%E5%A4%84%E7%90%86%E8%BD%AF%E9%94%AE%E7%9B%98%E7%9A%84%E5%BC%B9%E5%87%BA%E6%94%B6%E8%B5%B7/&title=有输入框 EditText 的界面，如何处理软键盘的弹出/收起" target="_blank" rel="noopener"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
   <li><a class="icon" href="http://digg.com/submit?url=http://yueban.github.io/2014/08/14/%E6%9C%89%E8%BE%93%E5%85%A5%E6%A1%86EditText%E7%9A%84%E7%95%8C%E9%9D%A2%EF%BC%8C%E5%A6%82%E4%BD%95%E5%A4%84%E7%90%86%E8%BD%AF%E9%94%AE%E7%9B%98%E7%9A%84%E5%BC%B9%E5%87%BA%E6%94%B6%E8%B5%B7/&title=有输入框 EditText 的界面，如何处理软键盘的弹出/收起" target="_blank" rel="noopener"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yueban.github.io/2014/08/14/%E6%9C%89%E8%BE%93%E5%85%A5%E6%A1%86EditText%E7%9A%84%E7%95%8C%E9%9D%A2%EF%BC%8C%E5%A6%82%E4%BD%95%E5%A4%84%E7%90%86%E8%BD%AF%E9%94%AE%E7%9B%98%E7%9A%84%E5%BC%B9%E5%87%BA%E6%94%B6%E8%B5%B7/&name=有输入框 EditText 的界面，如何处理软键盘的弹出/收起&description=&lt;h1 id=&#34;现象&#34;&gt;&lt;a href=&#34;#现象&#34; class=&#34;headerlink&#34; title=&#34;现象&#34;&gt;&lt;/a&gt;&lt;strong&gt;现象&lt;/strong&gt;&lt;/h1&gt;&lt;ul&gt;
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yueban.github.io/2014/08/14/%E6%9C%89%E8%BE%93%E5%85%A5%E6%A1%86EditText%E7%9A%84%E7%95%8C%E9%9D%A2%EF%BC%8C%E5%A6%82%E4%BD%95%E5%A4%84%E7%90%86%E8%BD%AF%E9%94%AE%E7%9B%98%E7%9A%84%E5%BC%B9%E5%87%BA%E6%94%B6%E8%B5%B7/&name=有输入框 EditText 的界面，如何处理软键盘的弹出/收起&description=&lt;h2 id=&#34;现象&#34;&gt;&lt;a href=&#34;#现象&#34; class=&#34;headerlink&#34; title=&#34;现象&#34;&gt;&lt;/a&gt;&lt;strong&gt;现象&lt;/strong&gt;&lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;如果界面上有 EditText 控件，则它会自动获取焦点并使软键盘弹出&lt;/li&gt;
 &lt;li&gt;与界面上其他控件进行交互（触摸、点击）时，软键盘不会自动隐藏&lt;/li&gt;
 &lt;/ul&gt;"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
@@ -112,7 +112,7 @@
 
     </div>
     <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#现象"><span class="toc-number">1.</span> <span class="toc-text">现象</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#解决方案"><span class="toc-number">2.</span> <span class="toc-text">解决方案</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#代码实现："><span class="toc-number">3.</span> <span class="toc-text">代码实现：</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#现象"><span class="toc-number">1.</span> <span class="toc-text">现象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解决方案"><span class="toc-number">2.</span> <span class="toc-text">解决方案</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码实现："><span class="toc-number">3.</span> <span class="toc-text">代码实现：</span></a></li></ol>
     </div>
   </span>
 </div>
@@ -138,7 +138,7 @@
       
         <time datetime="2014-08-14T10:20:41.000Z" itemprop="datePublished">2014-08-14</time>
         
-        (Updated: <time datetime="2020-11-08T10:35:21.743Z" itemprop="dateModified">2020-11-08</time>)
+        (Updated: <time datetime="2020-11-26T03:16:18.734Z" itemprop="dateModified">2020-11-26</time>)
         
       
     </div>
@@ -158,14 +158,14 @@
   
 
   <div class="content" itemprop="articleBody">
-    <h1 id="现象"><a href="#现象" class="headerlink" title="现象"></a><strong>现象</strong></h1><ul>
+    <h2 id="现象"><a href="#现象" class="headerlink" title="现象"></a><strong>现象</strong></h2><ul>
 <li>如果界面上有 EditText 控件，则它会自动获取焦点并使软键盘弹出</li>
 <li>与界面上其他控件进行交互（触摸、点击）时，软键盘不会自动隐藏</li>
 </ul>
 <a id="more"></a>
 
-<h1 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a><strong>解决方案</strong></h1><p><strong>1.监听 EditText 的焦点变化，如果丢失焦点，则自动隐藏软键盘</strong><br><strong>2.为界面上其他控件设置属性：可以获取焦点，这样在你与其他控件交互时，它们就会获取焦点，触发 EditText 焦点变动监听器，隐藏软键盘</strong></p>
-<h1 id="代码实现："><a href="#代码实现：" class="headerlink" title="代码实现："></a><strong>代码实现：</strong></h1><p><strong>1.监听 EditText 焦点变化</strong></p>
+<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a><strong>解决方案</strong></h2><p><strong>1.监听 EditText 的焦点变化，如果丢失焦点，则自动隐藏软键盘</strong><br><strong>2.为界面上其他控件设置属性：可以获取焦点，这样在你与其他控件交互时，它们就会获取焦点，触发 EditText 焦点变动监听器，隐藏软键盘</strong></p>
+<h2 id="代码实现："><a href="#代码实现：" class="headerlink" title="代码实现："></a><strong>代码实现：</strong></h2><p><strong>1.监听 EditText 焦点变化</strong></p>
 <pre><code>editText.setOnFocusChangeListener(new OnFocusChangeListener() {
 
     @Override
@@ -216,7 +216,7 @@ public static void closeKeyBoard() {
     </div>
 
     <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#现象"><span class="toc-number">1.</span> <span class="toc-text">现象</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#解决方案"><span class="toc-number">2.</span> <span class="toc-text">解决方案</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#代码实现："><span class="toc-number">3.</span> <span class="toc-text">代码实现：</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#现象"><span class="toc-number">1.</span> <span class="toc-text">现象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解决方案"><span class="toc-number">2.</span> <span class="toc-text">解决方案</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码实现："><span class="toc-number">3.</span> <span class="toc-text">代码实现：</span></a></li></ol>
     </div>
 
     <div id="share-footer" style="display: none">
@@ -230,7 +230,7 @@ public static void closeKeyBoard() {
   <li><a class="icon" href="http://reddit.com/submit?url=http://yueban.github.io/2014/08/14/%E6%9C%89%E8%BE%93%E5%85%A5%E6%A1%86EditText%E7%9A%84%E7%95%8C%E9%9D%A2%EF%BC%8C%E5%A6%82%E4%BD%95%E5%A4%84%E7%90%86%E8%BD%AF%E9%94%AE%E7%9B%98%E7%9A%84%E5%BC%B9%E5%87%BA%E6%94%B6%E8%B5%B7/&title=有输入框 EditText 的界面，如何处理软键盘的弹出/收起" target="_blank" rel="noopener"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
   <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yueban.github.io/2014/08/14/%E6%9C%89%E8%BE%93%E5%85%A5%E6%A1%86EditText%E7%9A%84%E7%95%8C%E9%9D%A2%EF%BC%8C%E5%A6%82%E4%BD%95%E5%A4%84%E7%90%86%E8%BD%AF%E9%94%AE%E7%9B%98%E7%9A%84%E5%BC%B9%E5%87%BA%E6%94%B6%E8%B5%B7/&title=有输入框 EditText 的界面，如何处理软键盘的弹出/收起" target="_blank" rel="noopener"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
   <li><a class="icon" href="http://digg.com/submit?url=http://yueban.github.io/2014/08/14/%E6%9C%89%E8%BE%93%E5%85%A5%E6%A1%86EditText%E7%9A%84%E7%95%8C%E9%9D%A2%EF%BC%8C%E5%A6%82%E4%BD%95%E5%A4%84%E7%90%86%E8%BD%AF%E9%94%AE%E7%9B%98%E7%9A%84%E5%BC%B9%E5%87%BA%E6%94%B6%E8%B5%B7/&title=有输入框 EditText 的界面，如何处理软键盘的弹出/收起" target="_blank" rel="noopener"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yueban.github.io/2014/08/14/%E6%9C%89%E8%BE%93%E5%85%A5%E6%A1%86EditText%E7%9A%84%E7%95%8C%E9%9D%A2%EF%BC%8C%E5%A6%82%E4%BD%95%E5%A4%84%E7%90%86%E8%BD%AF%E9%94%AE%E7%9B%98%E7%9A%84%E5%BC%B9%E5%87%BA%E6%94%B6%E8%B5%B7/&name=有输入框 EditText 的界面，如何处理软键盘的弹出/收起&description=&lt;h1 id=&#34;现象&#34;&gt;&lt;a href=&#34;#现象&#34; class=&#34;headerlink&#34; title=&#34;现象&#34;&gt;&lt;/a&gt;&lt;strong&gt;现象&lt;/strong&gt;&lt;/h1&gt;&lt;ul&gt;
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yueban.github.io/2014/08/14/%E6%9C%89%E8%BE%93%E5%85%A5%E6%A1%86EditText%E7%9A%84%E7%95%8C%E9%9D%A2%EF%BC%8C%E5%A6%82%E4%BD%95%E5%A4%84%E7%90%86%E8%BD%AF%E9%94%AE%E7%9B%98%E7%9A%84%E5%BC%B9%E5%87%BA%E6%94%B6%E8%B5%B7/&name=有输入框 EditText 的界面，如何处理软键盘的弹出/收起&description=&lt;h2 id=&#34;现象&#34;&gt;&lt;a href=&#34;#现象&#34; class=&#34;headerlink&#34; title=&#34;现象&#34;&gt;&lt;/a&gt;&lt;strong&gt;现象&lt;/strong&gt;&lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;如果界面上有 EditText 控件，则它会自动获取焦点并使软键盘弹出&lt;/li&gt;
 &lt;li&gt;与界面上其他控件进行交互（触摸、点击）时，软键盘不会自动隐藏&lt;/li&gt;
 &lt;/ul&gt;"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>

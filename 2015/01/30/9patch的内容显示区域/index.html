@@ -20,7 +20,7 @@
 <meta property="og:image" content="http://i2.tietuku.com/6767bcbd64b76ded.png">
 <meta property="og:image" content="http://i2.tietuku.com/c6ad606d5d10247d.png">
 <meta property="article:published_time" content="2015-01-30T01:32:34.000Z">
-<meta property="article:modified_time" content="2020-11-08T10:29:42.428Z">
+<meta property="article:modified_time" content="2020-11-26T03:16:18.734Z">
 <meta property="article:author" content="月半兄">
 <meta property="article:tag" content="Android">
 <meta name="twitter:card" content="summary">
@@ -115,7 +115,7 @@
 
     </div>
     <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#只画可拉伸区域"><span class="toc-number">1.</span> <span class="toc-text">只画可拉伸区域</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#画上内容显示区域"><span class="toc-number">2.</span> <span class="toc-text">画上内容显示区域</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#总结"><span class="toc-number">3.</span> <span class="toc-text">总结</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#只画可拉伸区域"><span class="toc-number">1.</span> <span class="toc-text">只画可拉伸区域</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#画上内容显示区域"><span class="toc-number">2.</span> <span class="toc-text">画上内容显示区域</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-number">3.</span> <span class="toc-text">总结</span></a></li></ol>
     </div>
   </span>
 </div>
@@ -141,7 +141,7 @@
       
         <time datetime="2015-01-30T01:32:34.000Z" itemprop="datePublished">2015-01-30</time>
         
-        (Updated: <time datetime="2020-11-08T10:29:42.428Z" itemprop="dateModified">2020-11-08</time>)
+        (Updated: <time datetime="2020-11-26T03:16:18.734Z" itemprop="dateModified">2020-11-26</time>)
         
       
     </div>
@@ -180,12 +180,12 @@
         android:textSize=&quot;22sp&quot;
         android:textColor=&quot;#FFFFFF&quot; /&gt;
 &lt;/RelativeLayout&gt;</code></pre><p>上面这段xml布局代码很简单，RelativeLayout中显示一个TextView，RelativeLayout中的background背景图片title_bar就是我们测试的图片了（.9.png）。在Android Studio的预览中是这样的：<br><img src="http://i2.tietuku.com/8609f0e6041eeda9.png" alt="预览">  </p>
-<h1 id="只画可拉伸区域"><a href="#只画可拉伸区域" class="headerlink" title="只画可拉伸区域"></a>只画可拉伸区域</h1><p>我们先只画<strong>可拉伸区域</strong>：<br><img src="http://i2.tietuku.com/21f5e0b0895b2b94.png" alt=".9.png可拉伸区域">  </p>
+<h2 id="只画可拉伸区域"><a href="#只画可拉伸区域" class="headerlink" title="只画可拉伸区域"></a>只画可拉伸区域</h2><p>我们先只画<strong>可拉伸区域</strong>：<br><img src="http://i2.tietuku.com/21f5e0b0895b2b94.png" alt=".9.png可拉伸区域">  </p>
 <p>运行后的效果为：<br><img src="http://i2.tietuku.com/c8cde35531f4205a.png" alt="可拉伸区域运行结果"><br>我们发现一件很诡异的事情，<strong>字不见了！见了！了！</strong></p>
-<h1 id="画上内容显示区域"><a href="#画上内容显示区域" class="headerlink" title="画上内容显示区域"></a>画上内容显示区域</h1><p>好吧，现在我们老老实实的把<strong>内容显示区域</strong>也画上：<br><img src="http://i2.tietuku.com/6767bcbd64b76ded.png" alt="可拉伸区域运行结果">  </p>
+<h2 id="画上内容显示区域"><a href="#画上内容显示区域" class="headerlink" title="画上内容显示区域"></a>画上内容显示区域</h2><p>好吧，现在我们老老实实的把<strong>内容显示区域</strong>也画上：<br><img src="http://i2.tietuku.com/6767bcbd64b76ded.png" alt="可拉伸区域运行结果">  </p>
 <p>再运行一下，看看效果：<br><img src="http://i2.tietuku.com/c6ad606d5d10247d.png" alt="可拉伸区域运行结果">  </p>
 <p><strong>字出现了！</strong></p>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>内容显示区域就是宣布这里是要显示内容的，你这个.9.png变形的时候注意一下不要把内容搞没了。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>内容显示区域就是宣布这里是要显示内容的，你这个.9.png变形的时候注意一下不要把内容搞没了。</p>
 
   </div>
 </article>
@@ -211,7 +211,7 @@
     </div>
 
     <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#只画可拉伸区域"><span class="toc-number">1.</span> <span class="toc-text">只画可拉伸区域</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#画上内容显示区域"><span class="toc-number">2.</span> <span class="toc-text">画上内容显示区域</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#总结"><span class="toc-number">3.</span> <span class="toc-text">总结</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#只画可拉伸区域"><span class="toc-number">1.</span> <span class="toc-text">只画可拉伸区域</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#画上内容显示区域"><span class="toc-number">2.</span> <span class="toc-text">画上内容显示区域</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-number">3.</span> <span class="toc-text">总结</span></a></li></ol>
     </div>
 
     <div id="share-footer" style="display: none">

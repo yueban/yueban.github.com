@@ -19,7 +19,7 @@
 <meta property="og:image" content="http://i2.tietuku.com/e3de3ce01b15ff85.png">
 <meta property="og:image" content="http://i2.tietuku.com/0cdca4e03a01b079.png">
 <meta property="article:published_time" content="2015-03-19T05:48:44.000Z">
-<meta property="article:modified_time" content="2020-11-08T10:32:57.995Z">
+<meta property="article:modified_time" content="2020-11-26T03:16:18.734Z">
 <meta property="article:author" content="月半兄">
 <meta property="article:tag" content="Android">
 <meta property="article:tag" content="Material Design">
@@ -109,7 +109,7 @@
   <li><a class="icon" href="http://reddit.com/submit?url=http://yueban.github.io/2015/03/19/MaterialDesign%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E9%98%B4%E5%BD%B1%E3%80%81%E8%BD%AE%E5%BB%93%E3%80%81%E8%A3%81%E5%89%AA%E3%80%81%E7%9D%80%E8%89%B2/&title=Material Design 学习——阴影、轮廓、裁剪、着色" target="_blank" rel="noopener"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
   <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yueban.github.io/2015/03/19/MaterialDesign%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E9%98%B4%E5%BD%B1%E3%80%81%E8%BD%AE%E5%BB%93%E3%80%81%E8%A3%81%E5%89%AA%E3%80%81%E7%9D%80%E8%89%B2/&title=Material Design 学习——阴影、轮廓、裁剪、着色" target="_blank" rel="noopener"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
   <li><a class="icon" href="http://digg.com/submit?url=http://yueban.github.io/2015/03/19/MaterialDesign%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E9%98%B4%E5%BD%B1%E3%80%81%E8%BD%AE%E5%BB%93%E3%80%81%E8%A3%81%E5%89%AA%E3%80%81%E7%9D%80%E8%89%B2/&title=Material Design 学习——阴影、轮廓、裁剪、着色" target="_blank" rel="noopener"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yueban.github.io/2015/03/19/MaterialDesign%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E9%98%B4%E5%BD%B1%E3%80%81%E8%BD%AE%E5%BB%93%E3%80%81%E8%A3%81%E5%89%AA%E3%80%81%E7%9D%80%E8%89%B2/&name=Material Design 学习——阴影、轮廓、裁剪、着色&description=&lt;h1 id=&#34;1-阴影&#34;&gt;&lt;a href=&#34;#1-阴影&#34; class=&#34;headerlink&#34; title=&#34;1 阴影&#34;&gt;&lt;/a&gt;1 阴影&lt;/h1&gt;&lt;p&gt;Android5.0 上实现阴影很简单，只需两点&lt;/p&gt;
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yueban.github.io/2015/03/19/MaterialDesign%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E9%98%B4%E5%BD%B1%E3%80%81%E8%BD%AE%E5%BB%93%E3%80%81%E8%A3%81%E5%89%AA%E3%80%81%E7%9D%80%E8%89%B2/&name=Material Design 学习——阴影、轮廓、裁剪、着色&description=&lt;h2 id=&#34;1-阴影&#34;&gt;&lt;a href=&#34;#1-阴影&#34; class=&#34;headerlink&#34; title=&#34;1 阴影&#34;&gt;&lt;/a&gt;1 阴影&lt;/h2&gt;&lt;p&gt;Android5.0 上实现阴影很简单，只需两点&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Z 轴上的高度&lt;/li&gt;
 &lt;li&gt;背景/轮廓&lt;/li&gt;
@@ -119,7 +119,7 @@
 
     </div>
     <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-阴影"><span class="toc-number">1.</span> <span class="toc-text">1 阴影</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-Z-轴"><span class="toc-number">1.1.</span> <span class="toc-text">2 Z 轴</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-Z-轴是-Andorid5-0-中新引入的一个概念"><span class="toc-number">1.1.1.</span> <span class="toc-text">2.1 Z 轴是 Andorid5.0 中新引入的一个概念</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-实例："><span class="toc-number">1.2.</span> <span class="toc-text">2.2 实例：</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-轮廓"><span class="toc-number">2.</span> <span class="toc-text">3 轮廓</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-裁剪"><span class="toc-number">3.</span> <span class="toc-text">4 裁剪</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-着色"><span class="toc-number">4.</span> <span class="toc-text">5 着色</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-阴影"><span class="toc-number">1.</span> <span class="toc-text">1 阴影</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Z-轴"><span class="toc-number">1.1.</span> <span class="toc-text">2 Z 轴</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-Z-轴是-Andorid5-0-中新引入的一个概念"><span class="toc-number">1.1.1.</span> <span class="toc-text">2.1 Z 轴是 Andorid5.0 中新引入的一个概念</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-实例："><span class="toc-number">1.2.</span> <span class="toc-text">2.2 实例：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-轮廓"><span class="toc-number">2.</span> <span class="toc-text">3 轮廓</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-裁剪"><span class="toc-number">3.</span> <span class="toc-text">4 裁剪</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-着色"><span class="toc-number">4.</span> <span class="toc-text">5 着色</span></a></li></ol>
     </div>
   </span>
 </div>
@@ -145,7 +145,7 @@
       
         <time datetime="2015-03-19T05:48:44.000Z" itemprop="datePublished">2015-03-19</time>
         
-        (Updated: <time datetime="2020-11-08T10:32:57.995Z" itemprop="dateModified">2020-11-08</time>)
+        (Updated: <time datetime="2020-11-26T03:16:18.734Z" itemprop="dateModified">2020-11-26</time>)
         
       
     </div>
@@ -165,7 +165,7 @@
   
 
   <div class="content" itemprop="articleBody">
-    <h1 id="1-阴影"><a href="#1-阴影" class="headerlink" title="1 阴影"></a>1 阴影</h1><p>Android5.0 上实现阴影很简单，只需两点</p>
+    <h2 id="1-阴影"><a href="#1-阴影" class="headerlink" title="1 阴影"></a>1 阴影</h2><p>Android5.0 上实现阴影很简单，只需两点</p>
 <ul>
 <li>Z 轴上的高度</li>
 <li>背景/轮廓</li>
@@ -173,16 +173,16 @@
 <a id="more"></a>
 
 <p>效果图<br><img style="float:left;"  src="http://i2.tietuku.com/2062b58f339f4a62.png"><br><br style="clear:both" /></p>
-<h2 id="2-Z-轴"><a href="#2-Z-轴" class="headerlink" title="2 Z 轴"></a>2 Z 轴</h2><h3 id="2-1-Z-轴是-Andorid5-0-中新引入的一个概念"><a href="#2-1-Z-轴是-Andorid5-0-中新引入的一个概念" class="headerlink" title="2.1 Z 轴是 Andorid5.0 中新引入的一个概念"></a>2.1 Z 轴是 Andorid5.0 中新引入的一个概念</h3><ul>
+<h3 id="2-Z-轴"><a href="#2-Z-轴" class="headerlink" title="2 Z 轴"></a>2 Z 轴</h3><h4 id="2-1-Z-轴是-Andorid5-0-中新引入的一个概念"><a href="#2-1-Z-轴是-Andorid5-0-中新引入的一个概念" class="headerlink" title="2.1 Z 轴是 Andorid5.0 中新引入的一个概念"></a>2.1 Z 轴是 Andorid5.0 中新引入的一个概念</h4><ul>
 <li><code>elevation</code>表示控件的高</li>
 <li><code>translationZ</code>表示控件在 Z 轴山的偏移量</li>
 <li>控件在 Z 轴上的实际高度是<code>elevation + translationZ</code></li>
 </ul>
-<h2 id="2-2-实例："><a href="#2-2-实例：" class="headerlink" title="2.2 实例："></a>2.2 实例：</h2><p>style：dp</p>
+<h3 id="2-2-实例："><a href="#2-2-实例：" class="headerlink" title="2.2 实例："></a>2.2 实例：</h3><p>style：dp</p>
 <pre><code>android:elevation=&quot;50dp&quot;
 android:translationZ=&quot;20dp&quot;</code></pre><p>code：px</p>
 <pre><code>view.setElevation(50);
-view.setTranslationZ(20);</code></pre><h1 id="3-轮廓"><a href="#3-轮廓" class="headerlink" title="3 轮廓"></a>3 轮廓</h1><p>实例：为按钮设置一个圆形轮廓，代码实际上设置了一个圆角矩形的轮廓，不过把圆角的半径设置为了边长的一半，所以实际效果是个圆</p>
+view.setTranslationZ(20);</code></pre><h2 id="3-轮廓"><a href="#3-轮廓" class="headerlink" title="3 轮廓"></a>3 轮廓</h2><p>实例：为按钮设置一个圆形轮廓，代码实际上设置了一个圆角矩形的轮廓，不过把圆角的半径设置为了边长的一半，所以实际效果是个圆</p>
 <pre><code>imageView.setOutlineProvider(new ViewOutlineProvider() {
     @Override
     public void getOutline(View view, Outline outline) {
@@ -190,9 +190,9 @@ view.setTranslationZ(20);</code></pre><h1 id="3-轮廓"><a href="#3-轮廓" clas
         outline.setRoundRect(0, 0, shapeSize, shapeSize, shapeSize / 2);
     }
 });</code></pre><p>效果图如下，仔细看可以发现，阴影已经变成圆形了，在计算阴影时，轮廓优先于背景<br><img style="float:left;"  src="http://i2.tietuku.com/43b79eba81a687b8.png"><br><br style="clear:both" /></p>
-<h1 id="4-裁剪"><a href="#4-裁剪" class="headerlink" title="4 裁剪"></a>4 裁剪</h1><p>可以将 View 按其轮廓裁剪，只需在设置轮廓后再添加一行代码</p>
+<h2 id="4-裁剪"><a href="#4-裁剪" class="headerlink" title="4 裁剪"></a>4 裁剪</h2><p>可以将 View 按其轮廓裁剪，只需在设置轮廓后再添加一行代码</p>
 <pre><code>button.setClipToOutline(true);</code></pre><p>效果图<br><img style="float:left;"  src="http://i2.tietuku.com/e3de3ce01b15ff85.png"><br><br style="clear:both" /></p>
-<h1 id="5-着色"><a href="#5-着色" class="headerlink" title="5 着色"></a>5 着色</h1><p>tint 是 Android5.0 中引入的一个新概念，用于将 View 着色，拿 ImageView 举例，分别为 src 与 background 着色：<br>style：</p>
+<h2 id="5-着色"><a href="#5-着色" class="headerlink" title="5 着色"></a>5 着色</h2><p>tint 是 Android5.0 中引入的一个新概念，用于将 View 着色，拿 ImageView 举例，分别为 src 与 background 着色：<br>style：</p>
 <p> <ImageView
         android:tint="#ffff0000"
         android:backgroundTint="#ff0000ff" /></p>
@@ -224,7 +224,7 @@ imageView.setBackgroundTintList(ColorStateList.valueOf(Color.BLUE));</code></pre
     </div>
 
     <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-阴影"><span class="toc-number">1.</span> <span class="toc-text">1 阴影</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-Z-轴"><span class="toc-number">1.1.</span> <span class="toc-text">2 Z 轴</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-Z-轴是-Andorid5-0-中新引入的一个概念"><span class="toc-number">1.1.1.</span> <span class="toc-text">2.1 Z 轴是 Andorid5.0 中新引入的一个概念</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-实例："><span class="toc-number">1.2.</span> <span class="toc-text">2.2 实例：</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-轮廓"><span class="toc-number">2.</span> <span class="toc-text">3 轮廓</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-裁剪"><span class="toc-number">3.</span> <span class="toc-text">4 裁剪</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-着色"><span class="toc-number">4.</span> <span class="toc-text">5 着色</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-阴影"><span class="toc-number">1.</span> <span class="toc-text">1 阴影</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Z-轴"><span class="toc-number">1.1.</span> <span class="toc-text">2 Z 轴</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-Z-轴是-Andorid5-0-中新引入的一个概念"><span class="toc-number">1.1.1.</span> <span class="toc-text">2.1 Z 轴是 Andorid5.0 中新引入的一个概念</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-实例："><span class="toc-number">1.2.</span> <span class="toc-text">2.2 实例：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-轮廓"><span class="toc-number">2.</span> <span class="toc-text">3 轮廓</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-裁剪"><span class="toc-number">3.</span> <span class="toc-text">4 裁剪</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-着色"><span class="toc-number">4.</span> <span class="toc-text">5 着色</span></a></li></ol>
     </div>
 
     <div id="share-footer" style="display: none">
@@ -238,7 +238,7 @@ imageView.setBackgroundTintList(ColorStateList.valueOf(Color.BLUE));</code></pre
   <li><a class="icon" href="http://reddit.com/submit?url=http://yueban.github.io/2015/03/19/MaterialDesign%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E9%98%B4%E5%BD%B1%E3%80%81%E8%BD%AE%E5%BB%93%E3%80%81%E8%A3%81%E5%89%AA%E3%80%81%E7%9D%80%E8%89%B2/&title=Material Design 学习——阴影、轮廓、裁剪、着色" target="_blank" rel="noopener"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
   <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yueban.github.io/2015/03/19/MaterialDesign%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E9%98%B4%E5%BD%B1%E3%80%81%E8%BD%AE%E5%BB%93%E3%80%81%E8%A3%81%E5%89%AA%E3%80%81%E7%9D%80%E8%89%B2/&title=Material Design 学习——阴影、轮廓、裁剪、着色" target="_blank" rel="noopener"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
   <li><a class="icon" href="http://digg.com/submit?url=http://yueban.github.io/2015/03/19/MaterialDesign%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E9%98%B4%E5%BD%B1%E3%80%81%E8%BD%AE%E5%BB%93%E3%80%81%E8%A3%81%E5%89%AA%E3%80%81%E7%9D%80%E8%89%B2/&title=Material Design 学习——阴影、轮廓、裁剪、着色" target="_blank" rel="noopener"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yueban.github.io/2015/03/19/MaterialDesign%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E9%98%B4%E5%BD%B1%E3%80%81%E8%BD%AE%E5%BB%93%E3%80%81%E8%A3%81%E5%89%AA%E3%80%81%E7%9D%80%E8%89%B2/&name=Material Design 学习——阴影、轮廓、裁剪、着色&description=&lt;h1 id=&#34;1-阴影&#34;&gt;&lt;a href=&#34;#1-阴影&#34; class=&#34;headerlink&#34; title=&#34;1 阴影&#34;&gt;&lt;/a&gt;1 阴影&lt;/h1&gt;&lt;p&gt;Android5.0 上实现阴影很简单，只需两点&lt;/p&gt;
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yueban.github.io/2015/03/19/MaterialDesign%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E9%98%B4%E5%BD%B1%E3%80%81%E8%BD%AE%E5%BB%93%E3%80%81%E8%A3%81%E5%89%AA%E3%80%81%E7%9D%80%E8%89%B2/&name=Material Design 学习——阴影、轮廓、裁剪、着色&description=&lt;h2 id=&#34;1-阴影&#34;&gt;&lt;a href=&#34;#1-阴影&#34; class=&#34;headerlink&#34; title=&#34;1 阴影&#34;&gt;&lt;/a&gt;1 阴影&lt;/h2&gt;&lt;p&gt;Android5.0 上实现阴影很简单，只需两点&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Z 轴上的高度&lt;/li&gt;
 &lt;li&gt;背景/轮廓&lt;/li&gt;

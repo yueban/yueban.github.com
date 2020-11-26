@@ -19,7 +19,7 @@
 <meta property="og:image" content="http://leanote.com/api/file/getImage?fileId=562ce79f38f4114842000f12">
 <meta property="og:image" content="http://leanote.com/api/file/getImage?fileId=562ce79f38f4114842000f14">
 <meta property="article:published_time" content="2015-10-25T14:29:10.000Z">
-<meta property="article:modified_time" content="2020-11-08T10:35:21.743Z">
+<meta property="article:modified_time" content="2020-11-26T03:16:18.734Z">
 <meta property="article:author" content="月半兄">
 <meta property="article:tag" content="Android">
 <meta name="twitter:card" content="summary">
@@ -108,13 +108,13 @@
   <li><a class="icon" href="http://reddit.com/submit?url=http://yueban.github.io/2015/10/25/AndroidAsync%E6%A1%86%E6%9E%B6%E8%8E%B7%E5%8F%96Socket.IO%E7%9A%84Http%E8%BF%94%E5%9B%9E%E7%A0%81/&title=AndroidAsync 框架获取 Socket.IO 的 Http 返回码" target="_blank" rel="noopener"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
   <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yueban.github.io/2015/10/25/AndroidAsync%E6%A1%86%E6%9E%B6%E8%8E%B7%E5%8F%96Socket.IO%E7%9A%84Http%E8%BF%94%E5%9B%9E%E7%A0%81/&title=AndroidAsync 框架获取 Socket.IO 的 Http 返回码" target="_blank" rel="noopener"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
   <li><a class="icon" href="http://digg.com/submit?url=http://yueban.github.io/2015/10/25/AndroidAsync%E6%A1%86%E6%9E%B6%E8%8E%B7%E5%8F%96Socket.IO%E7%9A%84Http%E8%BF%94%E5%9B%9E%E7%A0%81/&title=AndroidAsync 框架获取 Socket.IO 的 Http 返回码" target="_blank" rel="noopener"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yueban.github.io/2015/10/25/AndroidAsync%E6%A1%86%E6%9E%B6%E8%8E%B7%E5%8F%96Socket.IO%E7%9A%84Http%E8%BF%94%E5%9B%9E%E7%A0%81/&name=AndroidAsync 框架获取 Socket.IO 的 Http 返回码&description=&lt;h1 id=&#34;概述&#34;&gt;&lt;a href=&#34;#概述&#34; class=&#34;headerlink&#34; title=&#34;概述&#34;&gt;&lt;/a&gt;概述&lt;/h1&gt;&lt;p&gt;上周我们的服务器端除了一些小问题，某些情况下会丢失 sessionId，Socket 连接返回 500 错误。这就需要客户端判断 Socket 连接的 http 返回码，如果是 500，则刷新 token 以使服务器得到一个新的 sessionId，但 SocketIO 默认的 connect 方法是得不到 http 返回码的。那要如何得到这个返回码呢，请接着向下看。&lt;/p&gt;" target="_blank" rel="noopener"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yueban.github.io/2015/10/25/AndroidAsync%E6%A1%86%E6%9E%B6%E8%8E%B7%E5%8F%96Socket.IO%E7%9A%84Http%E8%BF%94%E5%9B%9E%E7%A0%81/&name=AndroidAsync 框架获取 Socket.IO 的 Http 返回码&description=&lt;h2 id=&#34;概述&#34;&gt;&lt;a href=&#34;#概述&#34; class=&#34;headerlink&#34; title=&#34;概述&#34;&gt;&lt;/a&gt;概述&lt;/h2&gt;&lt;p&gt;上周我们的服务器端除了一些小问题，某些情况下会丢失 sessionId，Socket 连接返回 500 错误。这就需要客户端判断 Socket 连接的 http 返回码，如果是 500，则刷新 token 以使服务器得到一个新的 sessionId，但 SocketIO 默认的 connect 方法是得不到 http 返回码的。那要如何得到这个返回码呢，请接着向下看。&lt;/p&gt;" target="_blank" rel="noopener"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
   <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=http://yueban.github.io/2015/10/25/AndroidAsync%E6%A1%86%E6%9E%B6%E8%8E%B7%E5%8F%96Socket.IO%E7%9A%84Http%E8%BF%94%E5%9B%9E%E7%A0%81/&t=AndroidAsync 框架获取 Socket.IO 的 Http 返回码" target="_blank" rel="noopener"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
     <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#概述"><span class="toc-number">1.</span> <span class="toc-text">概述</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#思路"><span class="toc-number">2.</span> <span class="toc-text">思路</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#修改源码"><span class="toc-number">3.</span> <span class="toc-text">修改源码</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#使用"><span class="toc-number">4.</span> <span class="toc-text">使用</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#概述"><span class="toc-number">1.</span> <span class="toc-text">概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#思路"><span class="toc-number">2.</span> <span class="toc-text">思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#修改源码"><span class="toc-number">3.</span> <span class="toc-text">修改源码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用"><span class="toc-number">4.</span> <span class="toc-text">使用</span></a></li></ol>
     </div>
   </span>
 </div>
@@ -140,7 +140,7 @@
       
         <time datetime="2015-10-25T14:29:10.000Z" itemprop="datePublished">2015-10-25</time>
         
-        (Updated: <time datetime="2020-11-08T10:35:21.743Z" itemprop="dateModified">2020-11-08</time>)
+        (Updated: <time datetime="2020-11-26T03:16:18.734Z" itemprop="dateModified">2020-11-26</time>)
         
       
     </div>
@@ -160,10 +160,10 @@
   
 
   <div class="content" itemprop="articleBody">
-    <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>上周我们的服务器端除了一些小问题，某些情况下会丢失 sessionId，Socket 连接返回 500 错误。这就需要客户端判断 Socket 连接的 http 返回码，如果是 500，则刷新 token 以使服务器得到一个新的 sessionId，但 SocketIO 默认的 connect 方法是得不到 http 返回码的。那要如何得到这个返回码呢，请接着向下看。</p>
+    <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>上周我们的服务器端除了一些小问题，某些情况下会丢失 sessionId，Socket 连接返回 500 错误。这就需要客户端判断 Socket 连接的 http 返回码，如果是 500，则刷新 token 以使服务器得到一个新的 sessionId，但 SocketIO 默认的 connect 方法是得不到 http 返回码的。那要如何得到这个返回码呢，请接着向下看。</p>
 <a id="more"></a>
 
-<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><ol>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><ol>
 <li>AndroidAsync 内部的 SocketIO 是通过 AsyncHttpClient 进行连接的，肯定是有 http 码返回的，但是在哪里返回的，不知道。</li>
 <li>我们用一个无效的 sessionId 连接，服务器是会返回 500 的，查看 Log 除了一个<code>handshake error</code>没有其他任何有效的信息。</li>
 <li>用 Android Studio 全局搜索字符串<code>handshake error</code>，无结果。</li>
@@ -173,7 +173,7 @@
 <li>顺着<code>executeString</code>方法向上摸，发现它在<code>SocketIOConnection</code>类中的<code>reconnect</code>方法中被调用了，而且调用的就是那个传<code>null</code>的重载。<br><img src="http://leanote.com/api/file/getImage?fileId=562ce79f38f4114842000f12" alt=""></li>
 <li>顺着<code>reconnect</code>向上摸，终于找到了<code>SocketIOClient</code>类中的<code>connect</code>方法，它就是我们启动 Socket 连接的地方。<br><img src="http://leanote.com/api/file/getImage?fileId=562ce79f38f4114842000f14" alt=""></li>
 </ol>
-<h1 id="修改源码"><a href="#修改源码" class="headerlink" title="修改源码"></a>修改源码</h1><ul>
+<h2 id="修改源码"><a href="#修改源码" class="headerlink" title="修改源码"></a>修改源码</h2><ul>
 <li>为<code>connect</code>方法添加一个参数<code>StringCallback</code></li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//SocketIOClient类</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Future&lt;SocketIOClient&gt; <span class="title">connect</span><span class="params">(<span class="keyword">final</span> AsyncHttpClient client, <span class="keyword">final</span> SocketIORequest request, <span class="keyword">final</span> ConnectCallback callback, <span class="keyword">final</span> AsyncHttpClient.StringCallback stringCallback)</span></span></span><br></pre></td></tr></table></figure>
@@ -191,7 +191,7 @@
 <ul>
 <li>因为某些方法形参列表的修改，肯定会导致某些调用这个方法的地方报错，记得修改一下就好。</li>
 </ul>
-<h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">SocketIOClient.connect(AsyncHttpClient.getDefaultInstance(), sir, <span class="keyword">new</span> ConnectCallback() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onConnectCompleted</span><span class="params">(Exception ex, <span class="keyword">final</span> SocketIOClient client)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//do something</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;, <span class="keyword">new</span> AsyncHttpClient.StringCallback() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCompleted</span><span class="params">(Exception e, AsyncHttpResponse source, String result)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//得到http返回码</span></span><br><span class="line">        <span class="keyword">int</span> statusCode = source.getHeaders().getHeaders().getResponseCode();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">SocketIOClient.connect(AsyncHttpClient.getDefaultInstance(), sir, <span class="keyword">new</span> ConnectCallback() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onConnectCompleted</span><span class="params">(Exception ex, <span class="keyword">final</span> SocketIOClient client)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//do something</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;, <span class="keyword">new</span> AsyncHttpClient.StringCallback() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCompleted</span><span class="params">(Exception e, AsyncHttpResponse source, String result)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//得到http返回码</span></span><br><span class="line">        <span class="keyword">int</span> statusCode = source.getHeaders().getHeaders().getResponseCode();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 
   </div>
 </article>
@@ -217,7 +217,7 @@
     </div>
 
     <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#概述"><span class="toc-number">1.</span> <span class="toc-text">概述</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#思路"><span class="toc-number">2.</span> <span class="toc-text">思路</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#修改源码"><span class="toc-number">3.</span> <span class="toc-text">修改源码</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#使用"><span class="toc-number">4.</span> <span class="toc-text">使用</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#概述"><span class="toc-number">1.</span> <span class="toc-text">概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#思路"><span class="toc-number">2.</span> <span class="toc-text">思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#修改源码"><span class="toc-number">3.</span> <span class="toc-text">修改源码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用"><span class="toc-number">4.</span> <span class="toc-text">使用</span></a></li></ol>
     </div>
 
     <div id="share-footer" style="display: none">
@@ -231,7 +231,7 @@
   <li><a class="icon" href="http://reddit.com/submit?url=http://yueban.github.io/2015/10/25/AndroidAsync%E6%A1%86%E6%9E%B6%E8%8E%B7%E5%8F%96Socket.IO%E7%9A%84Http%E8%BF%94%E5%9B%9E%E7%A0%81/&title=AndroidAsync 框架获取 Socket.IO 的 Http 返回码" target="_blank" rel="noopener"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
   <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yueban.github.io/2015/10/25/AndroidAsync%E6%A1%86%E6%9E%B6%E8%8E%B7%E5%8F%96Socket.IO%E7%9A%84Http%E8%BF%94%E5%9B%9E%E7%A0%81/&title=AndroidAsync 框架获取 Socket.IO 的 Http 返回码" target="_blank" rel="noopener"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
   <li><a class="icon" href="http://digg.com/submit?url=http://yueban.github.io/2015/10/25/AndroidAsync%E6%A1%86%E6%9E%B6%E8%8E%B7%E5%8F%96Socket.IO%E7%9A%84Http%E8%BF%94%E5%9B%9E%E7%A0%81/&title=AndroidAsync 框架获取 Socket.IO 的 Http 返回码" target="_blank" rel="noopener"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yueban.github.io/2015/10/25/AndroidAsync%E6%A1%86%E6%9E%B6%E8%8E%B7%E5%8F%96Socket.IO%E7%9A%84Http%E8%BF%94%E5%9B%9E%E7%A0%81/&name=AndroidAsync 框架获取 Socket.IO 的 Http 返回码&description=&lt;h1 id=&#34;概述&#34;&gt;&lt;a href=&#34;#概述&#34; class=&#34;headerlink&#34; title=&#34;概述&#34;&gt;&lt;/a&gt;概述&lt;/h1&gt;&lt;p&gt;上周我们的服务器端除了一些小问题，某些情况下会丢失 sessionId，Socket 连接返回 500 错误。这就需要客户端判断 Socket 连接的 http 返回码，如果是 500，则刷新 token 以使服务器得到一个新的 sessionId，但 SocketIO 默认的 connect 方法是得不到 http 返回码的。那要如何得到这个返回码呢，请接着向下看。&lt;/p&gt;" target="_blank" rel="noopener"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yueban.github.io/2015/10/25/AndroidAsync%E6%A1%86%E6%9E%B6%E8%8E%B7%E5%8F%96Socket.IO%E7%9A%84Http%E8%BF%94%E5%9B%9E%E7%A0%81/&name=AndroidAsync 框架获取 Socket.IO 的 Http 返回码&description=&lt;h2 id=&#34;概述&#34;&gt;&lt;a href=&#34;#概述&#34; class=&#34;headerlink&#34; title=&#34;概述&#34;&gt;&lt;/a&gt;概述&lt;/h2&gt;&lt;p&gt;上周我们的服务器端除了一些小问题，某些情况下会丢失 sessionId，Socket 连接返回 500 错误。这就需要客户端判断 Socket 连接的 http 返回码，如果是 500，则刷新 token 以使服务器得到一个新的 sessionId，但 SocketIO 默认的 connect 方法是得不到 http 返回码的。那要如何得到这个返回码呢，请接着向下看。&lt;/p&gt;" target="_blank" rel="noopener"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
   <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=http://yueban.github.io/2015/10/25/AndroidAsync%E6%A1%86%E6%9E%B6%E8%8E%B7%E5%8F%96Socket.IO%E7%9A%84Http%E8%BF%94%E5%9B%9E%E7%A0%81/&t=AndroidAsync 框架获取 Socket.IO 的 Http 返回码" target="_blank" rel="noopener"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
 </ul>
 

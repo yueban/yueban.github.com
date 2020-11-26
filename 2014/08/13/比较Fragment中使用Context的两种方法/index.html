@@ -15,7 +15,7 @@
 <meta property="og:description" content="&amp;emsp;我们在使用Fragment的时候经常需要传递Context类型的参数，而Fragment自己又不是一个Context类型的对象，于是我们有下面两种方法获取Context对象。   一、两种方法介绍1.this.getActivity()（可以不写this.）在Fragment中直接调用getActivity()方法，可以直接得到Fragment依附的Activity，而Activity">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2014-08-13T13:20:02.000Z">
-<meta property="article:modified_time" content="2020-11-08T10:29:50.489Z">
+<meta property="article:modified_time" content="2020-11-26T03:16:18.733Z">
 <meta property="article:author" content="月半兄">
 <meta property="article:tag" content="Android">
 <meta name="twitter:card" content="summary">
@@ -100,13 +100,13 @@
   <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yueban.github.io/2014/08/13/%E6%AF%94%E8%BE%83Fragment%E4%B8%AD%E4%BD%BF%E7%94%A8Context%E7%9A%84%E4%B8%A4%E7%A7%8D%E6%96%B9%E6%B3%95/&title=比较 Fragment 中获取 Context 对象的两种方法" target="_blank" rel="noopener"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
   <li><a class="icon" href="http://digg.com/submit?url=http://yueban.github.io/2014/08/13/%E6%AF%94%E8%BE%83Fragment%E4%B8%AD%E4%BD%BF%E7%94%A8Context%E7%9A%84%E4%B8%A4%E7%A7%8D%E6%96%B9%E6%B3%95/&title=比较 Fragment 中获取 Context 对象的两种方法" target="_blank" rel="noopener"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
   <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yueban.github.io/2014/08/13/%E6%AF%94%E8%BE%83Fragment%E4%B8%AD%E4%BD%BF%E7%94%A8Context%E7%9A%84%E4%B8%A4%E7%A7%8D%E6%96%B9%E6%B3%95/&name=比较 Fragment 中获取 Context 对象的两种方法&description=&lt;p&gt;&amp;emsp;我们在使用Fragment的时候经常需要传递Context类型的参数，而Fragment自己又不是一个Context类型的对象，于是我们有下面两种方法获取Context对象。  &lt;/p&gt;
-&lt;h1 id=&#34;一、两种方法介绍&#34;&gt;&lt;a href=&#34;#一、两种方法介绍&#34; class=&#34;headerlink&#34; title=&#34;一、两种方法介绍&#34;&gt;&lt;/a&gt;&lt;strong&gt;一、两种方法介绍&lt;/strong&gt;&lt;/h1&gt;&lt;p&gt;&lt;strong&gt;1.this.getActivity()（可以不写this.）&lt;/strong&gt;&lt;br&gt;在Fragment中直接调用getActivity()方法，可以直接得到Fragment依附的Activity，而Activity是一个Context类型的对象。  &lt;/p&gt;"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+&lt;h2 id=&#34;一、两种方法介绍&#34;&gt;&lt;a href=&#34;#一、两种方法介绍&#34; class=&#34;headerlink&#34; title=&#34;一、两种方法介绍&#34;&gt;&lt;/a&gt;&lt;strong&gt;一、两种方法介绍&lt;/strong&gt;&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;1.this.getActivity()（可以不写this.）&lt;/strong&gt;&lt;br&gt;在Fragment中直接调用getActivity()方法，可以直接得到Fragment依附的Activity，而Activity是一个Context类型的对象。  &lt;/p&gt;"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
   <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=http://yueban.github.io/2014/08/13/%E6%AF%94%E8%BE%83Fragment%E4%B8%AD%E4%BD%BF%E7%94%A8Context%E7%9A%84%E4%B8%A4%E7%A7%8D%E6%96%B9%E6%B3%95/&t=比较 Fragment 中获取 Context 对象的两种方法" target="_blank" rel="noopener"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
     <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#一、两种方法介绍"><span class="toc-number">1.</span> <span class="toc-text">一、两种方法介绍</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#二、两种方法比较"><span class="toc-number">2.</span> <span class="toc-text">二、两种方法比较</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#三、两全其美的解决方案"><span class="toc-number">3.</span> <span class="toc-text">三、两全其美的解决方案</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、两种方法介绍"><span class="toc-number">1.</span> <span class="toc-text">一、两种方法介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、两种方法比较"><span class="toc-number">2.</span> <span class="toc-text">二、两种方法比较</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、两全其美的解决方案"><span class="toc-number">3.</span> <span class="toc-text">三、两全其美的解决方案</span></a></li></ol>
     </div>
   </span>
 </div>
@@ -132,7 +132,7 @@
       
         <time datetime="2014-08-13T13:20:02.000Z" itemprop="datePublished">2014-08-13</time>
         
-        (Updated: <time datetime="2020-11-08T10:29:50.489Z" itemprop="dateModified">2020-11-08</time>)
+        (Updated: <time datetime="2020-11-26T03:16:18.733Z" itemprop="dateModified">2020-11-26</time>)
         
       
     </div>
@@ -153,7 +153,7 @@
 
   <div class="content" itemprop="articleBody">
     <p>&emsp;我们在使用Fragment的时候经常需要传递Context类型的参数，而Fragment自己又不是一个Context类型的对象，于是我们有下面两种方法获取Context对象。  </p>
-<h1 id="一、两种方法介绍"><a href="#一、两种方法介绍" class="headerlink" title="一、两种方法介绍"></a><strong>一、两种方法介绍</strong></h1><p><strong>1.this.getActivity()（可以不写this.）</strong><br>在Fragment中直接调用getActivity()方法，可以直接得到Fragment依附的Activity，而Activity是一个Context类型的对象。  </p>
+<h2 id="一、两种方法介绍"><a href="#一、两种方法介绍" class="headerlink" title="一、两种方法介绍"></a><strong>一、两种方法介绍</strong></h2><p><strong>1.this.getActivity()（可以不写this.）</strong><br>在Fragment中直接调用getActivity()方法，可以直接得到Fragment依附的Activity，而Activity是一个Context类型的对象。  </p>
 <a id="more"></a>
 <p><strong>2.获取Application对象</strong><br>如下自己写一个MyApplication类继承Application，通过getInstance获取一个Application类型的对象，也是Context对象。</p>
 <pre><code>public class MyApplication extends Application {
@@ -165,7 +165,7 @@
         }
         return mInstance;
     }
-}</code></pre><h1 id="二、两种方法比较"><a href="#二、两种方法比较" class="headerlink" title="二、两种方法比较"></a><strong>二、两种方法比较</strong></h1><p><strong>1.this.getActivity()</strong>  </p>
+}</code></pre><h2 id="二、两种方法比较"><a href="#二、两种方法比较" class="headerlink" title="二、两种方法比较"></a><strong>二、两种方法比较</strong></h2><p><strong>1.this.getActivity()</strong>  </p>
 <ul>
 <li>优点：不需要写MyApplication类</li>
 <li>缺点：<code>Fragment</code>很容易被销毁，调用<code>getActivity()</code>方法会报空指针错误（注意：并不是<code>getActivity()</code>返回值为<code>null</code>，而是<code>this.getActivity()</code>中的<code>this</code>，也就是<code>Fragment</code>自己是<code>null</code>，因为它已经被销毁了）</li>
@@ -175,7 +175,7 @@
 <li>优点：不会遇到类似<code>this.getActivity()</code>的空指针问题</li>
 <li>缺点：某些情况下的<code>Context</code>必须是<code>Activity</code>，特别是实例化<code>Dialog</code>等需要依附于一个<code>Activity</code>的可视化的对象时传参必须是<code>Activity</code>对象（<code>Toast</code>是Android的一种通知机制，不需要依附于<code>Activity</code>）</li>
 </ul>
-<h1 id="三、两全其美的解决方案"><a href="#三、两全其美的解决方案" class="headerlink" title="三、两全其美的解决方案"></a><strong>三、两全其美的解决方案</strong></h1><p><strong>1.MyApplication是一定要写的</strong><br><strong>2.写一个如下的BaseFragment类</strong>：所有的<code>Fragment</code>都继承这个<code>BaseFragment</code>,直接通过<code>getContext()</code>方法即可得到<code>Context</code>对象，当然实例化<code>Dialog</code>等需要依附于<code>Activity</code>的对象时，还是老老实实的<code>getActivity()</code>吧  </p>
+<h2 id="三、两全其美的解决方案"><a href="#三、两全其美的解决方案" class="headerlink" title="三、两全其美的解决方案"></a><strong>三、两全其美的解决方案</strong></h2><p><strong>1.MyApplication是一定要写的</strong><br><strong>2.写一个如下的BaseFragment类</strong>：所有的<code>Fragment</code>都继承这个<code>BaseFragment</code>,直接通过<code>getContext()</code>方法即可得到<code>Context</code>对象，当然实例化<code>Dialog</code>等需要依附于<code>Activity</code>的对象时，还是老老实实的<code>getActivity()</code>吧  </p>
 <pre><code>public class BaseFragment extends Fragment{
     private Activity activity;
 
@@ -216,7 +216,7 @@
     </div>
 
     <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#一、两种方法介绍"><span class="toc-number">1.</span> <span class="toc-text">一、两种方法介绍</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#二、两种方法比较"><span class="toc-number">2.</span> <span class="toc-text">二、两种方法比较</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#三、两全其美的解决方案"><span class="toc-number">3.</span> <span class="toc-text">三、两全其美的解决方案</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、两种方法介绍"><span class="toc-number">1.</span> <span class="toc-text">一、两种方法介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、两种方法比较"><span class="toc-number">2.</span> <span class="toc-text">二、两种方法比较</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、两全其美的解决方案"><span class="toc-number">3.</span> <span class="toc-text">三、两全其美的解决方案</span></a></li></ol>
     </div>
 
     <div id="share-footer" style="display: none">
@@ -231,7 +231,7 @@
   <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yueban.github.io/2014/08/13/%E6%AF%94%E8%BE%83Fragment%E4%B8%AD%E4%BD%BF%E7%94%A8Context%E7%9A%84%E4%B8%A4%E7%A7%8D%E6%96%B9%E6%B3%95/&title=比较 Fragment 中获取 Context 对象的两种方法" target="_blank" rel="noopener"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
   <li><a class="icon" href="http://digg.com/submit?url=http://yueban.github.io/2014/08/13/%E6%AF%94%E8%BE%83Fragment%E4%B8%AD%E4%BD%BF%E7%94%A8Context%E7%9A%84%E4%B8%A4%E7%A7%8D%E6%96%B9%E6%B3%95/&title=比较 Fragment 中获取 Context 对象的两种方法" target="_blank" rel="noopener"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
   <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yueban.github.io/2014/08/13/%E6%AF%94%E8%BE%83Fragment%E4%B8%AD%E4%BD%BF%E7%94%A8Context%E7%9A%84%E4%B8%A4%E7%A7%8D%E6%96%B9%E6%B3%95/&name=比较 Fragment 中获取 Context 对象的两种方法&description=&lt;p&gt;&amp;emsp;我们在使用Fragment的时候经常需要传递Context类型的参数，而Fragment自己又不是一个Context类型的对象，于是我们有下面两种方法获取Context对象。  &lt;/p&gt;
-&lt;h1 id=&#34;一、两种方法介绍&#34;&gt;&lt;a href=&#34;#一、两种方法介绍&#34; class=&#34;headerlink&#34; title=&#34;一、两种方法介绍&#34;&gt;&lt;/a&gt;&lt;strong&gt;一、两种方法介绍&lt;/strong&gt;&lt;/h1&gt;&lt;p&gt;&lt;strong&gt;1.this.getActivity()（可以不写this.）&lt;/strong&gt;&lt;br&gt;在Fragment中直接调用getActivity()方法，可以直接得到Fragment依附的Activity，而Activity是一个Context类型的对象。  &lt;/p&gt;"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+&lt;h2 id=&#34;一、两种方法介绍&#34;&gt;&lt;a href=&#34;#一、两种方法介绍&#34; class=&#34;headerlink&#34; title=&#34;一、两种方法介绍&#34;&gt;&lt;/a&gt;&lt;strong&gt;一、两种方法介绍&lt;/strong&gt;&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;1.this.getActivity()（可以不写this.）&lt;/strong&gt;&lt;br&gt;在Fragment中直接调用getActivity()方法，可以直接得到Fragment依附的Activity，而Activity是一个Context类型的对象。  &lt;/p&gt;"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
   <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=http://yueban.github.io/2014/08/13/%E6%AF%94%E8%BE%83Fragment%E4%B8%AD%E4%BD%BF%E7%94%A8Context%E7%9A%84%E4%B8%A4%E7%A7%8D%E6%96%B9%E6%B3%95/&t=比较 Fragment 中获取 Context 对象的两种方法" target="_blank" rel="noopener"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
 </ul>
 
