@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <link href="/katexify/katex.min.css" rel="stylesheet" />
+    <meta name="description" content="文件发送客户端到服务端的文件发送客户端到服务端的文件发送流程遵循通用的 客户端到服务端的加密，文件数据按照 Telegram 规定的 二进制数据序列化 规则即可。 客户端到客户端的文件发送所有发送到 Secret Chat 的文件均使用一次性密钥加密，该密钥与 secret_key 没有任何关系。  发送端获取文件明文数据 file_data; 发送端生成两个 256 bits 的数字，分别作为">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Telegram 安全方案解析 - 文件及音视频加密">
+<meta property="og:url" content="http://yueban.github.io/2021/02/15/Telegram%20%E5%AE%89%E5%85%A8%E6%96%B9%E6%A1%88%E8%A7%A3%E6%9E%90%20-%20%E6%96%87%E4%BB%B6%E5%8F%8A%E9%9F%B3%E8%A7%86%E9%A2%91%E5%8A%A0%E5%AF%86/index.html">
+<meta property="og:site_name" content="月半兄的小站">
+<meta property="og:description" content="文件发送客户端到服务端的文件发送客户端到服务端的文件发送流程遵循通用的 客户端到服务端的加密，文件数据按照 Telegram 规定的 二进制数据序列化 规则即可。 客户端到客户端的文件发送所有发送到 Secret Chat 的文件均使用一次性密钥加密，该密钥与 secret_key 没有任何关系。  发送端获取文件明文数据 file_data; 发送端生成两个 256 bits 的数字，分别作为">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-02-15T09:25:27.000Z">
+<meta property="article:modified_time" content="2021-02-15T09:25:43.555Z">
+<meta property="article:author" content="月半兄">
+<meta property="article:tag" content="算法">
+<meta property="article:tag" content="网络安全">
+<meta name="twitter:card" content="summary">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon-192x192.png">
+        
+      
+    
+    <!-- title -->
+    <title>Telegram 安全方案解析 - 文件及音视频加密</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+      
+<link rel="stylesheet" href="/css/rtl.css">
+
+    
+    <!-- rss -->
+    
+    
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a href="/tags/">标签</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" href="/2021/02/15/Telegram%20%E5%AE%89%E5%85%A8%E6%96%B9%E6%A1%88%E8%A7%A3%E6%9E%90%20-%20%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%88%B0%E5%AE%A2%E6%88%B7%E7%AB%AF%E7%9A%84%E5%8A%A0%E5%AF%86/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yueban.github.io/2021/02/15/Telegram%20%E5%AE%89%E5%85%A8%E6%96%B9%E6%A1%88%E8%A7%A3%E6%9E%90%20-%20%E6%96%87%E4%BB%B6%E5%8F%8A%E9%9F%B3%E8%A7%86%E9%A2%91%E5%8A%A0%E5%AF%86/" target="_blank" rel="noopener"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yueban.github.io/2021/02/15/Telegram%20%E5%AE%89%E5%85%A8%E6%96%B9%E6%A1%88%E8%A7%A3%E6%9E%90%20-%20%E6%96%87%E4%BB%B6%E5%8F%8A%E9%9F%B3%E8%A7%86%E9%A2%91%E5%8A%A0%E5%AF%86/&text=Telegram 安全方案解析 - 文件及音视频加密" target="_blank" rel="noopener"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yueban.github.io/2021/02/15/Telegram%20%E5%AE%89%E5%85%A8%E6%96%B9%E6%A1%88%E8%A7%A3%E6%9E%90%20-%20%E6%96%87%E4%BB%B6%E5%8F%8A%E9%9F%B3%E8%A7%86%E9%A2%91%E5%8A%A0%E5%AF%86/&title=Telegram 安全方案解析 - 文件及音视频加密" target="_blank" rel="noopener"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yueban.github.io/2021/02/15/Telegram%20%E5%AE%89%E5%85%A8%E6%96%B9%E6%A1%88%E8%A7%A3%E6%9E%90%20-%20%E6%96%87%E4%BB%B6%E5%8F%8A%E9%9F%B3%E8%A7%86%E9%A2%91%E5%8A%A0%E5%AF%86/&is_video=false&description=Telegram 安全方案解析 - 文件及音视频加密" target="_blank" rel="noopener"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Telegram 安全方案解析 - 文件及音视频加密&body=Check out this article: http://yueban.github.io/2021/02/15/Telegram%20%E5%AE%89%E5%85%A8%E6%96%B9%E6%A1%88%E8%A7%A3%E6%9E%90%20-%20%E6%96%87%E4%BB%B6%E5%8F%8A%E9%9F%B3%E8%A7%86%E9%A2%91%E5%8A%A0%E5%AF%86/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yueban.github.io/2021/02/15/Telegram%20%E5%AE%89%E5%85%A8%E6%96%B9%E6%A1%88%E8%A7%A3%E6%9E%90%20-%20%E6%96%87%E4%BB%B6%E5%8F%8A%E9%9F%B3%E8%A7%86%E9%A2%91%E5%8A%A0%E5%AF%86/&title=Telegram 安全方案解析 - 文件及音视频加密" target="_blank" rel="noopener"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yueban.github.io/2021/02/15/Telegram%20%E5%AE%89%E5%85%A8%E6%96%B9%E6%A1%88%E8%A7%A3%E6%9E%90%20-%20%E6%96%87%E4%BB%B6%E5%8F%8A%E9%9F%B3%E8%A7%86%E9%A2%91%E5%8A%A0%E5%AF%86/&title=Telegram 安全方案解析 - 文件及音视频加密" target="_blank" rel="noopener"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yueban.github.io/2021/02/15/Telegram%20%E5%AE%89%E5%85%A8%E6%96%B9%E6%A1%88%E8%A7%A3%E6%9E%90%20-%20%E6%96%87%E4%BB%B6%E5%8F%8A%E9%9F%B3%E8%A7%86%E9%A2%91%E5%8A%A0%E5%AF%86/&title=Telegram 安全方案解析 - 文件及音视频加密" target="_blank" rel="noopener"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yueban.github.io/2021/02/15/Telegram%20%E5%AE%89%E5%85%A8%E6%96%B9%E6%A1%88%E8%A7%A3%E6%9E%90%20-%20%E6%96%87%E4%BB%B6%E5%8F%8A%E9%9F%B3%E8%A7%86%E9%A2%91%E5%8A%A0%E5%AF%86/&title=Telegram 安全方案解析 - 文件及音视频加密" target="_blank" rel="noopener"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yueban.github.io/2021/02/15/Telegram%20%E5%AE%89%E5%85%A8%E6%96%B9%E6%A1%88%E8%A7%A3%E6%9E%90%20-%20%E6%96%87%E4%BB%B6%E5%8F%8A%E9%9F%B3%E8%A7%86%E9%A2%91%E5%8A%A0%E5%AF%86/&name=Telegram 安全方案解析 - 文件及音视频加密&description=" target="_blank" rel="noopener"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=http://yueban.github.io/2021/02/15/Telegram%20%E5%AE%89%E5%85%A8%E6%96%B9%E6%A1%88%E8%A7%A3%E6%9E%90%20-%20%E6%96%87%E4%BB%B6%E5%8F%8A%E9%9F%B3%E8%A7%86%E9%A2%91%E5%8A%A0%E5%AF%86/&t=Telegram 安全方案解析 - 文件及音视频加密" target="_blank" rel="noopener"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#文件发送"><span class="toc-number">1.</span> <span class="toc-text">文件发送</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#客户端到服务端的文件发送"><span class="toc-number">1.1.</span> <span class="toc-text">客户端到服务端的文件发送</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#客户端到客户端的文件发送"><span class="toc-number">1.2.</span> <span class="toc-text">客户端到客户端的文件发送</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#音视频通话"><span class="toc-number">2.</span> <span class="toc-text">音视频通话</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#客户端到客户端的音视频通话"><span class="toc-number">2.1.</span> <span class="toc-text">客户端到客户端的音视频通话</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#密钥交换"><span class="toc-number">2.1.1.</span> <span class="toc-text">密钥交换</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#加密"><span class="toc-number">2.1.2.</span> <span class="toc-text">加密</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#加密通话数据"><span class="toc-number">2.1.3.</span> <span class="toc-text">加密通话数据</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#防止重放攻击"><span class="toc-number">2.1.3.1.</span> <span class="toc-text">防止重放攻击</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#密钥校验"><span class="toc-number">2.1.4.</span> <span class="toc-text">密钥校验</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#群音视频通话"><span class="toc-number">2.2.</span> <span class="toc-text">群音视频通话</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#群语音聊天"><span class="toc-number">3.</span> <span class="toc-text">群语音聊天</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-number">4.</span> <span class="toc-text">参考</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Telegram 安全方案解析 - 文件及音视频加密
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">月半兄</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2021-02-15T09:25:27.000Z" itemprop="datePublished">2021-02-15</time>
+        
+        (Updated: <time datetime="2021-02-15T09:25:43.555Z" itemprop="dateModified">2021-02-15</time>)
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a>, <a class="tag-link" href="/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/" rel="tag">网络安全</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h2 id="文件发送"><a href="#文件发送" class="headerlink" title="文件发送"></a>文件发送</h2><h3 id="客户端到服务端的文件发送"><a href="#客户端到服务端的文件发送" class="headerlink" title="客户端到服务端的文件发送"></a>客户端到服务端的文件发送</h3><p>客户端到服务端的文件发送流程遵循通用的 <a href="https://yueban.github.io/2021/02/09/Telegram%20%E5%AE%89%E5%85%A8%E6%96%B9%E6%A1%88%E8%A7%A3%E6%9E%90%20-%20%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%88%B0%E6%9C%8D%E5%8A%A1%E7%AB%AF%E7%9A%84%E5%8A%A0%E5%AF%86/#%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%88%B0%E6%9C%8D%E5%8A%A1%E7%AB%AF%E7%9A%84%E5%8A%A0%E5%AF%86">客户端到服务端的加密</a>，文件数据按照 Telegram 规定的 <a href="https://core.telegram.org/mtproto/serialize" target="_blank" rel="noopener">二进制数据序列化</a> 规则即可。</p>
+<h3 id="客户端到客户端的文件发送"><a href="#客户端到客户端的文件发送" class="headerlink" title="客户端到客户端的文件发送"></a>客户端到客户端的文件发送</h3><p>所有发送到 Secret Chat 的文件均使用一次性密钥加密，该密钥与 <code>secret_key</code> 没有任何关系。</p>
+<ol>
+<li>发送端获取文件明文数据 <code>file_data</code>;</li>
+<li>发送端生成两个 256 bits 的数字，分别作为 <code>key</code> 和 <code>iv</code>;</li>
+<li>发送端计算 <code>payload = encrypted_data = AES256_ige_encrypt(file_data, key, iv)</code>;</li>
+<li>发送端计算 <code>digest = md5(key + iv)</code>;</li>
+<li>发送端计算 <code>fingerprint = substr(digest, 0, 4) XOR substr(digest, 4, 4)</code>;</li>
+<li>发送端将 <code>payload</code>, <code>fingerprint</code> 作为一个文件整体上传至服务端，并获取文件对应的地址 <code>path</code>;</li>
+<li>发送端将 <code>path</code>, <code>key</code>, <code>iv</code> 作为消息明文发送至接收端;</li>
+<li>接收端收到消息后，通过 <code>path</code> 下载文件;</li>
+<li>接收端重新计算 <code>fingerprint</code>，校验与下载的值是否相等;</li>
+<li>接收端使用 <code>aes</code>, <code>iv</code> 解密文件得到原始文件。</li>
+</ol>
+<h2 id="音视频通话"><a href="#音视频通话" class="headerlink" title="音视频通话"></a>音视频通话</h2><h3 id="客户端到客户端的音视频通话"><a href="#客户端到客户端的音视频通话" class="headerlink" title="客户端到客户端的音视频通话"></a>客户端到客户端的音视频通话</h3><p>在呼叫准备好之前，必须进行一些初始化的操作。</p>
+<ul>
+<li>主叫方需要联系被叫方，并检查它是否准备好接受呼叫。</li>
+<li>双方还要协商好要使用的协议</li>
+<li>双方需要了解对方或要使用的 Telegram 中继服务器的IP地址</li>
+<li>双方借助 Diffie–Hellman 密钥交换为这次呼叫生成一次性加密密钥</li>
+</ul>
+<h4 id="密钥交换"><a href="#密钥交换" class="headerlink" title="密钥交换"></a>密钥交换</h4><p>相比于客户端到服务端的 <code>auth_key</code> 交换，及客户端到客户端的 <code>secret_key</code> 交换，在音视频通话中，Telegram 优化了密钥交换流程，以实现更强的安全性。</p>
+<ol>
+<li>A-&gt;B : 生成 <code>a</code>, 计算 <code>g_a_hash := hash(g^a)</code>, 发送 <code>g_a_hash</code>;</li>
+<li>B-&gt;A : 存储 <code>g_a_hash</code>, 生成 <code>b</code>, 计算 <code>g_b := g^b</code>, 发送 <code>g_b</code>;</li>
+<li>A-&gt;B : 计算 <code>key := (g_b)^a</code>, 计算 <code>g_a = g^a</code>, 计算 <code>key_fingerprint = substr(SHA1(key), 0, 8)</code>, 发送 <code>g_a</code>, <code>key_fingerprint</code>;</li>
+<li>B : 校验 <code>hash(g_a) == g_a_hash</code>, 校验 <code>substr(SHA1(key), 0, 8) == key_fingerprint</code>, 计算 <code>key := (g_a)^b</code>;</li>
+</ol>
+<p>A 确定一个特定的 <code>a</code> 值（和 <code>g_a</code>），但直到最后一步才向 B 透露 <code>g_a</code>。B 必须在不知道 <code>g_a</code> 的真实值的情况下选择他的 <code>b</code> 和 <code>g_b</code> 的值。如果进行中间人攻击，则中间人不能根据 B 的 <code>g_b</code> 值来改变 <code>a</code>，也不能根据 <code>g_a</code> 来调整 <code>b</code> 的值。因此，中间人只有一次注入参数的机会，并且此时中间人没有任何中间交换的特征值。</p>
+<p>借助上述优化，仅用超过 33 bits 的熵，就可以防止超过 0.9999999999 的中间人攻击。这些 bits 以四个表情符号的形式呈现给用户。Telegram 选择了一个由 333 个表情符号组成的表情池，这些表情符号看起来都有很大的不同，并且可以很容易地用任何语言的简单词汇来描述。</p>
+<h4 id="加密"><a href="#加密" class="headerlink" title="加密"></a>加密</h4><p>音视频加密方案是一个基于 <a href="https://core.telegram.org/mtproto" target="_blank" rel="noopener">MTProto 2.0</a> 的优化版本，数据包由一个或多个各种类型的端到端加密消息组成。</p>
+<p>加密开始工作时，以下内容已就绪</p>
+<ul>
+<li>双方共享的加密密钥 <code>key</code>，如上文中生成的</li>
+<li>呼叫是呼出还是呼入的信息</li>
+<li>两个数据传输通道：由Telegram API 提供的信令通道 signaling，和基于 WebRTC 的传输通道 transport</li>
+</ul>
+<p>这两种数据传输通道都是不可靠的（消息可能会丢失），但信令传输速度较慢，可靠性较高。</p>
+<h4 id="加密通话数据"><a href="#加密通话数据" class="headerlink" title="加密通话数据"></a>加密通话数据</h4><p>一个数据包的主体由多个消息和它们各自的 <code>seq</code> 序号连在一起组成。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">decrypted_body &#x3D; message_seq1 + message_body1 + message_seq2 + message_body2</span><br></pre></td></tr></table></figure>
+
+<p>每个 <code>decrypted_body</code> 都是唯一的，因为第一个消息的 <code>seq</code> 序号不能相同。如果只有旧的消息需要重新发送，则先在数据包中添加一个具有新的唯一 <code>seq</code> 的空消息。</p>
+<p>加密密钥 <code>key</code> 用于计算 128 bits 的 <code>msg_key</code>，然后计算 256 bits 的 <code>aes_key</code> 和 128 bits 的 <code>aes_iv</code>。</p>
+<ol>
+<li><code>msg_key_large = SHA256(substr(key, 88+x, 32) + decrypted_body)</code>;</li>
+<li><code>msg_key = substr(msg_key_large, 8, 16)</code>;</li>
+<li><code>sha256_a = SHA256(msg_key + substr(key, x, 36))</code>;</li>
+<li><code>sha256_b = SHA256(substr(key, 40+x, 36) + msg_key)</code>;</li>
+<li><code>aes_key = substr(sha256_a, 0, 8) + substr(sha256_b, 8, 16) + substr(sha256_a, 24, 8)</code>;</li>
+<li><code>aes_iv = substr(sha256_b, 0, 4) + substr(sha256_a, 8, 8) + substr(sha256_b, 24, 4)</code>;</li>
+</ol>
+<p><code>x</code> 取决于呼叫是呼出还是呼入以及连接类型。</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>传输通道</th>
+<th>信令通道</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>呼出</td>
+<td>0</td>
+<td>128</td>
+</tr>
+<tr>
+<td>呼入</td>
+<td>8</td>
+<td>136</td>
+</tr>
+</tbody></table>
+<p>这允许应用程序决定哪些数据包类型将被发送到哪些连接，并在这些连接中独立工作（每个连接有各自的 <code>seq</code> 计数器）。</p>
+<p><code>aes_key</code> 和 <code>aes_iv</code> 将被用于加密 <code>decrypted_body</code>。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">encrypted_body &#x3D; AES_CTR(decrypted_body, aes_key, aes_iv)</span><br></pre></td></tr></table></figure>
+
+<p>被发送的数据包由 <code>msg_key</code> 和 <code>encrypted_body</code> 组成。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">packet_bytes &#x3D; msg_key + encrypted_body</span><br></pre></td></tr></table></figure>
+
+<p>当接收到数据包时，使用 <code>key</code> 和 <code>msg_key</code> 对数据包进行解密，然后重新计算 <code>msg_key</code>，校验与收到的是否相等。如果不相等，则必须丢弃该数据包。</p>
+<h5 id="防止重放攻击"><a href="#防止重放攻击" class="headerlink" title="防止重放攻击"></a>防止重放攻击</h5><p>每个端都有自己的 32 bits 出站报文计数器 <code>seq</code>，从 1 开始单调递增。这个 <code>seq</code> 计数器被预置到每个发送的报文中，并为每个新报文增加 1。一个报文包中第一个报文的 <code>seq</code> 号不能相同。如果只有旧的消息需要重新发送，则先在数据包中添加一个具有新的唯一 <code>seq</code> 的空消息。当seq计数器达到 <code>2^30</code> 时，必须中止呼叫。每个端都会存储它收到（和处理）的所有大于 <code>max_received_seq - 64</code> 的消息的 <code>seq</code> 值，其中 <code>max_received_seq</code> 是目前收到的最大 <code>seq</code> 数。</p>
+<p>如果收到一个报文，其中第一个报文的 <code>seq &lt;= max_received_seq - 64</code>，或者它的 <code>seq</code> 值已经被收到，那么这个报文将被丢弃。否则，所有接收到的报文的 <code>seq</code> 值都会被记住，并调整 <code>max_received_seq</code>。这样可以保证没有两个数据包会被处理两次。</p>
+<h4 id="密钥校验"><a href="#密钥校验" class="headerlink" title="密钥校验"></a>密钥校验</h4><p>为了验证加密秘钥，并确保没有发生中间人攻击，双方做如下计算</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hash &#x3D; SHA256(key + g_a)</span><br></pre></td></tr></table></figure>
+
+<p>将 <code>hash</code> 按位等分为 4 个 64 bits 的整数，每个整数怼表情符号总数（目前为 333）取模，用于选择特定的表情符号，从而得到四个表情符号。双方对比 4 个表情符号是否相同，从而确保没有中间人攻击。</p>
+<p>协议的具体内容保证了在 333 个表情符号中比较 4 个表情符号足以防止 0.9999999999 的中间人攻击。</p>
+<h3 id="群音视频通话"><a href="#群音视频通话" class="headerlink" title="群音视频通话"></a>群音视频通话</h3><p>根据<a href="https://telegram.org/blog/video-calls" target="_blank" rel="noopener">官方说明</a>，群音视频通话仍在研发中，预计在 2020 年末推出，但至今（2021年2月15日）仍未推出。</p>
+<h2 id="群语音聊天"><a href="#群语音聊天" class="headerlink" title="群语音聊天"></a>群语音聊天</h2><p>与音视频通话不同，群语音聊天只是在群内创建一个独立的空间，允许群成员一起发送语音聊天，但每一条语音仍是作为普通的语音消息，使用<a href="https://yueban.github.io/2021/02/09/Telegram%20%E5%AE%89%E5%85%A8%E6%96%B9%E6%A1%88%E8%A7%A3%E6%9E%90%20-%20%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%88%B0%E6%9C%8D%E5%8A%A1%E7%AB%AF%E7%9A%84%E5%8A%A0%E5%AF%86/#%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%88%B0%E6%9C%8D%E5%8A%A1%E7%AB%AF%E7%9A%84%E5%8A%A0%E5%AF%86">客户端到服务端的加密</a>。</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a href="https://core.telegram.org/mtproto/serialize" target="_blank" rel="noopener">Binary Data Serialization</a></li>
+<li><a href="https://yueban.github.io/2021/02/09/Telegram%20%E5%AE%89%E5%85%A8%E6%96%B9%E6%A1%88%E8%A7%A3%E6%9E%90%20-%20%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%88%B0%E6%9C%8D%E5%8A%A1%E7%AB%AF%E7%9A%84%E5%8A%A0%E5%AF%86/">Telegram 安全方案解析 - 客户端到服务端的加密</a></li>
+<li><a href="https://core.telegram.org/api/end-to-end" target="_blank" rel="noopener">End-to-End Encryption, Secret Chats</a></li>
+<li><a href="https://telegram.org/blog/video-calls" target="_blank" rel="noopener">Video Calls and Seven Years of Telegram</a></li>
+<li><a href="https://telegram.org/blog/calls" target="_blank" rel="noopener">Voice Calls: Secure, Crystal-Clear, AI-Powered</a></li>
+<li><a href="https://telegram.org/blog/voice-chats" target="_blank" rel="noopener">Voice Chats Done Right</a></li>
+<li><a href="https://telegram.org/blog/400-million" target="_blank" rel="noopener">400 Million Users, 20,000 Stickers, Quizzes 2.0 and €400K for Creators of Educational Tests</a></li>
+<li><a href="https://core.telegram.org/techfaq#q-how-are-voice-calls-authenticated" target="_blank" rel="noopener">Q: How are Voice Calls authenticated?</a></li>
+<li><a href="https://core.telegram.org/api/end-to-end/video-calls" target="_blank" rel="noopener">End-to-End Encrypted Voice and Video Calls</a></li>
+</ul>
+<!-- links -->
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a href="/tags/">标签</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#文件发送"><span class="toc-number">1.</span> <span class="toc-text">文件发送</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#客户端到服务端的文件发送"><span class="toc-number">1.1.</span> <span class="toc-text">客户端到服务端的文件发送</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#客户端到客户端的文件发送"><span class="toc-number">1.2.</span> <span class="toc-text">客户端到客户端的文件发送</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#音视频通话"><span class="toc-number">2.</span> <span class="toc-text">音视频通话</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#客户端到客户端的音视频通话"><span class="toc-number">2.1.</span> <span class="toc-text">客户端到客户端的音视频通话</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#密钥交换"><span class="toc-number">2.1.1.</span> <span class="toc-text">密钥交换</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#加密"><span class="toc-number">2.1.2.</span> <span class="toc-text">加密</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#加密通话数据"><span class="toc-number">2.1.3.</span> <span class="toc-text">加密通话数据</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#防止重放攻击"><span class="toc-number">2.1.3.1.</span> <span class="toc-text">防止重放攻击</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#密钥校验"><span class="toc-number">2.1.4.</span> <span class="toc-text">密钥校验</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#群音视频通话"><span class="toc-number">2.2.</span> <span class="toc-text">群音视频通话</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#群语音聊天"><span class="toc-number">3.</span> <span class="toc-text">群语音聊天</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-number">4.</span> <span class="toc-text">参考</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yueban.github.io/2021/02/15/Telegram%20%E5%AE%89%E5%85%A8%E6%96%B9%E6%A1%88%E8%A7%A3%E6%9E%90%20-%20%E6%96%87%E4%BB%B6%E5%8F%8A%E9%9F%B3%E8%A7%86%E9%A2%91%E5%8A%A0%E5%AF%86/" target="_blank" rel="noopener"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yueban.github.io/2021/02/15/Telegram%20%E5%AE%89%E5%85%A8%E6%96%B9%E6%A1%88%E8%A7%A3%E6%9E%90%20-%20%E6%96%87%E4%BB%B6%E5%8F%8A%E9%9F%B3%E8%A7%86%E9%A2%91%E5%8A%A0%E5%AF%86/&text=Telegram 安全方案解析 - 文件及音视频加密" target="_blank" rel="noopener"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yueban.github.io/2021/02/15/Telegram%20%E5%AE%89%E5%85%A8%E6%96%B9%E6%A1%88%E8%A7%A3%E6%9E%90%20-%20%E6%96%87%E4%BB%B6%E5%8F%8A%E9%9F%B3%E8%A7%86%E9%A2%91%E5%8A%A0%E5%AF%86/&title=Telegram 安全方案解析 - 文件及音视频加密" target="_blank" rel="noopener"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yueban.github.io/2021/02/15/Telegram%20%E5%AE%89%E5%85%A8%E6%96%B9%E6%A1%88%E8%A7%A3%E6%9E%90%20-%20%E6%96%87%E4%BB%B6%E5%8F%8A%E9%9F%B3%E8%A7%86%E9%A2%91%E5%8A%A0%E5%AF%86/&is_video=false&description=Telegram 安全方案解析 - 文件及音视频加密" target="_blank" rel="noopener"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Telegram 安全方案解析 - 文件及音视频加密&body=Check out this article: http://yueban.github.io/2021/02/15/Telegram%20%E5%AE%89%E5%85%A8%E6%96%B9%E6%A1%88%E8%A7%A3%E6%9E%90%20-%20%E6%96%87%E4%BB%B6%E5%8F%8A%E9%9F%B3%E8%A7%86%E9%A2%91%E5%8A%A0%E5%AF%86/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yueban.github.io/2021/02/15/Telegram%20%E5%AE%89%E5%85%A8%E6%96%B9%E6%A1%88%E8%A7%A3%E6%9E%90%20-%20%E6%96%87%E4%BB%B6%E5%8F%8A%E9%9F%B3%E8%A7%86%E9%A2%91%E5%8A%A0%E5%AF%86/&title=Telegram 安全方案解析 - 文件及音视频加密" target="_blank" rel="noopener"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yueban.github.io/2021/02/15/Telegram%20%E5%AE%89%E5%85%A8%E6%96%B9%E6%A1%88%E8%A7%A3%E6%9E%90%20-%20%E6%96%87%E4%BB%B6%E5%8F%8A%E9%9F%B3%E8%A7%86%E9%A2%91%E5%8A%A0%E5%AF%86/&title=Telegram 安全方案解析 - 文件及音视频加密" target="_blank" rel="noopener"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yueban.github.io/2021/02/15/Telegram%20%E5%AE%89%E5%85%A8%E6%96%B9%E6%A1%88%E8%A7%A3%E6%9E%90%20-%20%E6%96%87%E4%BB%B6%E5%8F%8A%E9%9F%B3%E8%A7%86%E9%A2%91%E5%8A%A0%E5%AF%86/&title=Telegram 安全方案解析 - 文件及音视频加密" target="_blank" rel="noopener"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yueban.github.io/2021/02/15/Telegram%20%E5%AE%89%E5%85%A8%E6%96%B9%E6%A1%88%E8%A7%A3%E6%9E%90%20-%20%E6%96%87%E4%BB%B6%E5%8F%8A%E9%9F%B3%E8%A7%86%E9%A2%91%E5%8A%A0%E5%AF%86/&title=Telegram 安全方案解析 - 文件及音视频加密" target="_blank" rel="noopener"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yueban.github.io/2021/02/15/Telegram%20%E5%AE%89%E5%85%A8%E6%96%B9%E6%A1%88%E8%A7%A3%E6%9E%90%20-%20%E6%96%87%E4%BB%B6%E5%8F%8A%E9%9F%B3%E8%A7%86%E9%A2%91%E5%8A%A0%E5%AF%86/&name=Telegram 安全方案解析 - 文件及音视频加密&description=" target="_blank" rel="noopener"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=http://yueban.github.io/2021/02/15/Telegram%20%E5%AE%89%E5%85%A8%E6%96%B9%E6%A1%88%E8%A7%A3%E6%9E%90%20-%20%E6%96%87%E4%BB%B6%E5%8F%8A%E9%9F%B3%E8%A7%86%E9%A2%91%E5%8A%A0%E5%AF%86/&t=Telegram 安全方案解析 - 文件及音视频加密" target="_blank" rel="noopener"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2014-2021
+    月半兄
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a href="/tags/">标签</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+
+    <!-- jquery -->
+
+<script src="/lib/jquery/jquery.min.js"></script>
+
+
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+
+<!-- clipboard -->
+
+  
+<script src="/lib/clipboard/clipboard.min.js"></script>
+
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "复制成功!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-NTW74P86FN"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-NTW74P86FN');
+    </script>
+
+<!-- Baidu Analytics -->
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>
