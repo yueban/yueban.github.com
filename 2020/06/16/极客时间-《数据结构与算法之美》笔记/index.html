@@ -14,16 +14,16 @@
 <meta property="og:site_name" content="月半兄的小站">
 <meta property="og:description" content="复杂度分析（上）：如何分析、统计算法的执行效率和资源消耗？事后统计法将算法跑一遍，并统计其时间消耗和空间消耗。但是，这种统计方法有非常大的局限性。  测试结果非常依赖测试环境测试环境中硬件的不同会对测试结果有很大的影响 测试结果受数据规模的影响很大  大 O 复杂度表示法假设每行代码执行的时间都一样，为 unit_time，则所有代码的执行时间 T(n)T(n)T(n) 与每行代码的执行次数成正比">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://i.loli.net/2020/09/06/SLa9ErAHpPuXBht.jpg">
-<meta property="og:image" content="https://i.loli.net/2021/04/11/vmQX7TetgDnpyWq.jpg">
+<meta property="og:image" content="https://static.yueban.site/blog/pics/algorithm_data_structure_stack_1.jpg">
+<meta property="og:image" content="https://static.yueban.site/blog/pics/algorithm_quick_sort_partition.jpg">
 <meta property="article:published_time" content="2020-06-16T12:40:25.000Z">
-<meta property="article:modified_time" content="2021-04-18T10:59:10.482Z">
+<meta property="article:modified_time" content="2022-07-24T04:57:04.599Z">
 <meta property="article:author" content="月半兄">
 <meta property="article:tag" content="算法">
 <meta property="article:tag" content="笔记">
 <meta property="article:tag" content="数据结构">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://i.loli.net/2020/09/06/SLa9ErAHpPuXBht.jpg">
+<meta name="twitter:image" content="https://static.yueban.site/blog/pics/algorithm_data_structure_stack_1.jpg">
     
     
       
@@ -136,7 +136,7 @@
       
         <time datetime="2020-06-16T12:40:25.000Z" itemprop="datePublished">2020-06-16</time>
         
-        (Updated: <time datetime="2021-04-18T10:59:10.482Z" itemprop="dateModified">2021-04-18</time>)
+        (Updated: <time datetime="2022-07-24T04:57:04.599Z" itemprop="dateModified">2022-07-24</time>)
         
       
     </div>
@@ -386,7 +386,7 @@
 </li>
 </ul>
 <p>例如: <code>3+5*8-6</code>，其计算过程如下</p>
-<p><img src="https://i.loli.net/2020/09/06/SLa9ErAHpPuXBht.jpg" alt="algorithm_data_structure_stack_1.jpg"></p>
+<p><img src="https://static.yueban.site/blog/pics/algorithm_data_structure_stack_1.jpg" alt="algorithm_data_structure_stack_1.jpg"></p>
 <h3 id="栈实现浏览器前进、后退"><a href="#栈实现浏览器前进、后退" class="headerlink" title="栈实现浏览器前进、后退"></a>栈实现浏览器前进、后退</h3><p>用两个栈 X, Y</p>
 <ul>
 <li>首次浏览的页面压入 X 栈</li>
@@ -661,7 +661,7 @@
 
 <p>我们通过游标 i 把 A[p…r-1]分成两部分。A[p…i-1]的元素都是小于 pivot 的，我们暂且叫它“已处理区间”，A[i…r-1]是“未处理区间”。我们每次都从未处理的区间 A[i…r-1]中取一个元素 A[j]，与 pivot 对比，如果小于 pivot，则将其加入到已处理区间的尾部，也就是 A[i]的位置。</p>
 <p>图示 partition 流程如下：</p>
-<p><img src="https://i.loli.net/2021/04/11/vmQX7TetgDnpyWq.jpg" alt="algorithm_quick_sort_partition.jpg"></p>
+<p><img src="https://static.yueban.site/blog/pics/algorithm_quick_sort_partition.jpg" alt="algorithm_quick_sort_partition.jpg"></p>
 <p>因为分区的过程涉及交换操作，如果数组中有两个相同的元素，比如序列 6，8，7，6，3，5，9，4，在经过第一次分区操作之后，两个 6 的相对先后顺序就会改变。所以，<strong>快速排序并不是一个稳定的排序算法。</strong></p>
 <h4 id="时空复杂度"><a href="#时空复杂度" class="headerlink" title="时空复杂度"></a>时空复杂度</h4><ul>
 <li>时间复杂度: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mi>log</mi><mo>⁡</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n\log n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span><ul>
@@ -895,7 +895,7 @@
     Copyright &copy;
     
     
-    2014-2021
+    2014-2023
     月半兄
   </div>
   <div class="footer-right">

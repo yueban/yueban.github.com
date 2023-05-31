@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <link href="/katexify/katex.min.css" rel="stylesheet" />
+    <meta name="description" content="目标 每次 push 自动触发测试 执行 Detekt 代码风格检测 执行 Java 单元测试 执行 Android 单元测试 jenkins 构建结果页显示测试报告 构建结果通过飞书 Bot 通知到工作群  环境 Mac OS (Apple M1) Jenkins (homebrew) self-hosted gitlab (ominus)  功能实现创建新的构建任务，类型选择 Pipeline">
+<meta property="og:type" content="article">
+<meta property="og:title" content="基于 Jenkins 的 Android 自动化测试">
+<meta property="og:url" content="http://yueban.github.io/2022/07/24/%E5%9F%BA%E4%BA%8E-Jenkins-%E7%9A%84-Android-%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/index.html">
+<meta property="og:site_name" content="月半兄的小站">
+<meta property="og:description" content="目标 每次 push 自动触发测试 执行 Detekt 代码风格检测 执行 Java 单元测试 执行 Android 单元测试 jenkins 构建结果页显示测试报告 构建结果通过飞书 Bot 通知到工作群  环境 Mac OS (Apple M1) Jenkins (homebrew) self-hosted gitlab (ominus)  功能实现创建新的构建任务，类型选择 Pipeline">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-07-24T05:23:00.000Z">
+<meta property="article:modified_time" content="2023-05-31T08:08:39.594Z">
+<meta property="article:author" content="月半兄">
+<meta property="article:tag" content="DevOps">
+<meta name="twitter:card" content="summary">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon-192x192.png">
+        
+      
+    
+    <!-- title -->
+    <title>基于 Jenkins 的 Android 自动化测试</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+      
+<link rel="stylesheet" href="/css/rtl.css">
+
+    
+    <!-- rss -->
+    
+    
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a href="/tags/">标签</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" href="/2021/02/15/Telegram%20%E5%AE%89%E5%85%A8%E6%96%B9%E6%A1%88%E8%A7%A3%E6%9E%90%20-%20%E6%96%87%E4%BB%B6%E5%8F%8A%E9%9F%B3%E8%A7%86%E9%A2%91%E5%8A%A0%E5%AF%86/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yueban.github.io/2022/07/24/%E5%9F%BA%E4%BA%8E-Jenkins-%E7%9A%84-Android-%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/" target="_blank" rel="noopener"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yueban.github.io/2022/07/24/%E5%9F%BA%E4%BA%8E-Jenkins-%E7%9A%84-Android-%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/&text=基于 Jenkins 的 Android 自动化测试" target="_blank" rel="noopener"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yueban.github.io/2022/07/24/%E5%9F%BA%E4%BA%8E-Jenkins-%E7%9A%84-Android-%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/&title=基于 Jenkins 的 Android 自动化测试" target="_blank" rel="noopener"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yueban.github.io/2022/07/24/%E5%9F%BA%E4%BA%8E-Jenkins-%E7%9A%84-Android-%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/&is_video=false&description=基于 Jenkins 的 Android 自动化测试" target="_blank" rel="noopener"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=基于 Jenkins 的 Android 自动化测试&body=Check out this article: http://yueban.github.io/2022/07/24/%E5%9F%BA%E4%BA%8E-Jenkins-%E7%9A%84-Android-%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yueban.github.io/2022/07/24/%E5%9F%BA%E4%BA%8E-Jenkins-%E7%9A%84-Android-%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/&title=基于 Jenkins 的 Android 自动化测试" target="_blank" rel="noopener"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yueban.github.io/2022/07/24/%E5%9F%BA%E4%BA%8E-Jenkins-%E7%9A%84-Android-%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/&title=基于 Jenkins 的 Android 自动化测试" target="_blank" rel="noopener"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yueban.github.io/2022/07/24/%E5%9F%BA%E4%BA%8E-Jenkins-%E7%9A%84-Android-%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/&title=基于 Jenkins 的 Android 自动化测试" target="_blank" rel="noopener"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yueban.github.io/2022/07/24/%E5%9F%BA%E4%BA%8E-Jenkins-%E7%9A%84-Android-%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/&title=基于 Jenkins 的 Android 自动化测试" target="_blank" rel="noopener"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yueban.github.io/2022/07/24/%E5%9F%BA%E4%BA%8E-Jenkins-%E7%9A%84-Android-%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/&name=基于 Jenkins 的 Android 自动化测试&description=" target="_blank" rel="noopener"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=http://yueban.github.io/2022/07/24/%E5%9F%BA%E4%BA%8E-Jenkins-%E7%9A%84-Android-%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/&t=基于 Jenkins 的 Android 自动化测试" target="_blank" rel="noopener"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#目标"><span class="toc-number">1.</span> <span class="toc-text">目标</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#环境"><span class="toc-number">2.</span> <span class="toc-text">环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#功能实现"><span class="toc-number">3.</span> <span class="toc-text">功能实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#设置-push-时触发构建"><span class="toc-number">3.1.</span> <span class="toc-text">设置 push 时触发构建</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#执行-gradle-任务"><span class="toc-number">3.2.</span> <span class="toc-text">执行 gradle 任务</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Detekt-代码风格检测"><span class="toc-number">3.2.1.</span> <span class="toc-text">Detekt 代码风格检测</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Java-单元测试"><span class="toc-number">3.2.2.</span> <span class="toc-text">Java 单元测试</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Android-单元测试"><span class="toc-number">3.2.3.</span> <span class="toc-text">Android 单元测试</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#记录测试报告"><span class="toc-number">3.3.</span> <span class="toc-text">记录测试报告</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Detekt-报告"><span class="toc-number">3.3.1.</span> <span class="toc-text">Detekt 报告</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Java-单元测试报告"><span class="toc-number">3.3.2.</span> <span class="toc-text">Java 单元测试报告</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Android-单元测试报告"><span class="toc-number">3.3.3.</span> <span class="toc-text">Android 单元测试报告</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#飞书通知"><span class="toc-number">3.4.</span> <span class="toc-text">飞书通知</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#常见问题及解决方案"><span class="toc-number">4.</span> <span class="toc-text">常见问题及解决方案</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#模拟器关闭时系统报错"><span class="toc-number">4.1.</span> <span class="toc-text">模拟器关闭时系统报错</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#执行-Android-测试时模拟器尚未启动"><span class="toc-number">4.2.</span> <span class="toc-text">执行 Android 测试时模拟器尚未启动</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#执行-Android-单元测试报错-INSTALL-FAILED-INSUFFICIENT-STORAGE"><span class="toc-number">4.3.</span> <span class="toc-text">执行 Android 单元测试报错 INSTALL_FAILED_INSUFFICIENT_STORAGE</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#单元测试报告样式错乱"><span class="toc-number">4.4.</span> <span class="toc-text">单元测试报告样式错乱</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#测试报告太多，如何区分哪一个测试失败"><span class="toc-number">4.5.</span> <span class="toc-text">测试报告太多，如何区分哪一个测试失败</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#上一步构建失败，导致整个构建任务中止"><span class="toc-number">4.6.</span> <span class="toc-text">上一步构建失败，导致整个构建任务中止</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#完整示例"><span class="toc-number">5.</span> <span class="toc-text">完整示例</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        基于 Jenkins 的 Android 自动化测试
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">月半兄</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2022-07-24T05:23:00.000Z" itemprop="datePublished">2022-07-24</time>
+        
+        (Updated: <time datetime="2023-05-31T08:08:39.594Z" itemprop="dateModified">2023-05-31</time>)
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/DevOps/" rel="tag">DevOps</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h2 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h2><ol>
+<li>每次 push 自动触发测试</li>
+<li>执行 Detekt 代码风格检测</li>
+<li>执行 Java 单元测试</li>
+<li>执行 Android 单元测试</li>
+<li>jenkins 构建结果页显示测试报告</li>
+<li>构建结果通过飞书 Bot 通知到工作群</li>
+</ol>
+<h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><ul>
+<li>Mac OS (Apple M1)</li>
+<li>Jenkins (homebrew)</li>
+<li>self-hosted gitlab (ominus)</li>
+</ul>
+<h2 id="功能实现"><a href="#功能实现" class="headerlink" title="功能实现"></a>功能实现</h2><p>创建新的构建任务，类型选择 Pipeline</p>
+<h3 id="设置-push-时触发构建"><a href="#设置-push-时触发构建" class="headerlink" title="设置 push 时触发构建"></a>设置 push 时触发构建</h3><p>安装 jenkins 插件: gitlab</p>
+<p>生成 webhook secrets (jenkins 默认不允许不安全的 webhooks 请求)</p>
+<p>记录 webhook url 及 secret，回到对应的 gitlab 仓库，创建 webhook：</p>
+<ol>
+<li>填写 URL 及 Secret token</li>
+<li>勾选 Trigger 触发事件，如 Push events</li>
+<li>勾选 Enable SSL verification</li>
+<li>点击 Add webhook</li>
+</ol>
+<h3 id="执行-gradle-任务"><a href="#执行-gradle-任务" class="headerlink" title="执行 gradle 任务"></a>执行 gradle 任务</h3><h4 id="Detekt-代码风格检测"><a href="#Detekt-代码风格检测" class="headerlink" title="Detekt 代码风格检测"></a>Detekt 代码风格检测</h4><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sh <span class="string">'./gradlew clean detekt'</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="Java-单元测试"><a href="#Java-单元测试" class="headerlink" title="Java 单元测试"></a>Java 单元测试</h4><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sh <span class="string">"./gradlew testDebugUnitTest"</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="Android-单元测试"><a href="#Android-单元测试" class="headerlink" title="Android 单元测试"></a>Android 单元测试</h4><p>Android 单元测试需要依托 Android 设备，这里使用 Android 模拟器，方便后续维护。</p>
+<p>启动 Android 模拟器:</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sh <span class="string">"emulator -avd $emulatorName"</span></span><br></pre></td></tr></table></figure>
+
+<p>执行 Android 单元测试:</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sh <span class="string">"./gradlew connectedDebugAndroidTest"</span></span><br></pre></td></tr></table></figure>
+
+<p>关闭 Android 模拟器:</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sh <span class="string">"adb emu kill"</span></span><br></pre></td></tr></table></figure>
+
+<p>在实际工作环境中，上述命令会导致系统报错，解决方法参考 <a href="#模拟器关闭时系统报错">模拟器关闭时系统报错</a></p>
+<h3 id="记录测试报告"><a href="#记录测试报告" class="headerlink" title="记录测试报告"></a>记录测试报告</h3><p>安装 jenkins 插件: publisher</p>
+<h4 id="Detekt-报告"><a href="#Detekt-报告" class="headerlink" title="Detekt 报告"></a>Detekt 报告</h4><p>detetk 建议配置 <a href="https://detekt.dev/docs/introduction/reporting/#merging-reports" target="_blank" rel="noopener">Merging reports</a> 合并检测报告，合并后的报告文件路径：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$projectDir&#x2F;reports&#x2F;detekt&#x2F;merge.xml</span><br></pre></td></tr></table></figure>
+
+<p>将合并后的报告展示在构建结果页。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">publishHTML (target : [allowMissing: false,</span><br><span class="line">    alwaysLinkToLastBuild: true,</span><br><span class="line">    keepAll: true,</span><br><span class="line">    reportDir: &quot;build&#x2F;reports&#x2F;detekt&quot;,</span><br><span class="line">    reportFiles: &#39;merge.xml&#39;,</span><br><span class="line">    reportName: &quot;report - detekt&quot;,</span><br><span class="line">    reportTitles: &quot;report - detekt&quot;])</span><br></pre></td></tr></table></figure>
+
+<h4 id="Java-单元测试报告"><a href="#Java-单元测试报告" class="headerlink" title="Java 单元测试报告"></a>Java 单元测试报告</h4><p>Java 单元测试报告位置(<code>moduleDir</code> 替换为对应 module 的路径):</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$moduleDir&#x2F;build&#x2F;reports&#x2F;tests&#x2F;testDebugUnitTest&#x2F;</span><br></pre></td></tr></table></figure>
+
+<p>将测试报告展示在构建结果页。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">publishHTML (target : [allowMissing: false,</span><br><span class="line">    alwaysLinkToLastBuild: true,</span><br><span class="line">    keepAll: true,</span><br><span class="line">    reportDir: &quot;$moduleDir&#x2F;build&#x2F;reports&#x2F;tests&#x2F;testDebugUnitTest&#x2F;&quot;,</span><br><span class="line">    reportFiles: &#39;index.html&#39;,</span><br><span class="line">    reportName: &quot;JavaTest - $moduleName&quot;,</span><br><span class="line">    reportTitles: &quot;JavaTest - $moduleName&quot;])</span><br></pre></td></tr></table></figure>
+
+<h4 id="Android-单元测试报告"><a href="#Android-单元测试报告" class="headerlink" title="Android 单元测试报告"></a>Android 单元测试报告</h4><p>Android 单元测试报告位置(<code>moduleDir</code> 替换为对应 module 的路径):</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$moduleDir&#x2F;build&#x2F;reports&#x2F;androidTests&#x2F;connected&#x2F;</span><br></pre></td></tr></table></figure>
+
+<p>将测试报告展示在构建结果页。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">publishHTML (target : [allowMissing: false,</span><br><span class="line">    alwaysLinkToLastBuild: true,</span><br><span class="line">    keepAll: true,</span><br><span class="line">    reportDir: &quot;$moduleDir&#x2F;build&#x2F;reports&#x2F;androidTests&#x2F;connected&#x2F;&quot;,</span><br><span class="line">    reportFiles: &#39;index.html&#39;,</span><br><span class="line">    reportName: &quot;AndroidTest - $moduleName&quot;,</span><br><span class="line">    reportTitles: &quot;AndroidTest - $moduleName&quot;])</span><br></pre></td></tr></table></figure>
+
+<h3 id="飞书通知"><a href="#飞书通知" class="headerlink" title="飞书通知"></a>飞书通知</h3><p>在飞书群组中，添加自定义机器人，获取 webhookUrl。开启方式参考<a href="https://www.feishu.cn/hc/zh-CN/articles/360024984973#tabs0|lineguid-vksm0B" target="_blank" rel="noopener">飞书官方文档</a>。</p>
+<p>向 webhookUrl 发起网络请求，通知构建结果。</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> notifyFeishuBot(String webhookUrl, <span class="keyword">boolean</span> success) &#123;</span><br><span class="line">    <span class="keyword">def</span> msg</span><br><span class="line">    <span class="keyword">if</span> (success) &#123;</span><br><span class="line">        msg = <span class="string">"CI Success: $BUILD_URL"</span></span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        msg = <span class="string">"CI Failed: $BUILD_URL"</span></span><br><span class="line">    &#125;</span><br><span class="line">    sh <span class="string">"""</span></span><br><span class="line"><span class="string">        curl -X POST -H "Content-Type: application/json" \</span></span><br><span class="line"><span class="string">        -d '&#123;"msg_type":"text","content": &#123;"text": "$msg"&#125;&#125;' \</span></span><br><span class="line"><span class="string">        $webhookUrl</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="常见问题及解决方案"><a href="#常见问题及解决方案" class="headerlink" title="常见问题及解决方案"></a>常见问题及解决方案</h2><h3 id="模拟器关闭时系统报错"><a href="#模拟器关闭时系统报错" class="headerlink" title="模拟器关闭时系统报错"></a>模拟器关闭时系统报错</h3><p>具体原因暂时未知，猜测和模拟器缓存机制有关。</p>
+<p>暂时的解决方案是直接 kill 模拟器进程，具体方式如下：</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 获取模拟器进程 id</span></span><br><span class="line"><span class="keyword">def</span> emulatorPid = sh(</span><br><span class="line"><span class="symbol">    script:</span> <span class="string">"""</span></span><br><span class="line"><span class="string">        emulator -avd $emulatorName -no-boot-anim -noaudio -wipe-data -no-window &gt; /dev/null 2&gt;&amp;1 &amp;</span></span><br><span class="line"><span class="string">        echo \$!</span></span><br><span class="line"><span class="string">    """</span>,</span><br><span class="line"><span class="symbol">    returnStdout:</span> <span class="literal">true</span></span><br><span class="line">).trim()</span><br><span class="line"></span><br><span class="line"><span class="comment">// 结束模拟器进程</span></span><br><span class="line">sh <span class="string">"kill -9 $emulatorPid"</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="执行-Android-测试时模拟器尚未启动"><a href="#执行-Android-测试时模拟器尚未启动" class="headerlink" title="执行 Android 测试时模拟器尚未启动"></a>执行 Android 测试时模拟器尚未启动</h3><p>监听模拟器 <code>sys.boot_completed</code> 属性，从而判断模拟器是否启动完成。</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 这里设置最多等待 120 秒，可根据电脑性能酌情增减</span></span><br><span class="line">timeout(<span class="string">time:</span> <span class="number">120</span>, <span class="string">unit:</span> <span class="string">'SECONDS'</span>) &#123;</span><br><span class="line">    sh <span class="string">"adb wait-for-device shell 'while [[ -z \$(getprop sys.boot_completed) ]]; do sleep 1; done;'"</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 模拟器已启动，执行 Android 单元测试</span></span><br><span class="line">sh <span class="string">"./gradlew connectedDebugAndroidTest"</span></span><br></pre></td></tr></table></figure>
+
+<p>如果上述方法无效，也可以试试监听 <code>init.svc.bootanim</code> 属性，具体参考: <a href="https://stackoverflow.com/a/14604886" target="_blank" rel="noopener">stackoverflow</a></p>
+<h3 id="执行-Android-单元测试报错-INSTALL-FAILED-INSUFFICIENT-STORAGE"><a href="#执行-Android-单元测试报错-INSTALL-FAILED-INSUFFICIENT-STORAGE" class="headerlink" title="执行 Android 单元测试报错 INSTALL_FAILED_INSUFFICIENT_STORAGE"></a>执行 Android 单元测试报错 INSTALL_FAILED_INSUFFICIENT_STORAGE</h3><p>相关解释参考: <a href="https://stackoverflow.com/questions/4709137/solution-to-install-failed-insufficient-storage-error-on-android" target="_blank" rel="noopener">stackoverflow</a></p>
+<p>比较简单有效的解决方案是模拟器启动时添加 <code>-wipe-data</code> 参数，确保模拟器没有遗留数据。</p>
+<h3 id="单元测试报告样式错乱"><a href="#单元测试报告样式错乱" class="headerlink" title="单元测试报告样式错乱"></a>单元测试报告样式错乱</h3><p>Jenkins 默认禁止了结果页的 js/css 的加载，在 <strong>Manage Jenkins -&gt; Script Console</strong> 输入下述命令，点击运行即可:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">System.setProperty(&quot;hudson.model.DirectoryBrowserSupport.CSP&quot;, &quot;default-src &#39;self&#39; &#39;unsafe-inline&#39; &#39;unsafe-eval&#39;; img-src &#39;self&#39; &#39;unsafe-inline&#39; data:;&quot;)</span><br></pre></td></tr></table></figure>
+
+<p>上述方法在 Jenkins 重启后即失效，需要重新配置。更建议的做法是直接修改 Jenkins 启动配置项。</p>
+<p>具体参考: <a href="https://veskoiliev.com/managing-the-content-security-policy-on-jenkins/" target="_blank" rel="noopener">Managing the Content Security Policy on Jenkins
+</a></p>
+<h3 id="测试报告太多，如何区分哪一个测试失败"><a href="#测试报告太多，如何区分哪一个测试失败" class="headerlink" title="测试报告太多，如何区分哪一个测试失败"></a>测试报告太多，如何区分哪一个测试失败</h3><p>由于 Java/Android 的单元测试报告在每个 module 下独立生成，对于 module 较多的项目，可能会生成较多测试报告。在单元测试失败时，从构建结果页只能看到 Java/Android 单元测试失败，但具体是哪一个 module 下的需要一个一个报告点进去看，这个成本无疑是无法接受的。</p>
+<p>两个解决思路：</p>
+<ol>
+<li>读取每一份测试报告的用例 failures 数量，对于 failures 大于 1 的，在构建结果页特殊标记，如在测试报告标题上添加 (error) 标注。</li>
+<li>对每个 module 下的每个测试任务，动态创建构建 stage，从而一眼区分出构建失败的具体任务。</li>
+</ol>
+<p>这里我们对展示思路 1 的示例代码:</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 读取 module 列表</span></span><br><span class="line"><span class="keyword">def</span> moduleList = sh(</span><br><span class="line"><span class="symbol">    script:</span> <span class="string">"""</span></span><br><span class="line"><span class="string">        ./gradlew projects | ggrep -Poi ".+Project ':\\K[\\w:]+'" | sort -u | rev | cut -c 2- | rev | tr '\\n' ','</span></span><br><span class="line"><span class="string">    """</span>,</span><br><span class="line"><span class="symbol">    returnStdout:</span> <span class="literal">true</span></span><br><span class="line">).split(<span class="string">","</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 遍历读取每个 module 下的测试报告</span></span><br><span class="line">moduleList.each &#123; moduleName -&gt;</span><br><span class="line">    <span class="keyword">def</span> modulePath = <span class="string">"./$&#123;moduleName.replace(':', '/')&#125;"</span></span><br><span class="line">    <span class="comment">// 判断测试报告文件是否存在</span></span><br><span class="line">    <span class="keyword">def</span> reportDir</span><br><span class="line">    <span class="keyword">if</span> (isAndroid) &#123;</span><br><span class="line">        reportDir = <span class="string">"$modulePath/build/reports/androidTests/connected"</span></span><br><span class="line">        <span class="keyword">def</span> htmlFileCount = sh(<span class="string">script:</span> <span class="string">"ls -l $reportDir 2&gt;/dev/null | grep .html | wc -l"</span>, <span class="string">returnStdout:</span> <span class="literal">true</span>).trim().toInteger()</span><br><span class="line">        <span class="keyword">if</span> (htmlFileCount &lt;= <span class="number">1</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        reportDir = <span class="string">"$modulePath/build/reports/tests/testDebugUnitTest"</span></span><br><span class="line">        <span class="keyword">def</span> testDirExists = sh(<span class="string">script:</span> <span class="string">"(ls $reportDir &gt;&gt; /dev/null 2&gt;&amp;1 &amp;&amp; echo true) || echo false"</span>, <span class="string">returnStdout:</span> <span class="literal">true</span>).trim().toBoolean()</span><br><span class="line">        <span class="keyword">if</span> (!testDirExists) &#123;</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 通过 xpath 读取测试报告中的 failures 数量</span></span><br><span class="line">    <span class="comment">// 特别的，Android 单元测试报告不符合 xmllint xpath 可识别规范，这里手动在测试报告末尾添加 &lt;/html&gt; 以确保 xpath 正常识别 failures 数量</span></span><br><span class="line">    <span class="keyword">if</span> (isAndroid) &#123;</span><br><span class="line">        sh <span class="string">"echo '&lt;/html&gt;' &gt;&gt; $reportDir/index.html"</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">def</span> failCount = sh(<span class="string">script:</span> <span class="string">"xmllint --xpath '//*[@id=\"failures\"]/div/text()' $reportDir/index.html"</span>, <span class="string">returnStdout:</span> <span class="literal">true</span>).trim().toInteger()</span><br><span class="line">    <span class="comment">// 对于 failures 的报告，在构建结果页的报告标题上，添加 (error) 标记</span></span><br><span class="line">    <span class="keyword">if</span> (failCount &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        reportName = <span class="string">"(error) $reportName"</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="上一步构建失败，导致整个构建任务中止"><a href="#上一步构建失败，导致整个构建任务中止" class="headerlink" title="上一步构建失败，导致整个构建任务中止"></a>上一步构建失败，导致整个构建任务中止</h3><p>Jenkins pipeline Job 默认会在出错时中止整个构建任务，但对于我们的任务来说，哪怕 Detekt 检查未通过，我们也希望后续的单元测试能够执行。</p>
+<p>Jenkins 提供了两个捕获错误的机制: <code>try/catch</code> 和 <code>catchError</code>。两者的区别是，通过 <code>try/catch</code> 捕获的错误不会导致当前 stage 失败，从构建结果页来看，捕获到错误的 stage 构建状态是成功。而通过 <code>catchError</code> 捕获错误，则可以让我们自行决定当前 stage 是否要标记为失败。</p>
+<p>回到我们的场景，我们希望每个 stage 的构建成功与否如实显示，只是不希望整个构建因为某一个 stage 的失败而中止，因此 <code>catchError</code> 更符合我们的需求。</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">stage(<span class="string">'detekt'</span>) &#123;</span><br><span class="line">    catchError(<span class="string">buildResult:</span> <span class="string">'FAILURE'</span>, <span class="string">stageResult:</span> <span class="string">'FAILURE'</span>, <span class="string">message:</span> <span class="string">'detekt fail'</span>) &#123;</span><br><span class="line">        sh <span class="string">'rm -rf local.properties'</span></span><br><span class="line">        sh <span class="string">'./gradlew clean detekt'</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (currentBuild.currentResult == <span class="string">"FAILURE"</span>) &#123;</span><br><span class="line">        archiveDetektReport()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">stage(<span class="string">'java tests'</span>) &#123;</span><br><span class="line">    catchError(<span class="string">buildResult:</span> <span class="string">'FAILURE'</span>, <span class="string">stageResult:</span> <span class="string">'FAILURE'</span>, <span class="string">message:</span> <span class="string">'java tests fail'</span>) &#123;</span><br><span class="line">        sh <span class="string">"./gradlew testDebugUnitTest"</span></span><br><span class="line">    &#125;</span><br><span class="line">    archiveTestReport()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ...后续省略</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="完整示例"><a href="#完整示例" class="headerlink" title="完整示例"></a>完整示例</h2><p>源码: <a href="https://gist.github.com/yueban/c9d1ab1167eb842648e31511f5543e46" target="_blank" rel="noopener">https://gist.github.com/yueban/c9d1ab1167eb842648e31511f5543e46</a></p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a href="/tags/">标签</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#目标"><span class="toc-number">1.</span> <span class="toc-text">目标</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#环境"><span class="toc-number">2.</span> <span class="toc-text">环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#功能实现"><span class="toc-number">3.</span> <span class="toc-text">功能实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#设置-push-时触发构建"><span class="toc-number">3.1.</span> <span class="toc-text">设置 push 时触发构建</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#执行-gradle-任务"><span class="toc-number">3.2.</span> <span class="toc-text">执行 gradle 任务</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Detekt-代码风格检测"><span class="toc-number">3.2.1.</span> <span class="toc-text">Detekt 代码风格检测</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Java-单元测试"><span class="toc-number">3.2.2.</span> <span class="toc-text">Java 单元测试</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Android-单元测试"><span class="toc-number">3.2.3.</span> <span class="toc-text">Android 单元测试</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#记录测试报告"><span class="toc-number">3.3.</span> <span class="toc-text">记录测试报告</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Detekt-报告"><span class="toc-number">3.3.1.</span> <span class="toc-text">Detekt 报告</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Java-单元测试报告"><span class="toc-number">3.3.2.</span> <span class="toc-text">Java 单元测试报告</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Android-单元测试报告"><span class="toc-number">3.3.3.</span> <span class="toc-text">Android 单元测试报告</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#飞书通知"><span class="toc-number">3.4.</span> <span class="toc-text">飞书通知</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#常见问题及解决方案"><span class="toc-number">4.</span> <span class="toc-text">常见问题及解决方案</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#模拟器关闭时系统报错"><span class="toc-number">4.1.</span> <span class="toc-text">模拟器关闭时系统报错</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#执行-Android-测试时模拟器尚未启动"><span class="toc-number">4.2.</span> <span class="toc-text">执行 Android 测试时模拟器尚未启动</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#执行-Android-单元测试报错-INSTALL-FAILED-INSUFFICIENT-STORAGE"><span class="toc-number">4.3.</span> <span class="toc-text">执行 Android 单元测试报错 INSTALL_FAILED_INSUFFICIENT_STORAGE</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#单元测试报告样式错乱"><span class="toc-number">4.4.</span> <span class="toc-text">单元测试报告样式错乱</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#测试报告太多，如何区分哪一个测试失败"><span class="toc-number">4.5.</span> <span class="toc-text">测试报告太多，如何区分哪一个测试失败</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#上一步构建失败，导致整个构建任务中止"><span class="toc-number">4.6.</span> <span class="toc-text">上一步构建失败，导致整个构建任务中止</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#完整示例"><span class="toc-number">5.</span> <span class="toc-text">完整示例</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yueban.github.io/2022/07/24/%E5%9F%BA%E4%BA%8E-Jenkins-%E7%9A%84-Android-%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/" target="_blank" rel="noopener"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yueban.github.io/2022/07/24/%E5%9F%BA%E4%BA%8E-Jenkins-%E7%9A%84-Android-%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/&text=基于 Jenkins 的 Android 自动化测试" target="_blank" rel="noopener"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yueban.github.io/2022/07/24/%E5%9F%BA%E4%BA%8E-Jenkins-%E7%9A%84-Android-%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/&title=基于 Jenkins 的 Android 自动化测试" target="_blank" rel="noopener"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yueban.github.io/2022/07/24/%E5%9F%BA%E4%BA%8E-Jenkins-%E7%9A%84-Android-%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/&is_video=false&description=基于 Jenkins 的 Android 自动化测试" target="_blank" rel="noopener"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=基于 Jenkins 的 Android 自动化测试&body=Check out this article: http://yueban.github.io/2022/07/24/%E5%9F%BA%E4%BA%8E-Jenkins-%E7%9A%84-Android-%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yueban.github.io/2022/07/24/%E5%9F%BA%E4%BA%8E-Jenkins-%E7%9A%84-Android-%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/&title=基于 Jenkins 的 Android 自动化测试" target="_blank" rel="noopener"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yueban.github.io/2022/07/24/%E5%9F%BA%E4%BA%8E-Jenkins-%E7%9A%84-Android-%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/&title=基于 Jenkins 的 Android 自动化测试" target="_blank" rel="noopener"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yueban.github.io/2022/07/24/%E5%9F%BA%E4%BA%8E-Jenkins-%E7%9A%84-Android-%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/&title=基于 Jenkins 的 Android 自动化测试" target="_blank" rel="noopener"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yueban.github.io/2022/07/24/%E5%9F%BA%E4%BA%8E-Jenkins-%E7%9A%84-Android-%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/&title=基于 Jenkins 的 Android 自动化测试" target="_blank" rel="noopener"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yueban.github.io/2022/07/24/%E5%9F%BA%E4%BA%8E-Jenkins-%E7%9A%84-Android-%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/&name=基于 Jenkins 的 Android 自动化测试&description=" target="_blank" rel="noopener"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=http://yueban.github.io/2022/07/24/%E5%9F%BA%E4%BA%8E-Jenkins-%E7%9A%84-Android-%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/&t=基于 Jenkins 的 Android 自动化测试" target="_blank" rel="noopener"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2014-2023
+    月半兄
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a href="/tags/">标签</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+
+    <!-- jquery -->
+
+<script src="/lib/jquery/jquery.min.js"></script>
+
+
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+
+<!-- clipboard -->
+
+  
+<script src="/lib/clipboard/clipboard.min.js"></script>
+
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "复制成功!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-NTW74P86FN"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-NTW74P86FN');
+    </script>
+
+<!-- Baidu Analytics -->
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>
