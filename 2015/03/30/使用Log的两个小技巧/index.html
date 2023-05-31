@@ -10,7 +10,7 @@
     <meta name="description" content="1.使用项目构建中的DEBUG标识private static final boolean DEBUG &#x3D; BuildConfig.DEBUG;  public static void i(String tag, String msg) {     if (DEBUG) {         Log.i(tag, msg);     } }">
 <meta property="og:type" content="article">
 <meta property="og:title" content="使用 Log 的两个小技巧">
-<meta property="og:url" content="http://yueban.github.io/2015/03/30/%E4%BD%BF%E7%94%A8Log%E7%9A%84%E4%B8%A4%E4%B8%AA%E5%B0%8F%E6%8A%80%E5%B7%A7/index.html">
+<meta property="og:url" content="https://yueban.github.io/2015/03/30/%E4%BD%BF%E7%94%A8Log%E7%9A%84%E4%B8%A4%E4%B8%AA%E5%B0%8F%E6%8A%80%E5%B7%A7/index.html">
 <meta property="og:site_name" content="月半兄的小站">
 <meta property="og:description" content="1.使用项目构建中的DEBUG标识private static final boolean DEBUG &#x3D; BuildConfig.DEBUG;  public static void i(String tag, String msg) {     if (DEBUG) {         Log.i(tag, msg);     } }">
 <meta property="og:locale" content="zh_CN">
@@ -96,23 +96,23 @@
     <br/>
     <div id="share" style="display: none">
       <ul>
-  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yueban.github.io/2015/03/30/%E4%BD%BF%E7%94%A8Log%E7%9A%84%E4%B8%A4%E4%B8%AA%E5%B0%8F%E6%8A%80%E5%B7%A7/" target="_blank" rel="noopener"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=http://yueban.github.io/2015/03/30/%E4%BD%BF%E7%94%A8Log%E7%9A%84%E4%B8%A4%E4%B8%AA%E5%B0%8F%E6%8A%80%E5%B7%A7/&text=使用 Log 的两个小技巧" target="_blank" rel="noopener"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yueban.github.io/2015/03/30/%E4%BD%BF%E7%94%A8Log%E7%9A%84%E4%B8%A4%E4%B8%AA%E5%B0%8F%E6%8A%80%E5%B7%A7/&title=使用 Log 的两个小技巧" target="_blank" rel="noopener"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yueban.github.io/2015/03/30/%E4%BD%BF%E7%94%A8Log%E7%9A%84%E4%B8%A4%E4%B8%AA%E5%B0%8F%E6%8A%80%E5%B7%A7/&is_video=false&description=使用 Log 的两个小技巧" target="_blank" rel="noopener"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=使用 Log 的两个小技巧&body=Check out this article: http://yueban.github.io/2015/03/30/%E4%BD%BF%E7%94%A8Log%E7%9A%84%E4%B8%A4%E4%B8%AA%E5%B0%8F%E6%8A%80%E5%B7%A7/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=http://yueban.github.io/2015/03/30/%E4%BD%BF%E7%94%A8Log%E7%9A%84%E4%B8%A4%E4%B8%AA%E5%B0%8F%E6%8A%80%E5%B7%A7/&title=使用 Log 的两个小技巧" target="_blank" rel="noopener"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=http://yueban.github.io/2015/03/30/%E4%BD%BF%E7%94%A8Log%E7%9A%84%E4%B8%A4%E4%B8%AA%E5%B0%8F%E6%8A%80%E5%B7%A7/&title=使用 Log 的两个小技巧" target="_blank" rel="noopener"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yueban.github.io/2015/03/30/%E4%BD%BF%E7%94%A8Log%E7%9A%84%E4%B8%A4%E4%B8%AA%E5%B0%8F%E6%8A%80%E5%B7%A7/&title=使用 Log 的两个小技巧" target="_blank" rel="noopener"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=http://yueban.github.io/2015/03/30/%E4%BD%BF%E7%94%A8Log%E7%9A%84%E4%B8%A4%E4%B8%AA%E5%B0%8F%E6%8A%80%E5%B7%A7/&title=使用 Log 的两个小技巧" target="_blank" rel="noopener"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yueban.github.io/2015/03/30/%E4%BD%BF%E7%94%A8Log%E7%9A%84%E4%B8%A4%E4%B8%AA%E5%B0%8F%E6%8A%80%E5%B7%A7/&name=使用 Log 的两个小技巧&description=&lt;h2 id=&#34;1-使用项目构建中的DEBUG标识&#34;&gt;&lt;a href=&#34;#1-使用项目构建中的DEBUG标识&#34; class=&#34;headerlink&#34; title=&#34;1.使用项目构建中的DEBUG标识&#34;&gt;&lt;/a&gt;1.使用项目构建中的DEBUG标识&lt;/h2&gt;&lt;pre&gt;&lt;code&gt;private static final boolean DEBUG = BuildConfig.DEBUG;
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://yueban.github.io/2015/03/30/%E4%BD%BF%E7%94%A8Log%E7%9A%84%E4%B8%A4%E4%B8%AA%E5%B0%8F%E6%8A%80%E5%B7%A7/" target="_blank" rel="noopener"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://yueban.github.io/2015/03/30/%E4%BD%BF%E7%94%A8Log%E7%9A%84%E4%B8%A4%E4%B8%AA%E5%B0%8F%E6%8A%80%E5%B7%A7/&text=使用 Log 的两个小技巧" target="_blank" rel="noopener"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://yueban.github.io/2015/03/30/%E4%BD%BF%E7%94%A8Log%E7%9A%84%E4%B8%A4%E4%B8%AA%E5%B0%8F%E6%8A%80%E5%B7%A7/&title=使用 Log 的两个小技巧" target="_blank" rel="noopener"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://yueban.github.io/2015/03/30/%E4%BD%BF%E7%94%A8Log%E7%9A%84%E4%B8%A4%E4%B8%AA%E5%B0%8F%E6%8A%80%E5%B7%A7/&is_video=false&description=使用 Log 的两个小技巧" target="_blank" rel="noopener"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=使用 Log 的两个小技巧&body=Check out this article: https://yueban.github.io/2015/03/30/%E4%BD%BF%E7%94%A8Log%E7%9A%84%E4%B8%A4%E4%B8%AA%E5%B0%8F%E6%8A%80%E5%B7%A7/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://yueban.github.io/2015/03/30/%E4%BD%BF%E7%94%A8Log%E7%9A%84%E4%B8%A4%E4%B8%AA%E5%B0%8F%E6%8A%80%E5%B7%A7/&title=使用 Log 的两个小技巧" target="_blank" rel="noopener"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://yueban.github.io/2015/03/30/%E4%BD%BF%E7%94%A8Log%E7%9A%84%E4%B8%A4%E4%B8%AA%E5%B0%8F%E6%8A%80%E5%B7%A7/&title=使用 Log 的两个小技巧" target="_blank" rel="noopener"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://yueban.github.io/2015/03/30/%E4%BD%BF%E7%94%A8Log%E7%9A%84%E4%B8%A4%E4%B8%AA%E5%B0%8F%E6%8A%80%E5%B7%A7/&title=使用 Log 的两个小技巧" target="_blank" rel="noopener"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://yueban.github.io/2015/03/30/%E4%BD%BF%E7%94%A8Log%E7%9A%84%E4%B8%A4%E4%B8%AA%E5%B0%8F%E6%8A%80%E5%B7%A7/&title=使用 Log 的两个小技巧" target="_blank" rel="noopener"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://yueban.github.io/2015/03/30/%E4%BD%BF%E7%94%A8Log%E7%9A%84%E4%B8%A4%E4%B8%AA%E5%B0%8F%E6%8A%80%E5%B7%A7/&name=使用 Log 的两个小技巧&description=&lt;h2 id=&#34;1-使用项目构建中的DEBUG标识&#34;&gt;&lt;a href=&#34;#1-使用项目构建中的DEBUG标识&#34; class=&#34;headerlink&#34; title=&#34;1.使用项目构建中的DEBUG标识&#34;&gt;&lt;/a&gt;1.使用项目构建中的DEBUG标识&lt;/h2&gt;&lt;pre&gt;&lt;code&gt;private static final boolean DEBUG = BuildConfig.DEBUG;
 
 public static void i(String tag, String msg) {
     if (DEBUG) {
         Log.i(tag, msg);
     }
 }&lt;/code&gt;&lt;/pre&gt;"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=http://yueban.github.io/2015/03/30/%E4%BD%BF%E7%94%A8Log%E7%9A%84%E4%B8%A4%E4%B8%AA%E5%B0%8F%E6%8A%80%E5%B7%A7/&t=使用 Log 的两个小技巧" target="_blank" rel="noopener"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=https://yueban.github.io/2015/03/30/%E4%BD%BF%E7%94%A8Log%E7%9A%84%E4%B8%A4%E4%B8%AA%E5%B0%8F%E6%8A%80%E5%B7%A7/&t=使用 Log 的两个小技巧" target="_blank" rel="noopener"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
@@ -205,23 +205,23 @@ public static void i(String tag, String msg) {
 
     <div id="share-footer" style="display: none">
       <ul>
-  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yueban.github.io/2015/03/30/%E4%BD%BF%E7%94%A8Log%E7%9A%84%E4%B8%A4%E4%B8%AA%E5%B0%8F%E6%8A%80%E5%B7%A7/" target="_blank" rel="noopener"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=http://yueban.github.io/2015/03/30/%E4%BD%BF%E7%94%A8Log%E7%9A%84%E4%B8%A4%E4%B8%AA%E5%B0%8F%E6%8A%80%E5%B7%A7/&text=使用 Log 的两个小技巧" target="_blank" rel="noopener"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yueban.github.io/2015/03/30/%E4%BD%BF%E7%94%A8Log%E7%9A%84%E4%B8%A4%E4%B8%AA%E5%B0%8F%E6%8A%80%E5%B7%A7/&title=使用 Log 的两个小技巧" target="_blank" rel="noopener"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yueban.github.io/2015/03/30/%E4%BD%BF%E7%94%A8Log%E7%9A%84%E4%B8%A4%E4%B8%AA%E5%B0%8F%E6%8A%80%E5%B7%A7/&is_video=false&description=使用 Log 的两个小技巧" target="_blank" rel="noopener"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=使用 Log 的两个小技巧&body=Check out this article: http://yueban.github.io/2015/03/30/%E4%BD%BF%E7%94%A8Log%E7%9A%84%E4%B8%A4%E4%B8%AA%E5%B0%8F%E6%8A%80%E5%B7%A7/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=http://yueban.github.io/2015/03/30/%E4%BD%BF%E7%94%A8Log%E7%9A%84%E4%B8%A4%E4%B8%AA%E5%B0%8F%E6%8A%80%E5%B7%A7/&title=使用 Log 的两个小技巧" target="_blank" rel="noopener"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=http://yueban.github.io/2015/03/30/%E4%BD%BF%E7%94%A8Log%E7%9A%84%E4%B8%A4%E4%B8%AA%E5%B0%8F%E6%8A%80%E5%B7%A7/&title=使用 Log 的两个小技巧" target="_blank" rel="noopener"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yueban.github.io/2015/03/30/%E4%BD%BF%E7%94%A8Log%E7%9A%84%E4%B8%A4%E4%B8%AA%E5%B0%8F%E6%8A%80%E5%B7%A7/&title=使用 Log 的两个小技巧" target="_blank" rel="noopener"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=http://yueban.github.io/2015/03/30/%E4%BD%BF%E7%94%A8Log%E7%9A%84%E4%B8%A4%E4%B8%AA%E5%B0%8F%E6%8A%80%E5%B7%A7/&title=使用 Log 的两个小技巧" target="_blank" rel="noopener"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yueban.github.io/2015/03/30/%E4%BD%BF%E7%94%A8Log%E7%9A%84%E4%B8%A4%E4%B8%AA%E5%B0%8F%E6%8A%80%E5%B7%A7/&name=使用 Log 的两个小技巧&description=&lt;h2 id=&#34;1-使用项目构建中的DEBUG标识&#34;&gt;&lt;a href=&#34;#1-使用项目构建中的DEBUG标识&#34; class=&#34;headerlink&#34; title=&#34;1.使用项目构建中的DEBUG标识&#34;&gt;&lt;/a&gt;1.使用项目构建中的DEBUG标识&lt;/h2&gt;&lt;pre&gt;&lt;code&gt;private static final boolean DEBUG = BuildConfig.DEBUG;
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://yueban.github.io/2015/03/30/%E4%BD%BF%E7%94%A8Log%E7%9A%84%E4%B8%A4%E4%B8%AA%E5%B0%8F%E6%8A%80%E5%B7%A7/" target="_blank" rel="noopener"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://yueban.github.io/2015/03/30/%E4%BD%BF%E7%94%A8Log%E7%9A%84%E4%B8%A4%E4%B8%AA%E5%B0%8F%E6%8A%80%E5%B7%A7/&text=使用 Log 的两个小技巧" target="_blank" rel="noopener"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://yueban.github.io/2015/03/30/%E4%BD%BF%E7%94%A8Log%E7%9A%84%E4%B8%A4%E4%B8%AA%E5%B0%8F%E6%8A%80%E5%B7%A7/&title=使用 Log 的两个小技巧" target="_blank" rel="noopener"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://yueban.github.io/2015/03/30/%E4%BD%BF%E7%94%A8Log%E7%9A%84%E4%B8%A4%E4%B8%AA%E5%B0%8F%E6%8A%80%E5%B7%A7/&is_video=false&description=使用 Log 的两个小技巧" target="_blank" rel="noopener"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=使用 Log 的两个小技巧&body=Check out this article: https://yueban.github.io/2015/03/30/%E4%BD%BF%E7%94%A8Log%E7%9A%84%E4%B8%A4%E4%B8%AA%E5%B0%8F%E6%8A%80%E5%B7%A7/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://yueban.github.io/2015/03/30/%E4%BD%BF%E7%94%A8Log%E7%9A%84%E4%B8%A4%E4%B8%AA%E5%B0%8F%E6%8A%80%E5%B7%A7/&title=使用 Log 的两个小技巧" target="_blank" rel="noopener"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://yueban.github.io/2015/03/30/%E4%BD%BF%E7%94%A8Log%E7%9A%84%E4%B8%A4%E4%B8%AA%E5%B0%8F%E6%8A%80%E5%B7%A7/&title=使用 Log 的两个小技巧" target="_blank" rel="noopener"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://yueban.github.io/2015/03/30/%E4%BD%BF%E7%94%A8Log%E7%9A%84%E4%B8%A4%E4%B8%AA%E5%B0%8F%E6%8A%80%E5%B7%A7/&title=使用 Log 的两个小技巧" target="_blank" rel="noopener"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://yueban.github.io/2015/03/30/%E4%BD%BF%E7%94%A8Log%E7%9A%84%E4%B8%A4%E4%B8%AA%E5%B0%8F%E6%8A%80%E5%B7%A7/&title=使用 Log 的两个小技巧" target="_blank" rel="noopener"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://yueban.github.io/2015/03/30/%E4%BD%BF%E7%94%A8Log%E7%9A%84%E4%B8%A4%E4%B8%AA%E5%B0%8F%E6%8A%80%E5%B7%A7/&name=使用 Log 的两个小技巧&description=&lt;h2 id=&#34;1-使用项目构建中的DEBUG标识&#34;&gt;&lt;a href=&#34;#1-使用项目构建中的DEBUG标识&#34; class=&#34;headerlink&#34; title=&#34;1.使用项目构建中的DEBUG标识&#34;&gt;&lt;/a&gt;1.使用项目构建中的DEBUG标识&lt;/h2&gt;&lt;pre&gt;&lt;code&gt;private static final boolean DEBUG = BuildConfig.DEBUG;
 
 public static void i(String tag, String msg) {
     if (DEBUG) {
         Log.i(tag, msg);
     }
 }&lt;/code&gt;&lt;/pre&gt;"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=http://yueban.github.io/2015/03/30/%E4%BD%BF%E7%94%A8Log%E7%9A%84%E4%B8%A4%E4%B8%AA%E5%B0%8F%E6%8A%80%E5%B7%A7/&t=使用 Log 的两个小技巧" target="_blank" rel="noopener"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=https://yueban.github.io/2015/03/30/%E4%BD%BF%E7%94%A8Log%E7%9A%84%E4%B8%A4%E4%B8%AA%E5%B0%8F%E6%8A%80%E5%B7%A7/&t=使用 Log 的两个小技巧" target="_blank" rel="noopener"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
 </ul>
 
     </div>

@@ -10,7 +10,7 @@
     <meta name="description" content="通过 custom_hooks 配置加入我们要向名为 project 的仓库添加 git hooks 脚本  找到 server 端 project 仓库的根目录 从头一点点安装部署的 gitlab，路径通常为 &#x2F;home&#x2F;git&#x2F;repositories&#x2F;&lt;group&gt;&#x2F;&lt;project&gt;.git 通过 Omnibus 安装，路径通常为 &#x2F;var&#x2F;opt&#x2F;gitlab&#x2F;g">
 <meta property="og:type" content="article">
 <meta property="og:title" content="gitlab server-side-hooks 配置实践">
-<meta property="og:url" content="http://yueban.github.io/2020/05/10/gitlab-server-side-hooks%E9%85%8D%E7%BD%AE%E5%AE%9E%E8%B7%B5/index.html">
+<meta property="og:url" content="https://yueban.github.io/2020/05/10/gitlab-server-side-hooks%E9%85%8D%E7%BD%AE%E5%AE%9E%E8%B7%B5/index.html">
 <meta property="og:site_name" content="月半兄的小站">
 <meta property="og:description" content="通过 custom_hooks 配置加入我们要向名为 project 的仓库添加 git hooks 脚本  找到 server 端 project 仓库的根目录 从头一点点安装部署的 gitlab，路径通常为 &#x2F;home&#x2F;git&#x2F;repositories&#x2F;&lt;group&gt;&#x2F;&lt;project&gt;.git 通过 Omnibus 安装，路径通常为 &#x2F;var&#x2F;opt&#x2F;gitlab&#x2F;g">
 <meta property="og:locale" content="zh_CN">
@@ -95,16 +95,16 @@
     <br/>
     <div id="share" style="display: none">
       <ul>
-  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yueban.github.io/2020/05/10/gitlab-server-side-hooks%E9%85%8D%E7%BD%AE%E5%AE%9E%E8%B7%B5/" target="_blank" rel="noopener"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=http://yueban.github.io/2020/05/10/gitlab-server-side-hooks%E9%85%8D%E7%BD%AE%E5%AE%9E%E8%B7%B5/&text=gitlab server-side-hooks 配置实践" target="_blank" rel="noopener"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yueban.github.io/2020/05/10/gitlab-server-side-hooks%E9%85%8D%E7%BD%AE%E5%AE%9E%E8%B7%B5/&title=gitlab server-side-hooks 配置实践" target="_blank" rel="noopener"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yueban.github.io/2020/05/10/gitlab-server-side-hooks%E9%85%8D%E7%BD%AE%E5%AE%9E%E8%B7%B5/&is_video=false&description=gitlab server-side-hooks 配置实践" target="_blank" rel="noopener"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=gitlab server-side-hooks 配置实践&body=Check out this article: http://yueban.github.io/2020/05/10/gitlab-server-side-hooks%E9%85%8D%E7%BD%AE%E5%AE%9E%E8%B7%B5/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=http://yueban.github.io/2020/05/10/gitlab-server-side-hooks%E9%85%8D%E7%BD%AE%E5%AE%9E%E8%B7%B5/&title=gitlab server-side-hooks 配置实践" target="_blank" rel="noopener"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=http://yueban.github.io/2020/05/10/gitlab-server-side-hooks%E9%85%8D%E7%BD%AE%E5%AE%9E%E8%B7%B5/&title=gitlab server-side-hooks 配置实践" target="_blank" rel="noopener"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yueban.github.io/2020/05/10/gitlab-server-side-hooks%E9%85%8D%E7%BD%AE%E5%AE%9E%E8%B7%B5/&title=gitlab server-side-hooks 配置实践" target="_blank" rel="noopener"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=http://yueban.github.io/2020/05/10/gitlab-server-side-hooks%E9%85%8D%E7%BD%AE%E5%AE%9E%E8%B7%B5/&title=gitlab server-side-hooks 配置实践" target="_blank" rel="noopener"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yueban.github.io/2020/05/10/gitlab-server-side-hooks%E9%85%8D%E7%BD%AE%E5%AE%9E%E8%B7%B5/&name=gitlab server-side-hooks 配置实践&description=&lt;h2 id=&#34;通过-custom-hooks-配置&#34;&gt;&lt;a href=&#34;#通过-custom-hooks-配置&#34; class=&#34;headerlink&#34; title=&#34;通过 custom_hooks 配置&#34;&gt;&lt;/a&gt;通过 custom_hooks 配置&lt;/h2&gt;&lt;p&gt;加入我们要向名为 &lt;strong&gt;project&lt;/strong&gt; 的仓库添加 git hooks 脚本&lt;/p&gt;
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://yueban.github.io/2020/05/10/gitlab-server-side-hooks%E9%85%8D%E7%BD%AE%E5%AE%9E%E8%B7%B5/" target="_blank" rel="noopener"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://yueban.github.io/2020/05/10/gitlab-server-side-hooks%E9%85%8D%E7%BD%AE%E5%AE%9E%E8%B7%B5/&text=gitlab server-side-hooks 配置实践" target="_blank" rel="noopener"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://yueban.github.io/2020/05/10/gitlab-server-side-hooks%E9%85%8D%E7%BD%AE%E5%AE%9E%E8%B7%B5/&title=gitlab server-side-hooks 配置实践" target="_blank" rel="noopener"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://yueban.github.io/2020/05/10/gitlab-server-side-hooks%E9%85%8D%E7%BD%AE%E5%AE%9E%E8%B7%B5/&is_video=false&description=gitlab server-side-hooks 配置实践" target="_blank" rel="noopener"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=gitlab server-side-hooks 配置实践&body=Check out this article: https://yueban.github.io/2020/05/10/gitlab-server-side-hooks%E9%85%8D%E7%BD%AE%E5%AE%9E%E8%B7%B5/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://yueban.github.io/2020/05/10/gitlab-server-side-hooks%E9%85%8D%E7%BD%AE%E5%AE%9E%E8%B7%B5/&title=gitlab server-side-hooks 配置实践" target="_blank" rel="noopener"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://yueban.github.io/2020/05/10/gitlab-server-side-hooks%E9%85%8D%E7%BD%AE%E5%AE%9E%E8%B7%B5/&title=gitlab server-side-hooks 配置实践" target="_blank" rel="noopener"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://yueban.github.io/2020/05/10/gitlab-server-side-hooks%E9%85%8D%E7%BD%AE%E5%AE%9E%E8%B7%B5/&title=gitlab server-side-hooks 配置实践" target="_blank" rel="noopener"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://yueban.github.io/2020/05/10/gitlab-server-side-hooks%E9%85%8D%E7%BD%AE%E5%AE%9E%E8%B7%B5/&title=gitlab server-side-hooks 配置实践" target="_blank" rel="noopener"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://yueban.github.io/2020/05/10/gitlab-server-side-hooks%E9%85%8D%E7%BD%AE%E5%AE%9E%E8%B7%B5/&name=gitlab server-side-hooks 配置实践&description=&lt;h2 id=&#34;通过-custom-hooks-配置&#34;&gt;&lt;a href=&#34;#通过-custom-hooks-配置&#34; class=&#34;headerlink&#34; title=&#34;通过 custom_hooks 配置&#34;&gt;&lt;/a&gt;通过 custom_hooks 配置&lt;/h2&gt;&lt;p&gt;加入我们要向名为 &lt;strong&gt;project&lt;/strong&gt; 的仓库添加 git hooks 脚本&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;找到 server 端 &lt;strong&gt;project&lt;/strong&gt; 仓库的根目录&lt;ul&gt;
 &lt;li&gt;从头一点点安装部署的 gitlab，路径通常为 &lt;code&gt;/home/git/repositories/&amp;lt;group&amp;gt;/&amp;lt;project&amp;gt;.git&lt;/code&gt;&lt;/li&gt;
@@ -115,7 +115,7 @@
 &lt;li&gt;在 &lt;code&gt;custom_hooks&lt;/code&gt; 文件下创建 git hook 文件，如 &lt;code&gt;pre-receive&lt;/code&gt; 等&lt;/li&gt;
 &lt;li&gt;为 git hook 脚本添加可执行权限，如 &lt;code&gt;chmod +x pre-receive&lt;/code&gt;&lt;/li&gt;
 &lt;/ol&gt;"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=http://yueban.github.io/2020/05/10/gitlab-server-side-hooks%E9%85%8D%E7%BD%AE%E5%AE%9E%E8%B7%B5/&t=gitlab server-side-hooks 配置实践" target="_blank" rel="noopener"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=https://yueban.github.io/2020/05/10/gitlab-server-side-hooks%E9%85%8D%E7%BD%AE%E5%AE%9E%E8%B7%B5/&t=gitlab server-side-hooks 配置实践" target="_blank" rel="noopener"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
@@ -219,16 +219,16 @@
 
     <div id="share-footer" style="display: none">
       <ul>
-  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yueban.github.io/2020/05/10/gitlab-server-side-hooks%E9%85%8D%E7%BD%AE%E5%AE%9E%E8%B7%B5/" target="_blank" rel="noopener"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=http://yueban.github.io/2020/05/10/gitlab-server-side-hooks%E9%85%8D%E7%BD%AE%E5%AE%9E%E8%B7%B5/&text=gitlab server-side-hooks 配置实践" target="_blank" rel="noopener"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yueban.github.io/2020/05/10/gitlab-server-side-hooks%E9%85%8D%E7%BD%AE%E5%AE%9E%E8%B7%B5/&title=gitlab server-side-hooks 配置实践" target="_blank" rel="noopener"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yueban.github.io/2020/05/10/gitlab-server-side-hooks%E9%85%8D%E7%BD%AE%E5%AE%9E%E8%B7%B5/&is_video=false&description=gitlab server-side-hooks 配置实践" target="_blank" rel="noopener"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=gitlab server-side-hooks 配置实践&body=Check out this article: http://yueban.github.io/2020/05/10/gitlab-server-side-hooks%E9%85%8D%E7%BD%AE%E5%AE%9E%E8%B7%B5/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=http://yueban.github.io/2020/05/10/gitlab-server-side-hooks%E9%85%8D%E7%BD%AE%E5%AE%9E%E8%B7%B5/&title=gitlab server-side-hooks 配置实践" target="_blank" rel="noopener"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=http://yueban.github.io/2020/05/10/gitlab-server-side-hooks%E9%85%8D%E7%BD%AE%E5%AE%9E%E8%B7%B5/&title=gitlab server-side-hooks 配置实践" target="_blank" rel="noopener"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yueban.github.io/2020/05/10/gitlab-server-side-hooks%E9%85%8D%E7%BD%AE%E5%AE%9E%E8%B7%B5/&title=gitlab server-side-hooks 配置实践" target="_blank" rel="noopener"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=http://yueban.github.io/2020/05/10/gitlab-server-side-hooks%E9%85%8D%E7%BD%AE%E5%AE%9E%E8%B7%B5/&title=gitlab server-side-hooks 配置实践" target="_blank" rel="noopener"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yueban.github.io/2020/05/10/gitlab-server-side-hooks%E9%85%8D%E7%BD%AE%E5%AE%9E%E8%B7%B5/&name=gitlab server-side-hooks 配置实践&description=&lt;h2 id=&#34;通过-custom-hooks-配置&#34;&gt;&lt;a href=&#34;#通过-custom-hooks-配置&#34; class=&#34;headerlink&#34; title=&#34;通过 custom_hooks 配置&#34;&gt;&lt;/a&gt;通过 custom_hooks 配置&lt;/h2&gt;&lt;p&gt;加入我们要向名为 &lt;strong&gt;project&lt;/strong&gt; 的仓库添加 git hooks 脚本&lt;/p&gt;
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://yueban.github.io/2020/05/10/gitlab-server-side-hooks%E9%85%8D%E7%BD%AE%E5%AE%9E%E8%B7%B5/" target="_blank" rel="noopener"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://yueban.github.io/2020/05/10/gitlab-server-side-hooks%E9%85%8D%E7%BD%AE%E5%AE%9E%E8%B7%B5/&text=gitlab server-side-hooks 配置实践" target="_blank" rel="noopener"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://yueban.github.io/2020/05/10/gitlab-server-side-hooks%E9%85%8D%E7%BD%AE%E5%AE%9E%E8%B7%B5/&title=gitlab server-side-hooks 配置实践" target="_blank" rel="noopener"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://yueban.github.io/2020/05/10/gitlab-server-side-hooks%E9%85%8D%E7%BD%AE%E5%AE%9E%E8%B7%B5/&is_video=false&description=gitlab server-side-hooks 配置实践" target="_blank" rel="noopener"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=gitlab server-side-hooks 配置实践&body=Check out this article: https://yueban.github.io/2020/05/10/gitlab-server-side-hooks%E9%85%8D%E7%BD%AE%E5%AE%9E%E8%B7%B5/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://yueban.github.io/2020/05/10/gitlab-server-side-hooks%E9%85%8D%E7%BD%AE%E5%AE%9E%E8%B7%B5/&title=gitlab server-side-hooks 配置实践" target="_blank" rel="noopener"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://yueban.github.io/2020/05/10/gitlab-server-side-hooks%E9%85%8D%E7%BD%AE%E5%AE%9E%E8%B7%B5/&title=gitlab server-side-hooks 配置实践" target="_blank" rel="noopener"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://yueban.github.io/2020/05/10/gitlab-server-side-hooks%E9%85%8D%E7%BD%AE%E5%AE%9E%E8%B7%B5/&title=gitlab server-side-hooks 配置实践" target="_blank" rel="noopener"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://yueban.github.io/2020/05/10/gitlab-server-side-hooks%E9%85%8D%E7%BD%AE%E5%AE%9E%E8%B7%B5/&title=gitlab server-side-hooks 配置实践" target="_blank" rel="noopener"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://yueban.github.io/2020/05/10/gitlab-server-side-hooks%E9%85%8D%E7%BD%AE%E5%AE%9E%E8%B7%B5/&name=gitlab server-side-hooks 配置实践&description=&lt;h2 id=&#34;通过-custom-hooks-配置&#34;&gt;&lt;a href=&#34;#通过-custom-hooks-配置&#34; class=&#34;headerlink&#34; title=&#34;通过 custom_hooks 配置&#34;&gt;&lt;/a&gt;通过 custom_hooks 配置&lt;/h2&gt;&lt;p&gt;加入我们要向名为 &lt;strong&gt;project&lt;/strong&gt; 的仓库添加 git hooks 脚本&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;找到 server 端 &lt;strong&gt;project&lt;/strong&gt; 仓库的根目录&lt;ul&gt;
 &lt;li&gt;从头一点点安装部署的 gitlab，路径通常为 &lt;code&gt;/home/git/repositories/&amp;lt;group&amp;gt;/&amp;lt;project&amp;gt;.git&lt;/code&gt;&lt;/li&gt;
@@ -239,7 +239,7 @@
 &lt;li&gt;在 &lt;code&gt;custom_hooks&lt;/code&gt; 文件下创建 git hook 文件，如 &lt;code&gt;pre-receive&lt;/code&gt; 等&lt;/li&gt;
 &lt;li&gt;为 git hook 脚本添加可执行权限，如 &lt;code&gt;chmod +x pre-receive&lt;/code&gt;&lt;/li&gt;
 &lt;/ol&gt;"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=http://yueban.github.io/2020/05/10/gitlab-server-side-hooks%E9%85%8D%E7%BD%AE%E5%AE%9E%E8%B7%B5/&t=gitlab server-side-hooks 配置实践" target="_blank" rel="noopener"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=https://yueban.github.io/2020/05/10/gitlab-server-side-hooks%E9%85%8D%E7%BD%AE%E5%AE%9E%E8%B7%B5/&t=gitlab server-side-hooks 配置实践" target="_blank" rel="noopener"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
